@@ -320,6 +320,7 @@ export const LeftColumnDiv = styled.div`
 export const RegisterH1 = styled.h1`
     color: #eb5757;
     font-family: 'Montserrat', sans-serif;
+    font-weight: normal;
     text-align: center;
     margin-top: 123px;
 `
@@ -336,7 +337,7 @@ export const RegisterPageDiv = styled.div`
     display: flex;
     justify-content: space-around;
     color: white;
-    margin: 10px 13% 0px 13%;
+    /* margin: 10px 13% 0px 13%; */
     align-items: flex-end;
 `
 
@@ -385,6 +386,10 @@ export const RegisterImageDiv = styled.div`
     width: 40%;
 `
 
+export const RegisterImage = styled.img`
+    width: 100%;
+`;
+
 export const NameLabel = styled.label`
     font-size: .6rem;
     font-weight: bold;
@@ -418,6 +423,9 @@ export const RegisterFirstNameInput = styled.input`
 `
 export const FooterDiv = styled.div`
     display: flex;
+    font-family: 'Montserrat', sans-serif;
+    font-size: .8rem;
+    padding: 0px 3%;
     justify-content: space-between;
     align-items: center;
     background-color: ${appRed};
@@ -427,6 +435,12 @@ export const FooterDiv = styled.div`
 
 export const FooterLink = styled(Link)`
     color: white;
-    margin-right: 20px;
+    margin-right: 50px;
+    text-decoration: none;
+`;
+
+export const FooterLink2 = styled(Link)`
+    color: white;
+    margin-right: 0px;
     text-decoration: none;
 `;
