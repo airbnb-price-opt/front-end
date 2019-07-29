@@ -1,5 +1,5 @@
 import React from 'react'
-import { FormDiv, Form, FormLabel, FormInput, FormButton } from '../StyledComps'
+import { AddListingDiv, AddListingWrapper, AddListingHeader, UploadImageDiv, UploadImageText, ListingFormWrapper, ListingFormDiv, ListingForm, ListingFormLabel, ListingFormInput, ListingFormButton } from '../StyledComps'
 
 const AddListing = (props) => {
 
@@ -9,26 +9,36 @@ const AddListing = (props) => {
     }
 
     return (
-        <FormDiv>
-            <Form>
-                <FormLabel>
-                    ADDRESS:
-                    <br />
-                    <FormInput />
-                </FormLabel>
-                <FormLabel>
-                    GUESTS:
-                    <br />
-                    <FormInput />
-                </FormLabel>
-                <FormLabel>
-                    MINIMUM NIGHTS:
-                    <br />
-                    <FormInput />
-                </FormLabel>
-                <FormButton type='submit' onClick={handleSubmit}>ADD LISTING</FormButton>
-            </Form>
-        </FormDiv>
+        <AddListingDiv>
+            <AddListingHeader>Add Listing</AddListingHeader>
+            <AddListingWrapper>
+                <ListingFormWrapper>
+                <ListingFormDiv>
+                    <ListingForm>
+                        <ListingFormLabel>
+                            ADDRESS:
+                            <br />
+                            <ListingFormInput />
+                        </ListingFormLabel>
+                        <ListingFormLabel>
+                            GUESTS:
+                            <br />
+                            <ListingFormInput />
+                        </ListingFormLabel>
+                        <ListingFormLabel>
+                            MINIMUM NIGHTS:
+                            <br />
+                            <ListingFormInput />
+                        </ListingFormLabel>
+                        <ListingFormButton type='submit' onClick={handleSubmit}>ADD LISTING</ListingFormButton>
+                    </ListingForm>
+                </ListingFormDiv>
+                </ListingFormWrapper>
+                <UploadImageDiv>
+                    <UploadImageText>Upload Image</UploadImageText>
+                </UploadImageDiv>
+            </AddListingWrapper>
+        </AddListingDiv>
     )
 }
 
