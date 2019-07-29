@@ -1,6 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-import { StyledListingsCard, StyledAddListingsCard, StyledListingsCardContent, StyledListingGrid } from '../StyledComps'
+import AddListing from './AddListing'
+import UpdateListing from './UpdateListing'
+
+import { StyledListingsCard, StyledAddListingsLink, StyledUpdateListingsLink, StyledListingsCardContent, StyledListingGrid } from '../StyledComps'
 
 const YourListingsCard = ( { data } ) => {
     return (
@@ -15,15 +19,14 @@ const YourListingsCard = ( { data } ) => {
                         <p>ACTUAL PRICE: {listing.act_price}</p>
                         <p>OPTIMAL PRICE: {listing.opt_price}</p>
                     </StyledListingsCardContent>
-                    <span className='update-listing'>UPDATE LISTING</span>
+                    <span className='update-listing'><StyledUpdateListingsLink to="/update-listing/">UPDATE LISTING</StyledUpdateListingsLink></span>
                     <button className='trash-icon'>TRASH</button>
                 </StyledListingsCard>
             ))}
-            
-            <StyledAddListingsCard className='add-new-listing'>
+            <StyledAddListingsLink to="/add-listing/">
                 <p>ICON</p>
                 <p>ADD LISTING</p>
-            </StyledAddListingsCard>
+            </StyledAddListingsLink>
         </StyledListingGrid>
     )
 }

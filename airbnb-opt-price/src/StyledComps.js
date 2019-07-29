@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 const appRed = '#eb5757';
 const appGrey = '#828282';
 
@@ -86,7 +86,7 @@ export const StyledHeader = styled.div`
     }
 `;
 
-// @@@@@ Start Your Listings Styles @@@@@
+// @@@@@@@@@@ Start Your Listings Styles @@@@@@@@@@
 
 export const StyledYourListings = styled.div`
     margin-top: 4rem;
@@ -152,8 +152,15 @@ export const StyledListingsCard = styled.div`
     }
 `;
 
-export const StyledAddListingsCard = styled.div`
+export const StyledUpdateListingsLink = styled(Link)`
+    color: white;
+    text-decoration: none;
+`;
+
+export const StyledAddListingsLink = styled(Link)`
     font-family: 'Montserrat';
+    color: black;
+    text-decoration: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -178,7 +185,7 @@ export const StyledListingsCardContent = styled.div`
     margin: 5px 0;
 `
 
-// @@@@@ End Your Listings Styles @@@@@
+// @@@@@@@@@@ End Your Listings Styles @@@@@@@@@@
 
 export const LoginContainerDiv = styled.div`
     /* width: 80%; */
