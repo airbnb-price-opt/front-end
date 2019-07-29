@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 const appRed = '#eb5757';
 const appGrey = '#828282';
 
@@ -153,6 +153,7 @@ export const LoginForm = styled.form`
     label
     {
         margin-top: 40px;
+        font-family: Montserrat;
     }
     button
     {
@@ -166,6 +167,7 @@ export const LoginForm = styled.form`
         margin-left: 3px;
         margin-top: 40px;
         font-size: 24px;
+        font-family: Montserrat;
     }
 `;
 
@@ -180,6 +182,7 @@ export const LoginFormContainer = styled.div`
         font-weight: normal;
         font-size: 36px;
         margin-bottom: 0px;
+        font-family: Montserrat;
     }
     hr
     {
@@ -190,12 +193,39 @@ export const LoginFormContainer = styled.div`
     }
 `;
 
-export const RegisterFormDiv = styled.div`
+
+//REGISTER FORM STYLES
+export const RegisterHeader =styled.div`
+    display: flex;
+    flex-direction: column;
+`
+
+export const LeftColumnDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+`
+
+export const RegisterH1 = styled.h1`
+    color: #eb5757;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    margin-top: 123px;
+`
+
+export const RegisterHR = styled.hr`
+    border: 0;
+    height: 1px;
+    background: #eb5757;
+    margin: -10px 25% 25px 25%;
+`
+
+export const RegisterPageDiv = styled.div`
     font-family: 'Montserrat', sans-serif;
     display: flex;
     justify-content: space-around;
     color: white;
-    margin: 123px 13% 0px 4%;
+    margin: 10px 13% 0px 13%;
     align-items: flex-end;
 `
 
@@ -204,7 +234,6 @@ export const RegisterForm = styled.form`
     display: flex;
     flex-direction: column;
     padding: 30px;
-    width: 40%;
     box-shadow: 7px 7px 5px rgba(0,0,0,0.5);
 `
 
@@ -242,7 +271,7 @@ export const RegisterFormButton = styled.button`
 
 export const RegisterImageDiv = styled.div`
     margin-bottom: -4px;
-    width: 50%;
+    width: 40%;
 `
 
 export const NameLabel = styled.label`
@@ -276,3 +305,17 @@ export const RegisterFirstNameInput = styled.input`
     margin: 0px 6% 10px 0%;
     padding: 4px 0% 4px 0%;
 `
+export const FooterDiv = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: ${appRed};
+    height: 47px;
+    color: white;
+`;
+
+export const FooterLink = styled(Link)`
+    color: white;
+    margin-right: 20px;
+    text-decoration: none;
+`;

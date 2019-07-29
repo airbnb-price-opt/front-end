@@ -1,4 +1,12 @@
 .active-nav
-    {
-        font-weight: bold;
-    }
+{
+    font-weight: bold;
+}
+
+.App
+{
+    height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between
+}
