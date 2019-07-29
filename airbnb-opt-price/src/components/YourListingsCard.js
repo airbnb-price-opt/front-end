@@ -1,8 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
-import AddListing from './AddListing'
-import UpdateListing from './UpdateListing'
+import trash from '../assets/trash.svg'
 
 import { StyledListingsCard, StyledAddListingsLink, StyledUpdateListingsLink, StyledListingsCardContent, StyledListingGrid } from '../StyledComps'
 
@@ -20,11 +18,11 @@ const YourListingsCard = ( { data } ) => {
                         <p>OPTIMAL PRICE: {listing.opt_price}</p>
                     </StyledListingsCardContent>
                     <span className='update-listing'><StyledUpdateListingsLink to="/update-listing/">UPDATE LISTING</StyledUpdateListingsLink></span>
-                    <button className='trash-icon'>TRASH</button>
+                    <img className='trash-icon' src={trash} alt='delete icon'></img>
                 </StyledListingsCard>
             ))}
             <StyledAddListingsLink to="/add-listing/">
-                <p>ICON</p>
+                <p className='plus-sign'>+</p>
                 <p>ADD LISTING</p>
             </StyledAddListingsLink>
         </StyledListingGrid>
