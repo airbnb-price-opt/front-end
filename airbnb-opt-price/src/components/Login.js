@@ -52,7 +52,7 @@ const Login = (props) => {
                     <input
                         type="password"
                         name="password"
-                        placeholder="password"
+                        placeholder="Password"
                         onChange={handleChanges}
                     />
                     <button type="submit" onClick={verifyUser}>SUBMIT</button>
