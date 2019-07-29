@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 
 import YourListingsCard from './YourListingsCard'
 
+import { StyledYourListings } from '../StyledComps'
+
 const YourListings = () => {
 
     const [userListing, setUserListing] = useState([
@@ -24,11 +26,11 @@ const YourListings = () => {
     ])
 
     return (
-        <div>
-            <h1>Your Listings</h1>
-            {console.log(userListing)}
+        <StyledYourListings>
+            <h1>YOUR LISTINGS</h1>
+            <hr></hr>
             <YourListingsCard data={userListing}/>
-        </div>
+        </StyledYourListings>
     )
 }
 

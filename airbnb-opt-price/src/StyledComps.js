@@ -88,6 +88,20 @@ export const StyledHeader = styled.div`
 
 // @@@@@ Start Your Listings Styles @@@@@
 
+export const StyledYourListings = styled.div`
+    margin-top: 4rem;
+    h1 {
+        font-family: 'Montserrat';
+        color: #eb5757;
+        margin: 0 8%;
+    }
+    hr {
+        border-color: #eb5757;
+        border-style: solid;
+        margin: 0 8%;
+    }
+`
+
 export const StyledListingGrid = styled.div`
     display: flex;
     flex-wrap: wrap;
@@ -95,13 +109,13 @@ export const StyledListingGrid = styled.div`
 `
 
 export const StyledListingsCard = styled.div`
-    @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+    font-family: 'Montserrat';
     display: flex;
     flex-direction: column;
     text-align: center;
     max-width: 300px;
     width: 100%;
-    height: 400px;
+    height: 375px;
     /* height: 100%; */
     padding: 10px;
     box-shadow: 0 2px 2px #bdbdbd;
@@ -139,14 +153,14 @@ export const StyledListingsCard = styled.div`
 `;
 
 export const StyledAddListingsCard = styled.div`
-    @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+    font-family: 'Montserrat';
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     max-width: 300px;
     width: 100%;
-    height: 400px;
+    height: 375px;
     /* height: 100%; */
     padding: 10px;
     box-shadow: 0 2px 2px #bdbdbd;

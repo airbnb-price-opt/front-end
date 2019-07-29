@@ -5,8 +5,8 @@ import { StyledListingsCard, StyledAddListingsCard, StyledListingsCardContent, S
 const YourListingsCard = ( { data } ) => {
     return (
         <StyledListingGrid>
-            {data.map(listing => (
-                <StyledListingsCard>
+            {data.map((listing,index) => (
+                <StyledListingsCard key={index}>
                     <img src={listing.img_url}></img>
                     <StyledListingsCardContent>
                         <p>NEIGHBORHOOD: {listing.neighborhood}</p>
