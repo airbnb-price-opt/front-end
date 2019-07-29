@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { StyledListingsCard, StyledListingsCardContent, StyledListingGrid } from '../StyledComps'
+import { StyledListingsCard, StyledAddListingsCard, StyledListingsCardContent, StyledListingGrid } from '../StyledComps'
 
 const YourListingsCard = ( { data } ) => {
     return (
@@ -20,10 +20,10 @@ const YourListingsCard = ( { data } ) => {
                 </StyledListingsCard>
             ))}
             
-            <StyledListingsCard>
+            <StyledAddListingsCard className='add-new-listing'>
                 <p>ICON</p>
                 <p>ADD LISTING</p>
-            </StyledListingsCard>
+            </StyledAddListingsCard>
         </StyledListingGrid>
     )
 }

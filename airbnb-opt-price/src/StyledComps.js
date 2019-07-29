@@ -38,6 +38,8 @@ export const StyledHeader = styled.div`
     }
 `;
 
+// @@@@@ Start Your Listings Styles @@@@@
+
 export const StyledListingGrid = styled.div`
     display: flex;
     flex-wrap: wrap;
@@ -51,12 +53,13 @@ export const StyledListingsCard = styled.div`
     text-align: center;
     max-width: 300px;
     width: 100%;
-    max-height: 450px;
-    height: 100%;
+    height: 400px;
+    /* height: 100%; */
     padding: 10px;
-    box-shadow: 0 2px 2px lightgray;
+    box-shadow: 0 2px 2px #bdbdbd;
     margin: 20px;
     position: relative;
+    border: solid #bdbdbd 1px;
     p {
         margin: 0;
     }
@@ -87,7 +90,30 @@ export const StyledListingsCard = styled.div`
     }
 `;
 
+export const StyledAddListingsCard = styled.div`
+    @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    max-width: 300px;
+    width: 100%;
+    height: 400px;
+    /* height: 100%; */
+    padding: 10px;
+    box-shadow: 0 2px 2px #bdbdbd;
+    margin: 20px;
+    position: relative;
+    border: solid #bdbdbd 1px;
+    background-color: #f1f1f1;
+    p {
+        margin: 0;
+    }
+`;
+
 export const StyledListingsCardContent = styled.div`
     text-align: left;
     margin: 5px 0;
 `
+
+// @@@@@ End Your Listings Styles @@@@@
