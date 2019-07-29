@@ -59,6 +59,7 @@ export const LoginForm = styled.form`
     height: 315px;
     width: 549px;
     color: white;
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.2);
     input
     {
         width: 461px;
@@ -87,6 +88,7 @@ export const LoginFormContainer = styled.div`
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    
     h2
     {
         color: ${appRed};
