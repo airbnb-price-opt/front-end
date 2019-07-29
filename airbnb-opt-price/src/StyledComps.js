@@ -3,6 +3,52 @@ import { NavLink } from 'react-router-dom'
 const appRed = '#eb5757';
 const appGrey = '#828282';
 
+export const FormDiv = styled.div`
+    width: 561px;
+    background: #EB5757;
+    padding: 30px 50px;
+    @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+`;
+
+export const Form = styled.form`
+    color: white;
+    display: flex;
+    flex-direction: column;
+`;
+
+export const FormLabel = styled.label`
+    margin-bottom: 30px;
+    font-style: normal;
+    font-size: 1.2rem;
+    line-height: 17px;
+`;
+
+export const FormInput = styled.input`
+    margin-top: 5px;
+    height: 31px;
+    width: 100%;
+`;
+
+export const FormButton = styled.button`
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #BDBDBD;
+    box-sizing: border-box;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #EB5757;
+    padding: 10px;
+    
+`;
+
 export const NavDiv = styled.div`
     display: flex;
     background-color: ${appGrey};
