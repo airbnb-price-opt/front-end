@@ -1,6 +1,5 @@
 import React from "react"
-import { Link } from 'react-router-dom'
-import { FooterDiv, FooterLink } from '../StyledComps'
+import { FooterDiv, FooterLink2, FooterLink } from '../StyledComps'
 
 const Footer = () =>
 {
@@ -9,7 +8,7 @@ const Footer = () =>
             <div className="copyright">&copy; 2019 ALL RIGHTS RESERVED</div>
             <div className="footer-links">
                 <FooterLink to="/privacy">PRIVACY POLICY</FooterLink>
-                <FooterLink to="/terms-and-conditions" >TERMS AND CONDITIONS</FooterLink>
+                <FooterLink2 to="/terms-and-conditions" >TERMS AND CONDITIONS</FooterLink2>
             </div>
         </FooterDiv>
     )

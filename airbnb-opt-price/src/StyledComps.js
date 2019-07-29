@@ -310,6 +310,9 @@ export const RegisterFirstNameInput = styled.input`
 `
 export const FooterDiv = styled.div`
     display: flex;
+    font-family: 'Montserrat', sans-serif;
+    font-size: .8rem;
+    padding: 0px 3%;
     justify-content: space-between;
     align-items: center;
     background-color: ${appRed};
@@ -319,6 +322,12 @@ export const FooterDiv = styled.div`
 
 export const FooterLink = styled(Link)`
     color: white;
-    margin-right: 20px;
+    margin-right: 50px;
+    text-decoration: none;
+`;
+
+export const FooterLink2 = styled(Link)`
+    color: white;
+    margin-right: 0px;
     text-decoration: none;
 `;
