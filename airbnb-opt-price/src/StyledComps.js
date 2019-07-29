@@ -177,14 +177,6 @@ export const StyledListingsCard = styled.div`
     button {
         background-color: #eb5757
     }
-    .update-listing {
-        border-radius: 5px;
-        background-color: #eb5757;
-        width: 100%;
-        text-align: center;
-        padding: 5px 0;
-        color: white;
-    }
     .trash-icon {
         position: absolute;
         right: -15px;
@@ -202,6 +194,12 @@ export const StyledListingsCard = styled.div`
 export const StyledUpdateListingsLink = styled(Link)`
     color: white;
     text-decoration: none;
+    border-radius: 5px;
+    background-color: #eb5757;
+    width: 100%;
+    text-align: center;
+    padding: 5px 0;
+    color: white;
 `;
 
 export const StyledAddListingsLink = styled(Link)`

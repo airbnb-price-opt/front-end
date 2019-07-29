@@ -17,7 +17,7 @@ const YourListingsCard = ( { data } ) => {
                         <p>ACTUAL PRICE: {listing.act_price}</p>
                         <p>OPTIMAL PRICE: {listing.opt_price}</p>
                     </StyledListingsCardContent>
-                    <span className='update-listing'><StyledUpdateListingsLink to="/update-listing/">UPDATE LISTING</StyledUpdateListingsLink></span>
+                    <StyledUpdateListingsLink to="/update-listing/">UPDATE LISTING</StyledUpdateListingsLink>
                     <img className='trash-icon' src={trash} alt='delete icon'></img>
                 </StyledListingsCard>
             ))}
