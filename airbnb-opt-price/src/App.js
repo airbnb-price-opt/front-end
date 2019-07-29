@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Route, Switch } from 'react-router-dom'
 
 import Register from './components/Register';
@@ -27,7 +28,6 @@ function App() {
         <Route path={`/login`} component={Login} />
         {/* <Route path={`/logout`} component={Logout} /> */}
       </Switch>
-
     </div>
   );
 }
