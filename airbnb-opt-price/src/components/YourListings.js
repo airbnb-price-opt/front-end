@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import YourListingsCard from './YourListingsCard'
 
-const UserHome = () => {
+const YourListings = () => {
 
     const [userListing, setUserListing] = useState([
         {
