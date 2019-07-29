@@ -114,6 +114,7 @@ export const LoginForm = styled.form`
     label
     {
         margin-top: 40px;
+        font-family: Montserrat;
     }
     button
     {
@@ -127,6 +128,7 @@ export const LoginForm = styled.form`
         margin-left: 3px;
         margin-top: 40px;
         font-size: 24px;
+        font-family: Montserrat;
     }
 `;
 
@@ -141,6 +143,7 @@ export const LoginFormContainer = styled.div`
         font-weight: normal;
         font-size: 36px;
         margin-bottom: 0px;
+        font-family: Montserrat;
     }
     hr
     {
