@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { registerUser } from '../store/actions';
 
 import {
-    RegisterFormDiv,
+    RegisterPageDiv,
     RegisterForm,
     RegisterFormInputs,
     NameInputDiv,
@@ -13,7 +13,11 @@ import {
     RegisterImageDiv,
     NameInputs,
     NameLabel,
-    RegisterFirstNameInput
+    RegisterFirstNameInput,
+    RegisterHR,
+    RegisterH1,
+    RegisterHeader,
+    LeftColumnDiv
 } from '../StyledComps';
 
 const Register = (props) => {
@@ -30,45 +34,51 @@ const Register = (props) => {
     }
     console.log(newUser)
     return(
-        <RegisterFormDiv>
-            <RegisterForm>
-                <RegisterFormTopRow>
-                    <NameInputDiv>
-                        <NameLabel>FIRST NAME:</NameLabel>
-                        <RegisterFirstNameInput
-                            onChange={handleChanges}
-                            name='firstName'
-                        />
-                    </NameInputDiv>
-                    <NameInputDiv>
-                        <NameLabel>LAST NAME:</NameLabel>
-                        <NameInputs 
-                            onChange={handleChanges}
-                            name='lastName'
-                        />
-                    </NameInputDiv>
-                </RegisterFormTopRow>
-                <RegisterLabel>EMAIL:</RegisterLabel>
-                <RegisterFormInputs 
-                    onChange={handleChanges}
-                    name='email'
-                />
-                <RegisterLabel>USERNAME:</RegisterLabel>
-                <RegisterFormInputs 
-                    onChange={handleChanges}
-                    name='username'
-                />                
-                <RegisterLabel>PASSWORD:</RegisterLabel>
-                <RegisterFormInputs 
-                    onChange={handleChanges}
-                    name='password'
-                />
-                <RegisterFormButton onClick={addUser}>SUBMIT</RegisterFormButton>
-            </RegisterForm>
+        <RegisterPageDiv>
+            <LeftColumnDiv>
+                <RegisterHeader>
+                    <RegisterH1>REGISTER</RegisterH1>
+                    <RegisterHR/>
+                </RegisterHeader>
+                <RegisterForm>
+                    <RegisterFormTopRow>
+                        <NameInputDiv>
+                            <NameLabel>FIRST NAME:</NameLabel>
+                            <RegisterFirstNameInput
+                                onChange={handleChanges}
+                                name='firstName'
+                            />
+                        </NameInputDiv>
+                        <NameInputDiv>
+                            <NameLabel>LAST NAME:</NameLabel>
+                            <NameInputs 
+                                onChange={handleChanges}
+                                name='lastName'
+                            />
+                        </NameInputDiv>
+                    </RegisterFormTopRow>
+                    <RegisterLabel>EMAIL:</RegisterLabel>
+                    <RegisterFormInputs 
+                        onChange={handleChanges}
+                        name='email'
+                    />
+                    <RegisterLabel>USERNAME:</RegisterLabel>
+                    <RegisterFormInputs 
+                        onChange={handleChanges}
+                        name='username'
+                    />                
+                    <RegisterLabel>PASSWORD:</RegisterLabel>
+                    <RegisterFormInputs 
+                        onChange={handleChanges}
+                        name='password'
+                    />
+                    <RegisterFormButton onClick={addUser}>SUBMIT</RegisterFormButton>
+                </RegisterForm>
+            </LeftColumnDiv>
             <RegisterImageDiv>
                 <img src={require('../imgs/bnb.png')} alt="Listing and Money" />
             </RegisterImageDiv>
-        </RegisterFormDiv>
+        </RegisterPageDiv>
     )
 }
 

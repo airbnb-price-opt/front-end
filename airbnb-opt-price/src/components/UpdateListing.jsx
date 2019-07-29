@@ -1,5 +1,5 @@
 import React from 'react'
-import { FormDiv, Form, FormLabel, FormInput, FormButton } from '../StyledComps'
+import { AddListingDiv, AddListingWrapper, AddListingHeader, UploadImageDiv, UploadImageText, ListingFormWrapper, ListingFormDiv, ListingForm, ListingFormLabel, ListingFormInput, ListingFormButton } from '../StyledComps'
 
 const UpdateListing = (props) => {
 
@@ -9,36 +9,36 @@ const UpdateListing = (props) => {
     }
 
     return (
-        <div>
-            <h1>Update Listing</h1>
-            <div>
-                <div>
-                <FormDiv>
-                    <Form>
-                        <FormLabel>
+        <AddListingDiv>
+            <AddListingHeader>Update Listing</AddListingHeader>
+            <AddListingWrapper>
+                <ListingFormWrapper>
+                <ListingFormDiv>
+                    <ListingForm>
+                        <ListingFormLabel>
                             ADDRESS:
                             <br />
-                            <FormInput />
-                        </FormLabel>
-                        <FormLabel>
+                            <ListingFormInput />
+                        </ListingFormLabel>
+                        <ListingFormLabel>
                             GUESTS:
                             <br />
-                            <FormInput />
-                        </FormLabel>
-                        <FormLabel>
+                            <ListingFormInput />
+                        </ListingFormLabel>
+                        <ListingFormLabel>
                             MINIMUM NIGHTS:
                             <br />
-                            <FormInput />
-                        </FormLabel>
-                        <FormButton type='submit' onClick={handleSubmit}>UPDATE LISTING</FormButton>
-                    </Form>
-                </FormDiv>
-                </div>
-                <div>
-
-                </div>
-            </div>
-        </div>
+                            <ListingFormInput />
+                        </ListingFormLabel>
+                        <ListingFormButton type='submit' onClick={handleSubmit}>UPDATE LISTING</ListingFormButton>
+                    </ListingForm>
+                </ListingFormDiv>
+                </ListingFormWrapper>
+                <UploadImageDiv>
+                    <UploadImageText>Upload Image</UploadImageText>
+                </UploadImageDiv>
+            </AddListingWrapper>
+        </AddListingDiv>
     )
 }
 

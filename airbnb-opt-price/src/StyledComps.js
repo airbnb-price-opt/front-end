@@ -3,7 +3,45 @@ import { NavLink, Link } from 'react-router-dom'
 const appRed = '#eb5757';
 const appGrey = '#828282';
 
-export const FormDiv = styled.div`
+export const AddListingDiv = styled.div`
+    margin: 10px 100px;
+`;
+
+export const AddListingWrapper = styled.div`
+    border-top: 1px solid ${appRed};
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+`;
+
+export const UploadImageDiv = styled.div`
+    background: #E0E0E0;
+    width: 480px;
+    height: 379px;
+    display: flex;
+    justify-content: center;
+`;
+
+export const UploadImageText = styled.p`
+    width: 100%;
+    margin: 0 auto;
+`;
+
+export const ListingFormWrapper = styled.div`
+    border: 1px solid black;
+`;
+
+export const AddListingHeader = styled.h1`
+font-family: Montserrat;
+font-style: normal;
+font-weight: 500;
+font-size: 36px;
+line-height: 44px;
+text-transform: uppercase;
+color: #EB5757;
+`;
+
+export const ListingFormDiv = styled.div`
     width: 561px;
     background: #EB5757;
     padding: 30px 50px;
@@ -11,26 +49,27 @@ export const FormDiv = styled.div`
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
-export const Form = styled.form`
+export const ListingForm = styled.form`
     color: white;
     display: flex;
     flex-direction: column;
+    width: 561px;
 `;
 
-export const FormLabel = styled.label`
+export const ListingFormLabel = styled.label`
     margin-bottom: 30px;
     font-style: normal;
     font-size: 1.2rem;
     line-height: 17px;
 `;
 
-export const FormInput = styled.input`
+export const ListingFormInput = styled.input`
     margin-top: 5px;
     height: 31px;
     width: 100%;
 `;
 
-export const FormButton = styled.button`
+export const ListingFormButton = styled.button`
     width: 100%;
     background: #FFFFFF;
     border: 1px solid #BDBDBD;
@@ -64,6 +103,7 @@ export const StyledNavLink = styled(NavLink)`
     color: white;
     text-decoration: none;
     padding: 0 30px;
+    margin-right: 30px;
     
     &:hover
     {
@@ -74,6 +114,8 @@ export const StyledNavLink = styled(NavLink)`
 
 export const StyledHeader = styled.div`
     padding-left: 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: .8rem;
     margin-top: 20px;
     display:flex;
     justify-content: space-between;
@@ -154,12 +196,39 @@ export const LoginFormContainer = styled.div`
     }
 `;
 
-export const RegisterFormDiv = styled.div`
+
+//REGISTER FORM STYLES
+export const RegisterHeader =styled.div`
+    display: flex;
+    flex-direction: column;
+`
+
+export const LeftColumnDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+`
+
+export const RegisterH1 = styled.h1`
+    color: #eb5757;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    margin-top: 123px;
+`
+
+export const RegisterHR = styled.hr`
+    border: 0;
+    height: 1px;
+    background: #eb5757;
+    margin: -10px 25% 25px 25%;
+`
+
+export const RegisterPageDiv = styled.div`
     font-family: 'Montserrat', sans-serif;
     display: flex;
     justify-content: space-around;
     color: white;
-    margin: 123px 13% 0px 4%;
+    margin: 10px 13% 0px 13%;
     align-items: flex-end;
 `
 
@@ -168,7 +237,6 @@ export const RegisterForm = styled.form`
     display: flex;
     flex-direction: column;
     padding: 30px;
-    width: 40%;
     box-shadow: 7px 7px 5px rgba(0,0,0,0.5);
 `
 
@@ -206,7 +274,7 @@ export const RegisterFormButton = styled.button`
 
 export const RegisterImageDiv = styled.div`
     margin-bottom: -4px;
-    width: 50%;
+    width: 40%;
 `
 
 export const NameLabel = styled.label`
