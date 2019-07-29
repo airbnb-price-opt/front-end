@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Route, Switch } from 'react-router-dom'
 
 import Register from './components/Register';
@@ -8,6 +9,7 @@ import Header from './components/Header'
 import './App.css';
 import AddListing from './components/AddListing';
 import UpdateListing from './components/UpdateListing';
+
 
 function App() {
   return (
@@ -27,7 +29,6 @@ function App() {
         <Route path={`/login`} component={Login} />
         {/* <Route path={`/logout`} component={Logout} /> */}
       </Switch>
-
     </div>
   );
 }
