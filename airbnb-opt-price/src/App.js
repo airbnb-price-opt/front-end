@@ -4,15 +4,14 @@ import './App.css';
 
 import Register from './components/Register';
 import Login from './components/Login';
+import YourListings from './components/YourListings'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Register />
-        <img src={logo} className="App-logo" alt="logo" />
-        <Login />
-      </header>
+      <Register />
+      <Login />
+      <YourListings/>
     </div>
   );
 }
