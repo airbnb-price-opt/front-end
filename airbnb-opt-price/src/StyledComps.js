@@ -298,14 +298,12 @@ export const LoginFormContainer = styled.div`
     }
 `;
 
-export const LoginImage = styled.div(
+export const LoginImage = styled.div`
+    @media(max-width: 500px)
     {
-        '@media(max-width: 500px)':
-        {
-            display: 'none'
-        }
+        display: none;
     }
-);
+`;
 //end Login Form Styles
 
 //REGISTER FORM STYLES

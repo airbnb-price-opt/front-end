@@ -30,7 +30,7 @@ function App() {
           <Route path={`/add-listing`} component={AddListing} />
           <Route path={`/update-listing`} component={UpdateListing} />
           <Route path={`/register`} component={Register} />
-          <Route path={`/`} component={Login} />
+          <Route exact path={`/`} component={Login} />
           {/* <Route path={`/logout`} component={Logout} /> */}
           <Route path={`/privacy`} component={PrivacyPolicy} />
           <Route path={`/terms-and-conditions`} component={TermsAndConditions} />
