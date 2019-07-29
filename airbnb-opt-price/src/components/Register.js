@@ -17,7 +17,8 @@ import {
     RegisterHR,
     RegisterH1,
     RegisterHeader,
-    LeftColumnDiv
+    LeftColumnDiv,
+    RegisterImage
 } from '../StyledComps';
 
 const Register = (props) => {
@@ -76,7 +77,7 @@ const Register = (props) => {
                 </RegisterForm>
             </LeftColumnDiv>
             <RegisterImageDiv>
-                <img src={require('../imgs/bnb.png')} alt="Listing and Money" />
+                <RegisterImage src={require('../imgs/bnb.png')} alt="Listing and Money" />
             </RegisterImageDiv>
         </RegisterPageDiv>
     )
