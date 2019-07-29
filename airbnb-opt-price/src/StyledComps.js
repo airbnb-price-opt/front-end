@@ -159,7 +159,7 @@ export const StyledListingsCard = styled.div`
     text-align: center;
     max-width: 300px;
     width: 100%;
-    height: 375px;
+    height: 400px;
     padding: 10px;
     box-shadow: 0 2px 2px #bdbdbd;
     margin: 20px;
@@ -176,14 +176,6 @@ export const StyledListingsCard = styled.div`
     }
     button {
         background-color: #eb5757
-    }
-    .update-listing {
-        border-radius: 5px;
-        background-color: #eb5757;
-        width: 100%;
-        text-align: center;
-        padding: 5px 0;
-        color: white;
     }
     .trash-icon {
         position: absolute;
@@ -202,6 +194,12 @@ export const StyledListingsCard = styled.div`
 export const StyledUpdateListingsLink = styled(Link)`
     color: white;
     text-decoration: none;
+    border-radius: 5px;
+    background-color: #eb5757;
+    width: 100%;
+    text-align: center;
+    padding: 5px 0;
+    color: white;
 `;
 
 export const StyledAddListingsLink = styled(Link)`
@@ -214,7 +212,7 @@ export const StyledAddListingsLink = styled(Link)`
     text-align: center;
     max-width: 300px;
     width: 100%;
-    height: 375px;
+    height: 400px;
     padding: 10px;
     box-shadow: 0 2px 2px #bdbdbd;
     margin: 20px;

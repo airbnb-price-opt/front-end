@@ -4,7 +4,7 @@ import trash from '../assets/trash.svg'
 
 import { StyledListingsCard, StyledAddListingsLink, StyledUpdateListingsLink, StyledListingsCardContent, StyledListingGrid } from '../StyledComps'
 
-const YourListingsCard = ( { data } ) => {
+const YourListingsCard = ( { data, DeleteListing } ) => {
     return (
         <StyledListingGrid>
             {data.map((listing,index) => (
@@ -17,8 +17,8 @@ const YourListingsCard = ( { data } ) => {
                         <p>ACTUAL PRICE: {listing.act_price}</p>
                         <p>OPTIMAL PRICE: {listing.opt_price}</p>
                     </StyledListingsCardContent>
-                    <span className='update-listing'><StyledUpdateListingsLink to="/update-listing/">UPDATE LISTING</StyledUpdateListingsLink></span>
-                    <img className='trash-icon' src={trash} alt='delete icon'></img>
+                    <StyledUpdateListingsLink to="/update-listing/">UPDATE LISTING</StyledUpdateListingsLink>
+                    <img className='trash-icon' src={trash} alt='delete icon' onClick={() => DeleteListing(listing)}></img>
                 </StyledListingsCard>
             ))}
             <StyledAddListingsLink to="/add-listing/">
