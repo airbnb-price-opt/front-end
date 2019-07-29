@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 const appRed = '#eb5757';
 const appGrey = '#828282';
 
@@ -114,6 +114,7 @@ export const LoginForm = styled.form`
     label
     {
         margin-top: 40px;
+        font-family: Montserrat;
     }
     button
     {
@@ -127,6 +128,7 @@ export const LoginForm = styled.form`
         margin-left: 3px;
         margin-top: 40px;
         font-size: 24px;
+        font-family: Montserrat;
     }
 `;
 
@@ -141,6 +143,7 @@ export const LoginFormContainer = styled.div`
         font-weight: normal;
         font-size: 36px;
         margin-bottom: 0px;
+        font-family: Montserrat;
     }
     hr
     {
@@ -263,3 +266,17 @@ export const RegisterFirstNameInput = styled.input`
     margin: 0px 6% 10px 0%;
     padding: 4px 0% 4px 0%;
 `
+export const FooterDiv = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: ${appRed};
+    height: 47px;
+    color: white;
+`;
+
+export const FooterLink = styled(Link)`
+    color: white;
+    margin-right: 20px;
+    text-decoration: none;
+`;
