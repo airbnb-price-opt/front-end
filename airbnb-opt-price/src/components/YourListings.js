@@ -6,6 +6,16 @@ import { StyledYourListings } from '../StyledComps'
 
 const YourListings = () => {
 
+    function DeleteListing(item) {
+        userListing.map((listing, index) => {
+            if (listing === item) {
+                let newUserListing = [...userListing]
+                newUserListing.splice(index, 1)
+                setUserListing(newUserListing)
+            }
+        })
+    }
+
     const [userListing, setUserListing] = useState([
         {
             img_url: 'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80',
@@ -53,7 +63,7 @@ const YourListings = () => {
         <StyledYourListings>
             <h1>YOUR LISTINGS</h1>
             <hr></hr>
-            <YourListingsCard data={userListing}/>
+            <YourListingsCard data={userListing} DeleteListing={DeleteListing}/>
         </StyledYourListings>
     )
 }
