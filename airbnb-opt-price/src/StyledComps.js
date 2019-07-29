@@ -159,7 +159,7 @@ export const StyledListingsCard = styled.div`
     text-align: center;
     max-width: 300px;
     width: 100%;
-    height: 375px;
+    height: 400px;
     padding: 10px;
     box-shadow: 0 2px 2px #bdbdbd;
     margin: 20px;
@@ -212,7 +212,7 @@ export const StyledAddListingsLink = styled(Link)`
     text-align: center;
     max-width: 300px;
     width: 100%;
-    height: 375px;
+    height: 400px;
     padding: 10px;
     box-shadow: 0 2px 2px #bdbdbd;
     margin: 20px;
