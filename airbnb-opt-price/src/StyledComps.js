@@ -132,6 +132,7 @@ export const StyledHeader = styled.div`
 
 export const StyledYourListings = styled.div`
     margin-top: 4rem;
+    
     h1 {
         font-family: 'Montserrat';
         color: #eb5757;
@@ -140,7 +141,7 @@ export const StyledYourListings = styled.div`
     hr {
         border-color: #eb5757;
         border-style: solid;
-        margin: 0 8%;
+        margin: 0 8% 2rem;
     }
 `
 
@@ -154,11 +155,11 @@ export const StyledListingsCard = styled.div`
     font-family: 'Montserrat';
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     text-align: center;
     max-width: 300px;
     width: 100%;
     height: 375px;
-    /* height: 100%; */
     padding: 10px;
     box-shadow: 0 2px 2px #bdbdbd;
     margin: 20px;
@@ -168,10 +169,8 @@ export const StyledListingsCard = styled.div`
         margin: 0;
     }
     img {
-        /* max-width: 325px; */
         max-width: 327px;
         width: 100%;
-        /* max-height: 225px; */
         max-height: 234px;
         height: 100%;
     }
@@ -188,9 +187,15 @@ export const StyledListingsCard = styled.div`
     }
     .trash-icon {
         position: absolute;
-        right: -10px;
-        top: -10px;
+        right: -15px;
+        top: -25px;
         border-radius: 50%;
+        width: 34px;
+        height: 48px;
+        background-color: #eb5757;
+        color: white;
+        padding: 5px;
+        cursor: pointer;
     }
 `;
 
@@ -210,7 +215,6 @@ export const StyledAddListingsLink = styled(Link)`
     max-width: 300px;
     width: 100%;
     height: 375px;
-    /* height: 100%; */
     padding: 10px;
     box-shadow: 0 2px 2px #bdbdbd;
     margin: 20px;
@@ -219,6 +223,9 @@ export const StyledAddListingsLink = styled(Link)`
     background-color: #f1f1f1;
     p {
         margin: 0;
+    }
+    .plus-sign{
+        font-size: 4rem;
     }
 `;
 
