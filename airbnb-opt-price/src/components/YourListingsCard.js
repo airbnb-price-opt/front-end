@@ -1,28 +1,30 @@
 import React from 'react'
 
+import { StyledListingsCard, StyledListingsCardContent, StyledListingGrid } from '../StyledComps'
+
 const YourListingsCard = ( { data } ) => {
     return (
-        <div>
+        <StyledListingGrid>
             {data.map(listing => (
-                <div>
+                <StyledListingsCard>
                     <img src={listing.img_url}></img>
-                    <div>
+                    <StyledListingsCardContent>
                         <p>NEIGHBORHOOD: {listing.neighborhood}</p>
                         <p>GUESTS: {listing.guests}</p>
                         <p>MINIMUM NIGHTS: {listing.min_nights}</p>
                         <p>ACTUAL PRICE: {listing.act_price}</p>
                         <p>OPTIMAL PRICE: {listing.opt_price}</p>
-                    </div>
-                    <button>UPDATE LISTING</button>
-                    <button>TRASH</button>
-                </div>
+                    </StyledListingsCardContent>
+                    <span className='update-listing'>UPDATE LISTING</span>
+                    <button className='trash-icon'>TRASH</button>
+                </StyledListingsCard>
             ))}
             
-            <div>
+            <StyledListingsCard>
                 <p>ICON</p>
                 <p>ADD LISTING</p>
-            </div>
-        </div>
+            </StyledListingsCard>
+        </StyledListingGrid>
     )
 }
 

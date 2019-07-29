@@ -37,3 +37,57 @@ export const StyledHeader = styled.div`
         font-family: 'Rock Salt', cursive;
     }
 `;
+
+export const StyledListingGrid = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+`
+
+export const StyledListingsCard = styled.div`
+    @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    max-width: 300px;
+    width: 100%;
+    max-height: 450px;
+    height: 100%;
+    padding: 10px;
+    box-shadow: 0 2px 2px lightgray;
+    margin: 20px;
+    position: relative;
+    p {
+        margin: 0;
+    }
+    img {
+        /* max-width: 325px; */
+        max-width: 327px;
+        width: 100%;
+        /* max-height: 225px; */
+        max-height: 234px;
+        height: 100%;
+    }
+    button {
+        background-color: #eb5757
+    }
+    .update-listing {
+        border-radius: 5px;
+        background-color: #eb5757;
+        width: 100%;
+        text-align: center;
+        padding: 5px 0;
+        color: white;
+    }
+    .trash-icon {
+        position: absolute;
+        right: -10px;
+        top: -10px;
+        border-radius: 50%;
+    }
+`;
+
+export const StyledListingsCardContent = styled.div`
+    text-align: left;
+    margin: 5px 0;
+`
