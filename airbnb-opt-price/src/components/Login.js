@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../store/actions';
-import {LoginContainerDiv, LoginForm, LoginFormContainer} from '../StyledComps'
+import {LoginContainerDiv, LoginForm, LoginFormContainer, LoginImage} from '../StyledComps'
 
 const Login = (props) => {
 
@@ -58,7 +58,9 @@ const Login = (props) => {
                     <button type="submit" onClick={verifyUser}>SUBMIT</button>
                 </LoginForm>
             </LoginFormContainer>
-            <img src={require(`../assets/bnb.png`)} alt="listing and money" />
+            <LoginImage>
+                <img src={require(`../assets/bnb.png`)} alt="listing and money" />
+            </LoginImage>
         </LoginContainerDiv>
     )
 }

@@ -234,6 +234,7 @@ export const StyledListingsCardContent = styled.div`
 
 // @@@@@@@@@@ End Your Listings Styles @@@@@@@@@@
 
+//Login Form Styles
 export const LoginContainerDiv = styled.div`
     /* width: 80%; */
     display: flex;
@@ -302,6 +303,15 @@ export const LoginFormContainer = styled.div`
     }
 `;
 
+export const LoginImage = styled.div(
+    {
+        '@media(max-width: 500px)':
+        {
+            display: 'none'
+        }
+    }
+);
+//end Login Form Styles
 
 //REGISTER FORM STYLES
 export const RegisterHeader =styled.div`
@@ -320,7 +330,7 @@ export const RegisterH1 = styled.h1`
     font-family: 'Montserrat', sans-serif;
     font-weight: normal;
     text-align: center;
-    margin-top: 123px;
+    margin-top: 50px;
 `
 
 export const RegisterHR = styled.hr`

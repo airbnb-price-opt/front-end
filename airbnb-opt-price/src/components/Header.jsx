@@ -7,7 +7,7 @@ const Header = () =>
 {
     return (
         <StyledHeader>
-            <Link to={`/login`} style={{textDecoration: `none`}}><h1 className="app-name">AIRLYTICS</h1></Link>
+            <Link to={`/`} style={{textDecoration: `none`}}><h1 className="app-name">AIRLYTICS</h1></Link>
             <Nav />
         </StyledHeader>
     )
