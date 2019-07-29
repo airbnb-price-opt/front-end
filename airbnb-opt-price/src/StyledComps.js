@@ -103,6 +103,7 @@ export const StyledNavLink = styled(NavLink)`
     color: white;
     text-decoration: none;
     padding: 0 30px;
+    margin-right: 30px;
     
     &:hover
     {
@@ -113,6 +114,8 @@ export const StyledNavLink = styled(NavLink)`
 
 export const StyledHeader = styled.div`
     padding-left: 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: .8rem;
     margin-top: 20px;
     display:flex;
     justify-content: space-between;
