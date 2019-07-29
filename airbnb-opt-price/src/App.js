@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router-dom'
 import Register from './components/Register';
 import Login from './components/Login';
 import Header from './components/Header'
+import YourListings from './components/YourListings'
 // import Listings from './components/Listings'
 import './App.css';
 import AddListing from './components/AddListing';
@@ -25,7 +26,7 @@ function App() {
         
 
         <Switch>
-          {/* <Route path={`/your-listings`} component={Listings} /> */}
+          <Route path={`/your-listings`} component={YourListings} />
           <Route path={`/add-listing`} component={AddListing} />
           <Route path={`/update-listing`} component={UpdateListing} />
           <Route path={`/register`} component={Register} />
