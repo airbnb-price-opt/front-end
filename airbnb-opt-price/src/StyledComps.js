@@ -128,6 +128,107 @@ export const StyledHeader = styled.div`
     }
 `;
 
+// @@@@@@@@@@ Start Your Listings Styles @@@@@@@@@@
+
+export const StyledYourListings = styled.div`
+    margin-top: 4rem;
+    h1 {
+        font-family: 'Montserrat';
+        color: #eb5757;
+        margin: 0 8%;
+    }
+    hr {
+        border-color: #eb5757;
+        border-style: solid;
+        margin: 0 8%;
+    }
+`
+
+export const StyledListingGrid = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+`
+
+export const StyledListingsCard = styled.div`
+    font-family: 'Montserrat';
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    max-width: 300px;
+    width: 100%;
+    height: 375px;
+    /* height: 100%; */
+    padding: 10px;
+    box-shadow: 0 2px 2px #bdbdbd;
+    margin: 20px;
+    position: relative;
+    border: solid #bdbdbd 1px;
+    p {
+        margin: 0;
+    }
+    img {
+        /* max-width: 325px; */
+        max-width: 327px;
+        width: 100%;
+        /* max-height: 225px; */
+        max-height: 234px;
+        height: 100%;
+    }
+    button {
+        background-color: #eb5757
+    }
+    .update-listing {
+        border-radius: 5px;
+        background-color: #eb5757;
+        width: 100%;
+        text-align: center;
+        padding: 5px 0;
+        color: white;
+    }
+    .trash-icon {
+        position: absolute;
+        right: -10px;
+        top: -10px;
+        border-radius: 50%;
+    }
+`;
+
+export const StyledUpdateListingsLink = styled(Link)`
+    color: white;
+    text-decoration: none;
+`;
+
+export const StyledAddListingsLink = styled(Link)`
+    font-family: 'Montserrat';
+    color: black;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    max-width: 300px;
+    width: 100%;
+    height: 375px;
+    /* height: 100%; */
+    padding: 10px;
+    box-shadow: 0 2px 2px #bdbdbd;
+    margin: 20px;
+    position: relative;
+    border: solid #bdbdbd 1px;
+    background-color: #f1f1f1;
+    p {
+        margin: 0;
+    }
+`;
+
+export const StyledListingsCardContent = styled.div`
+    text-align: left;
+    margin: 5px 0;
+`
+
+// @@@@@@@@@@ End Your Listings Styles @@@@@@@@@@
+
 export const LoginContainerDiv = styled.div`
     /* width: 80%; */
     display: flex;
