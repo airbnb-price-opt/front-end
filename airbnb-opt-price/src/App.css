@@ -1,6 +1,6 @@
 .active-nav
 {
-    font-weight: bold;
+    -webkit-text-stroke: 1px white;
 }
 
 .App

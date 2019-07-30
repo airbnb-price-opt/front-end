@@ -122,6 +122,7 @@ export const StyledMobileNavLink = styled(NavLink)`
     text-decoration: none;
     &:hover
     {
+        -webkit-text-stroke: 1px white;
         transition: transform .2s;
         transform: scale(1.1);
     }
@@ -132,8 +133,10 @@ export const StyledNavLink = styled(NavLink)`
     text-decoration: none;
     padding: 0 30px;
     margin-right: 30px;
+    letter-spacing: .5px;
     &:hover
     {
+        -webkit-text-stroke: 1px white;
         transition: transform .2s;
         transform: scale(1.1);
     }
@@ -580,14 +583,35 @@ export const FooterDiv = styled.div`
     }
 `;
 
+export const Copyright = styled.div`
+    font-weight: bold;
+    letter-spacing: .2px;
+`
+
 export const FooterLink = styled(Link)`
     color: white;
     margin-right: 50px;
     text-decoration: none;
+    font-weight: bold;
+    letter-spacing: .2px;
+    &:hover
+    {
+        -webkit-text-stroke: 1px white;
+        transition: transform .2s;
+        transform: scale(1.1);
+    }
 `;
 
 export const FooterLink2 = styled(Link)`
     color: white;
     margin-right: 0px;
     text-decoration: none;
+    font-weight: bold;
+    letter-spacing: .2px;
+    &:hover
+    {
+        -webkit-text-stroke: 1px white;
+        transition: transform .2s;
+        transform: scale(1.1);
+    }
 `;
