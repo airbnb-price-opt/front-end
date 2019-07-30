@@ -27,7 +27,7 @@ function App() {
         
         <Suspense fallback={<LoadingScreen/>}>
           <Switch>
-              <Route path={`/your-listings`} component={YourListings} />
+            <Route path={`/your-listings`} component={YourListings} />
             <Route path={`/add-listing`} component={AddListing} />
             <Route path={`/update-listing`} component={UpdateListing} />
             <Route path={`/register`} component={Register} />
