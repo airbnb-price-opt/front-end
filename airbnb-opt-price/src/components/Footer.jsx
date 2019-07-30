@@ -9,8 +9,8 @@ const Footer = () =>
             <FooterDiv>
                 <Copyright>&copy; 2019 ALL RIGHTS RESERVED</Copyright>
                 <div className="footer-links">
-                    <FooterLink to="/privacy">PRIVACY POLICY</FooterLink>
-                    <FooterLink2 to="/terms-and-conditions" >TERMS AND CONDITIONS</FooterLink2>
+                    <FooterLink to="/privacy/">PRIVACY POLICY</FooterLink>
+                    <FooterLink2 to="/terms-and-conditions/" >TERMS AND CONDITIONS</FooterLink2>
                 </div>
             </FooterDiv>
             <MobileNav/>
