@@ -26,7 +26,6 @@ function App() {
           {/* <Register /> */}
           {/* <Login /> */}
         
-        <Suspense fallback={<LoadingScreen/>}>
           <Route render={({location}) => (
             <TransitionGroup>
               <CSSTransition
@@ -34,20 +33,21 @@ function App() {
                 timeout={1000}
                 classNames="fade"
               >
-                <Switch location={location}>
-                  <Route path={`/your-listings`} component={YourListings} />
-                  <Route path={`/add-listing`} component={AddListing} />
-                  <Route path={`/update-listing`} component={UpdateListing} />
-                  <Route path={`/register`} component={Register} />
-                  <Route exact path={`/`} component={Login} />
-                  {/* <Route path={`/logout`} component={Logout} /> */}
-                  <Route path={`/privacy`} component={PrivacyPolicy} />
-                  <Route path={`/terms-and-conditions`} component={TermsAndConditions} />
-                </Switch>
+                <Suspense fallback={<LoadingScreen/>}>
+                      <Switch location={location}>
+                        <Route path={`/your-listings`} component={YourListings} />
+                        <Route path={`/add-listing`} component={AddListing} />
+                        <Route path={`/update-listing`} component={UpdateListing} />
+                        <Route path={`/register`} component={Register} />
+                        <Route exact path={`/`} component={Login} />
+                        {/* <Route path={`/logout`} component={Logout} /> */}
+                        <Route path={`/privacy`} component={PrivacyPolicy} />
+                        <Route path={`/terms-and-conditions`} component={TermsAndConditions} />
+                      </Switch>
+                </Suspense>
               </CSSTransition>
             </TransitionGroup>
           )} />
-        </Suspense>
       </div>
 
       <Footer />
