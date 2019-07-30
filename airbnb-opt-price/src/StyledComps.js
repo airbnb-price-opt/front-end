@@ -182,8 +182,8 @@ export const StyledListingsCard = styled.div`
         right: -15px;
         top: -25px;
         border-radius: 50%;
-        width: 34px;
-        height: 48px;
+        width: 36px;
+        height: 36px;
         background-color: #eb5757;
         color: white;
         padding: 5px;

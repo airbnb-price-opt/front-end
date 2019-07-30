@@ -1,6 +1,7 @@
 import React from 'react'
 
 import trash from '../assets/trash.svg'
+import house from '../assets/house.svg'
 
 import { StyledListingsCard, StyledAddListingsLink, StyledUpdateListingsLink, StyledListingsCardContent, StyledListingGrid } from '../StyledComps'
 
@@ -9,7 +10,7 @@ const YourListingsCard = ( { data, DeleteListing } ) => {
         <StyledListingGrid>
             {data.map((listing,index) => (
                 <StyledListingsCard key={index}>
-                    <img src={listing.img_url}></img>
+                    <img src={listing.img_url !== null ? listing.img_url : house}></img>
                     <StyledListingsCardContent>
                         <p>NEIGHBORHOOD: {listing.neighborhood}</p>
                         <p>GUESTS: {listing.guests}</p>
