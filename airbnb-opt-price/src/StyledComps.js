@@ -239,7 +239,10 @@ export const HeaderIconH1Div = styled.div`
 
 export const StyledYourListings = styled.div`
     margin-top: 4rem;
-    
+
+    @media(max-width: 800px) {
+        margin-bottom: 4rem;
+    }
     h1 {
         font-family: 'Montserrat';
         color: #eb5757;
@@ -266,7 +269,7 @@ export const StyledListingsCard = styled.div`
     text-align: center;
     max-width: 300px;
     width: 100%;
-    height: 400px;
+    height: 450px;
     padding: 10px;
     box-shadow: 0 2px 2px #bdbdbd;
     margin: 20px;
@@ -278,7 +281,7 @@ export const StyledListingsCard = styled.div`
     }
     @media(max-width: 800px) {
         max-width: 255px;
-        height: 340px;
+        height: 383px;
     }
     p {
         margin: 0;
@@ -291,6 +294,9 @@ export const StyledListingsCard = styled.div`
         @media(max-width: 800px) {
             max-height: 199px;
         }
+    }
+    .listing-info {
+        text-decoration: underline;
     }
     .trash-icon {
         position: absolute;
@@ -344,7 +350,7 @@ export const StyledAddListingsLink = styled(Link)`
     text-align: center;
     max-width: 300px;
     width: 100%;
-    height: 400px;
+    height: 450px;
     padding: 10px;
     box-shadow: 0 2px 2px #bdbdbd;
     margin: 20px;
@@ -357,7 +363,7 @@ export const StyledAddListingsLink = styled(Link)`
     }
     @media(max-width: 800px) {
         max-width: 255px;
-        height: 340px;
+        height: 383px;
     }
     p {
         margin: 0;
