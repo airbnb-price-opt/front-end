@@ -97,6 +97,34 @@ export const NavDiv = styled.div`
     border-top-left-radius: 6px;
     align-items: center;
     height: 65px;
+    @media(max-width: 800px)
+    {
+        display: none;
+    }
+`;
+
+export const MobileNavDiv = styled.div`
+    /* display: flex; */
+    background-color: ${appGrey};
+    border:none;
+    align-items: center;
+    justify-content: space-around;
+    height: 65px;
+    display: none;
+    @media(max-width: 800px)
+    {
+        display: flex;
+    }
+`;
+
+export const StyledMobileNavLink = styled(NavLink)`
+    color: white;
+    text-decoration: none;
+    &:hover
+    {
+        transition: transform .2s;
+        transform: scale(1.1);
+    }
 `;
 
 export const StyledNavLink = styled(NavLink)`
@@ -104,7 +132,6 @@ export const StyledNavLink = styled(NavLink)`
     text-decoration: none;
     padding: 0 30px;
     margin-right: 30px;
-    
     &:hover
     {
         transition: transform .2s;
@@ -125,6 +152,18 @@ export const StyledHeader = styled.div`
     {
         color: ${appRed};
         font-family: 'Rock Salt', cursive;
+        @media(max-width: 580px)
+        {
+            margin: 0 auto;
+        }
+    }
+    @media(max-width: 800px)
+    {
+        justify-content: center;
+    }
+    @media(max-width: 580px)
+    {
+        margin: 0 auto;
     }
 `;
 
@@ -237,28 +276,77 @@ export const LoginContainerDiv = styled.div`
     justify-content: space-around;
     align-items: flex-end;
     align-content: center;
-    
+    @media(max-width: 1000px)
+    {
+        flex-direction: column;
+        align-items: center;
+    }
+    @media(max-width: 580px)
+    {
+        margin-top: 0;
+    }
+`;
+
+export const LoginFormLabelInputDiv = styled.div`
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
 `;
 
 export const LoginForm = styled.form`
     background-color: ${appRed};
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    padding-left: 50px;
+    align-items: center;
+    /* padding-left: 50px; */
     height: 315px;
     width: 549px;
     color: white;
     box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.2);
+    @media(max-width: 1200px)
+    {
+        width: 420px
+    }
+    @media(max-width: 1000px)
+    {
+        margin-bottom: 20px;
+        width: 549px;
+    }
+    @media(max-width: 580px)
+    {
+        width: 400px;
+    }
+    @media(max-width: 580px)
+    {
+        width: 310px;
+    }
+    
     input
     {
         width: 461px;
         height: 34px;
+        @media(max-width: 1200px)
+        {
+            width: 390px
+        }
+        @media(max-width: 1000px)
+        {
+            width: 461px;
+        }
+        @media(max-width: 580px)
+        {
+            width: 380px;
+        }
+        @media(max-width: 580px)
+        {
+            width: 300px;
+        }
     }
     label
     {
         margin-top: 40px;
         font-family: Montserrat;
+        
     }
     button
     {
@@ -273,6 +361,22 @@ export const LoginForm = styled.form`
         margin-top: 40px;
         font-size: 24px;
         font-family: Montserrat;
+        @media(max-width: 1200px)
+        {
+            width: 390px
+        }
+        @media(max-width: 1000px)
+        {
+            width: 461px;
+        }
+        @media(max-width: 580px)
+        {
+            width: 380px;
+        }
+        @media(max-width: 580px)
+        {
+            width: 300px;
+        }
     }
 `;
 
@@ -299,6 +403,7 @@ export const LoginFormContainer = styled.div`
 `;
 
 export const LoginImage = styled.div`
+    
     @media(max-width: 500px)
     {
         display: none;
@@ -422,6 +527,13 @@ export const RegisterFirstNameInput = styled.input`
     margin: 0px 6% 10px 0%;
     padding: 4px 0% 4px 0%;
 `
+
+//Footer Styles
+
+export const FooterContainerDiv = styled.div`
+
+`;
+
 export const FooterDiv = styled.div`
     display: flex;
     font-family: 'Montserrat', sans-serif;
@@ -432,6 +544,10 @@ export const FooterDiv = styled.div`
     background-color: ${appRed};
     height: 47px;
     color: white;
+    @media(max-width: 800px)
+    {
+        display: none;
+    }
 `;
 
 export const FooterLink = styled(Link)`
