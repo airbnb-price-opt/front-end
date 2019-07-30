@@ -1,18 +1,19 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 
 import { Route, Switch } from 'react-router-dom'
 
 import Register from './components/Register';
 import Login from './components/Login';
 import Header from './components/Header'
-import YourListings from './components/YourListings'
-// import Listings from './components/Listings'
 import './App.css';
 import AddListing from './components/AddListing';
 import UpdateListing from './components/UpdateListing';
 import Footer from './components/Footer'
 import PrivacyPolicy from './components/PrivacyPolicy'
 import TermsAndConditions from './components/TermsAndConditions'
+import LoadingScreen from './components/LoadingScreen'
+
+const YourListings = React.lazy(() => import('./components/YourListings'))
 
 function App() {
   return (
@@ -26,7 +27,9 @@ function App() {
         
 
         <Switch>
-          <Route path={`/your-listings`} component={YourListings} />
+          <Suspense fallback={<LoadingScreen/>}>
+            <Route path={`/your-listings`} component={YourListings} />
+          </Suspense>
           <Route path={`/add-listing`} component={AddListing} />
           <Route path={`/update-listing`} component={UpdateListing} />
           <Route path={`/register`} component={Register} />

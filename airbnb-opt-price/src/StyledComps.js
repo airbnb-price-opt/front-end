@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { NavLink, Link } from 'react-router-dom'
 const appRed = '#eb5757';
 const appGrey = '#828282';
@@ -359,6 +359,37 @@ export const StyledListingsCardContent = styled.div`
 `
 
 // @@@@@@@@@@ End Your Listings Styles @@@@@@@@@@
+
+// @@@@@@@@@@ Start Loading Screen @@@@@@@@@@
+
+export const StyledLoadingScreen = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+`;
+
+export const StyledLoadingIconContainer = styled.div`
+    display: flex;
+`
+
+const loadingSpinner = keyframes`
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+`;
+
+export const StyledLoadingCoin = styled.img`
+    pointer-events: none;
+    width: 100px;
+    animation: ${loadingSpinner} 1s infinite;
+`
+
+// @@@@@@@@@@ End Loading Screen Styles @@@@@@@@@@
 
 //Login Form Styles
 export const LoginContainerDiv = styled.div`
