@@ -15,10 +15,10 @@ const Nav = () =>
 
     return (
         <NavDiv>
-            <StyledNavLink to="/your-listings" activeClassName="active-nav">YOUR LISTINGS</StyledNavLink>
-            <StyledNavLink to="/register" activeClassName="active-nav">REGISTER</StyledNavLink>
+            <StyledNavLink to="/your-listings/" activeClassName="active-nav">YOUR LISTINGS</StyledNavLink>
+            <StyledNavLink to="/register/" activeClassName="active-nav">REGISTER</StyledNavLink>
             <StyledNavLink to="/" activeClassName="active-nav" isActive={checkActive}>LOGIN</StyledNavLink>
-            <StyledNavLink to="/logout" activeClassName="active-nav">LOGOUT</StyledNavLink>
+            <StyledNavLink to="/logout/" activeClassName="active-nav">LOGOUT</StyledNavLink>
         </NavDiv>
     )
 }
