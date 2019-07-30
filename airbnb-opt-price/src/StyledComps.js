@@ -114,6 +114,9 @@ export const MobileNavDiv = styled.div`
     @media(max-width: 800px)
     {
         display: flex;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
     }
 `;
 
