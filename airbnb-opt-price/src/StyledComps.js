@@ -103,6 +103,9 @@ export const ListingFormLabel = styled.label`
     font-style: normal;
     font-size: 1.2rem;
     line-height: 17px;
+    @media (max-width: 600px) {
+        margin-bottom: 10px;
+    }
 `;
 
 export const ListingFormInput = styled.input`
