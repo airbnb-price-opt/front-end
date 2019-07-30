@@ -17,21 +17,6 @@ const Login = (props) => {
     }
     console.log(currentUser)
     return(
-        // <div>
-        //     <form>
-        //         <input 
-        //             onChange={handleChanges}
-        //             name='password'
-        //             placeholder="Password:"
-        //         />
-        //         <input 
-        //             onChange={handleChanges}
-        //             name='email'
-        //             placeholder="Email:"
-        //         />
-        //         <button onClick={verifyUser}>SUBMIT</button>
-        //     </form>
-        // </div>
         <LoginContainerDiv>
             <LoginFormContainer>
                 <h2>LOGIN</h2>
