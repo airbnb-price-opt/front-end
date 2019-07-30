@@ -165,6 +165,10 @@ export const StyledListingsCard = styled.div`
     margin: 20px;
     position: relative;
     border: solid #bdbdbd 1px;
+    &:hover {
+        transition: transform .2s;
+        transform: scale(1.02);
+    }
     p {
         margin: 0;
     }
@@ -174,20 +178,21 @@ export const StyledListingsCard = styled.div`
         max-height: 234px;
         height: 100%;
     }
-    button {
-        background-color: #eb5757
-    }
     .trash-icon {
         position: absolute;
         right: -15px;
         top: -25px;
         border-radius: 50%;
-        width: 34px;
-        height: 48px;
+        width: 36px;
+        height: 36px;
         background-color: #eb5757;
         color: white;
         padding: 5px;
         cursor: pointer;
+        &:hover {
+            transition: transform .2s;
+            transform: scale(1.05);
+        }
     }
 `;
 
@@ -200,6 +205,10 @@ export const StyledUpdateListingsLink = styled(Link)`
     text-align: center;
     padding: 5px 0;
     color: white;
+    &:hover {
+        transition: transform .2s;
+        transform: scale(1.02);
+    }
 `;
 
 export const StyledAddListingsLink = styled(Link)`
@@ -219,6 +228,10 @@ export const StyledAddListingsLink = styled(Link)`
     position: relative;
     border: solid #bdbdbd 1px;
     background-color: #f1f1f1;
+    &:hover {
+        transition: transform .2s;
+        transform: scale(1.02);
+    }
     p {
         margin: 0;
     }
