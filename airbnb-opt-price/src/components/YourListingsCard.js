@@ -1,17 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
-import AddListing from './AddListing'
-import UpdateListing from './UpdateListing'
+import trash from '../assets/trash.svg'
+import house from '../assets/house.svg'
 
 import { StyledListingsCard, StyledAddListingsLink, StyledUpdateListingsLink, StyledListingsCardContent, StyledListingGrid } from '../StyledComps'
 
-const YourListingsCard = ( { data } ) => {
+const YourListingsCard = ( { data, EditListing, DeleteListing, listingEdit, setListingEdit } ) => {
     return (
         <StyledListingGrid>
             {data.map((listing,index) => (
                 <StyledListingsCard key={index}>
-                    <img src={listing.img_url}></img>
+                    <img src={listing.img_url !== null ? listing.img_url : house}></img>
                     <StyledListingsCardContent>
                         <p>NEIGHBORHOOD: {listing.neighborhood}</p>
                         <p>GUESTS: {listing.guests}</p>
@@ -19,12 +18,12 @@ const YourListingsCard = ( { data } ) => {
                         <p>ACTUAL PRICE: {listing.act_price}</p>
                         <p>OPTIMAL PRICE: {listing.opt_price}</p>
                     </StyledListingsCardContent>
-                    <span className='update-listing'><StyledUpdateListingsLink to="/update-listing/">UPDATE LISTING</StyledUpdateListingsLink></span>
-                    <button className='trash-icon'>TRASH</button>
+                    <StyledUpdateListingsLink to={"/update-listing/"} onClick={setListingEdit(listing)}>UPDATE LISTING</StyledUpdateListingsLink>
+                    <img className='trash-icon' src={trash} alt='delete icon' onClick={() => DeleteListing(listing)}></img>
                 </StyledListingsCard>
             ))}
             <StyledAddListingsLink to="/add-listing/">
-                <p>ICON</p>
+                <p className='plus-sign'>+</p>
                 <p>ADD LISTING</p>
             </StyledAddListingsLink>
         </StyledListingGrid>
