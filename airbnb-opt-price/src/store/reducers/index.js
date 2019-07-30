@@ -7,7 +7,10 @@ import {
     LOGIN_USER_FAIL,
     GET_NEIGHBORHOOD_START,
     GET_NEIGHBORHOOD_SUCCESS,
-    GET_NEIGHBORHOOD_FAIL
+    GET_NEIGHBORHOOD_FAIL,
+    GET_NEIGHBORHOOD_GROUP_START,
+    GET_NEIGHBORHOOD_GROUP_SUCCESS,
+    GET_NEIGHBORHOOD_GROUP_FAIL
 } from '../actions';
 
 const initialState = {
@@ -15,7 +18,8 @@ const initialState = {
     addingUser: false,
     loggingIn: false,
     getting: false,
-    neighborhoods: []
+    neighborhoods: [],
+    neighborhoodGroups: []
 }
 
 export const reducer = (state = initialState, action ) => {
@@ -67,6 +71,23 @@ export const reducer = (state = initialState, action ) => {
             return{
                 ...state,
                 getting: false
+            }
+        case GET_NEIGHBORHOOD_GROUP_START:
+            return{
+                ...state,
+                getting: true
+            }
+        case GET_NEIGHBORHOOD_GROUP_SUCCESS:
+            return{
+                ...state,
+                getting: false,
+                neighborhoodGroups: action.payload
+            }
+        case GET_NEIGHBORHOOD_GROUP_FAIL:
+            return{
+                ...state,
+                getting: false,
+                neighborhoodGroups: action.payload
             }
         default:
             return state;

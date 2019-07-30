@@ -28,7 +28,7 @@ export const UploadImageDiv = styled.div`
     }
 `;
 
-export const UploadImageText = styled.p`
+export const UploadImageText = styled.div`
     font-family: 'Montserrat';
     color: black;
     text-decoration: none;
