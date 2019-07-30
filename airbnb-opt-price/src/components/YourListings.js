@@ -5,6 +5,17 @@ import YourListingsCard from './YourListingsCard'
 import { StyledYourListings } from '../StyledComps'
 
 const YourListings = () => {
+    const [listingEdit, setListingEdit] = useState(null)
+
+    function EditListing(item) {
+        userListing.map((listing, index) => {
+            if (listing === item) {
+                let newUserListing = [...userListing]
+                newUserListing[index] = listingEdit
+                setUserListing(newUserListing)
+            }
+        })
+    }
 
     function DeleteListing(item) {
         userListing.map((listing, index) => {
@@ -63,7 +74,7 @@ const YourListings = () => {
         <StyledYourListings>
             <h1>YOUR LISTINGS</h1>
             <hr></hr>
-            <YourListingsCard data={userListing} DeleteListing={DeleteListing}/>
+            <YourListingsCard data={userListing} EditListing={EditListing} DeleteListing={DeleteListing} listingEdit={listingEdit} setListingEdit={setListingEdit}/>
         </StyledYourListings>
     )
 }
