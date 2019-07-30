@@ -55,7 +55,10 @@ const UpdateListing = (props) => {
                 </ListingFormDiv>
                 </ListingFormWrapper>
                 <UploadImageDiv>
-                    <UploadImageText>Upload Image</UploadImageText>
+                    <UploadImageText>
+                        <p className='plus-sign'>+</p>
+                        <p>UPLOAD IMAGE</p>
+                    </UploadImageText>
                 </UploadImageDiv>
             </AddListingWrapper>
         </AddListingDiv>
