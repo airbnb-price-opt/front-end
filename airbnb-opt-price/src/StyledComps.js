@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { NavLink, Link } from 'react-router-dom'
 const appRed = '#eb5757';
 const appGrey = '#828282';
@@ -243,12 +243,12 @@ export const StyledYourListings = styled.div`
     h1 {
         font-family: 'Montserrat';
         color: #eb5757;
-        margin: 0 8%;
+        margin: 0 5%;
     }
     hr {
         border-color: #eb5757;
         border-style: solid;
-        margin: 0 8% 2rem;
+        margin: 0 5% 2rem;
     }
 `
 
@@ -276,6 +276,10 @@ export const StyledListingsCard = styled.div`
         transition: transform .2s;
         transform: scale(1.02);
     }
+    @media(max-width: 800px) {
+        max-width: 255px;
+        height: 340px;
+    }
     p {
         margin: 0;
     }
@@ -284,6 +288,9 @@ export const StyledListingsCard = styled.div`
         width: 100%;
         max-height: 234px;
         height: 100%;
+        @media(max-width: 800px) {
+            max-height: 199px;
+        }
     }
     .trash-icon {
         position: absolute;
@@ -296,6 +303,12 @@ export const StyledListingsCard = styled.div`
         color: white;
         padding: 5px;
         cursor: pointer;
+        @media(max-width: 800px) {
+            width: 30px;
+            height: 30px;
+            right: -10px;
+            top: -20px;
+        }
         &:hover {
             transition: transform .2s;
             transform: scale(1.05);
@@ -312,6 +325,9 @@ export const StyledUpdateListingsLink = styled(Link)`
     text-align: center;
     padding: 5px 0;
     color: white;
+    @media(max-width: 800px) {
+        font-size: 14px;
+    }
     &:hover {
         transition: transform .2s;
         transform: scale(1.02);
@@ -339,6 +355,10 @@ export const StyledAddListingsLink = styled(Link)`
         transition: transform .2s;
         transform: scale(1.02);
     }
+    @media(max-width: 800px) {
+        max-width: 255px;
+        height: 340px;
+    }
     p {
         margin: 0;
     }
@@ -350,9 +370,43 @@ export const StyledAddListingsLink = styled(Link)`
 export const StyledListingsCardContent = styled.div`
     text-align: left;
     margin: 5px 0;
+    @media(max-width: 800px) {
+        font-size: 12px;
+    }
 `
 
 // @@@@@@@@@@ End Your Listings Styles @@@@@@@@@@
+
+// @@@@@@@@@@ Start Loading Screen @@@@@@@@@@
+
+export const StyledLoadingScreen = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+`;
+
+export const StyledLoadingIconContainer = styled.div`
+    display: flex;
+`
+
+const loadingSpinner = keyframes`
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+`;
+
+export const StyledLoadingCoin = styled.img`
+    pointer-events: none;
+    width: 100px;
+    animation: ${loadingSpinner} 1s infinite;
+`
+
+// @@@@@@@@@@ End Loading Screen Styles @@@@@@@@@@
 
 //Login Form Styles
 export const LoginContainerDiv = styled.div`
