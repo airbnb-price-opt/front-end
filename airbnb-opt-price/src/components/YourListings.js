@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 
-import YourListingsCard from './YourListingsCard'
+import YourListingsCard from './YourListingsCard';
+import { getNeighborhoods, getNeighborhoodGroups } from '../store/actions';
+import { StyledYourListings } from '../StyledComps';
 
-import { StyledYourListings } from '../StyledComps'
-
-const YourListings = () => {
+const YourListings = (props) => {
     const [listingEdit, setListingEdit] = useState(null)
 
     function EditListing(item) {
@@ -70,6 +71,11 @@ const YourListings = () => {
         },
     ])
 
+    useEffect(() => {
+        props.getNeighborhoods();
+        props.getNeighborhoodGroups();
+    }, [])
+    
     return (
         <StyledYourListings>
             <h1>YOUR LISTINGS</h1>
@@ -79,4 +85,11 @@ const YourListings = () => {
     )
 }
 
-export default YourListings
+const mapStateToProps = (state) => {
+    return{
+        neighborhoods: state.neighborhoods,
+        neighborhoodGroups: state.neighborhoodGroups
+    }
+}
+
+export default connect(mapStateToProps, { getNeighborhoodGroups, getNeighborhoods })(YourListings)

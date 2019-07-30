@@ -1,5 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux';
+
 import { AddListingDiv, AddListingWrapper, AddListingHeader, UploadImageDiv, UploadImageText, ListingFormWrapper, ListingFormDiv, ListingForm, ListingFormLabel, ListingFormInput, ListingFormButton } from '../StyledComps'
+import { getNeighborhoods, getNeighborhoodGroups } from '../store/actions';
 
 const UpdateListing = (props) => {
     const [listing, setListing] = useState({address: '', guests: 0, nights: 0})
@@ -14,6 +17,11 @@ const UpdateListing = (props) => {
         console.log("Updated Listing", listing)
     }
 
+    useEffect(() => {
+        props.getNeighborhoods();
+        props.getNeighborhoodGroups();
+    }, [])
+    
     return (
         <AddListingDiv>
             <AddListingHeader>Update Listing</AddListingHeader>
@@ -65,4 +73,10 @@ const UpdateListing = (props) => {
     )
 }
 
-export default UpdateListing;
+const mapStateToProps = (state) => {
+    return{
+        neighborhoods: state.neighborhoods,
+        neighborhoodGroups: state.neighborhoodGroups
+    }
+}
+export default connect(mapStateToProps, { getNeighborhoods, getNeighborhoodGroups })(UpdateListing)

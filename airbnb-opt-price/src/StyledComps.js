@@ -28,7 +28,7 @@ export const UploadImageDiv = styled.div`
     }
 `;
 
-export const UploadImageText = styled.p`
+export const UploadImageText = styled.div`
     font-family: 'Montserrat';
     color: black;
     text-decoration: none;
@@ -188,6 +188,10 @@ export const StyledNavLink = styled(NavLink)`
         transition: transform .2s;
         transform: scale(1.1);
     }
+    @media(max-width: 900px)
+    {
+        margin-right: 0;
+    }
 `;
 
 export const StyledHeader = styled.div`
@@ -210,11 +214,24 @@ export const StyledHeader = styled.div`
     }
     @media(max-width: 800px)
     {
+        padding-left: 0;
         justify-content: center;
     }
     @media(max-width: 580px)
     {
         margin: 0 auto;
+    }
+`;
+
+export const HeaderIconH1Div = styled.div`
+    display: flex;
+    align-items: center;
+
+    img
+    {
+        margin-right: 15px;
+        width: 45px;
+        height: 45px;
     }
 `;
 
@@ -549,12 +566,18 @@ export const LoginImage = styled.div`
 export const RegisterHeader =styled.div`
     display: flex;
     flex-direction: column;
+    @media (max-width: 600px) {
+        width: 100%;
+    }
 `
 
 export const LeftColumnDiv = styled.div`
     display: flex;
     flex-direction: column;
     width: 40%;
+    @media (max-width: 600px) {
+        width: 100%;
+    }
 `
 
 export const RegisterH1 = styled.h1`
@@ -579,6 +602,9 @@ export const RegisterPageDiv = styled.div`
     color: white;
     margin: 10px 13% 0px 13%;
     align-items: flex-end;
+    @media (max-width: 600px) {
+        margin: 0;
+    }
 `
 
 export const RegisterForm = styled.form`
@@ -593,6 +619,9 @@ export const RegisterFormInputs = styled.input`
     margin: 0px 1% 25px 3%;
     padding: 4px 0% 4px 0%;
     border: none;
+    @media (max-width: 600px) {
+        margin: 0px 1% 10px 3%;
+    }
 `
 
 export const RegisterLabel = styled.label`
@@ -625,6 +654,9 @@ export const RegisterFormButton = styled.button`
 export const RegisterImageDiv = styled.div`
     margin-bottom: -8px;
     width: 38%;
+    @media (max-width: 580px) {
+        display: none;
+    }
 `
 
 export const UndrawImage = styled.img`
@@ -650,6 +682,9 @@ export const NameInputDiv = styled.div`
     flex-direction: column;
     margin-bottom: 14px;
     width: 50%;
+    @media (max-width: 600px) {
+        margin-bottom: 0;
+    }
 `
 export const NameInputs = styled.input`
     border: none;
