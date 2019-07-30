@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import YourListingsCard from './YourListingsCard';
-import { getNeighborhoods } from '../store/actions';
+import { getNeighborhoods, getNeighborhoodGroups } from '../store/actions';
 import { StyledYourListings } from '../StyledComps';
 
 const YourListings = (props) => {
@@ -72,9 +72,10 @@ const YourListings = (props) => {
     ])
 
     useEffect(() => {
-        props.getNeighborhoods()
+        props.getNeighborhoods();
+        props.getNeighborhoodGroups();
     }, [])
-    console.log(props.neighborhoods)
+    
     return (
         <StyledYourListings>
             <h1>YOUR LISTINGS</h1>
@@ -86,8 +87,9 @@ const YourListings = (props) => {
 
 const mapStateToProps = (state) => {
     return{
-        neighborhoods: state.neighborhoods
+        neighborhoods: state.neighborhoods,
+        neighborhoodGroups: state.neighborhoodGroups
     }
 }
 
-export default connect(mapStateToProps, { getNeighborhoods })(YourListings)
+export default connect(mapStateToProps, { getNeighborhoodGroups, getNeighborhoods })(YourListings)

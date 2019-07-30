@@ -9,6 +9,9 @@ export const LOGIN_USER_FAIL = 'LOGIN_USER_FAIL';
 export const GET_NEIGHBORHOOD_START = 'GET_NEIGHBORHOOD_START';
 export const GET_NEIGHBORHOOD_SUCCESS = 'GET_NEIGHBORHOOD_SUCCESS';
 export const GET_NEIGHBORHOOD_FAIL = 'GET_NEIGHBORHOOD_FAIL';
+export const GET_NEIGHBORHOOD_GROUP_START ='GET_NEIGHBORHOOD_GROUP_START';
+export const GET_NEIGHBORHOOD_GROUP_SUCCESS = 'GET_NEIGHBORHOOD_GROUP_SUCCESS';
+export const GET_NEIGHBORHOOD_GROUP_FAIL = 'GET_NEIGHBORHOOD_GROUP_FAIL';
 
 export const registerUser = (newUserObj) => dispatch => {
     dispatch({ type: REGISTER_USER_START })
@@ -50,5 +53,19 @@ export const getNeighborhoods = () => dispatch => {
         .catch(err => {
             console.log('GET_NEIGHBORHOOD_FAIL', err)
             dispatch({ type: GET_NEIGHBORHOOD_FAIL, payload: err })
+        })
+}
+
+export const getNeighborhoodGroups = () => dispatch => {
+    dispatch({ type: GET_NEIGHBORHOOD_GROUP_START })
+    axios
+        .get('https://airbnb-price-opt.herokuapp.com/groups/all')
+        .then(res => {
+            console.log('GET_NEIGHBORHOOD_GROUPS_SUCCESS', res.data)
+            dispatch({ type: GET_NEIGHBORHOOD_GROUP_SUCCESS, payload: res.data })
+        })
+        .catch(err => {
+            console.log('GET_NEIGHBORHOOD_GROUPS_FAIL', err)
+            dispatch({ type: GET_NEIGHBORHOOD_GROUP_FAIL, payload: err })
         })
 }
