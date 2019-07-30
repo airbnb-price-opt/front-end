@@ -1,9 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { connect } from 'react-redux';
 
-import YourListingsCard from './YourListingsCard';
+import LoadingScreen from './LoadingScreen'
 import { getNeighborhoods, getNeighborhoodGroups } from '../store/actions';
 import { StyledYourListings } from '../StyledComps';
+
+const YourListingsCard = React.lazy(() => {
+    return Promise.all([
+        import('./YourListingsCard'),
+        new Promise(res => setTimeout(res, 2000))
+    ])
+    .then(([moduleExports]) => moduleExports)
+})
 
 const YourListings = (props) => {
     const [listingEdit, setListingEdit] = useState(null)
@@ -85,7 +93,9 @@ const YourListings = (props) => {
         <StyledYourListings>
             <h1>YOUR LISTINGS</h1>
             <hr></hr>
-            <YourListingsCard data={userListing} EditListing={EditListing} DeleteListing={DeleteListing} listingEdit={listingEdit} setListingEdit={setListingEdit}/>
+            <Suspense fallback={<LoadingScreen/>}>
+                <YourListingsCard data={userListing} EditListing={EditListing} DeleteListing={DeleteListing} listingEdit={listingEdit} setListingEdit={setListingEdit}/>
+            </Suspense>
         </StyledYourListings>
     )
 }

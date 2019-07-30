@@ -10,7 +10,7 @@ const YourListingsCard = ( { data, EditListing, DeleteListing, listingEdit, setL
         <StyledListingGrid>
             {data.map((listing,index) => (
                 <StyledListingsCard key={index}>
-                    <img src={listing.img_url !== null ? listing.img_url : house}></img>
+                    <img src={listing.img_url !== null ? listing.img_url : house} alt='house img'></img>
                     <StyledListingsCardContent>
                         <p className='listing-info'>NEIGHBORHOOD GROUP:</p>
                         <p>{listing.neighborhood_group}</p>
