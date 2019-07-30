@@ -116,6 +116,12 @@ export const ListingFormLabel = styled.label`
     }
 `;
 
+export const ListingFormSelect = styled.select`
+    margin-top: 5px;
+    height: 31px;
+    width: 100%;
+`;
+
 export const ListingFormInput = styled.input`
     margin-top: 5px;
     height: 31px;
