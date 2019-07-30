@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../store/actions';
-import {LoginContainerDiv, LoginForm, LoginFormContainer, LoginImage} from '../StyledComps'
+import {LoginContainerDiv, LoginForm, LoginFormContainer, LoginImage, LoginFormLabelInputDiv} from '../StyledComps'
 
 const Login = (props) => {
 
@@ -37,24 +37,28 @@ const Login = (props) => {
                 <h2>LOGIN</h2>
                 <hr/>
                 <LoginForm>
-                    <label>
-                        USERNAME:
-                    </label>
-                    <input
-                        type="text"
-                        name="username"
-                        placeholder="Username"
-                        onChange={handleChanges}
-                    />
-                    <label>
-                        PASSWORD:
-                    </label>
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        onChange={handleChanges}
-                    />
+                    <LoginFormLabelInputDiv>
+                        <label>
+                            USERNAME:
+                        </label>
+                        <input
+                            type="text"
+                            name="username"
+                            placeholder="Username"
+                            onChange={handleChanges}
+                        />
+                    </LoginFormLabelInputDiv>
+                    <LoginFormLabelInputDiv>
+                        <label>
+                            PASSWORD:
+                        </label>
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            onChange={handleChanges}
+                        />
+                    </LoginFormLabelInputDiv>
                     <button type="submit" onClick={verifyUser}>SUBMIT</button>
                 </LoginForm>
             </LoginFormContainer>
