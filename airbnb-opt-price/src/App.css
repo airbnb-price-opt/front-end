@@ -32,10 +32,12 @@
 }
 
 .fade-exit {
-    opacity: 1;
+    /* opacity: 1; */
+    display: none;
 }
 
 .fade-exit.fade-exit-active {
-    opacity: 0;
+    /* opacity: 0; */
+    display: none;
     /* transition: opacity 150ms linear; */
 }
