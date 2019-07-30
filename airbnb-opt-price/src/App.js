@@ -25,19 +25,18 @@ function App() {
           {/* <Register /> */}
           {/* <Login /> */}
         
-
-        <Switch>
-          <Suspense fallback={<LoadingScreen/>}>
-            <Route path={`/your-listings`} component={YourListings} />
-          </Suspense>
-          <Route path={`/add-listing`} component={AddListing} />
-          <Route path={`/update-listing`} component={UpdateListing} />
-          <Route path={`/register`} component={Register} />
-          <Route exact path={`/`} component={Login} />
-          {/* <Route path={`/logout`} component={Logout} /> */}
-          <Route path={`/privacy`} component={PrivacyPolicy} />
-          <Route path={`/terms-and-conditions`} component={TermsAndConditions} />
-        </Switch>
+        <Suspense fallback={<LoadingScreen/>}>
+          <Switch>
+              <Route path={`/your-listings`} component={YourListings} />
+            <Route path={`/add-listing`} component={AddListing} />
+            <Route path={`/update-listing`} component={UpdateListing} />
+            <Route path={`/register`} component={Register} />
+            <Route exact path={`/`} component={Login} />
+            {/* <Route path={`/logout`} component={Logout} /> */}
+            <Route path={`/privacy`} component={PrivacyPolicy} />
+            <Route path={`/terms-and-conditions`} component={TermsAndConditions} />
+          </Switch>
+        </Suspense>
       </div>
 
       <Footer />
