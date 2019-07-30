@@ -17,7 +17,7 @@ const Login = (props) => {
     }
     console.log(currentUser)
     return(
-        <LoginContainerDiv>
+        <LoginContainerDiv className="page">
             <LoginFormContainer>
                 <h2>LOGIN</h2>
                 <hr/>

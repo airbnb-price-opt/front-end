@@ -35,7 +35,7 @@ const Register = (props) => {
     }
     console.log(newUser)
     return(
-        <RegisterPageDiv>
+        <RegisterPageDiv className="page">
             <LeftColumnDiv>
                 <RegisterHeader>
                     <RegisterH1>REGISTER</RegisterH1>
