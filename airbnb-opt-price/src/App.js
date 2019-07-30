@@ -12,6 +12,7 @@ import Footer from './components/Footer'
 import PrivacyPolicy from './components/PrivacyPolicy'
 import TermsAndConditions from './components/TermsAndConditions'
 import LoadingScreen from './components/LoadingScreen'
+import {CSSTransition, TransitionGroup} from 'react-transition-group'
 
 const YourListings = React.lazy(() => import('./components/YourListings'))
 
@@ -25,18 +26,28 @@ function App() {
           {/* <Register /> */}
           {/* <Login /> */}
         
-        <Suspense fallback={<LoadingScreen/>}>
-          <Switch>
-            <Route path={`/your-listings`} component={YourListings} />
-            <Route path={`/add-listing`} component={AddListing} />
-            <Route path={`/update-listing`} component={UpdateListing} />
-            <Route path={`/register`} component={Register} />
-            <Route exact path={`/`} component={Login} />
-            {/* <Route path={`/logout`} component={Logout} /> */}
-            <Route path={`/privacy`} component={PrivacyPolicy} />
-            <Route path={`/terms-and-conditions`} component={TermsAndConditions} />
-          </Switch>
-        </Suspense>
+          <Route render={({location}) => (
+            <TransitionGroup>
+              <CSSTransition
+                key={location.key}
+                timeout={1000}
+                classNames="fade"
+              >
+                <Suspense fallback={<LoadingScreen/>}>
+                      <Switch location={location}>
+                        <Route path={`/your-listings`} component={YourListings} />
+                        <Route path={`/add-listing`} component={AddListing} />
+                        <Route path={`/update-listing`} component={UpdateListing} />
+                        <Route path={`/register`} component={Register} />
+                        <Route exact path={`/`} component={Login} />
+                        {/* <Route path={`/logout`} component={Logout} /> */}
+                        <Route path={`/privacy`} component={PrivacyPolicy} />
+                        <Route path={`/terms-and-conditions`} component={TermsAndConditions} />
+                      </Switch>
+                </Suspense>
+              </CSSTransition>
+            </TransitionGroup>
+          )} />
       </div>
 
       <Footer />
