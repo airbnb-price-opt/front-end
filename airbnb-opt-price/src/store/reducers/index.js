@@ -4,14 +4,18 @@ import {
     REGISTER_USER_FAIL,
     LOGIN_USER_START,
     LOGIN_USER_SUCCESS,
-    LOGIN_USER_FAIL
+    LOGIN_USER_FAIL,
+    GET_NEIGHBORHOOD_START,
+    GET_NEIGHBORHOOD_SUCCESS,
+    GET_NEIGHBORHOOD_FAIL
 } from '../actions';
 
 const initialState = {
     listing: [],
     addingUser: false,
-    loggingIn: false
-
+    loggingIn: false,
+    getting: false,
+    neighborhoods: []
 }
 
 export const reducer = (state = initialState, action ) => {
@@ -39,15 +43,31 @@ export const reducer = (state = initialState, action ) => {
                 loggingIn: true
             }
         case LOGIN_USER_SUCCESS:
-                return{
-                    ...state,
-                    loggingIn: false
-                }
+            return{
+                ...state,
+                loggingIn: false
+            }
         case LOGIN_USER_FAIL:
-                return{
-                    ...state,
-                    loggingIn: false
-                }
+            return{
+                ...state,
+                loggingIn: false
+            }
+        case GET_NEIGHBORHOOD_START:
+            return{
+                ...state,
+                getting: true
+            }
+        case GET_NEIGHBORHOOD_SUCCESS:
+            return{
+                ...state,
+                getting: false,
+                neighborhoods: action.payload
+            }
+        case GET_NEIGHBORHOOD_FAIL:
+            return{
+                ...state,
+                getting: false
+            }
         default:
             return state;
     }
