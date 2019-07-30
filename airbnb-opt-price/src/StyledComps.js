@@ -143,6 +143,10 @@ export const StyledNavLink = styled(NavLink)`
         transition: transform .2s;
         transform: scale(1.1);
     }
+    @media(max-width: 900px)
+    {
+        margin-right: 0;
+    }
 `;
 
 export const StyledHeader = styled.div`
@@ -165,11 +169,24 @@ export const StyledHeader = styled.div`
     }
     @media(max-width: 800px)
     {
+        padding-left: 0;
         justify-content: center;
     }
     @media(max-width: 580px)
     {
         margin: 0 auto;
+    }
+`;
+
+export const HeaderIconH1Div = styled.div`
+    display: flex;
+    align-items: center;
+
+    img
+    {
+        margin-right: 15px;
+        width: 45px;
+        height: 45px;
     }
 `;
 
