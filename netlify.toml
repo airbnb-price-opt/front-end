@@ -1,0 +1,9 @@
+[build]
+base = "airbnb-opt-price"
+publish = "airbnb-opt-price/build/"
+command = "yarn build"
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
