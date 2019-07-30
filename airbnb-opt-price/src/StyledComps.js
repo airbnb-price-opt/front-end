@@ -243,11 +243,14 @@ export const StyledYourListings = styled.div`
     h1 {
         font-family: 'Montserrat';
         color: #eb5757;
+        text-align: center;
         margin: 0 5%;
+        font-weight: normal;
     }
     hr {
         border-color: #eb5757;
         border-style: solid;
+        border-top: none;
         margin: 0 5% 2rem;
     }
 `
