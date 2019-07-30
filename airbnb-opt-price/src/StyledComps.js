@@ -17,6 +17,8 @@ export const AddListingWrapper = styled.div`
     justify-content: space-evenly;
     @media (max-width: 600px) {
         flex-direction: column;
+        width: 95%;
+        margin: 0 auto;
     }
 `;
 
@@ -25,6 +27,7 @@ export const UploadImageDiv = styled.div`
     height: 379px;
     @media (max-width: 600px) {
         width: 100%;
+        height: 100px;
     }
 `;
 
@@ -36,12 +39,9 @@ export const UploadImageText = styled.div`
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    /* max-width: 300px; */
     width: 100%;
     height: 379px;
-    /* padding: 10px; */
     box-shadow: 0 2px 2px #bdbdbd;
-    /* margin: 20px; */
     position: relative;
     border: solid #bdbdbd 1px;
     background-color: #f1f1f1;
@@ -56,6 +56,10 @@ export const UploadImageText = styled.div`
     }
     .plus-sign{
         font-size: 4rem;
+    }
+
+    @media (max-width: 600px) {
+        height: 100%;
     }
 `;
 
@@ -73,6 +77,9 @@ font-size: 36px;
 line-height: 44px;
 text-transform: uppercase;
 color: #EB5757;
+@media(max-width: 600px) {
+    text-align: center;
+}
 `;
 
 export const ListingFormDiv = styled.div`
@@ -80,10 +87,11 @@ export const ListingFormDiv = styled.div`
     background: #EB5757;
     padding: 30px 50px;
     @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.4);
     @media (max-width: 600px) {
         width: 100%;
         padding: 10px 0;
+        margin-bottom: 20px;
     }
 `;
 
@@ -112,6 +120,13 @@ export const ListingFormInput = styled.input`
     margin-top: 5px;
     height: 31px;
     width: 100%;
+    border: none;
+    @media (max-width: 600px) {
+        &:focus {
+            outline: none;
+        }
+    }
+
 `;
 
 export const ListingFormButton = styled.button`
@@ -130,6 +145,11 @@ export const ListingFormButton = styled.button`
     text-transform: uppercase;
     color: #EB5757;
     padding: 10px;
+    &:hover{
+        transition: transform .2s;
+        transform: scale(1.1);
+        cursor: pointer;
+    }
     
 `;
 
@@ -246,11 +266,14 @@ export const StyledYourListings = styled.div`
     h1 {
         font-family: 'Montserrat';
         color: #eb5757;
+        text-align: center;
         margin: 0 5%;
+        font-weight: normal;
     }
     hr {
         border-color: #eb5757;
         border-style: solid;
+        border-top: none;
         margin: 0 5% 2rem;
     }
 `
@@ -430,6 +453,8 @@ export const LoginContainerDiv = styled.div`
     @media(max-width: 580px)
     {
         margin-top: 0;
+        width: 95%;
+        margin: 0 auto;
     }
 `;
 
@@ -553,6 +578,12 @@ export const LoginFormContainer = styled.div`
         border-top: none;
         width: 50%;
         margin-bottom: 20px;
+        @media (max-width: 600px) {
+            width: 100%;
+        }
+    }
+    @media (max-width: 600px) {
+        width: 95%;
     }
 `;
 
@@ -586,19 +617,23 @@ export const LeftColumnDiv = styled.div`
     }
 `
 
-export const RegisterH1 = styled.h1`
+export const RegisterH1 = styled.h2`
     color: #eb5757;
     font-family: 'Montserrat', sans-serif;
     font-weight: normal;
     text-align: center;
     margin-top: 50px;
+    @media (max-width: 600px) {
+        margin-top: 0.83em;
+        font-size: 2rem;
+    }
 `
 
 export const RegisterHR = styled.hr`
     border: 0;
     height: 1px;
     background: #eb5757;
-    margin: -10px 25% 25px 25%;
+    margin: -20px 25% 25px 25%;
 `
 
 export const RegisterPageDiv = styled.div`
@@ -626,7 +661,7 @@ export const RegisterFormInputs = styled.input`
     padding: 4px 0% 4px 0%;
     border: none;
     @media (max-width: 600px) {
-        margin: 0px 1% 10px 3%;
+        margin: 0px 1% 20px 3%;
     }
 `
 
