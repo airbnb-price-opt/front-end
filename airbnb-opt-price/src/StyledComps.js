@@ -288,12 +288,12 @@ export const StyledListingsCardContent = styled.div`
 
 //Login Form Styles
 export const LoginContainerDiv = styled.div`
-    /* width: 80%; */
+    font-family: 'Montserrat', sans-serif;
     display: flex;
-    margin-top: 50px;
     justify-content: space-around;
+    color: white;
+    margin: 161px 13% 0px 13%;
     align-items: flex-end;
-    align-content: center;
     @media(max-width: 1000px)
     {
         flex-direction: column;
@@ -317,10 +317,9 @@ export const LoginForm = styled.form`
     flex-direction: column;
     align-items: center;
     /* padding-left: 50px; */
-    height: 315px;
-    width: 549px;
+    padding: 30px;
     color: white;
-    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 7px 7px 5px rgba(0,0,0,0.5);
     @media(max-width: 1200px)
     {
         width: 420px
@@ -342,10 +341,12 @@ export const LoginForm = styled.form`
     input
     {
         width: 461px;
-        height: 34px;
+        margin-bottom: 25px;
+        padding: 4px 0%;
+        border: none;
         @media(max-width: 1200px)
         {
-            width: 390px
+            width: 390px;
         }
         @media(max-width: 1000px)
         {
@@ -362,23 +363,29 @@ export const LoginForm = styled.form`
     }
     label
     {
-        margin-top: 40px;
-        font-family: Montserrat;
-        
+        /* margin-top: 24px; */
+        font-family: 'Montserrat', sans-serif;
+        font-size: .7rem;
+        font-weight: bold;
+        padding-bottom: 2px;
     }
     button
     {
+        width: 462px;
         background-color: white;
-        color: ${appRed};
-        box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.2);
-        width: 459px;
-        height: 45px;
-        border-radius: 5px;
         border: none;
-        margin-left: 3px;
-        margin-top: 40px;
-        font-size: 24px;
-        font-family: Montserrat;
+        border-radius: 5px;
+        padding: 10px;
+        color: #eb5757;
+        font-weight: bold;
+        font-family: 'Montserrat', sans-serif;
+        box-shadow: 5px 5px 3px rgba(0,0,0,0.2);
+
+        &:hover{
+            transition: transform .2s;
+            transform: scale(1.1);
+            cursor: pointer;
+        }
         @media(max-width: 1200px)
         {
             width: 390px
@@ -400,14 +407,15 @@ export const LoginForm = styled.form`
 
 export const LoginFormContainer = styled.div`
     display: flex;
-    flex-flow: column nowrap;
+    flex-direction: column;
     align-items: center;
+    width: 40%;
     
     h2
     {
         color: ${appRed};
         font-weight: normal;
-        font-size: 36px;
+        font-size: 2rem;
         margin-bottom: 0px;
         font-family: Montserrat;
     }
@@ -415,13 +423,14 @@ export const LoginFormContainer = styled.div`
     {
         border-color: ${appRed};
         border-top: none;
-        width: 60%;
+        width: 50%;
         margin-bottom: 20px;
     }
 `;
 
 export const LoginImage = styled.div`
-    
+    margin-bottom: -8px;
+    width: 38%;
     @media(max-width: 580px)
     {
         display: none;
@@ -463,7 +472,7 @@ export const RegisterPageDiv = styled.div`
     display: flex;
     justify-content: space-around;
     color: white;
-    /* margin: 10px 13% 0px 13%; */
+    margin: 10px 13% 0px 13%;
     align-items: flex-end;
 `
 
@@ -492,6 +501,7 @@ export const RegisterLabel = styled.label`
 
 export const RegisterFormButton = styled.button`
     background-color: white;
+    border: none;
     margin-left: 3%;
     border-radius: 5px;
     padding: 10px;
@@ -508,11 +518,11 @@ export const RegisterFormButton = styled.button`
 `
 
 export const RegisterImageDiv = styled.div`
-    margin-bottom: -4px;
-    width: 40%;
+    margin-bottom: -8px;
+    width: 38%;
 `
 
-export const RegisterImage = styled.img`
+export const UndrawImage = styled.img`
     width: 100%;
 `;
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../store/actions';
-import {LoginContainerDiv, LoginForm, LoginFormContainer, LoginImage, LoginFormLabelInputDiv} from '../StyledComps'
+import {LoginContainerDiv, LoginForm, LoginFormContainer, LoginImage, LoginFormLabelInputDiv, UndrawImage} from '../StyledComps'
 
 const Login = (props) => {
 
@@ -44,7 +44,6 @@ const Login = (props) => {
                         <input
                             type="text"
                             name="username"
-                            placeholder="Username"
                             onChange={handleChanges}
                         />
                     </LoginFormLabelInputDiv>
@@ -55,7 +54,6 @@ const Login = (props) => {
                         <input
                             type="password"
                             name="password"
-                            placeholder="Password"
                             onChange={handleChanges}
                         />
                     </LoginFormLabelInputDiv>
@@ -63,7 +61,7 @@ const Login = (props) => {
                 </LoginForm>
             </LoginFormContainer>
             <LoginImage>
-                <img src={require(`../assets/bnb.png`)} alt="listing and money" />
+                <UndrawImage src={require(`../assets/bnb.png`)} alt="listing and money" />
             </LoginImage>
         </LoginContainerDiv>
     )
