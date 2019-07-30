@@ -32,10 +32,10 @@ const Nav = () =>
 
     return (
         <NavDiv>
-            <StyledMobileNavLink to="/your-listings/" activeClassName="active-nav">YOUR LISTINGS</StyledMobileNavLink>
-            <StyledMobileNavLink to="/register/" activeClassName="active-nav">REGISTER</StyledMobileNavLink>
-            <StyledMobileNavLink to="/" activeClassName="active-nav" isActive={checkActive}>LOGIN</StyledMobileNavLink>
-            <StyledMobileNavLink to="/logout/" activeClassName="active-nav">LOGOUT</StyledMobileNavLink>
+            <StyledNavLink to="/your-listings/" activeClassName="active-nav">YOUR LISTINGS</StyledNavLink>
+            <StyledNavLink to="/register/" activeClassName="active-nav">REGISTER</StyledNavLink>
+            <StyledNavLink to="/" activeClassName="active-nav" isActive={checkActive}>LOGIN</StyledNavLink>
+            <StyledNavLink to="/logout/" activeClassName="active-nav">LOGOUT</StyledNavLink>
         </NavDiv>
     )
 }

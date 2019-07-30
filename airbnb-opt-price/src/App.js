@@ -24,7 +24,6 @@ function App() {
           {/* <Register /> */}
           {/* <Login /> */}
         
-<<<<<<< HEAD
           <Route render={({location}) => (
             <TransitionGroup>
               <CSSTransition
@@ -45,20 +44,6 @@ function App() {
               </CSSTransition>
             </TransitionGroup>
           )} />
-=======
-        <Suspense fallback={<LoadingScreen/>}>
-          <Switch>
-            <Route path={`/your-listings`} component={YourListings} />
-            <Route path={`/add-listing`} component={AddListing} />
-            <Route path={`/update-listing`} component={UpdateListing} />
-            <Route path={`/register`} component={Register} />
-            <Route exact path={`/`} component={Login} />
-            {/* <Route path={`/logout`} component={Logout} /> */}
-            <Route path={`/privacy`} component={PrivacyPolicy} />
-            <Route path={`/terms-and-conditions`} component={TermsAndConditions} />
-          </Switch>
-        </Suspense>
->>>>>>> 3ab390b778da358abc2f62ce491d91f48a0d17c6
       </div>
 
       <Footer />
