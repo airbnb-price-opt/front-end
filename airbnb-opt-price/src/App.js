@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React from 'react';
 
 import { Route, Switch } from 'react-router-dom'
 
@@ -6,15 +6,13 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Header from './components/Header'
 import './App.css';
+import YourListings from './components/YourListings'
 import AddListing from './components/AddListing';
 import UpdateListing from './components/UpdateListing';
 import Footer from './components/Footer'
 import PrivacyPolicy from './components/PrivacyPolicy'
 import TermsAndConditions from './components/TermsAndConditions'
-import LoadingScreen from './components/LoadingScreen'
 import {CSSTransition, TransitionGroup} from 'react-transition-group'
-
-const YourListings = React.lazy(() => import('./components/YourListings'))
 
 function App() {
   return (
@@ -33,7 +31,6 @@ function App() {
                 timeout={1000}
                 classNames="fade"
               >
-                <Suspense fallback={<LoadingScreen/>}>
                       <Switch location={location}>
                         <Route path={`/your-listings`} component={YourListings} />
                         <Route path={`/add-listing`} component={AddListing} />
@@ -44,7 +41,6 @@ function App() {
                         <Route path={`/privacy`} component={PrivacyPolicy} />
                         <Route path={`/terms-and-conditions`} component={TermsAndConditions} />
                       </Switch>
-                </Suspense>
               </CSSTransition>
             </TransitionGroup>
           )} />
