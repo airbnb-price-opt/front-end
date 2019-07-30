@@ -5,6 +5,9 @@ const appGrey = '#828282';
 
 export const AddListingDiv = styled.div`
     margin: 10px 100px;
+    @media (max-width: 600px) {
+        margin: 0;
+    }
 `;
 
 export const AddListingWrapper = styled.div`
@@ -12,23 +15,54 @@ export const AddListingWrapper = styled.div`
     padding-top: 20px;
     display: flex;
     justify-content: space-evenly;
+    @media (max-width: 600px) {
+        flex-direction: column;
+    }
 `;
 
 export const UploadImageDiv = styled.div`
-    background: #E0E0E0;
     width: 480px;
     height: 379px;
-    display: flex;
-    justify-content: center;
+    @media (max-width: 600px) {
+        width: 100%;
+    }
 `;
 
 export const UploadImageText = styled.p`
+    font-family: 'Montserrat';
+    color: black;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    /* max-width: 300px; */
     width: 100%;
-    margin: 0 auto;
+    height: 379px;
+    /* padding: 10px; */
+    box-shadow: 0 2px 2px #bdbdbd;
+    /* margin: 20px; */
+    position: relative;
+    border: solid #bdbdbd 1px;
+    background-color: #f1f1f1;
+    margin-block-end: 0;
+    margin-block-start: 0;
+    &:hover {
+        transition: transform .2s;
+        transform: scale(1.02);
+    }
+    p {
+        margin: 0
+    }
+    .plus-sign{
+        font-size: 4rem;
+    }
 `;
 
 export const ListingFormWrapper = styled.div`
-    border: 1px solid black;
+    @media (max-width: 600px) {
+        width: 100%;
+    }
 `;
 
 export const AddListingHeader = styled.h1`
@@ -47,6 +81,10 @@ export const ListingFormDiv = styled.div`
     padding: 30px 50px;
     @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    @media (max-width: 600px) {
+        width: 100%;
+        padding: 10px 0;
+    }
 `;
 
 export const ListingForm = styled.form`
@@ -54,6 +92,10 @@ export const ListingForm = styled.form`
     display: flex;
     flex-direction: column;
     width: 561px;
+    @media (max-width: 600px) {
+        width: 90%;
+        margin: 0 auto;
+    }
 `;
 
 export const ListingFormLabel = styled.label`
@@ -61,6 +103,9 @@ export const ListingFormLabel = styled.label`
     font-style: normal;
     font-size: 1.2rem;
     line-height: 17px;
+    @media (max-width: 600px) {
+        margin-bottom: 10px;
+    }
 `;
 
 export const ListingFormInput = styled.input`
@@ -114,6 +159,9 @@ export const MobileNavDiv = styled.div`
     @media(max-width: 800px)
     {
         display: flex;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
     }
 `;
 
