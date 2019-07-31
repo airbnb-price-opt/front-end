@@ -502,7 +502,7 @@ export const LoginContainerDiv = styled.div`
     display: flex;
     justify-content: space-around;
     color: white;
-    margin: 161px 13% 0px 13%;
+    margin: 161px 0 0px 0;
     align-items: flex-end;
     @media(max-width: 1000px)
     {
@@ -648,7 +648,7 @@ export const LoginFormContainer = styled.div`
 
 export const LoginImage = styled.div`
     margin-bottom: -8px;
-    width: 38%;
+    width: 500px;
     @media(max-width: 580px)
     {
         display: none;
@@ -700,7 +700,7 @@ export const RegisterPageDiv = styled.div`
     display: flex;
     justify-content: space-around;
     color: white;
-    margin: 10px 13% 0px 13%;
+    margin: 10px 0 0px 0;
     align-items: flex-end;
     @media (max-width: 600px) {
         margin: 0;
@@ -753,7 +753,7 @@ export const RegisterFormButton = styled.button`
 
 export const RegisterImageDiv = styled.div`
     margin-bottom: -8px;
-    width: 38%;
+    width: 500px;
     @media (max-width: 580px) {
         display: none;
     }
