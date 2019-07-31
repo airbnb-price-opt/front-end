@@ -15,7 +15,13 @@ const YourListingsCard = React.lazy(() => {
 })
 
 const YourListings = (props) => {
+    const [userListing, setUserListing] = useState(DummyData)
     const [listingEdit, setListingEdit] = useState(null)
+
+    useEffect(() => {
+        props.getNeighborhoods();
+        props.getNeighborhoodGroups();
+    }, [])
 
     function EditListing(item) {
         userListing.map((listing, index) => {
@@ -36,13 +42,6 @@ const YourListings = (props) => {
             }
         })
     }
-
-    const [userListing, setUserListing] = useState(DummyData)
-
-    useEffect(() => {
-        props.getNeighborhoods();
-        props.getNeighborhoodGroups();
-    }, [])
     
     return (
         <StyledYourListings>

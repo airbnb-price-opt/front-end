@@ -10,6 +10,10 @@ export const AddListingDiv = styled.div`
     }
 `;
 
+export const StyledOption = styled.option`
+    line-height: 2.2rem;
+`; 
+
 export const AddListingWrapper = styled.div`
     border-top: 1px solid ${appRed};
     padding-top: 20px;
@@ -113,17 +117,32 @@ export const ListingFormLabel = styled.label`
     font-weight: bold;
     font-size: .7rem;
     line-height: 17px;
+<<<<<<< HEAD
+    text-transform: uppercase;
+=======
     font-family: 'Montserrat', sans-serif;
+>>>>>>> 2d5cbc62577e1855793a315a770f55d87940c741
     @media (max-width: 600px) {
         margin-bottom: 10px;
     }
+`;
+
+export const ListingFormTickDiv = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
 `;
 
 export const ListingFormSelect = styled.select`
     margin-top: 5px;
     height: 31px;
     width: 100%;
+<<<<<<< HEAD
+    /* margin-top: 100px; */
+=======
     font-family: 'Montserrat', sans-serif;
+>>>>>>> 2d5cbc62577e1855793a315a770f55d87940c741
 `;
 
 export const ListingFormInput = styled.input`
@@ -131,6 +150,44 @@ export const ListingFormInput = styled.input`
     margin-top: 5px;
     height: 31px;
     width: 100%;
+    border: none;
+    @media (max-width: 600px) {
+        &:focus {
+            outline: none;
+        }
+    }
+
+`;
+
+export const ListingFormInputTickDiv = styled.div`
+    /* margin-top: 5px; */
+    /* height: 31px; */
+    width: 29%;
+    /* border: 1px solid black; */
+    display: flex;
+    align-items: center;
+    padding: 5px 10px 5px 10px;
+
+`;
+
+export const ListingFormTickLabel = styled.label`
+    /* margin-bottom: 30px; */
+    width: 90%;
+    font-style: normal;
+    font-size: 1rem;
+    line-height: 17px;
+    text-transform: uppercase;
+    
+    @media (max-width: 600px) {
+        margin-bottom: 10px;
+    }
+`;
+
+export const ListingFormInputTick = styled.input`
+    margin-top: 5px;
+    height: 31px;
+    width: 10%;
+    padding-left: 100px;
     border: none;
     @media (max-width: 600px) {
         &:focus {
@@ -317,7 +374,7 @@ export const StyledListingsCard = styled.div`
     }
     @media(max-width: 800px) {
         max-width: 255px;
-        height: 383px;
+        height: 392px;
     }
     p {
         margin: 0;
@@ -328,10 +385,10 @@ export const StyledListingsCard = styled.div`
     img {
         max-width: 327px;
         width: 100%;
-        max-height: 234px;
+        max-height: 200px;
         height: 100%;
         @media(max-width: 800px) {
-            max-height: 199px;
+            max-height: 170px;
         }
     }
     .listing-info {
@@ -358,8 +415,7 @@ export const StyledListingsCard = styled.div`
             top: -20px;
         }
         &:hover {
-            transition: transform .2s;
-            transform: scale(1.3);
+            background-color: #e84141;
         }
     }
 `;
@@ -371,17 +427,18 @@ export const StyledUpdateListingsLink = styled(Link)`
     background-color: #eb5757;
     width: 100%;
     text-align: center;
-    padding: 15px 0;
+    padding: 5px 0;
     color: white;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     font-size: .9rem;
     @media(max-width: 800px) {
-        font-size: 14px;
+        font-size: 13px;
+        padding: 3px 0;
     }
     &:hover {
-        transition: transform .2s;
-        transform: scale(1.05);
+        background-color: #e84141;
+        color: white;
     }
 `;
 
@@ -404,12 +461,13 @@ export const StyledAddListingsLink = styled(Link)`
     border: solid #bdbdbd 1px;
     background-color: #f1f1f1;
     &:hover {
+        color: black;
         transition: transform .2s;
         transform: scale(1.02);
     }
     @media(max-width: 800px) {
         max-width: 255px;
-        height: 383px;
+        height: 392px;
     }
     p {
         margin: 0;
@@ -428,6 +486,51 @@ export const StyledListingsCardContent = styled.div`
         font-size: 12px;
     }
 `
+
+export const StyledLCBC = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-height: 62px;
+    height: 100%;
+    .ui.button {
+        font-family: 'Montserrat';
+        margin: 0%;
+        padding: 7.5px 0;
+        @media(max-width: 800px) {
+            font-size: 13px;
+            padding: 6px 0;
+        }
+    }
+`
+
+export const StyledYLMContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 28px 0 0;
+    @media(max-width: 767px) {
+        padding: 0;
+    }
+    img {
+        margin-bottom: 10px;
+    }
+`
+
+export const StyledModalUpdateListingsLink = styled(Link)`
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    background-color: #eb5757;
+    width: 100%;
+    text-align: center;
+    padding: 5px 0;
+    color: white;
+    &:hover {
+        background-color: #e84141;
+        color: white;
+    }
+`;
 
 // @@@@@@@@@@ End Your Listings Styles @@@@@@@@@@
 
@@ -468,7 +571,7 @@ export const LoginContainerDiv = styled.div`
     display: flex;
     justify-content: space-around;
     color: white;
-    margin: 161px 13% 0px 13%;
+    margin: 161px 0 0px 0;
     align-items: flex-end;
     @media(max-width: 1000px)
     {
@@ -616,7 +719,7 @@ export const LoginFormContainer = styled.div`
 
 export const LoginImage = styled.div`
     margin-bottom: -8px;
-    width: 38%;
+    width: 500px;
     @media(max-width: 580px)
     {
         display: none;
@@ -668,7 +771,7 @@ export const RegisterPageDiv = styled.div`
     display: flex;
     justify-content: space-around;
     color: white;
-    margin: 10px 13% 0px 13%;
+    margin: 10px 0 0px 0;
     align-items: flex-end;
     @media (max-width: 600px) {
         margin: 0;
@@ -724,7 +827,7 @@ export const RegisterFormButton = styled.button`
 
 export const RegisterImageDiv = styled.div`
     margin-bottom: -8px;
-    width: 38%;
+    width: 500px;
     @media (max-width: 580px) {
         display: none;
     }
