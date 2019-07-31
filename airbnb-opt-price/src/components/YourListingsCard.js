@@ -3,6 +3,7 @@ import React from 'react'
 import trash from '../assets/trash.svg'
 import house from '../assets/house.svg'
 
+import YourListingsModal from './YourListingsModal'
 import { StyledListingsCard, StyledAddListingsLink, StyledUpdateListingsLink, StyledListingsCardContent, StyledListingGrid } from '../StyledComps'
 
 const YourListingsCard = ( { data, EditListing, DeleteListing, listingEdit, setListingEdit } ) => {
@@ -21,6 +22,7 @@ const YourListingsCard = ( { data, EditListing, DeleteListing, listingEdit, setL
                         <p>ACTUAL PRICE: {listing.act_price}</p>
                         <p>OPTIMAL PRICE: {listing.opt_price}</p>
                     </StyledListingsCardContent>
+                    <YourListingsModal listing={listing}>VIEW DETAILS</YourListingsModal>
                     <StyledUpdateListingsLink to={"/update-listing/"} onClick={setListingEdit(listing)}>UPDATE LISTING</StyledUpdateListingsLink>
                     <img className='trash-icon' src={trash} alt='delete icon' onClick={() => DeleteListing(listing)}></img>
                 </StyledListingsCard>
