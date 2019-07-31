@@ -360,7 +360,7 @@ export const StyledUpdateListingsLink = styled(Link)`
     background-color: #eb5757;
     width: 100%;
     text-align: center;
-    padding: 15px 0;
+    padding: 5px 0;
     color: white;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
@@ -457,10 +457,6 @@ export const StyledModalUpdateListingsLink = styled(Link)`
     text-align: center;
     padding: 5px 0;
     color: white;
-    /* @media(max-width: 767px) {
-        font-size: 13px;
-        padding: 3px 0;
-    } */
     &:hover {
         background-color: #e84141;
         color: white;
