@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { getLatLong } from '../getLatLong'
 
-import { AddListingDiv, AddListingWrapper, AddListingHeader, UploadImageDiv, UploadImageText, ListingFormWrapper, ListingFormDiv, ListingForm, ListingFormLabel, ListingFormSelect, ListingFormButton } from '../StyledComps'
+import { AddListingDiv, AddListingWrapper, AddListingHeader, UploadImageDiv, UploadImageText, ListingFormWrapper, ListingFormDiv, ListingForm, ListingFormLabel, ListingFormSelect, ListingFormButton, ListingFormInput } from '../StyledComps'
 // import { addNeighborhoodGroup } from '../store/actions';
 
 const AddListing = (props) => {
@@ -35,6 +36,11 @@ const AddListing = (props) => {
                 setSelectedHood(selected.neighbourHood)
             }
         })
+
+        if (e.target.name === "address")
+        {
+            console.log("lat long:",getLatLong(e.target.value));
+        }
     };
 
 
@@ -87,7 +93,7 @@ const AddListing = (props) => {
                         <ListingFormLabel>
                             ADDRESS:
                             <br />
-                            <ListingFormSelect
+                            <ListingFormInput
                                 required
                                 name='address' 
                                 onChange={handleChange}

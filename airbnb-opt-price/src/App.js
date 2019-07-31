@@ -14,6 +14,7 @@ import PrivacyPolicy from './components/PrivacyPolicy'
 import TermsAndConditions from './components/TermsAndConditions'
 import {CSSTransition, TransitionGroup} from 'react-transition-group'
 
+
 function App() {
   return (
     <div className="App">
