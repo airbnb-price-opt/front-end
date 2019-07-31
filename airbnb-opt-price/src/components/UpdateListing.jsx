@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
 
 import { AddListingDiv, StyledOption, AddListingWrapper, AddListingHeader, UploadImageDiv, ListingFormTickDiv, ListingFormTickLabel, UploadImageText, ListingFormWrapper, ListingFormDiv, ListingForm, ListingFormLabel, ListingFormInputTickDiv, ListingFormSelect, ListingFormInputTick, ListingFormInput, ListingFormButton } from '../StyledComps'
-import { getNeighborhoods, getNeighborhoodGroups } from '../store/actions';
+import { getNeighborhoods, getNeighborhoodGroups, getBedTypes, getPropertyTypes } from '../store/actions';
 
 const UpdateListing = (props) => {
     const [listing, setListing] = useState(
@@ -62,8 +62,13 @@ const UpdateListing = (props) => {
     useEffect(() => {
         props.getNeighborhoods();
         props.getNeighborhoodGroups();
+        props.getBedTypes();
+        props.getPropertyTypes();
     }, [])
     
+    console.log('PROPERTYTYPES:', props.propertyTypes)
+    console.log('BEDTYPES:', props.bedTypes)
+
     return (
         <AddListingDiv>
             <AddListingHeader>Update Listing</AddListingHeader>
@@ -297,7 +302,11 @@ const UpdateListing = (props) => {
 const mapStateToProps = (state) => {
     return{
         neighborhoods: state.neighborhoods,
-        neighborhoodGroups: state.neighborhoodGroups
+        neighborhoodGroups: state.neighborhoodGroups,
+        bedTypes: state.bedTypes,
+        propertyTypes: state.propertyTypes
     }
 }
-export default connect(mapStateToProps, { getNeighborhoods, getNeighborhoodGroups })(UpdateListing)
+export default connect(mapStateToProps, { getBedTypes, getPropertyTypes, getNeighborhoods, getNeighborhoodGroups })(UpdateListing)
+
+

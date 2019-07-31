@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getLatLong } from '../getLatLong'
-import { getBedTypes } from '../store/actions';
+import { getBedTypes, getPropertyTypes } from '../store/actions';
 
 import { AddListingDiv, StyledOption, AddListingWrapper, AddListingHeader, UploadImageDiv, ListingFormTickDiv, ListingFormTickLabel, UploadImageText, ListingFormWrapper, ListingFormDiv, ListingForm, ListingFormLabel, ListingFormInputTickDiv, ListingFormSelect, ListingFormInputTick, ListingFormInput, ListingFormButton } from '../StyledComps'
 
@@ -23,10 +23,13 @@ const AddListing = (props) => {
     'Elevator', 'Bed linens', 'Cooking basics', 'Stove', 'Smoking allowed', 'Oven', 'First aid kit', 'Cable TV',
     'Coffee maker', 'Dryer', 'Dishwasher', 'Long term stays allowed', 'Pets allowed', 'Fire extinguisher',
     'Luggage dropoff allowed', 'Private entrance', 'Extra pillows and blankets']
+<<<<<<< HEAD
 
     console.log('GLOBAL SELECTED GROUP', selectedGroup)
     console.log('Chosen HoodS:', selectedHood)
     
+=======
+>>>>>>> 59f6a3c48d1dd71c659600fedc3e089cbdf120ff
     
     const handleSubmit = event => {
         event.preventDefault()
@@ -65,6 +68,7 @@ const AddListing = (props) => {
     
     useEffect(() => {
         props.getBedTypes();
+        props.getPropertyTypes();
     },[])
     
 
@@ -87,7 +91,8 @@ const AddListing = (props) => {
         }
     }
 
-    console.log('USE TO POPULATE DROPDOWN', props.bedTypes)
+    console.log('USE TO POPULATE BEDTYPE DROPDOWN', props.bedTypes)
+    console.log('USE TO POPULATE PROPERTYTYPE DROPDOWN', props.propertyTypes)
 
     return (
         <AddListingDiv>
@@ -364,8 +369,9 @@ const AddListing = (props) => {
 const mapStateToProps = (state) => {
     return{
         neighborhoodGroup: state.neighborhoodGroup,
-        bedTypes: state.bedTypes
+        bedTypes: state.bedTypes,
+        propertyTypes: state.propertyTypes
     }
 }
 
-export default connect(mapStateToProps, { getBedTypes })(AddListing);
+export default connect(mapStateToProps, { getPropertyTypes, getBedTypes })(AddListing);

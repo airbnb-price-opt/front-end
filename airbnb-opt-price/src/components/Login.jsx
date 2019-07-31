@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../store/actions';
 import {LoginContainerDiv, LoginForm, LoginFormContainer, LoginImage, LoginFormLabelInputDiv, UndrawImage} from '../StyledComps'
+import { history } from "../helpers/history";
+
 
 const Login = (props) => {
 
@@ -10,11 +12,15 @@ const Login = (props) => {
     const handleChanges = (e) => {
         setCurrentUser({ ...currentUser, [e.target.name]: e.target.value })
     }
-
+    console.log(history)
     const verifyUser = (e) => {
         e.preventDefault();
+<<<<<<< HEAD
         props.loginUser(currentUser);
         // localStorage.getItem('token')? props.history.push('/your-listings') : null
+=======
+        props.loginUser(currentUser, history)
+>>>>>>> 59f6a3c48d1dd71c659600fedc3e089cbdf120ff
     }
     console.log(currentUser)
     return(

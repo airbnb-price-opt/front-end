@@ -13,7 +13,10 @@ import {
     GET_NEIGHBORHOOD_GROUP_FAIL,
     GET_BED_TYPES_START,
     GET_BED_TYPES_SUCCESS,
-    GET_BED_TYPES_FAIL
+    GET_BED_TYPES_FAIL,
+    GET_PROPERTY_TYPES_START,
+    GET_PROPERTY_TYPES_SUCCESS,
+    GET_PROPERTY_TYPES_FAIL
     // ADD_NEIGHBORHOOD_GROUP_START,
     // ADD_NEIGHBORHOOD_GROUP_SUCCESS,
     // ADD_NEIGHBORHOOD_GROUP_FAIL
@@ -26,6 +29,7 @@ const initialState = {
     getting: false,
     posting: false,
     bedTypes: [],
+    propertyTypes: [],
     neighborhoodGroup: [
         {
             name: "Friedrichstein",
@@ -166,7 +170,25 @@ export const reducer = (state = initialState, action ) => {
             return{
                 ...state,
                 getting: false,
-                neighborhoodGroups: action.payload
+                bedTypes: action.payload
+            }
+        case GET_PROPERTY_TYPES_START:
+            return{
+                ...state,
+                getting: false
+            }
+        case GET_PROPERTY_TYPES_SUCCESS:
+            console.log('GET_PROPERTY_TYPES_SUCCESS', action.payload)
+            return{
+                ...state,
+                getting: false,
+                propertyTypes: action.payload
+            }
+        case GET_PROPERTY_TYPES_FAIL:
+            return{
+                ...state,
+                getting: false,
+                propertyTypes: action.payload
             }
         default:
             return state;
