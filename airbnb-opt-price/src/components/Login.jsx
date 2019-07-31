@@ -13,7 +13,8 @@ const Login = (props) => {
 
     const verifyUser = (e) => {
         e.preventDefault();
-        props.loginUser(currentUser)
+        props.loginUser(currentUser);
+        // localStorage.getItem('token')? props.history.push('/your-listings') : null
     }
     console.log(currentUser)
     return(

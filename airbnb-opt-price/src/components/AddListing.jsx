@@ -7,7 +7,11 @@ import { AddListingDiv, StyledOption, AddListingWrapper, AddListingHeader, Uploa
 
 
 const AddListing = (props) => {
-    const [listing, setListing] = useState({address: '', guests: 0, nights: 0})
+    const [listing, setListing] = useState(
+        {address: '',cleaning_fee: 0,security_deposit: 0,extra_people: 0, accommodates: 1, guests_included: 1,
+        availability_365: 0, room_type: '', bedrooms: 1, beds: 1, bed_type: '', bathrooms: 1,cancellation_policy: '',
+        calculated_host_listing_count: 0, amenities: 0
+        })
     const [selectedGroup, setSelectedGroup] = useState('')
     const [selectedHood, setSelectedHood] = useState('')
     const [amenitiesCount, setAmenitiesCount] = useState(0)
@@ -24,11 +28,16 @@ const AddListing = (props) => {
     console.log('Chosen HoodS:', selectedHood)
     
     
-    const handleSubmit = () => {
+    const handleSubmit = event => {
+        event.preventDefault()
+        console.log("Updated Listing", listing)
     }
 
     const handleChange = event => {
         if(event.target.min && event.target.max){
+            if(event.target.value === '') {
+                event.target.value =event.target.min
+            }
             if(parseFloat(event.target.value) < parseFloat(event.target.min)) {
                 event.target.value = event.target.min
             }
@@ -171,6 +180,8 @@ const AddListing = (props) => {
                             <ListingFormInput
                             name='accommodates'
                             onChange={handleChange}
+                            defaultValue={1}
+                            type='number'
                             min={1}
                             max={20}
                             >
@@ -267,11 +278,13 @@ const AddListing = (props) => {
                             defaultValue='Select Bed Type'
                             >
                                 <option disabled>Select Bed Type</option>
-                                <option value='real_bed'>Real Bed</option>
-                                <option value='pull_out_sofa'>Pull-out Sofa</option>
-                                <option value='couch'>Couch</option>
-                                <option value='futon'>Futon</option>
-                                <option value='airbed'>Airbed</option>
+                                {
+                                    props.bedTypes.map(bedType => {
+                                        return (
+                                            <option value={bedType.bed_type_id} key={bedType.bed_type_id}>{bedType.name}</option>
+                                        )
+                                    })
+                                }
                             </ListingFormSelect>
                         </ListingFormLabel>
                         <ListingFormLabel>

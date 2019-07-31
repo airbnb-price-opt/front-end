@@ -104,7 +104,7 @@ export const ListingForm = styled.form`
     color: white;
     display: flex;
     flex-direction: column;
-    width: 561px;
+    width: 100%;
     font-family: 'Montserrat', sans-serif;
     @media (max-width: 600px) {
         width: 90%;
@@ -160,6 +160,7 @@ export const ListingFormInputTickDiv = styled.div`
     display: flex;
     align-items: center;
     padding: 5px 10px 5px 10px;
+    font-family: 'Montserrat', sans-serif;
 
 `;
 

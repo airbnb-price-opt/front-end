@@ -44,10 +44,12 @@ export const loginUser = (existingUser) => dispatch => {
             console.log('LOGIN_USER_SUCCESS', res)
             dispatch({ type: LOGIN_USER_SUCCESS, payload: res.data.access_token })
             localStorage.setItem('token', res.data.access_token)
+            return true
         })
         .catch(err =>{
             console.log('LOGIN_USER_FAIL', err)
             dispatch({ type: LOGIN_USER_FAIL, payload: err })
+            return false
         })
 } 
 
