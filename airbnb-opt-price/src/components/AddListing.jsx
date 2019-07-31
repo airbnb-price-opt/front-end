@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getLatLong } from '../getLatLong'
+import { getBedTypes } from '../store/actions';
 
 import { AddListingDiv, StyledOption, AddListingWrapper, AddListingHeader, UploadImageDiv, ListingFormTickDiv, ListingFormTickLabel, UploadImageText, ListingFormWrapper, ListingFormDiv, ListingForm, ListingFormLabel, ListingFormInputTickDiv, ListingFormSelect, ListingFormInputTick, ListingFormInput, ListingFormButton } from '../StyledComps'
-// import { addNeighborhoodGroup } from '../store/actions';
+
 
 const AddListing = (props) => {
     const [listing, setListing] = useState({address: '', guests: 0, nights: 0})
@@ -14,13 +15,6 @@ const AddListing = (props) => {
     
     
     const handleSubmit = () => {
-        props.neighborhoodGroup.map(selected => {
-            console.log('MAP SELECTED GROUP', selectedGroup)
-            if(selected.name === selectedGroup){
-                console.log('fdfsfsd')
-                setSelectedHood(selected.neighbourHood)
-            }
-        })
     }
 
     const handleChange = event => {
@@ -50,27 +44,31 @@ const AddListing = (props) => {
         }
     };
     
+    useEffect(() => {
+        props.getBedTypes();
+    },[])
     
-    console.log('Redux Group Data', props.neighborhoodGroup)
+
     const handleNeighborhoodChange = e => {
+
         // setListing({ ...listing, [event.target.name]: event.target.value });
         setSelectedGroup(e.target.value)
         
         props.neighborhoodGroup.map(selected => {
-            console.log('MAP SELECTED GROUP', selectedGroup)
             if(selected.name === e.target.value){
-                console.log('fdfsfsd')
                 setSelectedHood(selected.neighbourHood)
             }
         })
 
-        if (e.target.name === "address")
-        {
-            console.log("lat long:",getLatLong(e.target.value));
-        }
     };
 
+    const latLongHandleChange = e =>{
+        if (e.target.name === "address"){
+            console.log("lat long:",getLatLong(e.target.value));
+        }
+    }
 
+    console.log('USE TO POPULATE DROPDOWN', props.bedTypes)
 
     return (
         <AddListingDiv>
@@ -121,11 +119,10 @@ const AddListing = (props) => {
                             Address:
                             <br />
                             <ListingFormInput
-<<<<<<< HEAD
                             name='address' 
                             placeholder=''
                             // value={props.address}
-                            onChange={handleChange}
+                            onChange={latLonghandleChange}
                             />
                         </ListingFormLabel>
                         <ListingFormLabel>
@@ -156,11 +153,6 @@ const AddListing = (props) => {
                             placeholder='Fee Per Person'
                             type='number'
                             onChange={handleChange}
-=======
-                                required
-                                name='address' 
-                                onChange={handleChange}
->>>>>>> 2d5cbc62577e1855793a315a770f55d87940c741
                             />
                         </ListingFormLabel>
                         <ListingFormLabel>
@@ -185,7 +177,6 @@ const AddListing = (props) => {
                             Guests Included:
                             <br />
                             <ListingFormSelect
-<<<<<<< HEAD
                             name='guests_included'
                             onChange={handleChange}
                             defaultValue='1'
@@ -208,27 +199,11 @@ const AddListing = (props) => {
                             type='number'
                             onChange={handleChange}
                             />
-=======
-                                required
-                                name='guests' 
-                                onChange={handleChange}
-                                type='number'
-                            >
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7+</option>
-                            </ListingFormSelect>
->>>>>>> 2d5cbc62577e1855793a315a770f55d87940c741
                         </ListingFormLabel>
                         <ListingFormLabel>
                             Room Type:
                             <br />
                             <ListingFormSelect
-<<<<<<< HEAD
                             name='room_type'
                             onChange={handleChange}
                             defaultValue='Select Room Type'
@@ -331,21 +306,6 @@ const AddListing = (props) => {
                             type='number'
                             onChange={handleChange}
                             />
-=======
-                                required
-                                name='nights' 
-                                onChange={handleChange}
-                                type='number'
-                            >
-                                <option>1+</option>
-                                <option>2+</option>
-                                <option>3+</option>
-                                <option>4+</option>
-                                <option>5+</option>
-                                <option>6+</option>
-                                <option>7+</option>
-                            </ListingFormSelect>
->>>>>>> 2d5cbc62577e1855793a315a770f55d87940c741
                         </ListingFormLabel>
                         <ListingFormLabel>
                             Amenities:
@@ -380,26 +340,9 @@ const AddListing = (props) => {
 
 const mapStateToProps = (state) => {
     return{
-        neighborhoodGroup: state.neighborhoodGroup
+        neighborhoodGroup: state.neighborhoodGroup,
+        bedTypes: state.bedTypes
     }
 }
 
-export default connect(mapStateToProps, {})(AddListing);
-
-                                    // // if(selected.name === selectedGroup){
-                                    //     console.log(selected.neighbourHood)                                         
-                                    //     selected.neighbourHood.map(hood => {
-                                    //         console.log(hood.name)
-                                    //         return(
-                                    //             <div>
-                                    //                 <h1 key={hood.neighbourhood_id}>{hood.name}</h1>
-                                    //                 <p>Sample P tag</p>
-                                    //             </div>
-                                    //         )
-                                    //     })
-                                    // // }else{
-                                    // //     return(
-                                    // //         <option value="No Matching Neighborhoods. Please Select Another">
-                                    // //         </option>
-                                    // //     )
-                                    // // }
+export default connect(mapStateToProps, { getBedTypes })(AddListing);
