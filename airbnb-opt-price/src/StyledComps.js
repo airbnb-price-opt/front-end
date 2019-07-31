@@ -10,6 +10,10 @@ export const AddListingDiv = styled.div`
     }
 `;
 
+export const StyledOption = styled.option`
+    line-height: 2.2rem;
+`; 
+
 export const AddListingWrapper = styled.div`
     border-top: 1px solid ${appRed};
     padding-top: 20px;
@@ -111,21 +115,68 @@ export const ListingFormLabel = styled.label`
     font-style: normal;
     font-size: 1.2rem;
     line-height: 17px;
+    text-transform: uppercase;
     @media (max-width: 600px) {
         margin-bottom: 10px;
     }
+`;
+
+export const ListingFormTickDiv = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
 `;
 
 export const ListingFormSelect = styled.select`
     margin-top: 5px;
     height: 31px;
     width: 100%;
+    /* margin-top: 100px; */
 `;
 
 export const ListingFormInput = styled.input`
     margin-top: 5px;
     height: 31px;
     width: 100%;
+    border: none;
+    @media (max-width: 600px) {
+        &:focus {
+            outline: none;
+        }
+    }
+
+`;
+
+export const ListingFormInputTickDiv = styled.div`
+    /* margin-top: 5px; */
+    /* height: 31px; */
+    width: 29%;
+    /* border: 1px solid black; */
+    display: flex;
+    align-items: center;
+    padding: 5px 10px 5px 10px;
+
+`;
+
+export const ListingFormTickLabel = styled.label`
+    /* margin-bottom: 30px; */
+    width: 90%;
+    font-style: normal;
+    font-size: 1rem;
+    line-height: 17px;
+    text-transform: uppercase;
+    
+    @media (max-width: 600px) {
+        margin-bottom: 10px;
+    }
+`;
+
+export const ListingFormInputTick = styled.input`
+    margin-top: 5px;
+    height: 31px;
+    width: 10%;
+    padding-left: 100px;
     border: none;
     @media (max-width: 600px) {
         &:focus {
