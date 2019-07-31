@@ -161,6 +161,9 @@ export const ListingFormInputTickDiv = styled.div`
     align-items: center;
     padding: 5px 10px 5px 10px;
     font-family: 'Montserrat', sans-serif;
+    @media (max-width: 600px) {
+        width: 43%;
+    }
 
 `;
 
@@ -173,6 +176,7 @@ export const ListingFormTickLabel = styled.label`
     text-transform: uppercase;
     
     @media (max-width: 600px) {
+        font-size: .7rem;
         margin-bottom: 10px;
     }
 `;

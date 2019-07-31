@@ -23,13 +23,6 @@ const AddListing = (props) => {
     'Elevator', 'Bed linens', 'Cooking basics', 'Stove', 'Smoking allowed', 'Oven', 'First aid kit', 'Cable TV',
     'Coffee maker', 'Dryer', 'Dishwasher', 'Long term stays allowed', 'Pets allowed', 'Fire extinguisher',
     'Luggage dropoff allowed', 'Private entrance', 'Extra pillows and blankets']
-<<<<<<< HEAD
-
-    console.log('GLOBAL SELECTED GROUP', selectedGroup)
-    console.log('Chosen HoodS:', selectedHood)
-    
-=======
->>>>>>> 59f6a3c48d1dd71c659600fedc3e089cbdf120ff
     
     const handleSubmit = event => {
         event.preventDefault()

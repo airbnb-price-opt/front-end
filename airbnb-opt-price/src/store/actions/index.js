@@ -48,11 +48,7 @@ export const loginUser = (existingUser, history) => dispatch => {
             console.log('LOGIN_USER_SUCCESS', res)
             dispatch({ type: LOGIN_USER_SUCCESS, payload: res.data.access_token })
             localStorage.setItem('token', res.data.access_token)
-<<<<<<< HEAD
-            return true
-=======
             history.push('/your-listings')
->>>>>>> 59f6a3c48d1dd71c659600fedc3e089cbdf120ff
         })
         .catch(err =>{
             console.log('LOGIN_USER_FAIL', err)
