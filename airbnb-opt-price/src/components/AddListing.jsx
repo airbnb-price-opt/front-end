@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getLatLong } from '../getLatLong'
-import { getBedTypes, getPropertyTypes } from '../store/actions';
+import { getBedTypes, getRoomTypes } from '../store/actions';
 
-import { AddListingDiv, StyledOption, AddListingWrapper, AddListingHeader, UploadImageDiv, ListingFormTickDiv, ListingFormTickLabel, UploadImageText, ListingFormWrapper, ListingFormDiv, ListingForm, ListingFormLabel, ListingFormInputTickDiv, ListingFormSelect, ListingFormInputTick, ListingFormInput, ListingFormButton } from '../StyledComps'
+import { AddListingDiv, AddListingWrapper, AddListingHeader, UploadImageDiv, ListingFormTickDiv, ListingFormTickLabel, UploadImageText, ListingFormWrapper, ListingFormDiv, ListingForm, ListingFormLabel, ListingFormInputTickDiv, ListingFormSelect, ListingFormInputTick, ListingFormInput, ListingFormButton } from '../StyledComps'
 
 
 const AddListing = (props) => {
@@ -52,7 +52,7 @@ const AddListing = (props) => {
     
     useEffect(() => {
         props.getBedTypes();
-        props.getPropertyTypes();
+        props.getRoomTypes();
     },[])
     
 
@@ -75,8 +75,7 @@ const AddListing = (props) => {
         }
     }
 
-    console.log('USE TO POPULATE BEDTYPE DROPDOWN', props.bedTypes)
-    console.log('USE TO POPULATE PROPERTYTYPE DROPDOWN', props.propertyTypes)
+    console.log('USE TO POPULATE ROOMTYPE DROPDOWN', props.roomTypes)
 
     return (
         <AddListingDiv>
@@ -350,8 +349,8 @@ const mapStateToProps = (state) => {
     return{
         neighborhoodGroup: state.neighborhoodGroup,
         bedTypes: state.bedTypes,
-        propertyTypes: state.propertyTypes
+        roomTypes: state.roomTypes
     }
 }
 
-export default connect(mapStateToProps, { getPropertyTypes, getBedTypes })(AddListing);
+export default connect(mapStateToProps, { getRoomTypes, getBedTypes })(AddListing);

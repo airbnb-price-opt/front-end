@@ -14,9 +14,9 @@ import {
     GET_BED_TYPES_START,
     GET_BED_TYPES_SUCCESS,
     GET_BED_TYPES_FAIL,
-    GET_PROPERTY_TYPES_START,
-    GET_PROPERTY_TYPES_SUCCESS,
-    GET_PROPERTY_TYPES_FAIL
+    GET_ROOM_TYPES_START,
+    GET_ROOM_TYPES_SUCCESS,
+    GET_ROOM_TYPES_FAIL
     // ADD_NEIGHBORHOOD_GROUP_START,
     // ADD_NEIGHBORHOOD_GROUP_SUCCESS,
     // ADD_NEIGHBORHOOD_GROUP_FAIL
@@ -29,7 +29,7 @@ const initialState = {
     getting: false,
     posting: false,
     bedTypes: [],
-    propertyTypes: [],
+    roomTypes: [],
     neighborhoodGroup: [
         {
             name: "Friedrichstein",
@@ -172,44 +172,25 @@ export const reducer = (state = initialState, action ) => {
                 getting: false,
                 bedTypes: action.payload
             }
-        case GET_PROPERTY_TYPES_START:
+        case GET_ROOM_TYPES_START:
             return{
                 ...state,
                 getting: false
             }
-        case GET_PROPERTY_TYPES_SUCCESS:
-            console.log('GET_PROPERTY_TYPES_SUCCESS', action.payload)
+        case GET_ROOM_TYPES_SUCCESS:
+            console.log('GET_ROOM_TYPES_REDUCER', action.payload)
             return{
                 ...state,
                 getting: false,
-                propertyTypes: action.payload
+                roomTypes: action.payload
             }
-        case GET_PROPERTY_TYPES_FAIL:
+        case GET_ROOM_TYPES_FAIL:
             return{
                 ...state,
                 getting: false,
-                propertyTypes: action.payload
+                roomTypes: action.payload
             }
         default:
             return state;
     }
 }
-
-
-        // case ADD_NEIGHBORHOOD_GROUP_START:
-        //     return{
-        //         ...state,
-        //         posting: true,
-        //     }
-        // case ADD_NEIGHBORHOOD_GROUP_SUCCESS:
-        //     return{
-        //         ...state,
-        //         posting: false,
-        //         neighborhoodGroups: [...state.neighborhoodGroups, action.payload]
-        //     }
-        // case ADD_NEIGHBORHOOD_GROUP_FAIL:
-        //     return{
-        //         ...state,
-        //         posting: false,
-        //         neighborhoodGroups: [...state.neighborhoodGroups, action.payload]
-        //     }
