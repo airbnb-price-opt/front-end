@@ -6,12 +6,14 @@ import house from '../assets/house.svg'
 import YourListingsModal from './YourListingsModal'
 import { StyledListingsCard, StyledAddListingsLink, StyledUpdateListingsLink, StyledListingsCardContent, StyledLCBC, StyledListingGrid } from '../StyledComps'
 
-const YourListingsCard = ( { data, EditListing, DeleteListing, listingEdit, setListingEdit } ) => {
+const YourListingsCard = ( { data, EditListing, DeleteListing, listingEdit, setListingEdit, houseImgs } ) => {
+
     return (
         <StyledListingGrid>
             {data.map((listing,index) => (
                 <StyledListingsCard key={index}>
                     <img src={listing.img_url !== null ? listing.img_url : house} alt='house img'></img>
+                    {/* <img src={houseImgs[index].webformatURL ? houseImgs[index].webformatURL : house} alt='house img'></img> */}
                     <StyledListingsCardContent>
                         <p className='listing-info'>NEIGHBORHOOD GROUP:</p>
                         <p>{listing.neighborhood_group}</p>
@@ -23,7 +25,7 @@ const YourListingsCard = ( { data, EditListing, DeleteListing, listingEdit, setL
                         <p>OPTIMAL PRICE: {listing.opt_price}</p>
                     </StyledListingsCardContent>
                     <StyledLCBC>
-                        <YourListingsModal listing={listing} setListingEdit={setListingEdit}>VIEW DETAILS</YourListingsModal>
+                        <YourListingsModal listing={listing} index={index} setListingEdit={setListingEdit} houseImgs={houseImgs}>VIEW DETAILS</YourListingsModal>
                         <StyledUpdateListingsLink to={"/update-listing/"} onClick={setListingEdit(listing)}>UPDATE LISTING</StyledUpdateListingsLink>
                     </StyledLCBC>
                     <img className='trash-icon' src={trash} alt='delete icon' onClick={() => DeleteListing(listing)}></img>

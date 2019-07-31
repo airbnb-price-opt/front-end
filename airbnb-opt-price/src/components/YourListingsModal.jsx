@@ -6,13 +6,14 @@ import house from '../assets/house.svg'
 import { StyledModalUpdateListingsLink, StyledYLMContainer } from '../StyledComps'
 import 'semantic-ui-css/semantic.min.css'
 
-const YourListingsModal = ({listing, setListingEdit}) => {
+const YourListingsModal = ({listing, index, setListingEdit, houseImgs}) => {
     return (
         <Modal trigger={<Button>VIEW DETAILS</Button>} closeIcon>
             <Modal.Header>{listing.neighborhood}, {listing.neighborhood_group}</Modal.Header>
             <Modal.Content image scrolling>
                 <StyledYLMContainer>
                     <Image wrapped size='medium' src={listing.img_url !== null ? listing.img_url : house} />
+                    {/* <Image wrapped size='medium' src={houseImgs[index].webformatURL ? houseImgs[index].webformatURL : house} /> */}
                     <StyledModalUpdateListingsLink to={"/update-listing/"} onClick={setListingEdit(listing)}>UPDATE LISTING</StyledModalUpdateListingsLink>
                 </StyledYLMContainer>
                 <Modal.Description>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { connect } from 'react-redux';
+// import axios from 'axios'
 
 import LoadingScreen from './LoadingScreen'
 import { getNeighborhoods, getNeighborhoodGroups } from '../store/actions';
@@ -17,6 +18,19 @@ const YourListingsCard = React.lazy(() => {
 const YourListings = (props) => {
     const [userListing, setUserListing] = useState(DummyData)
     const [listingEdit, setListingEdit] = useState(null)
+    // const [houseImgs, setHouseImgs] = useState([])
+    // const PIXABAY_API_KEY = ''
+
+    // useEffect(() => {
+    //     axios.get(`https://pixabay.com/api/?key=${PIXABAY_API_KEY}&q=house&image_type=photo`)
+    //     .then(res => {
+    //         console.log(res.data.hits)
+    //         setHouseImgs(res.data.hits)
+    //     })
+    //     .catch(err => {
+    //         console.log('API Error: ', err)
+    //     })
+    // },[PIXABAY_API_KEY])
 
     useEffect(() => {
         props.getNeighborhoods();
@@ -39,6 +53,10 @@ const YourListings = (props) => {
                 let newUserListing = [...userListing]
                 newUserListing.splice(index, 1)
                 setUserListing(newUserListing)
+
+                // let newHouseImgs = [...houseImgs]
+                // newHouseImgs.splice(index, 1)
+                // setHouseImgs(newHouseImgs)
             }
         })
     }
