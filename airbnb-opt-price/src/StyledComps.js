@@ -10,6 +10,10 @@ export const AddListingDiv = styled.div`
     }
 `;
 
+export const StyledOption = styled.option`
+    line-height: 2.2rem;
+`; 
+
 export const AddListingWrapper = styled.div`
     border-top: 1px solid ${appRed};
     padding-top: 20px;
@@ -70,7 +74,7 @@ export const ListingFormWrapper = styled.div`
 `;
 
 export const AddListingHeader = styled.h1`
-font-family: Montserrat;
+font-family: 'Montserrat', sans-serif;
 font-style: normal;
 font-weight: 500;
 font-size: 36px;
@@ -86,6 +90,7 @@ export const ListingFormDiv = styled.div`
     width: 561px;
     background: #EB5757;
     padding: 30px 50px;
+    font-family: 'Montserrat', sans-serif;
     @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
     box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.4);
     @media (max-width: 600px) {
@@ -100,6 +105,7 @@ export const ListingForm = styled.form`
     display: flex;
     flex-direction: column;
     width: 561px;
+    font-family: 'Montserrat', sans-serif;
     @media (max-width: 600px) {
         width: 90%;
         margin: 0 auto;
@@ -109,25 +115,79 @@ export const ListingForm = styled.form`
 export const ListingFormLabel = styled.label`
     margin-bottom: 30px;
     font-weight: bold;
-    font-size: .8rem;
+    font-size: .7rem;
     line-height: 17px;
+<<<<<<< HEAD
+    text-transform: uppercase;
+=======
     font-family: 'Montserrat', sans-serif;
+>>>>>>> 2d5cbc62577e1855793a315a770f55d87940c741
     @media (max-width: 600px) {
         margin-bottom: 10px;
     }
+`;
+
+export const ListingFormTickDiv = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
 `;
 
 export const ListingFormSelect = styled.select`
     margin-top: 5px;
     height: 31px;
     width: 100%;
+<<<<<<< HEAD
+    /* margin-top: 100px; */
+=======
     font-family: 'Montserrat', sans-serif;
+>>>>>>> 2d5cbc62577e1855793a315a770f55d87940c741
 `;
 
 export const ListingFormInput = styled.input`
+    font-family: 'Montserrat', sans-serif;
     margin-top: 5px;
     height: 31px;
     width: 100%;
+    border: none;
+    @media (max-width: 600px) {
+        &:focus {
+            outline: none;
+        }
+    }
+
+`;
+
+export const ListingFormInputTickDiv = styled.div`
+    /* margin-top: 5px; */
+    /* height: 31px; */
+    width: 29%;
+    /* border: 1px solid black; */
+    display: flex;
+    align-items: center;
+    padding: 5px 10px 5px 10px;
+
+`;
+
+export const ListingFormTickLabel = styled.label`
+    /* margin-bottom: 30px; */
+    width: 90%;
+    font-style: normal;
+    font-size: 1rem;
+    line-height: 17px;
+    text-transform: uppercase;
+    
+    @media (max-width: 600px) {
+        margin-bottom: 10px;
+    }
+`;
+
+export const ListingFormInputTick = styled.input`
+    margin-top: 5px;
+    height: 31px;
+    width: 10%;
+    padding-left: 100px;
     border: none;
     @media (max-width: 600px) {
         &:focus {
@@ -144,7 +204,7 @@ export const ListingFormButton = styled.button`
     box-sizing: border-box;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
-    font-family: Montserrat;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 24px;
@@ -153,6 +213,7 @@ export const ListingFormButton = styled.button`
     text-transform: uppercase;
     color: #EB5757;
     padding: 10px;
+    
     &:hover{
         transition: transform .2s;
         transform: scale(1.1);
@@ -317,6 +378,9 @@ export const StyledListingsCard = styled.div`
     }
     p {
         margin: 0;
+        font-family:'Montserrat', sans-serif;
+        font-weight: bold;
+        font-size: .8rem;
     }
     img {
         max-width: 327px;
@@ -329,6 +393,9 @@ export const StyledListingsCard = styled.div`
     }
     .listing-info {
         text-decoration: underline;
+        font-family:'Montserrat', sans-serif;
+        font-weight: bold;
+        font-size: .8rem;
     }
     .trash-icon {
         position: absolute;
@@ -375,8 +442,9 @@ export const StyledUpdateListingsLink = styled(Link)`
     }
 `;
 
+
 export const StyledAddListingsLink = styled(Link)`
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', sans-serif;
     color: black;
     text-decoration: none;
     display: flex;
@@ -411,6 +479,7 @@ export const StyledAddListingsLink = styled(Link)`
 
 export const StyledListingsCardContent = styled.div`
     text-align: left;
+    font-family: 'Montserrat', sans-serif;
     margin: 5px 0;
     font-size: .9rem;
     @media(max-width: 800px) {
@@ -556,6 +625,7 @@ export const LoginForm = styled.form`
         margin-bottom: 25px;
         padding: 4px 0%;
         border: none;
+        font-family: 'Montserrat', sans-serif;
         @media(max-width: 1200px)
         {
             width: 390px;
@@ -578,6 +648,7 @@ export const LoginForm = styled.form`
         /* margin-top: 24px; */
         font-family: 'Montserrat', sans-serif;
         font-size: .7rem;
+        letter-spacing: 1px;
         font-weight: bold;
         padding-bottom: 2px;
     }
@@ -717,24 +788,27 @@ export const RegisterForm = styled.form`
     flex-direction: column;
     padding: 30px;
     box-shadow: 7px 7px 5px rgba(0,0,0,0.5);
+    font-family: 'Montserrat', sans-serif;
 `
 
 export const RegisterFormInputs = styled.input`
     margin: 0px 1% 25px 3%;
     padding: 4px 0% 4px 0%;
     border: none;
+    font-family: 'Montserrat', sans-serif;
     @media (max-width: 600px) {
         margin: 0px 1% 20px 3%;
     }
 `
 
 export const RegisterLabel = styled.label`
-    font-size: .6rem;
+    font-size: .7rem;
     font-weight: bold;
     letter-spacing: 1px;
     text-align: left;
     margin-left: 3%;
     margin-bottom: 1px;
+    font-family: 'Montserrat', sans-serif;
 `
 
 export const RegisterFormButton = styled.button`
@@ -771,7 +845,7 @@ export const UndrawImage = styled.img`
 `;
 
 export const NameLabel = styled.label`
-    font-size: .6rem;
+    font-size: .7rem;
     font-weight: bold;
     letter-spacing: 1px;
     text-align: left;
@@ -795,12 +869,14 @@ export const NameInputDiv = styled.div`
 `
 export const NameInputs = styled.input`
     border: none;
+    font-family: 'Montserrat', sans-serif;
     margin: 0px 0% 10px 0%;
     padding: 4px 0% 4px 0%;
 `
 
 export const RegisterFirstNameInput = styled.input`
     border: none;
+    font-family: 'Montserrat', sans-serif;
     margin: 0px 6% 10px 0%;
     padding: 4px 0% 4px 0%;
 `
