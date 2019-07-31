@@ -117,11 +117,8 @@ export const ListingFormLabel = styled.label`
     font-weight: bold;
     font-size: .7rem;
     line-height: 17px;
-<<<<<<< HEAD
     text-transform: uppercase;
-=======
     font-family: 'Montserrat', sans-serif;
->>>>>>> 2d5cbc62577e1855793a315a770f55d87940c741
     @media (max-width: 600px) {
         margin-bottom: 10px;
     }
@@ -138,11 +135,7 @@ export const ListingFormSelect = styled.select`
     margin-top: 5px;
     height: 31px;
     width: 100%;
-<<<<<<< HEAD
-    /* margin-top: 100px; */
-=======
     font-family: 'Montserrat', sans-serif;
->>>>>>> 2d5cbc62577e1855793a315a770f55d87940c741
 `;
 
 export const ListingFormInput = styled.input`
