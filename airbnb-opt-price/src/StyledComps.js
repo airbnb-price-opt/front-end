@@ -171,7 +171,7 @@ export const ListingFormTickLabel = styled.label`
     /* margin-bottom: 30px; */
     width: 90%;
     font-style: normal;
-    font-size: 1rem;
+    font-size: .7rem;
     line-height: 17px;
     text-transform: uppercase;
     
