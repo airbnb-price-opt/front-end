@@ -13,31 +13,31 @@ const Nav = () =>
         return pathname === "/"
     }
 
-    // if(localStorage.getItem('token') !== null && localStorage.getItem('token') !== '') {
-    //     return (
-    //         <NavDiv>
-    //             <StyledMobileNavLink to="/your-listings/" activeClassName="active-nav">YOUR LISTINGS</StyledMobileNavLink>
-    //             <StyledMobileNavLink to="/logout/" activeClassName="active-nav">LOGOUT</StyledMobileNavLink>
-    //         </NavDiv>
-    //     )
-    // }
-    // else {
-    //     return (
-    //             <NavDiv>
-    //                 <StyledMobileNavLink to="/register/" activeClassName="active-nav">REGISTER</StyledMobileNavLink>
-    //                 <StyledMobileNavLink to="/" activeClassName="active-nav" isActive={checkActive}>LOGIN</StyledMobileNavLink>
-    //             </NavDiv>
-    //     )
-    // }
+    if(localStorage.getItem('token') !== null && localStorage.getItem('token') !== '') {
+        return (
+            <NavDiv>
+                <StyledNavLink to="/your-listings/" activeClassName="active-nav">YOUR LISTINGS</StyledNavLink>
+                <StyledNavLink to="/" onClick={_ => localStorage.removeItem('token')} activeClassName="active-nav">LOGOUT</StyledNavLink>
+            </NavDiv>
+        )
+    }
+    else {
+        return (
+                <NavDiv>
+                    <StyledNavLink to="/register/" activeClassName="active-nav">REGISTER</StyledNavLink>
+                    <StyledNavLink to="/" activeClassName="active-nav" isActive={checkActive}>LOGIN</StyledNavLink>
+                </NavDiv>
+        )
+    }
 
-    return (
-        <NavDiv>
-            <StyledNavLink to="/your-listings/" activeClassName="active-nav">YOUR LISTINGS</StyledNavLink>
-            <StyledNavLink to="/register/" activeClassName="active-nav">REGISTER</StyledNavLink>
-            <StyledNavLink to="/" activeClassName="active-nav" isActive={checkActive}>LOGIN</StyledNavLink>
-            <StyledNavLink to="/logout/" activeClassName="active-nav">LOGOUT</StyledNavLink>
-        </NavDiv>
-    )
+    // return (
+    //     <NavDiv>
+    //         <StyledNavLink to="/your-listings/" activeClassName="active-nav">YOUR LISTINGS</StyledNavLink>
+    //         <StyledNavLink to="/register/" activeClassName="active-nav">REGISTER</StyledNavLink>
+    //         <StyledNavLink to="/" activeClassName="active-nav" isActive={checkActive}>LOGIN</StyledNavLink>
+    //         <StyledNavLink to="/logout/" activeClassName="active-nav">LOGOUT</StyledNavLink>
+    //     </NavDiv>
+    // )
 }
 
 export default Nav
