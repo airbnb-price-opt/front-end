@@ -76,8 +76,8 @@ const initialState = {
             }
             ],
             neighbourhood_group_id: 2
-        },
-    ]
+        }
+    ],
 }
 
 export const reducer = (state = initialState, action ) => {

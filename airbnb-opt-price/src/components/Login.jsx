@@ -5,7 +5,7 @@ import {LoginContainerDiv, LoginForm, LoginFormContainer, LoginImage, LoginFormL
 
 const Login = (props) => {
 
-    const [ currentUser, setCurrentUser ] = useState({ password:'', email: '' })
+    const [ currentUser, setCurrentUser ] = useState({ username: '', password:'' })
     
     const handleChanges = (e) => {
         setCurrentUser({ ...currentUser, [e.target.name]: e.target.value })
