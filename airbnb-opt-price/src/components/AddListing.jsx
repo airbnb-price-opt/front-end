@@ -10,6 +10,16 @@ const AddListing = (props) => {
     const [listing, setListing] = useState({address: '', guests: 0, nights: 0})
     const [selectedGroup, setSelectedGroup] = useState('')
     const [selectedHood, setSelectedHood] = useState('')
+    const [amenitiesCount, setAmenitiesCount] = useState(0)
+    const [chosenAmenities, setChosenAmenities] = useState([])
+
+    const amenities = ['Wifi',  'Kitchen', 'Heating', 'Essentials', 'Washer', 'Hair dryer', 'Laptop friendly workspace', 'Hangers',
+    'Iron', 'Shampoo', 'TV', 'Hot water', 'Family/kid friendly', 'Internet', 'Host greets you', 'Smoke detector',
+    'Buzzer/wireless intercom', 'Lock on bedroom door', 'Refrigerator', 'Free street parking', 'Dishes and silverware',
+    'Elevator', 'Bed linens', 'Cooking basics', 'Stove', 'Smoking allowed', 'Oven', 'First aid kit', 'Cable TV',
+    'Coffee maker', 'Dryer', 'Dishwasher', 'Long term stays allowed', 'Pets allowed', 'Fire extinguisher',
+    'Luggage dropoff allowed', 'Private entrance', 'Extra pillows and blankets']
+
     console.log('GLOBAL SELECTED GROUP', selectedGroup)
     console.log('Chosen HoodS:', selectedHood)
     
@@ -122,7 +132,7 @@ const AddListing = (props) => {
                             name='address' 
                             placeholder=''
                             // value={props.address}
-                            onChange={latLonghandleChange}
+                            onChange={latLongHandleChange}
                             />
                         </ListingFormLabel>
                         <ListingFormLabel>
@@ -181,13 +191,13 @@ const AddListing = (props) => {
                             onChange={handleChange}
                             defaultValue='1'
                             >
-                                {
+                                {/* {
                                     guestsRange.map(number => {
                                         return (
                                             <StyledOption key={number} value={number}>{number}</StyledOption>
                                         )
                                     })
-                                }
+                                } */}
                             </ListingFormSelect>
                         </ListingFormLabel>
                         <ListingFormLabel>
@@ -222,13 +232,13 @@ const AddListing = (props) => {
                             onChange={handleChange}
                             defaultValue='1'
                             >
-                                {
+                                {/* {
                                     bedroomRange.map(number => {
                                         return (
                                             <StyledOption key={number} value={number}>{number}</StyledOption>
                                         )
                                     })
-                                }
+                                } */}
                             </ListingFormSelect>
                         </ListingFormLabel>
                         <ListingFormLabel>
@@ -239,13 +249,13 @@ const AddListing = (props) => {
                             onChange={handleChange}
                             defaultValue='1'
                             >
-                                {
+                                {/* {
                                     bedRange.map(number => {
                                         return (
                                             <StyledOption key={number} value={number}>{number}</StyledOption>
                                         )
                                     })
-                                }
+                                } */}
                             </ListingFormSelect>
                         </ListingFormLabel>
                         <ListingFormLabel>
@@ -272,13 +282,13 @@ const AddListing = (props) => {
                             onChange={handleChange}
                             defaultValue='1'
                             >
-                                {
+                                {/* {
                                     bathroomRange.map(number => {
                                         return (
                                             <StyledOption key={number} value={number}>{number}</StyledOption>
                                         )
                                     })
-                                }
+                                } */}
                             </ListingFormSelect>
                         </ListingFormLabel>
                         <ListingFormLabel>
