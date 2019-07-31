@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { getLatLong } from '../getLatLong'
 
 import { AddListingDiv, StyledOption, AddListingWrapper, AddListingHeader, UploadImageDiv, ListingFormTickDiv, ListingFormTickLabel, UploadImageText, ListingFormWrapper, ListingFormDiv, ListingForm, ListingFormLabel, ListingFormInputTickDiv, ListingFormSelect, ListingFormInputTick, ListingFormInput, ListingFormButton } from '../StyledComps'
 // import { addNeighborhoodGroup } from '../store/actions';
@@ -62,6 +63,11 @@ const AddListing = (props) => {
                 setSelectedHood(selected.neighbourHood)
             }
         })
+
+        if (e.target.name === "address")
+        {
+            console.log("lat long:",getLatLong(e.target.value));
+        }
     };
 
 
@@ -115,6 +121,7 @@ const AddListing = (props) => {
                             Address:
                             <br />
                             <ListingFormInput
+<<<<<<< HEAD
                             name='address' 
                             placeholder=''
                             // value={props.address}
@@ -149,6 +156,11 @@ const AddListing = (props) => {
                             placeholder='Fee Per Person'
                             type='number'
                             onChange={handleChange}
+=======
+                                required
+                                name='address' 
+                                onChange={handleChange}
+>>>>>>> 2d5cbc62577e1855793a315a770f55d87940c741
                             />
                         </ListingFormLabel>
                         <ListingFormLabel>
@@ -173,6 +185,7 @@ const AddListing = (props) => {
                             Guests Included:
                             <br />
                             <ListingFormSelect
+<<<<<<< HEAD
                             name='guests_included'
                             onChange={handleChange}
                             defaultValue='1'
@@ -195,11 +208,27 @@ const AddListing = (props) => {
                             type='number'
                             onChange={handleChange}
                             />
+=======
+                                required
+                                name='guests' 
+                                onChange={handleChange}
+                                type='number'
+                            >
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7+</option>
+                            </ListingFormSelect>
+>>>>>>> 2d5cbc62577e1855793a315a770f55d87940c741
                         </ListingFormLabel>
                         <ListingFormLabel>
                             Room Type:
                             <br />
                             <ListingFormSelect
+<<<<<<< HEAD
                             name='room_type'
                             onChange={handleChange}
                             defaultValue='Select Room Type'
@@ -302,6 +331,21 @@ const AddListing = (props) => {
                             type='number'
                             onChange={handleChange}
                             />
+=======
+                                required
+                                name='nights' 
+                                onChange={handleChange}
+                                type='number'
+                            >
+                                <option>1+</option>
+                                <option>2+</option>
+                                <option>3+</option>
+                                <option>4+</option>
+                                <option>5+</option>
+                                <option>6+</option>
+                                <option>7+</option>
+                            </ListingFormSelect>
+>>>>>>> 2d5cbc62577e1855793a315a770f55d87940c741
                         </ListingFormLabel>
                         <ListingFormLabel>
                             Amenities:

@@ -3,7 +3,7 @@ import React from "react"
 const PrivacyPolicy = () =>
 {
     return (
-        <div>All your info are belong to us!</div>
+        <div>No current privacy policy</div>
     )
 }
 
