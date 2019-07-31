@@ -16,9 +16,9 @@ export const GET_NEIGHBORHOOD_GROUP_FAIL = 'GET_NEIGHBORHOOD_GROUP_FAIL';
 export const GET_BED_TYPES_START = 'GET_BED_TYPES_START';
 export const GET_BED_TYPES_SUCCESS = 'GET_BED_TYPES_SUCCESS';
 export const GET_BED_TYPES_FAIL = 'GET_BED_TYPES_FAIL';
-export const GET_PROPERTY_TYPES_START ='GET_PROPERTY_TYPES_START';
-export const GET_PROPERTY_TYPES_SUCCESS = 'GET_PROPERTY_TYPES_SUCCESS';
-export const GET_PROPERTY_TYPES_FAIL = 'GET_PROPERTY_TYPES_FAIL';
+export const GET_ROOM_TYPES_START = 'GET_ROOM_TYPES_START';
+export const GET_ROOM_TYPES_SUCCESS = 'GET_ROOM_TYPES_SUCCESS';
+export const GET_ROOM_TYPES_FAIL = 'GET_ROOM_TYPES_FAIL';
 
 
 export const registerUser = (newUserObj) => dispatch => {
@@ -98,16 +98,16 @@ export const getBedTypes = () => dispatch => {
         })
 }
 
-export const getPropertyTypes = () => dispatch => {
-    dispatch({ type: GET_PROPERTY_TYPES_START })
+export const getRoomTypes = () => dispatch => {
+    dispatch({ type: GET_ROOM_TYPES_START })
     axiosWithAuth()
-        .get('https://airbnb-price-opt.herokuapp.com/properties/all')
+        .get('https://airbnb-price-opt.herokuapp.com/rooms/all')
         .then(res => {
-            console.log('GET_PROPERTY_TYPES_SUCCESS', res.data)
-            dispatch({ type: GET_PROPERTY_TYPES_SUCCESS, payload: res.data })
+            console.log('GET_ROOM_TYPES_SUCCESS', res.data)
+            dispatch({ type: GET_ROOM_TYPES_SUCCESS, payload: res.data })
         })
         .catch(err => {
-            console.log('GET_PROPERTY_TYPES_FAIL', err)
-            dispatch({ type: GET_PROPERTY_TYPES_FAIL, payload: err })
+            console.log('GET_ROOM_TYPES_FAIL', err)
+            dispatch({ type: GET_ROOM_TYPES_FAIL, payload: err })
         })
 }
