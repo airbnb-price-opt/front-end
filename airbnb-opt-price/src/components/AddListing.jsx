@@ -1,26 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getLatLong } from '../getLatLong'
+import { getBedTypes } from '../store/actions';
 
 import { AddListingDiv, StyledOption, AddListingWrapper, AddListingHeader, UploadImageDiv, ListingFormTickDiv, ListingFormTickLabel, UploadImageText, ListingFormWrapper, ListingFormDiv, ListingForm, ListingFormLabel, ListingFormInputTickDiv, ListingFormSelect, ListingFormInputTick, ListingFormInput, ListingFormButton } from '../StyledComps'
-// import { addNeighborhoodGroup } from '../store/actions';
+
 
 const AddListing = (props) => {
     const [listing, setListing] = useState({address: '', guests: 0, nights: 0})
     const [selectedGroup, setSelectedGroup] = useState('')
     const [selectedHood, setSelectedHood] = useState('')
+    const [amenitiesCount, setAmenitiesCount] = useState(0)
+    const [chosenAmenities, setChosenAmenities] = useState([])
+
+    const amenities = ['Wifi',  'Kitchen', 'Heating', 'Essentials', 'Washer', 'Hair dryer', 'Laptop friendly workspace', 'Hangers',
+    'Iron', 'Shampoo', 'TV', 'Hot water', 'Family/kid friendly', 'Internet', 'Host greets you', 'Smoke detector',
+    'Buzzer/wireless intercom', 'Lock on bedroom door', 'Refrigerator', 'Free street parking', 'Dishes and silverware',
+    'Elevator', 'Bed linens', 'Cooking basics', 'Stove', 'Smoking allowed', 'Oven', 'First aid kit', 'Cable TV',
+    'Coffee maker', 'Dryer', 'Dishwasher', 'Long term stays allowed', 'Pets allowed', 'Fire extinguisher',
+    'Luggage dropoff allowed', 'Private entrance', 'Extra pillows and blankets']
+
     console.log('GLOBAL SELECTED GROUP', selectedGroup)
     console.log('Chosen HoodS:', selectedHood)
     
     
     const handleSubmit = () => {
-        props.neighborhoodGroup.map(selected => {
-            console.log('MAP SELECTED GROUP', selectedGroup)
-            if(selected.name === selectedGroup){
-                console.log('fdfsfsd')
-                setSelectedHood(selected.neighbourHood)
-            }
-        })
     }
 
     const handleChange = event => {
@@ -50,27 +54,31 @@ const AddListing = (props) => {
         }
     };
     
+    useEffect(() => {
+        props.getBedTypes();
+    },[])
     
-    console.log('Redux Group Data', props.neighborhoodGroup)
+
     const handleNeighborhoodChange = e => {
+
         // setListing({ ...listing, [event.target.name]: event.target.value });
         setSelectedGroup(e.target.value)
         
         props.neighborhoodGroup.map(selected => {
-            console.log('MAP SELECTED GROUP', selectedGroup)
             if(selected.name === e.target.value){
-                console.log('fdfsfsd')
                 setSelectedHood(selected.neighbourHood)
             }
         })
 
-        if (e.target.name === "address")
-        {
-            console.log("lat long:",getLatLong(e.target.value));
-        }
     };
 
+    const latLongHandleChange = e =>{
+        if (e.target.name === "address"){
+            console.log("lat long:",getLatLong(e.target.value));
+        }
+    }
 
+    console.log('USE TO POPULATE DROPDOWN', props.bedTypes)
 
     return (
         <AddListingDiv>
@@ -124,7 +132,7 @@ const AddListing = (props) => {
                             name='address' 
                             placeholder=''
                             // value={props.address}
-                            onChange={handleChange}
+                            onChange={latLongHandleChange}
                             />
                         </ListingFormLabel>
                         <ListingFormLabel>
@@ -183,13 +191,13 @@ const AddListing = (props) => {
                             onChange={handleChange}
                             defaultValue='1'
                             >
-                                {
+                                {/* {
                                     guestsRange.map(number => {
                                         return (
                                             <StyledOption key={number} value={number}>{number}</StyledOption>
                                         )
                                     })
-                                }
+                                } */}
                             </ListingFormSelect>
                         </ListingFormLabel>
                         <ListingFormLabel>
@@ -224,13 +232,13 @@ const AddListing = (props) => {
                             onChange={handleChange}
                             defaultValue='1'
                             >
-                                {
+                                {/* {
                                     bedroomRange.map(number => {
                                         return (
                                             <StyledOption key={number} value={number}>{number}</StyledOption>
                                         )
                                     })
-                                }
+                                } */}
                             </ListingFormSelect>
                         </ListingFormLabel>
                         <ListingFormLabel>
@@ -241,13 +249,13 @@ const AddListing = (props) => {
                             onChange={handleChange}
                             defaultValue='1'
                             >
-                                {
+                                {/* {
                                     bedRange.map(number => {
                                         return (
                                             <StyledOption key={number} value={number}>{number}</StyledOption>
                                         )
                                     })
-                                }
+                                } */}
                             </ListingFormSelect>
                         </ListingFormLabel>
                         <ListingFormLabel>
@@ -274,13 +282,13 @@ const AddListing = (props) => {
                             onChange={handleChange}
                             defaultValue='1'
                             >
-                                {
+                                {/* {
                                     bathroomRange.map(number => {
                                         return (
                                             <StyledOption key={number} value={number}>{number}</StyledOption>
                                         )
                                     })
-                                }
+                                } */}
                             </ListingFormSelect>
                         </ListingFormLabel>
                         <ListingFormLabel>
@@ -342,26 +350,9 @@ const AddListing = (props) => {
 
 const mapStateToProps = (state) => {
     return{
-        neighborhoodGroup: state.neighborhoodGroup
+        neighborhoodGroup: state.neighborhoodGroup,
+        bedTypes: state.bedTypes
     }
 }
 
-export default connect(mapStateToProps, {})(AddListing);
-
-                                    // // if(selected.name === selectedGroup){
-                                    //     console.log(selected.neighbourHood)                                         
-                                    //     selected.neighbourHood.map(hood => {
-                                    //         console.log(hood.name)
-                                    //         return(
-                                    //             <div>
-                                    //                 <h1 key={hood.neighbourhood_id}>{hood.name}</h1>
-                                    //                 <p>Sample P tag</p>
-                                    //             </div>
-                                    //         )
-                                    //     })
-                                    // // }else{
-                                    // //     return(
-                                    // //         <option value="No Matching Neighborhoods. Please Select Another">
-                                    // //         </option>
-                                    // //     )
-                                    // // }
+export default connect(mapStateToProps, { getBedTypes })(AddListing);
