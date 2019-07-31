@@ -108,12 +108,20 @@ export const ListingForm = styled.form`
 
 export const ListingFormLabel = styled.label`
     margin-bottom: 30px;
-    font-style: normal;
-    font-size: 1.2rem;
+    font-weight: bold;
+    font-size: .8rem;
     line-height: 17px;
+    font-family: 'Montserrat', sans-serif;
     @media (max-width: 600px) {
         margin-bottom: 10px;
     }
+`;
+
+export const ListingFormSelect = styled.select`
+    margin-top: 5px;
+    height: 31px;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
 `;
 
 export const ListingFormInput = styled.input`
@@ -282,10 +290,11 @@ export const StyledListingGrid = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    font-family: 'Montserrat', sans-serif;
 `
 
 export const StyledListingsCard = styled.div`
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -351,8 +360,11 @@ export const StyledUpdateListingsLink = styled(Link)`
     background-color: #eb5757;
     width: 100%;
     text-align: center;
-    padding: 5px 0;
+    padding: 15px 0;
     color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: .9rem;
     @media(max-width: 800px) {
         font-size: 13px;
         padding: 3px 0;
@@ -400,6 +412,7 @@ export const StyledAddListingsLink = styled(Link)`
 export const StyledListingsCardContent = styled.div`
     text-align: left;
     margin: 5px 0;
+    font-size: .9rem;
     @media(max-width: 800px) {
         font-size: 12px;
     }
