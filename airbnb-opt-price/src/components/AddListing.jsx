@@ -102,7 +102,15 @@ const AddListing = (props) => {
                                 name='guests' 
                                 onChange={handleChange}
                                 type='number'
-                            />
+                            >
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7+</option>
+                            </ListingFormSelect>
                         </ListingFormLabel>
                         <ListingFormLabel>
                             MINIMUM NIGHTS:
@@ -112,7 +120,15 @@ const AddListing = (props) => {
                                 name='nights' 
                                 onChange={handleChange}
                                 type='number'
-                            />
+                            >
+                                <option>1+</option>
+                                <option>2+</option>
+                                <option>3+</option>
+                                <option>4+</option>
+                                <option>5+</option>
+                                <option>6+</option>
+                                <option>7+</option>
+                            </ListingFormSelect>
                         </ListingFormLabel>
                         <ListingFormButton type='submit' onClick={handleSubmit}>ADD LISTING</ListingFormButton>
                     </ListingForm>
