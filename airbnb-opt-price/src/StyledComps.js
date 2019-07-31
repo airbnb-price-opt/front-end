@@ -313,7 +313,7 @@ export const StyledListingsCard = styled.div`
     }
     @media(max-width: 800px) {
         max-width: 255px;
-        height: 383px;
+        height: 392px;
     }
     p {
         margin: 0;
@@ -321,10 +321,10 @@ export const StyledListingsCard = styled.div`
     img {
         max-width: 327px;
         width: 100%;
-        max-height: 234px;
+        max-height: 200px;
         height: 100%;
         @media(max-width: 800px) {
-            max-height: 199px;
+            max-height: 170px;
         }
     }
     .listing-info {
@@ -348,8 +348,7 @@ export const StyledListingsCard = styled.div`
             top: -20px;
         }
         &:hover {
-            transition: transform .2s;
-            transform: scale(1.3);
+            background-color: #e84141;
         }
     }
 `;
@@ -367,11 +366,12 @@ export const StyledUpdateListingsLink = styled(Link)`
     font-weight: bold;
     font-size: .9rem;
     @media(max-width: 800px) {
-        font-size: 14px;
+        font-size: 13px;
+        padding: 3px 0;
     }
     &:hover {
-        transition: transform .2s;
-        transform: scale(1.05);
+        background-color: #e84141;
+        color: white;
     }
 `;
 
@@ -393,12 +393,13 @@ export const StyledAddListingsLink = styled(Link)`
     border: solid #bdbdbd 1px;
     background-color: #f1f1f1;
     &:hover {
+        color: black;
         transition: transform .2s;
         transform: scale(1.02);
     }
     @media(max-width: 800px) {
         max-width: 255px;
-        height: 383px;
+        height: 392px;
     }
     p {
         margin: 0;
@@ -416,6 +417,55 @@ export const StyledListingsCardContent = styled.div`
         font-size: 12px;
     }
 `
+
+export const StyledLCBC = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-height: 62px;
+    height: 100%;
+    .ui.button {
+        font-family: 'Montserrat';
+        margin: 0%;
+        padding: 7.5px 0;
+        @media(max-width: 800px) {
+            font-size: 13px;
+            padding: 6px 0;
+        }
+    }
+`
+
+export const StyledYLMContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 28px 0 0;
+    @media(max-width: 767px) {
+        padding: 0;
+    }
+    img {
+        margin-bottom: 10px;
+    }
+`
+
+export const StyledModalUpdateListingsLink = styled(Link)`
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    background-color: #eb5757;
+    width: 100%;
+    text-align: center;
+    padding: 5px 0;
+    color: white;
+    /* @media(max-width: 767px) {
+        font-size: 13px;
+        padding: 3px 0;
+    } */
+    &:hover {
+        background-color: #e84141;
+        color: white;
+    }
+`;
 
 // @@@@@@@@@@ End Your Listings Styles @@@@@@@@@@
 
