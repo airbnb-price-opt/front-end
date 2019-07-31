@@ -32,16 +32,16 @@ function App() {
                 timeout={1000}
                 classNames="fade"
               >
-                      <Switch location={location}>
-                        <Route path={`/your-listings`} component={YourListings} />
-                        <Route path={`/add-listing`} component={AddListing} />
-                        <Route path={`/update-listing`} component={UpdateListing} />
-                        <Route path={`/register`} component={Register} />
-                        <Route exact path={`/`} component={Login} />
-                        {/* <Route path={`/logout`} component={Logout} /> */}
-                        <Route path={`/privacy`} component={PrivacyPolicy} />
-                        <Route path={`/terms-and-conditions`} component={TermsAndConditions} />
-                      </Switch>
+                <Switch location={location}>
+                  <Route path={`/your-listings`} component={YourListings} />
+                  <Route path={`/add-listing`} component={AddListing} />
+                  <Route path={`/update-listing`} component={UpdateListing} />
+                  <Route path={`/register`} component={Register} />
+                  <Route exact path={`/`} component={Login} />
+                  {/* <Route path={`/logout`} component={Logout} /> */}
+                  <Route path={`/privacy`} component={PrivacyPolicy} />
+                  <Route path={`/terms-and-conditions`} component={TermsAndConditions} />
+                </Switch>
               </CSSTransition>
             </TransitionGroup>
           )} />

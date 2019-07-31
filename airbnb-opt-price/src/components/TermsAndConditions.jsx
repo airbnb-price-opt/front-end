@@ -3,7 +3,7 @@ import React from "react"
 const TermsAndConditions = () =>
 {
     return (
-        <div>Your first born child is ours!</div>
+        <div>No current terms and conditions</div>
     )
 }
 
