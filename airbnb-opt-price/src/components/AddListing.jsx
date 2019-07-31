@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getLatLong } from '../getLatLong'
 
 import { AddListingDiv, AddListingWrapper, AddListingHeader, UploadImageDiv, UploadImageText, ListingFormWrapper, ListingFormDiv, ListingForm, ListingFormLabel, ListingFormSelect, ListingFormButton, ListingFormInput } from '../StyledComps'
-// import { addNeighborhoodGroup } from '../store/actions';
+import { getBedTypes } from '../store/actions';
 
 const AddListing = (props) => {
     const [listing, setListing] = useState({address: '', guests: 0, nights: 0})
@@ -14,36 +14,31 @@ const AddListing = (props) => {
     
     
     const handleSubmit = () => {
-        props.neighborhoodGroup.map(selected => {
-            console.log('MAP SELECTED GROUP', selectedGroup)
-            if(selected.name === selectedGroup){
-                console.log('fdfsfsd')
-                setSelectedHood(selected.neighbourHood)
-            }
-        })
     }
     
+    useEffect(() => {
+        props.getBedTypes();
+    },[])
     
-    console.log('Redux Group Data', props.neighborhoodGroup)
     const handleChange = e => {
         // setListing({ ...listing, [event.target.name]: event.target.value });
         setSelectedGroup(e.target.value)
         
         props.neighborhoodGroup.map(selected => {
-            console.log('MAP SELECTED GROUP', selectedGroup)
             if(selected.name === e.target.value){
-                console.log('fdfsfsd')
                 setSelectedHood(selected.neighbourHood)
             }
         })
 
-        if (e.target.name === "address")
-        {
-            console.log("lat long:",getLatLong(e.target.value));
-        }
     };
 
+    const latLongHandleChange = e =>{
+        if (e.target.name === "address"){
+            console.log("lat long:",getLatLong(e.target.value));
+        }
+    }
 
+    console.log('USE TO POPULATE DROPDOWN', props.bedTypes)
 
     return (
         <AddListingDiv>
@@ -96,7 +91,7 @@ const AddListing = (props) => {
                             <ListingFormInput
                                 required
                                 name='address' 
-                                onChange={handleChange}
+                                onChange={latLongHandleChange}
                             />
                                 
                         </ListingFormLabel>
@@ -153,26 +148,35 @@ const AddListing = (props) => {
 
 const mapStateToProps = (state) => {
     return{
-        neighborhoodGroup: state.neighborhoodGroup
+        neighborhoodGroup: state.neighborhoodGroup,
+        bedTypes: state.bedTypes
     }
 }
 
-export default connect(mapStateToProps, {})(AddListing);
+export default connect(mapStateToProps, { getBedTypes })(AddListing);
 
-                                    // // if(selected.name === selectedGroup){
-                                    //     console.log(selected.neighbourHood)                                         
-                                    //     selected.neighbourHood.map(hood => {
-                                    //         console.log(hood.name)
-                                    //         return(
-                                    //             <div>
-                                    //                 <h1 key={hood.neighbourhood_id}>{hood.name}</h1>
-                                    //                 <p>Sample P tag</p>
-                                    //             </div>
-                                    //         )
-                                    //     })
-                                    // // }else{
-                                    // //     return(
-                                    // //         <option value="No Matching Neighborhoods. Please Select Another">
-                                    // //         </option>
-                                    // //     )
-                                    // // }
+    // // if(selected.name === selectedGroup){
+    //     console.log(selected.neighbourHood)                                         
+    //     selected.neighbourHood.map(hood => {
+    //         console.log(hood.name)
+    //         return(
+    //             <div>
+    //                 <h1 key={hood.neighbourhood_id}>{hood.name}</h1>
+    //                 <p>Sample P tag</p>
+    //             </div>
+    //         )
+    //     })
+    // // }else{
+    // //     return(
+    // //         <option value="No Matching Neighborhoods. Please Select Another">
+    // //         </option>
+    // //     )
+    // // }
+
+    // props.neighborhoodGroup.map(selected => {
+    //     console.log('MAP SELECTED GROUP', selectedGroup)
+    //     if(selected.name === selectedGroup){
+    //         console.log('fdfsfsd')
+    //         setSelectedHood(selected.neighbourHood)
+    //     }
+    // })
