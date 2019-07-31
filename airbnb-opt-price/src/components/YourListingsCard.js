@@ -4,7 +4,7 @@ import trash from '../assets/trash.svg'
 import house from '../assets/house.svg'
 
 import YourListingsModal from './YourListingsModal'
-import { StyledListingsCard, StyledAddListingsLink, StyledUpdateListingsLink, StyledListingsCardContent, StyledListingGrid } from '../StyledComps'
+import { StyledListingsCard, StyledAddListingsLink, StyledUpdateListingsLink, StyledListingsCardContent, StyledLCBC, StyledListingGrid } from '../StyledComps'
 
 const YourListingsCard = ( { data, EditListing, DeleteListing, listingEdit, setListingEdit } ) => {
     return (
@@ -22,8 +22,10 @@ const YourListingsCard = ( { data, EditListing, DeleteListing, listingEdit, setL
                         <p>ACTUAL PRICE: {listing.act_price}</p>
                         <p>OPTIMAL PRICE: {listing.opt_price}</p>
                     </StyledListingsCardContent>
-                    <YourListingsModal listing={listing}>VIEW DETAILS</YourListingsModal>
-                    <StyledUpdateListingsLink to={"/update-listing/"} onClick={setListingEdit(listing)}>UPDATE LISTING</StyledUpdateListingsLink>
+                    <StyledLCBC>
+                        <YourListingsModal listing={listing} setListingEdit={setListingEdit}>VIEW DETAILS</YourListingsModal>
+                        <StyledUpdateListingsLink to={"/update-listing/"} onClick={setListingEdit(listing)}>UPDATE LISTING</StyledUpdateListingsLink>
+                    </StyledLCBC>
                     <img className='trash-icon' src={trash} alt='delete icon' onClick={() => DeleteListing(listing)}></img>
                 </StyledListingsCard>
             ))}
