@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../store/actions';
 import {LoginContainerDiv, LoginForm, LoginFormContainer, LoginImage, LoginFormLabelInputDiv, UndrawImage} from '../StyledComps'
+import { history } from "../helpers/history";
+
 
 const Login = (props) => {
 
@@ -10,10 +12,10 @@ const Login = (props) => {
     const handleChanges = (e) => {
         setCurrentUser({ ...currentUser, [e.target.name]: e.target.value })
     }
-
+    console.log(history)
     const verifyUser = (e) => {
         e.preventDefault();
-        props.loginUser(currentUser)
+        props.loginUser(currentUser, history)
     }
     console.log(currentUser)
     return(
