@@ -19,10 +19,10 @@ import {
     GET_ROOM_TYPES_FAIL,
     GET_CANCELLATION_TYPES_START,
     GET_CANCELLATION_TYPES_SUCCESS,
-    GET_CANCELLATION_TYPES_FAIL
-    // ADD_NEIGHBORHOOD_GROUP_START,
-    // ADD_NEIGHBORHOOD_GROUP_SUCCESS,
-    // ADD_NEIGHBORHOOD_GROUP_FAIL
+    GET_CANCELLATION_TYPES_FAIL,
+    GET_LISTINGS_START,
+    GET_LISTINGS_SUCCESS,
+    GET_LISTINGS_FAIL
 } from '../actions';
 
 const initialState = {
@@ -194,7 +194,7 @@ export const reducer = (state = initialState, action ) => {
                 getting: false,
                 roomTypes: action.payload
             }
-            case GET_CANCELLATION_TYPES_START:
+        case GET_CANCELLATION_TYPES_START:
             return{
                 ...state,
                 getting: false
@@ -211,6 +211,24 @@ export const reducer = (state = initialState, action ) => {
                 ...state,
                 getting: false,
                 cancellationTypes: action.payload
+            }
+        case GET_LISTINGS_START:
+            return{
+                ...state,
+                getting: false
+            }
+        case GET_LISTINGS_SUCCESS:
+            console.log('GET_LISTINGS_REDUCER', action.payload)
+            return{
+                ...state,
+                getting: false,
+                listings: action.payload
+            }
+        case GET_LISTINGS_FAIL:
+            return{
+                ...state,
+                getting: false,
+                listings: action.payload
             }
         default:
             return state;
