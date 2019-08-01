@@ -47,67 +47,8 @@ const initialState = {
     roomTypes: [],
     cancellationTypes: [],
     propertyTypes: [],
-<<<<<<< HEAD
-    neighborhoodGroup: [
-        {
-            name: "Friedrichstein",
-            neighbourHood: [
-            {
-                name: "NeighborhoodFried",
-                neighbourhood_id: 33
-            },
-            {
-                name: "NeighborhoodRich",
-                neighbourhood_id: 1
-            },
-            {
-                name: "NeighborhoodStein",
-                neighbourhood_id: 2
-            }
-            ],
-            neighbourhood_group_id: 0
-        },
-        {
-            name: "Lichtenstiein",
-            neighbourHood: [
-            {
-                name: "NeighborhoodLicht",
-                neighbourhood_id: 0
-            },
-            {
-                name: "NeighborhoodTen",
-                neighbourhood_id: 1
-            },
-            {
-                name: "NeighborhoodSteiner",
-                neighbourhood_id: 2
-            }
-            ],
-            neighbourhood_group_id: 1
-        },
-        {
-            name: "BerlinHamburn",
-            neighbourHood: [
-            {
-                name: "NeighborhoodBer",
-                neighbourhood_id: 0
-            },
-            {
-                name: "NeighborhoodLinHam",
-                neighbourhood_id: 1
-            },
-            {
-                name: "NeighborhoodBurn",
-                neighbourhood_id: 2
-            }
-            ],
-            neighbourhood_group_id: 2
-        }
-    ],
-=======
     neighborhoodGroup: [],
 
->>>>>>> 41294c07588173a661e0b9b86504753e261e484f
 }
 
 export const reducer = (state = initialState, action ) => {
