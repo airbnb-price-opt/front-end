@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
 
 import { AddListingDiv, StyledOption, AddListingWrapper, AddListingHeader, UploadImageDiv, ListingFormTickDiv, ListingFormTickLabel, UploadImageText, ListingFormWrapper, ListingFormDiv, ListingForm, ListingFormLabel, ListingFormInputTickDiv, ListingFormSelect, ListingFormInputTick, ListingFormInput, ListingFormButton } from '../StyledComps'
-import { getNeighborhoods, getNeighborhoodGroups, getBedTypes, getRoomTypes, getCancellationTypes } from '../store/actions';
+import { updateListing, getNeighborhoods, getNeighborhoodGroups, getBedTypes, getRoomTypes, getCancellationTypes } from '../store/actions';
 
 const UpdateListing = (props) => {
     const [listing, setListing] = useState(
@@ -71,6 +71,7 @@ const UpdateListing = (props) => {
 
     const handleSubmit = e => {
         e.preventDefault()
+        props.updateListing(listing, listing.listing_id, props.history);
         console.log("Updated Listing", listing)
         console.log(chosenAmenities)
     }
@@ -362,6 +363,6 @@ const mapStateToProps = (state) => {
         cancellationTypes: state.cancellationTypes
     }
 }
-export default connect(mapStateToProps, { getRoomTypes, getBedTypes, getNeighborhoods, getNeighborhoodGroups, getCancellationTypes })(UpdateListing)
+export default connect(mapStateToProps, { updateListing, getRoomTypes, getBedTypes, getNeighborhoods, getNeighborhoodGroups, getCancellationTypes })(UpdateListing)
 
 

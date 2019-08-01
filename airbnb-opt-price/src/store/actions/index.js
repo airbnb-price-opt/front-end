@@ -25,6 +25,12 @@ export const GET_CANCELLATION_TYPES_FAIL = 'GET_CANCELLATION_TYPES_FAIL';
 export const GET_LISTINGS_START = 'GET_LISTINGS_START';
 export const GET_LISTINGS_SUCCESS = 'GET_LISTINGS_SUCCESS';
 export const GET_LISTINGS_FAIL = 'GET_LISTINGS_FAIL';
+export const ADD_LISTING_START = 'ADD_LISTING_START';
+export const ADD_LISTING_SUCCESS = 'ADD_LISTING_SUCCESS';
+export const ADD_LISTING_FAIL = 'ADD_LISTING_FAIL';
+export const UPDATE_LISTING_START = 'UPDATE_LISTING_START';
+export const UPDATE_LISTING_SUCCESS = 'UPDATE_LISTING_SUCCESS';
+export const UPDATE_LISTING_FAIL = 'UPDATE_LISTING_FAIL';
 
 export const registerUser = (newUserObj) => dispatch => {
     dispatch({ type: REGISTER_USER_START })
@@ -148,5 +154,35 @@ export const getListings = () => dispatch => {
         .catch(err => {
             console.log('GET_LISTINGS_FAIL', err)
             dispatch({ type: GET_LISTINGS_FAIL, payload: err })
+        })
+}
+
+
+export const addListing = (newListingObj) => dispatch => {
+    dispatch({ type: ADD_LISTING_START })
+    axiosWithAuth()
+        .post('https://airbnb-price-opt.herokuapp.com/listings/new', newListingObj)
+        .then(res => {
+            console.log('ADD_LISTING_SUCCESS', res.data)
+            dispatch({ type: ADD_LISTING_SUCCESS, payload: res.data })
+        })
+        .catch(err => {
+            console.log('ADD_LISTING_FAIL', err)
+            dispatch({ type: ADD_LISTING_FAIL, payload: err })
+        })
+}
+
+export const updateListing = (updateListingObj, id, history) => dispatch => {
+    dispatch({ type: UPDATE_LISTING_START })
+    axiosWithAuth()
+        .put(`https://airbnb-price-opt.herokuapp.com/listings/update/${id}`, updateListingObj)
+        .then(res => {
+            console.log('UPDATE_LISTING_SUCCESS', res.data)
+            dispatch({ type: UPDATE_LISTING_SUCCESS, payload: res.data })
+            history.push('/your-listings')
+        })
+        .catch(err => {
+            console.log('UPDATE_LISTING_FAIL', err)
+            dispatch({ type: UPDATE_LISTING_FAIL, payload: err })
         })
 }
