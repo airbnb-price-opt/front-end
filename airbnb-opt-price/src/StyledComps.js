@@ -11,6 +11,10 @@ export const AddListingDiv = styled.div`
     }
 `;
 
+export const ListFormNameDiv  = styled.div`
+    width: 100%;
+`;
+
 export const StyledOption = styled.option`
     line-height: 2.2rem;
 `; 
@@ -71,6 +75,7 @@ export const UploadImageText = styled.div`
 export const ListingFormWrapper = styled.div`
     @media (max-width: 600px) {
         width: 100%;
+        padding-bottom: 200px;
     }
 `;
 
@@ -106,7 +111,7 @@ export const ListingForm = styled.form`
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
     font-family: 'Montserrat', sans-serif;
@@ -118,6 +123,7 @@ export const ListingForm = styled.form`
 
 export const ListingFormLabel = styled.label`
     margin-bottom: 30px;
+    margin-top: 10px;
     margin-right: 5%;
     font-weight: bold;
     font-size: .7rem;
@@ -132,12 +138,13 @@ export const ListingFormLabel = styled.label`
 export const ListingFormTickDiv = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     width: 100%;
 `;
 
 export const ListingFormSelect = styled.select`
     margin-top: 5px;
+    margin-bottom: 15px;
     height: 31px;
     width: 100%;
     font-family: 'Montserrat', sans-serif;
@@ -150,6 +157,7 @@ export const ListingFormSelect = styled.select`
 export const ListingFormInput = styled.input`
     font-family: 'Montserrat', sans-serif;
     margin-top: 5px;
+    margin-bottom: 15px;
     height: 31px;
     width: 100%;
     border: none;
@@ -164,19 +172,28 @@ export const ListingFormInput = styled.input`
 export const ListingFormInputTickDiv = styled.div`
     /* margin-top: 5px; */
     /* height: 31px; */
-    width: 18%;
+    width: 14.25%;
     /* border: 1px solid black; */
     display: flex;
     align-items: center;
-    padding: 5px 10px 5px 10px;
+    padding: 5px 0px 5px 0px;
     font-family: 'Montserrat', sans-serif;
     @media (max-width: 600px) {
-        width: 43%;
+        width: 100%;
+        font-size: 1rem;
     }
 
 `;
 
 export const ListDivs = styled.div`
+    width: 21.7%;
+    /* padding-right: 50px;  */
+    @media(max-width: 600px) {
+        width: 100%;
+    }
+    &:nth-child(5) {
+        justify-self: flex-end;
+    }
 `
 
 
@@ -184,7 +201,7 @@ export const ListingFormTickLabel = styled.label`
     /* margin-bottom: 30px; */
     width: 90%;
     font-style: normal;
-    font-size: 0.7rem;
+    font-size: 0.66rem;
     line-height: 17px;
     text-transform: uppercase;
     
