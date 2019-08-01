@@ -80,6 +80,34 @@ const UpdateListing = (props) => {
         props.updateListing(listing, id, props.history)
         props.history.push('/your-listings')
     }
+    const handleRoomTypeChange = event => {
+        setListing({...listing, roomType: {room_type_id: parseInt(event.target.value)}})
+    }
+
+    const handleBedTypeChange = event => {
+        setListing({...listing, bedType: {bed_type_id: parseInt(event.target.value)}})
+    }
+
+    const handlePropertyTypeChange = event => {
+        setListing({...listing, propertyType: {property_type_id: event.target.value}})
+    }
+
+    const handleCancellationChange = event => {
+        setListing({...listing, cancellationPolicy: {cancellation_policy_id: parseInt(event.target.value)}})
+    }
+
+    const handleNeighborhoodGroupChange = e => {
+        setSelectedGroup(e.target.value)
+        props.neighborhoodGroup.map(selected => {
+            if(selected.name === e.target.value){
+                setSelectedHood(selected.neighbourHoods)
+            }
+        })
+    };
+
+    const handleNeighborhoodChange = e => {
+        setListing({ ...listing, neighbourHood: {neighbourhood_id: parseInt(e.target.value)}});
+    }
 
     const handleChange = event => {
         if(event.target.min || event.target.max){
@@ -122,21 +150,6 @@ const UpdateListing = (props) => {
 
     console.log(props.propertyTypes)
 
-    const handleNeighborhoodChange = e => {
-
-        // setListing({ ...listing, [event.target.name]: event.target.value });
-        setSelectedGroup(e.target.value)
-        
-        props.neighborhoodGroup.map(selected => {
-            if(selected.name === e.target.value){
-                setSelectedHood(selected.neighbourHoods)
-                setListing({ ...listing, 'neighbourhood': e.target.value});
-            }
-            return true
-        })
-
-    };
-
     const latLongHandleChange = e =>{
         getLatLong(e.target.value, setListing, listing)
     }
@@ -160,6 +173,24 @@ const UpdateListing = (props) => {
                             value={listing.name}
                             />
                         </ListingFormLabel>
+                        <ListingFormLabel>
+                            Property Type:
+                            <br />
+                            <ListingFormSelect
+                            name='property_type'
+                            onChange={handlePropertyTypeChange}
+                            defaultValue='Select Property Type'
+                            >
+                                <option disabled>Select Property Type</option>
+                                {
+                                    props.propertyTypes.map(propertyType => {
+                                        return (
+                                            <option value={propertyType.property_type_id} key={propertyType.property_type_id}>{propertyType.name}</option>
+                                        )
+                                    })
+                                }
+                            </ListingFormSelect>
+                        </ListingFormLabel>
                         </ListFormNameDiv>
                         <ListDivs>
                         <ListingFormLabel>
@@ -171,9 +202,7 @@ const UpdateListing = (props) => {
                                 onChange={handleNeighborhoodChange}
                                 defaultValue={listing.neighbourHood.neighbourHoodGroup.name}
                             >
-                                <option value="CHOOSE YOUR NEIGHBORHOOD GROUP..." disabled selected='selected'>
-                                    CHOOSE YOUR NEIGHBORHOOD GROUP...
-                                </option>
+                                <option disabled>CHOOSE YOUR NEIGHBORHOOD GROUP</option>
                                 {props.neighborhoodGroup.map(group => {
                                     return (
                                             <option
@@ -192,13 +221,12 @@ const UpdateListing = (props) => {
                             <ListingFormSelect
                                 required
                                 name='selectedHood'
+                                onChange={handleNeighborhoodChange}
                                 defaultValue={listing.neighbourHood.name}
                             >
-                                <option value="" disabled selected>
-                                    CHOOSE YOUR NEIGHBORHOOD...
-                                </option>
+                                <option disabled>CHOOSE YOUR NEIGHBORHOOD</option>
 
-                                {!selectedHood ? null : selectedHood.map(each => <option key={each.name}>{each.name}</option>)}
+                                {!selectedHood ? null : selectedHood.map(each => <option value={each.neighbourhood_id} key={each.name}>{each.name}</option>)}
                                 
                             </ListingFormSelect>
                         </ListingFormLabel>
@@ -217,7 +245,6 @@ const UpdateListing = (props) => {
                             <br />
                             <ListingFormInput
                             name='calculated_host_listing_count' 
-                            onChange={handleChange}
                             defaultValue={0}
                             type='number'
                             min={0}
@@ -306,7 +333,7 @@ const UpdateListing = (props) => {
                             <br />
                             <ListingFormSelect
                             name='room_type'
-                            onChange={handleChange}
+                            onChange={handleRoomTypeChange}
                             defaultValue={listing.roomType.name}
                             >
                                 <option disabled>Select Room Type</option>
@@ -352,7 +379,7 @@ const UpdateListing = (props) => {
                             <br />
                             <ListingFormSelect
                             name='bed_type'
-                            onChange={handleChange}
+                            onChange={handleBedTypeChange}
                             defaultValue={listing.bedType.name}
                             >
                                 <option disabled>Select Bed Type</option>
@@ -373,7 +400,6 @@ const UpdateListing = (props) => {
                             onChange={handleChange}
                             value={listing.bathrooms}
                             type='number'
-                            step={0.5}
                             min={1}
                             max={10}
                             >
@@ -384,7 +410,7 @@ const UpdateListing = (props) => {
                             <br />
                             <ListingFormSelect
                             name='cancellation_policy'
-                            onChange={handleChange}
+                            onChange={handleCancellationChange}
                             defaultValue={listing.cancellationPolicy.name}
                             >
                                 <option disabled>Select Cancellation Policy</option>
