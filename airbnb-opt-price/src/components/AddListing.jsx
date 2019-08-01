@@ -9,7 +9,8 @@ import {
     addListing, 
     getBedTypes, 
     getRoomTypes, 
-    getCancellationTypes 
+    getCancellationTypes,
+    getPropertyTypes 
 } from '../store/actions';
 
 import { 
@@ -95,7 +96,9 @@ const AddListing = (props) => {
     }
 
     const handleCancellationChange = event => {
+
         setListing({...listing, cancellationPolicy: {cancellation_policy_id: parseInt(event.target.value)}})
+
     }
 
     const handleNeighborhoodGroupChange = e => {
@@ -154,7 +157,10 @@ const AddListing = (props) => {
         props.getBedTypes();
         props.getRoomTypes();
         props.getCancellationTypes();
+        props.getPropertyTypes();
     },[])
+
+    // console.log(props.propertyTypes)
 
     const latLongHandleChange = e =>{
         getLatLong(e.target.value, setListing, listing)
@@ -170,6 +176,17 @@ const AddListing = (props) => {
                         <ListFormNameDiv>
                         <ListingFormLabel>
                             Name of Listing:
+                            <br />
+                            <ListingFormInput
+                            name='name' 
+                            onChange={handleChange}
+                            type='text'
+                            />
+                        </ListingFormLabel>
+                        </ListFormNameDiv>
+                        <ListFormNameDiv>
+                        <ListingFormLabel>
+                            Address:
                             <br />
                             <ListingFormInput
                             name='name' 
@@ -217,11 +234,22 @@ const AddListing = (props) => {
                             </ListingFormSelect>
                         </ListingFormLabel>
                         <ListingFormLabel>
-                            Address:
+                            Property Type:
                             <br />
-                            <ListingFormInput
-                            onChange={latLongHandleChange}
-                            />
+                            <ListingFormSelect
+                            name='property_type'
+                            onChange={handlePropertyTypeChange}
+                            defaultValue='Select Property Type'
+                            >
+                                <option disabled>Select Property Type</option>
+                                {
+                                    props.propertyTypes.map(propertyType => {
+                                        return (
+                                            <option value={propertyType.property_type_id} key={propertyType.property_type_id}>{propertyType.name}</option>
+                                        )
+                                    })
+                                }
+                            </ListingFormSelect>
                         </ListingFormLabel>
                         <ListingFormLabel>
                             Current # of Listings:
@@ -443,7 +471,8 @@ const mapStateToProps = (state) => {
         neighborhoodGroup: state.neighborhoodGroup,
         bedTypes: state.bedTypes,
         roomTypes: state.roomTypes,
-        cancellationTypes: state.cancellationTypes
+        cancellationTypes: state.cancellationTypes,
+        propertyTypes: state.propertyTypes
     }
 }
 
@@ -454,7 +483,8 @@ export default connect(mapStateToProps,
         addListing, 
         getCancellationTypes, 
         getRoomTypes, 
-        getBedTypes 
+        getBedTypes,
+        getPropertyTypes 
     }
 )(AddListing);
 
