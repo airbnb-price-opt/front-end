@@ -30,8 +30,8 @@ const MobileNav = (props) =>
     if(loggedIn) {
         return (
             <MobileNavDiv>
-                <StyledMobileNavLink to="/your-listings/" exact activeClassName="active-nav">YOUR LISTINGS</StyledMobileNavLink>
-                <StyledMobileNavLink to="/" onClick={logoutClick} activeClassName="active-nav">LOGOUT</StyledMobileNavLink>
+                <StyledMobileNavLink to="/your-listings/" activeClassName="active-nav">YOUR LISTINGS</StyledMobileNavLink>
+                <StyledMobileNavLink to="/" exact onClick={logoutClick} activeClassName="active-nav">LOGOUT</StyledMobileNavLink>
             </MobileNavDiv>
         )
     }
