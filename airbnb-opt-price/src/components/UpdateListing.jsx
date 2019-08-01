@@ -200,8 +200,12 @@ const UpdateListing = (props) => {
                             <ListingFormSelect
                                 required
                                 name={selectedGroup}
+<<<<<<< HEAD
                                 onChange={handleNeighborhoodGroupChange}
                                 defaultValue="CHOOSE YOUR NEIGHBORHOOD GROUP"
+=======
+                                onChange={handleNeighborhoodChange}
+>>>>>>> a44d7ef356136de4a1236a1155705da2fcbb4f17
                             >
                                 <option disabled>CHOOSE YOUR NEIGHBORHOOD GROUP</option>
                                 {props.neighborhoodGroup.map(group => {
