@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getLatLong } from '../getLatLong'
-import { getBedTypes, getRoomTypes, getCancellationTypes } from '../store/actions';
+import { addListing, getBedTypes, getRoomTypes, getCancellationTypes } from '../store/actions';
 
 import { AddListingDiv, AddListingWrapper, AddListingHeader, UploadImageDiv, ListingFormTickDiv, ListingFormTickLabel, UploadImageText, ListingFormWrapper, ListingFormDiv, ListingForm, ListingFormLabel, ListingFormInputTickDiv, ListingFormSelect, ListingFormInputTick, ListingFormInput, ListingFormButton } from '../StyledComps'
+import { nullLiteral } from '@babel/types';
 
 
 const AddListing = (props) => {
+
     const [listing, setListing] = useState(
         {address: '',cleaning_fee: 0,security_deposit: 0,extra_people: 0, accommodates: 1, guests_included: 1,
         availability_365: 0, room_type: '', bedrooms: 1, beds: 1, bed_type: '', bathrooms: 1,cancellation_policy: '',
         calculated_host_listing_count: 0, amenities: 0, neighbourhood: ''
         })
+
     const [selectedGroup, setSelectedGroup] = useState('')
     const [selectedHood, setSelectedHood] = useState('')
     const [amenitiesCount, setAmenitiesCount] = useState(0)
@@ -24,9 +27,11 @@ const AddListing = (props) => {
     'Coffee maker', 'Dryer', 'Dishwasher', 'Long term stays allowed', 'Pets allowed', 'Fire extinguisher',
     'Luggage dropoff allowed', 'Private entrance', 'Extra pillows and blankets']
     
-    const handleSubmit = event => {
-        event.preventDefault()
-        console.log("Updated Listing", listing)
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        props.addListing(listing)
+        console.log("Added Listing", listing)
     }
 
     const handleChange = event => {
@@ -365,4 +370,60 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { getCancellationTypes, getRoomTypes, getBedTypes })(AddListing);
+export default connect(mapStateToProps, { addListing, getCancellationTypes, getRoomTypes, getBedTypes })(AddListing);
+
+//POST LISTING OBJECT DATA STRUCTURE
+//         {
+//             accommodates: 0,
+//             bathrooms: 0,
+//             bedType: {
+//               bed_type_id: 0,
+//               listings: [null],
+//               name: ''
+//             },
+//             bedrooms: 0,
+//             cancellationPolicy: {
+//               cancellation_policy_id: 0,
+//               listings: [null],
+//               name: '',
+//             },
+//             cleaning_fee: 0,
+//             extra_people: 0,
+//             guests_included: 0,
+//             has_availability: true,
+//             latitude: 0,
+//             listing_id: 0,
+//             longitude: 0,
+//             maximum_nights: 0,
+//             minimum_nights: 0,
+//             name: '',
+//             neighbourHood: {
+//               listings: [null],
+//               name: '',
+//               neighbourHoodGroup: {
+//                 name: '',
+//                 neighbourHoods: [null],
+//                 neighbourhood_group_id: 0
+//               },
+//               neighbourhood_id: 0
+//             },
+//             number_of_reviews: 0,
+//             price: 0,
+//             propertyType: {
+//               listings: [null],
+//               name: '',
+//               property_type_id: 0
+//             },
+//             review_scores_cleanliness: 0,
+//             review_scores_communication: 0,
+//             review_scores_location: 0,
+//             review_scores_rating: 0,
+//             reviews_per_month: 0,
+//             roomType: {
+//               listings: [null],
+//               name: '',
+//               room_type_id: 0
+//             },
+//             security_deposit: 0
+//         }
+//     )
