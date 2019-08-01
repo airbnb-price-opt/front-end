@@ -17,11 +17,6 @@ class YourListingsModal extends React.Component {
         const { open } = this.state
         const { listing, handleDelete} = this.props
 
-        // function ListingToUpdate(event, data) {
-        //     setListingEdit(data)
-        //     event.target.close
-        // }
-
         return (
             <Modal
                 open={open}
