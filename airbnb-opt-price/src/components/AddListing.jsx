@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getLatLong } from '../getLatLong'
-import { getBedTypes, getRoomTypes } from '../store/actions';
+import { getBedTypes, getRoomTypes, getCancellationTypes } from '../store/actions';
 
 import { AddListingDiv, AddListingWrapper, AddListingHeader, UploadImageDiv, ListingFormTickDiv, ListingFormTickLabel, UploadImageText, ListingFormWrapper, ListingFormDiv, ListingForm, ListingFormLabel, ListingFormInputTickDiv, ListingFormSelect, ListingFormInputTick, ListingFormInput, ListingFormButton } from '../StyledComps'
 
@@ -53,6 +53,7 @@ const AddListing = (props) => {
     useEffect(() => {
         props.getBedTypes();
         props.getRoomTypes();
+        props.getCancellationTypes();
     },[])
     
 
@@ -76,6 +77,7 @@ const AddListing = (props) => {
     }
 
     console.log('USE TO POPULATE ROOMTYPE DROPDOWN', props.roomTypes)
+    console.log('USE TO POPULATE CANCELLATION DROPDOWN', props.cancellationTypes)
 
     return (
         <AddListingDiv>
@@ -349,8 +351,9 @@ const mapStateToProps = (state) => {
     return{
         neighborhoodGroup: state.neighborhoodGroup,
         bedTypes: state.bedTypes,
-        roomTypes: state.roomTypes
+        roomTypes: state.roomTypes,
+        cancellationTypes: state.cancellationTypes
     }
 }
 
-export default connect(mapStateToProps, { getRoomTypes, getBedTypes })(AddListing);
+export default connect(mapStateToProps, { getCancellationTypes, getRoomTypes, getBedTypes })(AddListing);
