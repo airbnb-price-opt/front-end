@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import axios from 'axios'
 
 import LoadingScreen from './LoadingScreen'
-import { getNeighborhoods, getNeighborhoodGroups } from '../store/actions';
+import { getListings } from '../store/actions';
 import { DummyData } from './DummyData'
 import { StyledYourListings } from '../StyledComps';
 
@@ -34,8 +34,7 @@ const YourListings = (props) => {
     // },[userListing.length])
 
     useEffect(() => {
-        props.getNeighborhoods();
-        props.getNeighborhoodGroups();
+        props.getListings();
     }, [])
 
     function EditListing(item) {
@@ -48,6 +47,7 @@ const YourListings = (props) => {
         })
     }
 
+    console.log('SET LISTINGS TO MAP INTO CARDS:', props.listings)
     function DeleteListing(item) {
         userListing.map((listing, index) => {
             if (listing === item) {
@@ -81,9 +81,8 @@ const YourListings = (props) => {
 
 const mapStateToProps = (state) => {
     return{
-        neighborhoods: state.neighborhoods,
-        neighborhoodGroups: state.neighborhoodGroups
+        listings: state.listings
     }
 }
 
-export default connect(mapStateToProps, { getNeighborhoodGroups, getNeighborhoods })(YourListings)
+export default connect(mapStateToProps, { getListings })(YourListings)
