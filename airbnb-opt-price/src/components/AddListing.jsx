@@ -105,7 +105,7 @@ const AddListing = (props) => {
         setSelectedGroup(e.target.value)
         props.neighborhoodGroup.map(selected => {
             if(selected.name === e.target.value){
-                setSelectedHood(selected.neighbourHood)
+                setSelectedHood(selected.neighbourHoods)
             }
         })
     };
