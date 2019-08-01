@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios'
+// import axios from 'axios'
 
 import LoadingScreen from './LoadingScreen'
 import { getListings, deleteListing } from '../store/actions';
@@ -18,7 +18,6 @@ const YourListingsCard = React.lazy(() => {
 
 const YourListings = (props) => {
     const [userListing, setUserListing] = useState([])
-    const [listingEdit, setListingEdit] = useState(null)
 
     useEffect(() => {
         setUserListing(props.listings)
@@ -33,12 +32,13 @@ const YourListings = (props) => {
         props.deleteListing(listing, id, props.history)
     }
     
+    if(!userListing) return <p>Loading...</p>
     return (
         <StyledYourListings>
             <h1>YOUR LISTINGS</h1>
             <hr></hr>
             <Suspense fallback={<LoadingScreen/>}>
-                <YourListingsCard handleDelete={handleDelete} data={userListing} listingEdit={listingEdit} setListingEdit={setListingEdit}/>
+                <YourListingsCard handleDelete={handleDelete} data={userListing}/>
             </Suspense>
         </StyledYourListings>
     )

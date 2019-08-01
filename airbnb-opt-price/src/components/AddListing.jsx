@@ -91,10 +91,7 @@ const AddListing = (props) => {
 
     const handleBedTypeChange = event => {
         setListing({...listing, bedType: {bed_type_id: parseInt(event.target.value)}})
-<<<<<<< HEAD
-=======
 
->>>>>>> a44d7ef356136de4a1236a1155705da2fcbb4f17
     }
 
     const handlePropertyTypeChange = event => {
@@ -102,13 +99,9 @@ const AddListing = (props) => {
     }
 
     const handleCancellationChange = event => {
-<<<<<<< HEAD
-        setListing({...listing, cancellationPolicy: {cancellation_policy_id: parseInt(event.target.value)}})
-=======
 
         setListing({...listing, cancellationPolicy: {cancellation_policy_id: parseInt(event.target.value)}})
 
->>>>>>> a44d7ef356136de4a1236a1155705da2fcbb4f17
     }
 
     const handleNeighborhoodGroupChange = e => {
