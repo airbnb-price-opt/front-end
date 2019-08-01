@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
 
-import { AddListingDiv, StyledOption, AddListingWrapper, AddListingHeader, UploadImageDiv, ListingFormTickDiv, ListingFormTickLabel, UploadImageText, ListingFormWrapper, ListingFormDiv, ListingForm, ListingFormLabel, ListingFormInputTickDiv, ListingFormSelect, ListingFormInputTick, ListingFormInput, ListingFormButton } from '../StyledComps'
+import { ListDivs, AddListingDiv, StyledOption, AddListingWrapper, AddListingHeader, UploadImageDiv, ListingFormTickDiv, ListingFormTickLabel, UploadImageText, ListingFormWrapper, ListingFormDiv, ListingForm, ListingFormLabel, ListingFormInputTickDiv, ListingFormSelect, ListingFormInputTick, ListingFormInput, ListingFormButton } from '../StyledComps'
 import { updateListing, getNeighborhoods, getNeighborhoodGroups, getBedTypes, getRoomTypes, getCancellationTypes } from '../store/actions';
 
 const UpdateListing = (props) => {
@@ -91,7 +91,7 @@ const UpdateListing = (props) => {
                     <ListingFormWrapper>
                         <ListingFormDiv>
                             <ListingForm>
-                                <div>
+                                <ListDivs>
                                     <ListingFormLabel>
                                         NEIGHBORHOOD GROUP:
                                         <br />
@@ -150,8 +150,8 @@ const UpdateListing = (props) => {
                                         onChange={handleChange}
                                         />
                                     </ListingFormLabel>
-                                </div>
-                                <div>
+                                </ListDivs>
+                                <ListDivs>
                                     <ListingFormLabel>
                                     Cleaning Fee:
                                     <br />
@@ -200,8 +200,8 @@ const UpdateListing = (props) => {
                                             } */}
                                         </ListingFormInput>
                                     </ListingFormLabel>
-                                </div>
-                                <div>
+                                </ListDivs>
+                                <ListDivs>
                                     <ListingFormLabel>
                                         Guests Included:
                                         <br />
@@ -260,8 +260,8 @@ const UpdateListing = (props) => {
                                             }
                                         </ListingFormSelect>
                                     </ListingFormLabel>
-                                </div>
-                                <div>
+                                </ListDivs>
+                                <ListDivs>
                                     <ListingFormLabel>
                                         # of Beds:
                                         <br />
@@ -328,7 +328,7 @@ const UpdateListing = (props) => {
                                             <option value='super_strict_60'>Super Strict 60</option>
                                         </ListingFormSelect>
                                     </ListingFormLabel>
-                                </div>
+                                </ListDivs>
                                 <ListingFormLabel>
                                     Amenities:
                                     <br />

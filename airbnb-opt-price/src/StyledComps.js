@@ -87,7 +87,7 @@ color: #EB5757;
 `;
 
 export const ListingFormDiv = styled.div`
-    width: 80%;
+    width: 90%;
     background: #EB5757;
     padding: 30px 50px;
     font-family: 'Montserrat', sans-serif;
@@ -104,6 +104,8 @@ export const ListingForm = styled.form`
     color: white;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
     flex-wrap: wrap;
     width: 100%;
     font-family: 'Montserrat', sans-serif;
@@ -172,6 +174,10 @@ export const ListingFormInputTickDiv = styled.div`
     }
 
 `;
+
+export const ListDivs = styled.div`
+`
+
 
 export const ListingFormTickLabel = styled.label`
     /* margin-bottom: 30px; */
