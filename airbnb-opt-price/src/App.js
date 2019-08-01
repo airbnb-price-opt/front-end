@@ -18,6 +18,10 @@ import {CSSTransition, TransitionGroup} from 'react-transition-group'
 function App() {
 
   const [loggedIn, setLoggedIn] = useState(false)
+  useEffect(_ =>
+    {
+      localStorage.getItem('token') ? setLoggedIn(true) : setLoggedIn(false)
+    }, [])
 
   return (
     <div className="App">
@@ -64,7 +68,15 @@ function App() {
                   }
                   />
                   <Route path={`/register`} component={Register} />
-                  <Route exact path={`/`} render={props => <Login {...props} setLoggedIn={setLoggedIn} />} />
+                  <Route exact path={`/`}
+                  render={props =>
+                    localStorage.getItem("token") ? (
+                      <Redirect to="/your-listings" {...props} />
+                    ) : (
+                      <Login {...props} setLoggedIn={setLoggedIn} />
+                    )
+                  }
+                  />
                   <Route path={`/privacy`} component={PrivacyPolicy} />
                   <Route path={`/terms-and-conditions`} component={TermsAndConditions} />
                 </Switch>
