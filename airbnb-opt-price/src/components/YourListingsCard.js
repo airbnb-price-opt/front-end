@@ -7,7 +7,7 @@ import YourListingsModal from './YourListingsModal'
 import { StyledListingsCard, StyledAddListingsLink, StyledUpdateListingsLink, StyledListingsCardContent, StyledLCBC, StyledListingGrid } from '../StyledComps'
 
 const YourListingsCard = (props) => {
-    const { data, EditListing, DeleteListing, listingEdit, setListingEdit } = props
+    const { data, DeleteListing, listingEdit, setListingEdit } = props
 
     return (
         <StyledListingGrid>
@@ -28,8 +28,11 @@ const YourListingsCard = (props) => {
                         <p>REVIEWS: {listing.number_of_reviews}</p>
                     </StyledListingsCardContent>
                     <StyledLCBC>
-                        <YourListingsModal listing={listing} DeleteListing={DeleteListing}>VIEW DETAILS</YourListingsModal>
-                        <StyledUpdateListingsLink to={"/update-listing/"} onClick={setListingEdit(listing)}>UPDATE LISTING</StyledUpdateListingsLink>
+                        <YourListingsModal listing={listing} DeleteListing={DeleteListing} setListingEdit={setListingEdit}>VIEW DETAILS</YourListingsModal>
+                        <StyledUpdateListingsLink to={{
+                            pathname: "/update-listing/",
+                            state: {listingEdit}
+                        }} onClick={setListingEdit(listing)}>UPDATE LISTING</StyledUpdateListingsLink>
                     </StyledLCBC>
                     <img className='trash-icon' src={trash} alt='delete icon' onClick={() => DeleteListing(listing)}></img>
                 </StyledListingsCard>

@@ -34,32 +34,34 @@ import {
 } from '../StyledComps';
 
 const UpdateListing = (props) => {
-    const [listing, setListing] = useState(
-        {
-            accommodates: 0,
-            bathrooms: 0,
-            bedType: {
-                bed_type_id: 0,
-            },
-            bedrooms: 0,
-            cancellationPolicy: {
-                cancellation_policy_id: 0,
-            },
-            cleaning_fee: 0,
-            extra_people: 0,
-            guests_included: 0,
-            latitude: 0,
-            longitude: 0,
-            name: '',
-            neighbourHood: {
-                neighbourhood_id: 0
-            },
-            roomType: {
-                room_type_id: 0
-            },
-            security_deposit: 0
-        }
-    )
+    const { listingEdit } = props.location.state
+    const [listing, setListing] = useState(listingEdit)
+    // const [listing, setListing] = useState(
+    //     {
+    //         accommodates: 0,
+    //         bathrooms: 0,
+    //         bedType: {
+    //             bed_type_id: 0,
+    //         },
+    //         bedrooms: 0,
+    //         cancellationPolicy: {
+    //             cancellation_policy_id: 0,
+    //         },
+    //         cleaning_fee: 0,
+    //         extra_people: 0,
+    //         guests_included: 0,
+    //         latitude: 0,
+    //         longitude: 0,
+    //         name: '',
+    //         neighbourHood: {
+    //             neighbourhood_id: 0
+    //         },
+    //         roomType: {
+    //             room_type_id: 0
+    //         },
+    //         security_deposit: 0
+    //     }
+    // )
 
     const [selectedGroup, setSelectedGroup] = useState('')
     const [selectedHood, setSelectedHood] = useState('')
@@ -138,6 +140,7 @@ const UpdateListing = (props) => {
 
     return (
         <AddListingDiv>
+            {console.log('This is the passed in listing', listing)}
             <AddListingHeader>Update Listing</AddListingHeader>
                 <AddListingWrapper>
                     <ListingFormWrapper>
@@ -151,6 +154,7 @@ const UpdateListing = (props) => {
                             name='name' 
                             onChange={handleChange}
                             type='text'
+                            value={listing.name}
                             />
                         </ListingFormLabel>
                         </ListFormNameDiv>

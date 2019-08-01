@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios'
+// import axios from 'axios'
 
 import LoadingScreen from './LoadingScreen'
 import { getListings } from '../store/actions';
@@ -44,16 +44,6 @@ const YourListings = (props) => {
         props.getListings();
     }, [])
 
-    function EditListing(item) {
-        userListing.map((listing, index) => {
-            if (listing === item) {
-                let newUserListing = [...userListing]
-                newUserListing[index] = listingEdit
-                setUserListing(newUserListing)
-            }
-        })
-    }
-
     console.log('SET LISTINGS TO MAP INTO CARDS:', props.listings)
     function DeleteListing(item) {
         userListing.map((listing, index) => {
@@ -80,7 +70,7 @@ const YourListings = (props) => {
             <h1>YOUR LISTINGS</h1>
             <hr></hr>
             <Suspense fallback={<LoadingScreen/>}>
-                <YourListingsCard data={userListing} EditListing={EditListing} DeleteListing={DeleteListing} listingEdit={listingEdit} setListingEdit={setListingEdit}/>
+                <YourListingsCard data={userListing} DeleteListing={DeleteListing} listingEdit={listingEdit} setListingEdit={setListingEdit}/>
             </Suspense>
         </StyledYourListings>
     )
