@@ -1,19 +1,61 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getLatLong } from '../getLatLong'
-import { addListing, getBedTypes, getRoomTypes, getCancellationTypes } from '../store/actions';
 
-import { AddListingDiv, AddListingWrapper, AddListingHeader, UploadImageDiv, ListingFormTickDiv, ListingFormTickLabel, UploadImageText, ListingFormWrapper, ListingFormDiv, ListingForm, ListingFormLabel, ListingFormInputTickDiv, ListingFormSelect, ListingFormInputTick, ListingFormInput, ListingFormButton } from '../StyledComps'
+import { getLatLong } from '../getLatLong';
+
+import { 
+    getNeighborhoods, 
+    getNeighborhoodGroups, 
+    addListing, 
+    getBedTypes, 
+    getRoomTypes, 
+    getCancellationTypes 
+} from '../store/actions';
+
+import { 
+    AddListingDiv, 
+    AddListingWrapper, 
+    AddListingHeader, 
+    UploadImageDiv, 
+    ListingFormTickDiv, 
+    ListingFormTickLabel, 
+    UploadImageText, 
+    ListingFormWrapper, 
+    ListingFormDiv, 
+    ListingForm, 
+    ListingFormLabel, 
+    ListingFormInputTickDiv, 
+    ListingFormSelect, 
+    ListingFormInputTick, 
+    ListingFormInput, 
+    ListingFormButton 
+} from '../StyledComps';
+
 import { nullLiteral } from '@babel/types';
 
 
 const AddListing = (props) => {
 
     const [listing, setListing] = useState(
-        {address: '',cleaning_fee: 0,security_deposit: 0,extra_people: 0, accommodates: 1, guests_included: 1,
-        availability_365: 0, room_type: '', bedrooms: 1, beds: 1, bed_type: '', bathrooms: 1,cancellation_policy: '',
-        calculated_host_listing_count: 0, amenities: 0, neighbourhood: ''
-        })
+        {
+            address: '',
+            cleaning_fee: 0,
+            security_deposit: 0,
+            extra_people: 0, 
+            accommodates: 1, 
+            guests_included: 1,
+            availability_365: 0, 
+            room_type: '', 
+            bedrooms: 1, 
+            beds: 1, 
+            bed_type: '', 
+            bathrooms: 1,
+            cancellation_policy: '',
+            calculated_host_listing_count: 0, 
+            amenities: 0, 
+            neighbourhood: ''
+        }
+    )
 
     const [selectedGroup, setSelectedGroup] = useState('')
     const [selectedHood, setSelectedHood] = useState('')
@@ -65,6 +107,8 @@ const AddListing = (props) => {
     };
     
     useEffect(() => {
+        props.getNeighborhoods();
+        props.getNeighborhoodGroups();
         props.getBedTypes();
         props.getRoomTypes();
         props.getCancellationTypes();
@@ -91,9 +135,6 @@ const AddListing = (props) => {
         }
         setListing({ ...listing, [e.target.name]: e.target.value });
     }
-
-    console.log('USE TO POPULATE ROOMTYPE DROPDOWN', props.roomTypes)
-    console.log('USE TO POPULATE CANCELLATION DROPDOWN', props.cancellationTypes)
 
     return (
         <AddListingDiv>
@@ -370,7 +411,16 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { addListing, getCancellationTypes, getRoomTypes, getBedTypes })(AddListing);
+export default connect(mapStateToProps, 
+    { 
+        getNeighborhoods, 
+        getNeighborhoodGroups,
+        addListing, 
+        getCancellationTypes, 
+        getRoomTypes, 
+        getBedTypes 
+    }
+)(AddListing);
 
 //POST LISTING OBJECT DATA STRUCTURE
 //         {
