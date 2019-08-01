@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components'
 import { NavLink, Link } from 'react-router-dom'
-import { Modal, Button } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 const appRed = '#eb5757';
 const appGrey = '#828282';
 

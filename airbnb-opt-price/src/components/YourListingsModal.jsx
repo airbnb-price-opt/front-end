@@ -15,7 +15,7 @@ class YourListingsModal extends React.Component {
 
     render() {
         const { open } = this.state
-        const { listing } = this.props
+        const { listing, DeleteListing } = this.props
 
         return (
             <Modal open={open} onOpen={this.open} onClose={this.close} trigger={<Button>VIEW DETAILS</Button>} closeIcon>
@@ -48,6 +48,8 @@ class YourListingsModal extends React.Component {
                 </Modal.Content>
                 <Modal.Actions>
                     <StyledModalUpdateListingsLink as={ Link } to="/update-listing/" onClick={this.close} className='fluid'>UPDATE LISTING</StyledModalUpdateListingsLink>
+                    <Button negative onClick={this.close}>DELETE LISTING</Button>
+                    <Button color='blue' onClick={DeleteListing(listing)}>CLOSE</Button>
                 </Modal.Actions>
             </Modal>
         )
