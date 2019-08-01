@@ -18,26 +18,6 @@ const YourListingsCard = React.lazy(() => {
 
 const YourListings = (props) => {
     const [userListing, setUserListing] = useState([])
-<<<<<<< HEAD
-    // const [houseImgs, setHouseImgs] = useState([])
-    // const PIXABAY_API_KEY = '13198877-6bfc2f5aa8cd5bbd707982513'
-
-    // useEffect(() => {
-    //     if (userListing !== ['']) {
-    //         axios.get(`https://pixabay.com/api/?key=${PIXABAY_API_KEY}&q=house&image_type=photo&per_page=10`)
-    //         .then(res => {
-    //             console.log(res.data.hits)
-    //             setHouseImgs(res.data.hits)
-    //         })
-    //         .catch(err => {
-    //             console.log('API Error: ', err)
-    //         })
-    //     }
-    //     console.log('Checking', houseImgs)
-    // },[userListing])
-=======
-    const [listingEdit, setListingEdit] = useState(null)
->>>>>>> 41294c07588173a661e0b9b86504753e261e484f
 
     useEffect(() => {
         setUserListing(props.listings)
@@ -47,48 +27,17 @@ const YourListings = (props) => {
         props.getListings();
     }, [])
 
-<<<<<<< HEAD
-    console.log('SET LISTINGS TO MAP INTO CARDS:', props.listings)
-    function DeleteListing(item) {
-        userListing.map((listing, index) => {
-            if (listing === item) {
-                let newUserListing = [...userListing]
-                newUserListing.splice(index, 1)
-                setUserListing(newUserListing)
-            }
-        })
-    }
-
-    // function InsertHouse() {
-    //     userListing.map((listing, index) => {
-    //         let newUserListing = [...userListing]
-    //         newUserListing[index] = {...listing, img_url:houseImgs.webformatURL}
-    //         console.log(newUserListing)
-    //         console.log(houseImgs[index])
-    //         setUserListing(newUserListing)
-    //     })
-    // }
-=======
     const handleDelete = (e, listing, id) => {
         e.preventDefault();
         props.deleteListing(listing, id, props.history)
     }
->>>>>>> 41294c07588173a661e0b9b86504753e261e484f
     
     return (
         <StyledYourListings>
             <h1>YOUR LISTINGS</h1>
             <hr></hr>
             <Suspense fallback={<LoadingScreen/>}>
-<<<<<<< HEAD
-                {(userListing !== [''] ?
-                    <YourListingsCard data={userListing} DeleteListing={DeleteListing}/>
-                    : <h1>Loading...</h1>
-                )}
-                
-=======
-                <YourListingsCard handleDelete={handleDelete} data={userListing} listingEdit={listingEdit} setListingEdit={setListingEdit}/>
->>>>>>> 41294c07588173a661e0b9b86504753e261e484f
+                <YourListingsCard handleDelete={handleDelete} data={userListing}/>
             </Suspense>
         </StyledYourListings>
     )
