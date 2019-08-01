@@ -7,7 +7,7 @@ import YourListingsModal from './YourListingsModal'
 import { StyledListingsCard, StyledAddListingsLink, StyledUpdateListingsLink, StyledListingsCardContent, StyledLCBC, StyledListingGrid } from '../StyledComps'
 
 const YourListingsCard = (props) => {
-    const { data, DeleteListing} = props
+    const { data, handleDelete } = props
 
     return (
         <StyledListingGrid>
@@ -30,14 +30,14 @@ const YourListingsCard = (props) => {
                     </StyledListingsCardContent>
 
                     <StyledLCBC>
-                        <YourListingsModal listing={listing} DeleteListing={DeleteListing}>VIEW DETAILS</YourListingsModal>
+                        <YourListingsModal listing={listing} handleDelete={handleDelete}>VIEW DETAILS</YourListingsModal>
                         
                         <StyledUpdateListingsLink to={{
                             pathname: "/update-listing/",
                             state: {listing}
                         }}>UPDATE LISTING</StyledUpdateListingsLink>
                     </StyledLCBC>
-                    <img className='trash-icon' src={trash} alt='delete icon' onClick={(e) => props.handleDelete(e, listing, listing.listing_id)}></img>
+                    <img className='trash-icon' src={trash} alt='delete icon' onClick={(e) => handleDelete(e, listing, listing.listing_id)}></img>
                 </StyledListingsCard>
             ))}
             <StyledAddListingsLink to="/add-listing/">

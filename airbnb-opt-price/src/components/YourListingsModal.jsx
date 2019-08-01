@@ -15,7 +15,7 @@ class YourListingsModal extends React.Component {
 
     render() {
         const { open } = this.state
-        const { listing, DeleteListing} = this.props
+        const { listing, handleDelete} = this.props
 
         // function ListingToUpdate(event, data) {
         //     setListingEdit(data)
@@ -59,8 +59,14 @@ class YourListingsModal extends React.Component {
                     </Modal.Description>
                 </Modal.Content>
                 <Modal.Actions>
-                    <StyledModalUpdateListingsLink as={ Link } to={{pathname:"/update-listing/", state: {listing}}} onClick={this.close} className='fluid'>UPDATE</StyledModalUpdateListingsLink>
-                    <Button negative onClick={() => DeleteListing(listing)}>DELETE</Button>
+                    <StyledModalUpdateListingsLink
+                        as={ Link }
+                        to={{pathname:"/update-listing/", state: {listing}}}
+                        onClick={this.close}
+                        className='fluid'>
+                        UPDATE
+                    </StyledModalUpdateListingsLink>
+                    <Button negative onClick={(e) => handleDelete(e, listing, listing.listing_id)}>DELETE</Button>
                     <Button color='blue' onClick={this.close}>CLOSE</Button>
                 </Modal.Actions>
             </Modal>

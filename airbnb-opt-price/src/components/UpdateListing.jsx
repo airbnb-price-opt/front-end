@@ -143,7 +143,6 @@ const UpdateListing = (props) => {
 
     return (
         <AddListingDiv>
-            {console.log('This is the passed in listing', listing)}
             <AddListingHeader>Update Listing</AddListingHeader>
                 <AddListingWrapper>
                     <ListingFormWrapper>
