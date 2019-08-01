@@ -31,7 +31,10 @@ import {
     UPDATE_LISTING_FAIL,
     GET_PROPERTY_TYPES_START,
     GET_PROPERTY_TYPES_SUCCESS,
-    GET_PROPERTY_TYPES_FAIL
+    GET_PROPERTY_TYPES_FAIL,
+    DELETE_LISTING_START,
+    DELETE_LISTING_SUCCESS,
+    DELETE_LISTING_FAIL
 } from '../actions';
 
 const initialState = {
@@ -241,6 +244,27 @@ export const reducer = (state = initialState, action ) => {
                 ...state,
                 getting: false,
                 propertyTypes: state.propertyTypes
+            }
+        case DELETE_LISTING_START:
+            return{
+                ...state,
+                getting: true
+            }
+        case DELETE_LISTING_SUCCESS:
+            return{
+                ...state,
+                getting: false,
+                listing: state.listings.map(home => {
+                    if(home.listing_id !== action.payload.id) {
+                        return home;
+                    }
+                })
+            }
+        case DELETE_LISTING_FAIL:
+            return{
+                ...state,
+                getting: false,
+                listings: state.listings
             }
         default:
             return state;
