@@ -1,11 +1,13 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios'
 
 import LoadingScreen from './LoadingScreen'
 import { getListings } from '../store/actions';
-import { DummyData } from './DummyData'
+// import { DummyData } from './DummyData'
 import { StyledYourListings } from '../StyledComps';
 
+// import YourListingsCard from './YourListingsCard'
 const YourListingsCard = React.lazy(() => {
     return Promise.all([
         import('./YourListingsCard'),
@@ -15,8 +17,25 @@ const YourListingsCard = React.lazy(() => {
 })
 
 const YourListings = (props) => {
-    const [userListing, setUserListing] = useState(DummyData)
+    const [userListing, setUserListing] = useState([])
     const [listingEdit, setListingEdit] = useState(null)
+    // const [houseImgs, setHouseImgs] = useState([])
+    // const PIXABAY_API_KEY = '13198877-6bfc2f5aa8cd5bbd707982513'
+
+    // useEffect(() => {
+    //     axios.get(`https://pixabay.com/api/?key=${PIXABAY_API_KEY}&q=house&image_type=photo&per_page=10`)
+    //     .then(res => {
+    //         console.log(res.data.hits)
+    //         setHouseImgs(res.data.hits)
+    //     })
+    //     .catch(err => {
+    //         console.log('API Error: ', err)
+    //     })
+    // },[])
+
+    useEffect(() => {
+        setUserListing(props.listings)
+    },[props.listings])
 
     useEffect(() => {
         props.getListings();
@@ -42,6 +61,16 @@ const YourListings = (props) => {
             }
         })
     }
+
+    // function HouseImages() {
+    //     userListing.map((listing, index) => {
+    //         let newUserListing = [...userListing]
+    //         newUserListing[index] = {...listing, img_url:houseImgs.webformatURL}
+    //         console.log(newUserListing)
+    //         console.log(houseImgs[index])
+    //         setUserListing(newUserListing)
+    //     })
+    // }
     
     return (
         <StyledYourListings>

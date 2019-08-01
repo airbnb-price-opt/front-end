@@ -31,7 +31,7 @@ const MobileNav = (props) =>
         return (
             <MobileNavDiv>
                 <StyledMobileNavLink to="/your-listings/" activeClassName="active-nav">YOUR LISTINGS</StyledMobileNavLink>
-                <StyledMobileNavLink to="/" onClick={logoutClick} activeClassName="active-nav">LOGOUT</StyledMobileNavLink>
+                <StyledMobileNavLink to="/" exact onClick={logoutClick} activeClassName="active-nav">LOGOUT</StyledMobileNavLink>
             </MobileNavDiv>
         )
     }
@@ -39,7 +39,7 @@ const MobileNav = (props) =>
         return (
                 <MobileNavDiv>
                     <StyledMobileNavLink to="/register/" activeClassName="active-nav">REGISTER</StyledMobileNavLink>
-                    <StyledMobileNavLink to="/" activeClassName="active-nav" isActive={checkActive}>LOGIN</StyledMobileNavLink>
+                    <StyledMobileNavLink to="/" exact activeClassName="active-nav" isActive={checkActive}>LOGIN</StyledMobileNavLink>
                 </MobileNavDiv>
         )
     }
