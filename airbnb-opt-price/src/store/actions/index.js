@@ -67,6 +67,7 @@ export const loginUser = (existingUser, history, setLoggedIn) => dispatch => {
         .catch(err =>{
             console.log('LOGIN_USER_FAIL', err)
             dispatch({ type: LOGIN_USER_FAIL, payload: err })
+            return false
         })
 } 
 

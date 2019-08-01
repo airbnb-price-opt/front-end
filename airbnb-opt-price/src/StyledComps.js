@@ -104,7 +104,7 @@ export const ListingForm = styled.form`
     color: white;
     display: flex;
     flex-direction: column;
-    width: 561px;
+    width: 100%;
     font-family: 'Montserrat', sans-serif;
     @media (max-width: 600px) {
         width: 90%;
@@ -136,6 +136,10 @@ export const ListingFormSelect = styled.select`
     height: 31px;
     width: 100%;
     font-family: 'Montserrat', sans-serif;
+
+    option {
+        text-transform: capitalize
+    }
 `;
 
 export const ListingFormInput = styled.input`
@@ -160,6 +164,10 @@ export const ListingFormInputTickDiv = styled.div`
     display: flex;
     align-items: center;
     padding: 5px 10px 5px 10px;
+    font-family: 'Montserrat', sans-serif;
+    @media (max-width: 600px) {
+        width: 43%;
+    }
 
 `;
 
@@ -167,11 +175,12 @@ export const ListingFormTickLabel = styled.label`
     /* margin-bottom: 30px; */
     width: 90%;
     font-style: normal;
-    font-size: 1rem;
+    font-size: 0.8rem;
     line-height: 17px;
     text-transform: uppercase;
     
     @media (max-width: 600px) {
+        font-size: .7rem;
         margin-bottom: 10px;
     }
 `;
