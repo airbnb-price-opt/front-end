@@ -36,6 +36,34 @@ import {
 
 const UpdateListing = (props) => {
     const [listing, setListing] = useState(props.location.state.listing)
+    console.log(props.location.state.listing)
+    const [updatedListing, setUpdatedListing] = useState(
+        {    
+            accommodates: listing.accommodates,
+            bathrooms: listing.bathrooms,
+            bedType: {
+                bed_type_id: 0,
+            },
+            bedrooms: 0,
+            cancellationPolicy: {
+                cancellation_policy_id: 0,
+            },
+            cleaning_fee: listing.cleaning_fee,
+            extra_people: 0,
+            guests_included: 0,
+            latitude: 0,
+            longitude: 0,
+            name: '',
+            neighbourHood: {
+                neighbourhood_id: 0
+            },
+            roomType: {
+                room_type_id: 0
+            },
+            security_deposit: 0
+        }
+    )
+    console.log('THIS IS UPDATED LISTING', updatedListing)
     // const [listing, setListing] = useState(
     //     {
     //         accommodates: 0,
@@ -77,7 +105,7 @@ const UpdateListing = (props) => {
 
     const handleSubmit = (e, listing, id) => {
         e.preventDefault();
-        props.updateListing(listing, id, props.history)
+        props.updateListing(updatedListing, id, props.history)
         props.history.push('/your-listings')
     }
     const handleRoomTypeChange = event => {
@@ -90,6 +118,35 @@ const UpdateListing = (props) => {
 
     const handlePropertyTypeChange = event => {
         setListing({...listing, propertyType: {property_type_id: event.target.value}})
+    }
+
+    const handleCancellationChange = event => {
+        setListing({...listing, cancellationPolicy: {cancellation_policy_id: parseInt(event.target.value)}})
+    }
+
+    const handleNeighborhoodGroupChange = e => {
+        setSelectedGroup(e.target.value)
+        props.neighborhoodGroup.map(selected => {
+            if(selected.name === e.target.value){
+                setSelectedHood(selected.neighbourHoods)
+            }
+        })
+    };
+
+    const handleNeighborhoodChange = e => {
+        setListing({ ...listing, neighbourHood: {neighbourhood_id: parseInt(e.target.value)}});
+    }
+
+    const handleRoomTypeChange = event => {
+        setListing({...listing, roomType: {room_type_id: parseInt(event.target.value)}})
+    }
+
+    const handleBedTypeChange = event => {
+        setListing({...listing, bedType: {bed_type_id: parseInt(event.target.value)}})
+    }
+
+    const handlePropertyTypeChange = event => {
+        setListing({...listing, propertyType: {property_type_id: parseInt(event.target.value)}})
     }
 
     const handleCancellationChange = event => {
@@ -259,7 +316,7 @@ const UpdateListing = (props) => {
                             name='cleaning_fee' 
                             // placeholder='$'
                             onChange={handleChange}
-                            value={listing.cleaning_fee}
+                            // value={listing.cleaning_fee}
                             type='number'
                             min={0}
                             />
