@@ -37,6 +37,7 @@ const AddListing = (props) => {
 
     const [listing, setListing] = useState(
         {
+            amenities: 0,
             accommodates: 0,
             bathrooms: 0,
             bedType: {
@@ -126,7 +127,7 @@ const AddListing = (props) => {
                 setListing({ ...listing, [event.target.name]: event.target.value });
             }
             else if(event.target.name === 'bathrooms'){
-                setListing({ ...listing, [event.target.name]: parseFloat(event.target.value) });
+                setListing({ ...listing, [event.target.name]: parseInt(event.target.value) });
             }
             else {
                 setListing({ ...listing, [event.target.name]: parseInt(event.target.value) });
@@ -381,7 +382,6 @@ const AddListing = (props) => {
                             onChange={handleChange}
                             defaultValue={1}
                             type='number'
-                            step={0.5}
                             min={1}
                             max={10}
                             >

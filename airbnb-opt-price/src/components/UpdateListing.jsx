@@ -36,6 +36,7 @@ import {
 const UpdateListing = (props) => {
     const [listing, setListing] = useState(
         {
+            amenities: 0,
             accommodates: 0,
             bathrooms: 0,
             bedType: {
