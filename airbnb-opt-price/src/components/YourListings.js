@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import LoadingScreen from './LoadingScreen'
 import { getListings } from '../store/actions';
-import { DummyData } from './DummyData'
+// import { DummyData } from './DummyData'
 import { StyledYourListings } from '../StyledComps';
 
 // import YourListingsCard from './YourListingsCard'
@@ -17,7 +17,7 @@ const YourListingsCard = React.lazy(() => {
 })
 
 const YourListings = (props) => {
-    const [userListing, setUserListing] = useState(DummyData)
+    const [userListing, setUserListing] = useState([])
     const [listingEdit, setListingEdit] = useState(null)
     // const [houseImgs, setHouseImgs] = useState([])
     // const PIXABAY_API_KEY = ''
@@ -32,6 +32,10 @@ const YourListings = (props) => {
     //         console.log('API Error: ', err)
     //     })
     // },[userListing.length])
+
+    useEffect(() => {
+        setUserListing(props.listings)
+    },[props.listings])
 
     useEffect(() => {
         props.getListings();
@@ -73,7 +77,7 @@ const YourListings = (props) => {
             <h1>YOUR LISTINGS</h1>
             <hr></hr>
             <Suspense fallback={<LoadingScreen/>}>
-                <YourListingsCard data={props.listings} EditListing={EditListing} DeleteListing={DeleteListing} listingEdit={listingEdit} setListingEdit={setListingEdit}/>
+                <YourListingsCard data={userListing} EditListing={EditListing} DeleteListing={DeleteListing} listingEdit={listingEdit} setListingEdit={setListingEdit}/>
             </Suspense>
         </StyledYourListings>
     )
