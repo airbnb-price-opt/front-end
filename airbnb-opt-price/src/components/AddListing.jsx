@@ -28,7 +28,8 @@ import {
     ListingFormSelect, 
     ListingFormInputTick, 
     ListingFormInput, 
-    ListingFormButton 
+    ListingFormButton,
+    ListDivs
 } from '../StyledComps';
 
 import { nullLiteral } from '@babel/types';
@@ -74,6 +75,7 @@ const AddListing = (props) => {
         e.preventDefault();
         props.addListing(listing)
         console.log("Added Listing", listing)
+        props.history.push('/your-listings')
     }
 
     const handleChange = event => {
@@ -143,6 +145,7 @@ const AddListing = (props) => {
                 <ListingFormWrapper>
                 <ListingFormDiv>
                     <ListingForm>
+                        <ListDivs>
                         <ListingFormLabel>
                             NEIGHBORHOOD GROUP:
                             <br />
@@ -192,6 +195,19 @@ const AddListing = (props) => {
                             />
                         </ListingFormLabel>
                         <ListingFormLabel>
+                            Current # of Listings:
+                            <br />
+                            <ListingFormInput
+                            name='calculated_host_listing_count' 
+                            onChange={handleChange}
+                            defaultValue={0}
+                            type='number'
+                            min={0}
+                            />
+                        </ListingFormLabel>
+                        </ListDivs>
+                        <ListDivs>
+                        <ListingFormLabel>
                             Cleaning Fee:
                             <br />
                             <ListingFormInput
@@ -240,6 +256,8 @@ const AddListing = (props) => {
                             >
                             </ListingFormInput>
                         </ListingFormLabel>
+                        </ListDivs>
+                        <ListDivs>
                         <ListingFormLabel>
                             Guests Included (1-16):
                             <br />
@@ -296,6 +314,8 @@ const AddListing = (props) => {
                             >
                             </ListingFormInput>
                         </ListingFormLabel>
+                        </ListDivs>
+                        <ListDivs>
                         <ListingFormLabel>
                             # of Beds (1-30):
                             <br />
@@ -360,17 +380,7 @@ const AddListing = (props) => {
                                 }
                             </ListingFormSelect>
                         </ListingFormLabel>
-                        <ListingFormLabel>
-                            Current # of Listings:
-                            <br />
-                            <ListingFormInput
-                            name='calculated_host_listing_count' 
-                            onChange={handleChange}
-                            defaultValue={0}
-                            type='number'
-                            min={0}
-                            />
-                        </ListingFormLabel>
+                        </ListDivs>
                         <ListingFormLabel>
                             Amenities:
                             <br />
