@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components'
 import { NavLink, Link } from 'react-router-dom'
+import { Button } from 'semantic-ui-react'
 const appRed = '#eb5757';
 const appGrey = '#828282';
 
@@ -514,6 +515,7 @@ export const StyledLCBC = styled.div`
         }
     }
 `
+// @@@@@@@@@@ Start Modal Styles @@@@@@@@@@
 
 export const StyledYLMContainer = styled.div`
     display: flex;
@@ -528,20 +530,21 @@ export const StyledYLMContainer = styled.div`
     }
 `
 
-export const StyledModalUpdateListingsLink = styled(Link)`
-    color: white;
+export const StyledModalUpdateListingsLink = styled(Button)`
     text-decoration: none;
     border-radius: 5px;
     background-color: #eb5757;
-    width: 100%;
     text-align: center;
-    padding: 5px 0;
+    padding: 9.5px 21px;
     color: white;
+    margin: 0 3.5px 14px 0;
     &:hover {
         background-color: #e84141;
         color: white;
     }
 `;
+
+// @@@@@@@@@@ End Modal Styles @@@@@@@@@@
 
 // @@@@@@@@@@ End Your Listings Styles @@@@@@@@@@
 
