@@ -16,10 +16,10 @@ import {
     AddListingDiv, 
     AddListingWrapper, 
     AddListingHeader, 
-    UploadImageDiv, 
+    // UploadImageDiv,
     ListingFormTickDiv, 
     ListingFormTickLabel, 
-    UploadImageText, 
+    // UploadImageText, 
     ListingFormWrapper, 
     ListingFormDiv, 
     ListingForm, 
@@ -73,7 +73,6 @@ const AddListing = (props) => {
     'Elevator', 'Bed linens', 'Cooking basics', 'Stove', 'Smoking allowed', 'Oven', 'First aid kit', 'Cable TV',
     'Coffee maker', 'Dryer', 'Dishwasher', 'Long term stays allowed', 'Pets allowed', 'Fire extinguisher',
     'Luggage dropoff allowed', 'Private entrance', 'Extra pillows and blankets']
-    
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -83,11 +82,12 @@ const AddListing = (props) => {
     }
 
     const handleRoomTypeChange = event => {
-        setListing({...listing, roomType: {room_type_id: event.target.value}})
+        setListing({...listing, roomType: {room_type_id: parseInt(event.target.value)}})
     }
 
     const handleBedTypeChange = event => {
-        setListing({...listing, bedType: {bed_type_id: event.target.value}})
+        setListing({...listing, bedType: {bed_type_id: parseInt(event.target.value)}})
+
     }
 
     const handlePropertyTypeChange = event => {
@@ -95,7 +95,9 @@ const AddListing = (props) => {
     }
 
     const handleCancellationChange = event => {
-        setListing({...listing, cancellationPolicy: {cancellation_policy_id: event.target.value}})
+
+        setListing({...listing, cancellationPolicy: {cancellation_policy_id: parseInt(event.target.value)}})
+
     }
 
     const handleNeighborhoodGroupChange = e => {
@@ -108,22 +110,30 @@ const AddListing = (props) => {
     };
 
     const handleNeighborhoodChange = e => {
-        setListing({ ...listing, neighbourHood: {neighbourhood_id: e.target.value}});
+        setListing({ ...listing, neighbourHood: {neighbourhood_id: parseInt(e.target.value)}});
     }
 
     const handleChange = event => {
-        if(event.target.min || event.target.max){
-            if(event.target.value === '') {
-                event.target.value =event.target.min
+            if(event.target.min || event.target.max){
+                if(event.target.value === '') {
+                    event.target.value =event.target.min
+                }
+                if(parseFloat(event.target.value) < parseFloat(event.target.min)) {
+                    event.target.value = event.target.min
+                }
+                if(parseFloat(event.target.value) > parseFloat(event.target.max)) {
+                    event.target.value = event.target.max;
+                }
             }
-            if(parseFloat(event.target.value) < parseFloat(event.target.min)) {
-                event.target.value = event.target.min
+            if(event.target.name === 'name'){
+                setListing({ ...listing, [event.target.name]: event.target.value });
             }
-            if(parseFloat(event.target.value) > parseFloat(event.target.max)) {
-                event.target.value = event.target.max;
+            else if(event.target.name === 'bathrooms'){
+                setListing({ ...listing, [event.target.name]: parseFloat(event.target.value) });
             }
-        }
-        setListing({ ...listing, [event.target.name]: event.target.value });
+            else {
+                setListing({ ...listing, [event.target.name]: parseInt(event.target.value) });
+            }
     };
 
     const handleAmenitiesChange = event => {
@@ -176,12 +186,11 @@ const AddListing = (props) => {
                             <br />
                             <ListingFormSelect
                                 required
-                                name='selectedGroup' 
+                                name={selectedGroup}
                                 onChange={handleNeighborhoodGroupChange}
+                                defaultValue="CHOOSE YOUR NEIGHBORHOOD GROUP"
                             >
-                                <option value="CHOOSE YOUR NEIGHBORHOOD GROUP..." disabled selected='selected'>
-                                    CHOOSE YOUR NEIGHBORHOOD GROUP...
-                                </option>
+                                <option disabled>CHOOSE YOUR NEIGHBORHOOD GROUP</option>
                                 {props.neighborhoodGroup.map(group => {
                                     return (
                                             <option
@@ -201,10 +210,9 @@ const AddListing = (props) => {
                                 required
                                 name='selectedHood'
                                 onChange={handleNeighborhoodChange}
+                                defaultValue="CHOOSE YOUR NEIGHBORHOOD"
                             >
-                                <option value="" disabled selected>
-                                    CHOOSE YOUR NEIGHBORHOOD...
-                                </option>
+                                <option disabled>CHOOSE YOUR NEIGHBORHOOD</option>
 
                                 {!selectedHood ? null : selectedHood.map(each => <option value={each.neighbourhood_id} key={each.name}>{each.name}</option>)}
                                 
