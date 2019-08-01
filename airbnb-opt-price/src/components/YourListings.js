@@ -11,7 +11,7 @@ import { StyledYourListings } from '../StyledComps';
 const YourListingsCard = React.lazy(() => {
     return Promise.all([
         import('./YourListingsCard'),
-        new Promise(res => setTimeout(res, 1000))
+        new Promise(res => setTimeout(res, 2000))
     ])
     .then(([moduleExports]) => moduleExports)
 })
@@ -20,10 +20,10 @@ const YourListings = (props) => {
     const [userListing, setUserListing] = useState([])
     const [listingEdit, setListingEdit] = useState(null)
     // const [houseImgs, setHouseImgs] = useState([])
-    // const PIXABAY_API_KEY = ''
+    // const PIXABAY_API_KEY = '13198877-6bfc2f5aa8cd5bbd707982513'
 
     // useEffect(() => {
-    //     axios.get(`https://pixabay.com/api/?key=${PIXABAY_API_KEY}&q=house&image_type=photo&per_page=${userListing.length}`)
+    //     axios.get(`https://pixabay.com/api/?key=${PIXABAY_API_KEY}&q=house&image_type=photo&per_page=10`)
     //     .then(res => {
     //         console.log(res.data.hits)
     //         setHouseImgs(res.data.hits)
@@ -31,7 +31,7 @@ const YourListings = (props) => {
     //     .catch(err => {
     //         console.log('API Error: ', err)
     //     })
-    // },[userListing.length])
+    // },[])
 
     useEffect(() => {
         setUserListing(props.listings)
