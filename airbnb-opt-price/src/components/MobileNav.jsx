@@ -1,10 +1,18 @@
-import React from "react"
+import React, {useState, useEffect } from "react"
 import { MobileNavDiv, StyledMobileNavLink } from "../StyledComps"
 
 
 
-const Nav = () =>
+const MobileNav = (props) =>
 {
+    const {loggedIn, setLoggedIn} = props
+    // const [loggedIn, setLoggedIn] = useState(false)
+
+    useEffect((_ => 
+        {
+            return
+        }
+        ), [loggedIn])
 
     const checkActive = (match, location) =>
     {
@@ -13,11 +21,17 @@ const Nav = () =>
         return pathname === "/"
     }
 
-    if(localStorage.getItem('token') !== null && localStorage.getItem('token') !== '') {
+    const logoutClick = _ =>
+    {
+        localStorage.removeItem('token')
+        setLoggedIn(false)
+    }
+
+    if(loggedIn) {
         return (
             <MobileNavDiv>
                 <StyledMobileNavLink to="/your-listings/" activeClassName="active-nav">YOUR LISTINGS</StyledMobileNavLink>
-                <StyledMobileNavLink to="/" onClick={_ => localStorage.removeItem('token')} activeClassName="active-nav">LOGOUT</StyledMobileNavLink>
+                <StyledMobileNavLink to="/" onClick={logoutClick} activeClassName="active-nav">LOGOUT</StyledMobileNavLink>
             </MobileNavDiv>
         )
     }
@@ -40,4 +54,4 @@ const Nav = () =>
     // )
 }
 
-export default Nav
+export default MobileNav

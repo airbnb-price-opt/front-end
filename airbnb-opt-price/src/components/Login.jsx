@@ -7,6 +7,7 @@ import {LoginContainerDiv, LoginForm, LoginFormContainer, LoginImage, LoginFormL
 
 const Login = (props) => {
 
+    const {setLoggedIn} = props
     const [ currentUser, setCurrentUser ] = useState({ username: '', password:'' })
     
     const handleChanges = (e) => {
@@ -15,7 +16,7 @@ const Login = (props) => {
     console.log(props.history)
     const verifyUser = (e) => {
         e.preventDefault();
-        props.loginUser(currentUser, props.history)
+        props.loginUser(currentUser, props.history, setLoggedIn)
     }
     console.log(currentUser)
     return(

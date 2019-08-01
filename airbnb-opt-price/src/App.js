@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
 import { Route, Switch } from 'react-router-dom'
 
@@ -16,11 +16,14 @@ import {CSSTransition, TransitionGroup} from 'react-transition-group'
 
 
 function App() {
+
+  const [loggedIn, setLoggedIn] = useState(false)
+
   return (
     <div className="App">
       <div>
 
-        <Header />
+        <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
 
           {/* <Register /> */}
           {/* <Login /> */}
@@ -37,7 +40,7 @@ function App() {
                   <Route path={`/add-listing`} component={AddListing} />
                   <Route path={`/update-listing`} component={UpdateListing} />
                   <Route path={`/register`} component={Register} />
-                  <Route exact path={`/`} component={Login} />
+                  <Route exact path={`/`} render={props => <Login {...props} setLoggedIn={setLoggedIn} />} />
                   {/* <Route path={`/logout`} component={Logout} /> */}
                   <Route path={`/privacy`} component={PrivacyPolicy} />
                   <Route path={`/terms-and-conditions`} component={TermsAndConditions} />
@@ -47,7 +50,7 @@ function App() {
           )} />
       </div>
 
-      <Footer />
+      <Footer loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
     </div>
   );
 }

@@ -35,7 +35,7 @@ export const registerUser = (newUserObj) => dispatch => {
         })
 } 
 
-export const loginUser = (existingUser, history) => dispatch => {
+export const loginUser = (existingUser, history, setLoggedIn) => dispatch => {
     dispatch({ type: LOGIN_USER_START })
     axios
         .post('https://airbnb-price-opt.herokuapp.com/oauth/token', `grant_type=password&username=${existingUser.username}&password=${existingUser.password}`, {
@@ -48,6 +48,7 @@ export const loginUser = (existingUser, history) => dispatch => {
             console.log('LOGIN_USER_SUCCESS', res)
             dispatch({ type: LOGIN_USER_SUCCESS, payload: res.data.access_token })
             localStorage.setItem('token', res.data.access_token)
+            setLoggedIn(true)
             history.push('/your-listings')
         })
         .catch(err =>{
