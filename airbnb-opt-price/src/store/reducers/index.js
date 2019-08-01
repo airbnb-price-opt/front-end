@@ -249,7 +249,7 @@ export const reducer = (state = initialState, action ) => {
             return{
                 ...state,
                 posting: false,
-                listings: [...state.listings, action.payload]
+                listings: state.listings
             }
         case UPDATE_LISTING_START:
             return{
@@ -273,7 +273,7 @@ export const reducer = (state = initialState, action ) => {
             return{
                 ...state,
                 putting: false,
-                listings: [...state.listings]
+                listings: state.listings
         }
         default:
             return state;

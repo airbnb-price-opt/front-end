@@ -16,10 +16,10 @@ import {
     AddListingDiv, 
     AddListingWrapper, 
     AddListingHeader, 
-    UploadImageDiv, 
+    // UploadImageDiv, 
     ListingFormTickDiv, 
     ListingFormTickLabel, 
-    UploadImageText, 
+    // UploadImageText, 
     ListingFormWrapper, 
     ListingFormDiv, 
     ListingForm, 
@@ -128,6 +128,7 @@ const UpdateListing = (props) => {
                 setSelectedHood(selected.neighbourHood)
                 setListing({ ...listing, 'neighbourhood': e.target.value});
             }
+            return true
         })
 
     };
@@ -160,7 +161,7 @@ const UpdateListing = (props) => {
                             <br />
                             <ListingFormSelect
                                 required
-                                name='selectedGroup' 
+                                name={selectedGroup}
                                 onChange={handleNeighborhoodChange}
                             >
                                 <option value="CHOOSE YOUR NEIGHBORHOOD GROUP..." disabled selected='selected'>
@@ -428,9 +429,9 @@ export default connect(mapStateToProps, { updateListing, getRoomTypes, getBedTyp
 
 
 //@@@@@@@@@@@@ IMAGE UPLOAD DIV JSX @@@@@@@@@@@@@//
-{/* <UploadImageDiv>
+/* <UploadImageDiv>
     <UploadImageText>
         <p className='plus-sign'>+</p>
         <p>UPLOAD IMAGE</p>
     </UploadImageText>
-</UploadImageDiv> */}
+</UploadImageDiv> */
