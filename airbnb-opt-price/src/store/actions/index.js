@@ -178,13 +178,16 @@ export const getListings = () => dispatch => {
 }
 
 
-export const addListing = (newListingObj) => dispatch => {
+export const addListing = (newListingObj, history) => dispatch => {
     dispatch({ type: ADD_LISTING_START })
     axiosWithAuth()
         .post('https://airbnb-price-opt.herokuapp.com/listings/new', newListingObj)
         .then(res => {
             console.log('ADD_LISTING_SUCCESS', res.data)
             dispatch({ type: ADD_LISTING_SUCCESS, payload: res.data })
+        })
+        .then(res =>{
+            history.push('/your-listings')
         })
         .catch(err => {
             console.log('ADD_LISTING_FAIL', err)
@@ -208,13 +211,14 @@ export const updateListing = (updateListingObj, id, history) => dispatch => {
 }
 
 
-export const deleteListing = (listingToDelete, id) => dispatch => {
+export const deleteListing = (listingToDelete, id, history) => dispatch => {
     dispatch({ type: DELETE_LISTING_START })
     axiosWithAuth()
-        .put(`https://airbnb-price-opt.herokuapp.com/listings/delete/${id}`, listingToDelete)
+        .delete(`https://airbnb-price-opt.herokuapp.com/listings/delete/${id}`, listingToDelete)
         .then(res => {
             console.log('DELETE_LISTING_SUCCESS', res.data)
             dispatch({ type: DELETE_LISTING_SUCCESS, payload: res.data })
+            history.push('/your-listings')
         })
         .catch(err => {
             console.log('DELETE_LISTING_FAIL', err)

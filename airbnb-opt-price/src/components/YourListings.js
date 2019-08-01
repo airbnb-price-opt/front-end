@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import axios from 'axios'
 
 import LoadingScreen from './LoadingScreen'
-import { getListings } from '../store/actions';
+import { getListings, deleteListing } from '../store/actions';
 // import { DummyData } from './DummyData'
 import { StyledYourListings } from '../StyledComps';
 
@@ -19,7 +19,41 @@ const YourListingsCard = React.lazy(() => {
 const YourListings = (props) => {
     const [userListing, setUserListing] = useState([])
     const [listingEdit, setListingEdit] = useState(null)
-    // const [houseImgs, setHouseImgs] = useState([])
+
+    useEffect(() => {
+        setUserListing(props.listings)
+    },[props.listings])
+
+    useEffect(() => {
+        props.getListings();
+    }, [])
+
+    const handleDelete = (e, listing, id) => {
+        e.preventDefault();
+        props.deleteListing(listing, id, props.history)
+    }
+    
+    return (
+        <StyledYourListings>
+            <h1>YOUR LISTINGS</h1>
+            <hr></hr>
+            <Suspense fallback={<LoadingScreen/>}>
+                <YourListingsCard handleDelete={handleDelete} data={userListing} listingEdit={listingEdit} setListingEdit={setListingEdit}/>
+            </Suspense>
+        </StyledYourListings>
+    )
+}
+
+const mapStateToProps = (state) => {
+    return{
+        listings: state.listings
+    }
+}
+
+export default connect(mapStateToProps, { deleteListing, getListings })(YourListings)    
+
+
+// const [houseImgs, setHouseImgs] = useState([])
     // const PIXABAY_API_KEY = '13198877-6bfc2f5aa8cd5bbd707982513'
 
     // useEffect(() => {
@@ -32,36 +66,7 @@ const YourListings = (props) => {
     //         console.log('API Error: ', err)
     //     })
     // },[])
-
-    useEffect(() => {
-        setUserListing(props.listings)
-    },[props.listings])
-
-    useEffect(() => {
-        props.getListings();
-    }, [])
-
-    function EditListing(item) {
-        userListing.map((listing, index) => {
-            if (listing === item) {
-                let newUserListing = [...userListing]
-                newUserListing[index] = listingEdit
-                setUserListing(newUserListing)
-            }
-        })
-    }
-
-    console.log('SET LISTINGS TO MAP INTO CARDS:', props.listings)
-    function DeleteListing(item) {
-        userListing.map((listing, index) => {
-            if (listing === item) {
-                let newUserListing = [...userListing]
-                newUserListing.splice(index, 1)
-                setUserListing(newUserListing)
-            }
-        })
-    }
-
+    
     // function HouseImages() {
     //     userListing.map((listing, index) => {
     //         let newUserListing = [...userListing]
@@ -70,23 +75,25 @@ const YourListings = (props) => {
     //         console.log(houseImgs[index])
     //         setUserListing(newUserListing)
     //     })
-    // }
+    // }    
     
-    return (
-        <StyledYourListings>
-            <h1>YOUR LISTINGS</h1>
-            <hr></hr>
-            <Suspense fallback={<LoadingScreen/>}>
-                <YourListingsCard data={userListing} EditListing={EditListing} DeleteListing={DeleteListing} listingEdit={listingEdit} setListingEdit={setListingEdit}/>
-            </Suspense>
-        </StyledYourListings>
-    )
-}
+    // function EditListing(item) {
+    //     userListing.map((listing, index) => {
+    //         if (listing === item) {
+    //             let newUserListing = [...userListing]
+    //             newUserListing[index] = listingEdit
+    //             setUserListing(newUserListing)
+    //         }
+    //     })
+    // }
 
-const mapStateToProps = (state) => {
-    return{
-        listings: state.listings
-    }
-}
-
-export default connect(mapStateToProps, { getListings })(YourListings)
+    // console.log('SET LISTINGS TO MAP INTO CARDS:', props.listings)
+    // function DeleteListing(item) {
+    //     userListing.map((listing, index) => {
+    //         if (listing === item) {
+    //             let newUserListing = [...userListing]
+    //             newUserListing.splice(index, 1)
+    //             setUserListing(newUserListing)
+    //         }
+    //     })
+    // }
