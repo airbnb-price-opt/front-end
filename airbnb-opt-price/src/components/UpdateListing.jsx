@@ -26,6 +26,9 @@ const UpdateListing = (props) => {
     const bedRange = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
     const bathroomRange = [1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10]
 
+    const [selectedGroup, setSelectedGroup] = useState('')
+    const [selectedHood, setSelectedHood] = useState('')
+
     const handleChange = event => {
         if(event.target.min && event.target.max){
             if(parseFloat(event.target.value) < parseFloat(event.target.min)) {
@@ -53,6 +56,19 @@ const UpdateListing = (props) => {
         }
     };
 
+    const handleNeighborhoodChange = e => {
+
+        // setListing({ ...listing, [event.target.name]: event.target.value });
+        setSelectedGroup(e.target.value)
+        
+        props.neighborhoodGroup.map(selected => {
+            if(selected.name === e.target.value){
+                setSelectedHood(selected.neighbourHood)
+            }
+        })
+
+    };
+
     const handleSubmit = e => {
         e.preventDefault()
         console.log("Updated Listing", listing)
@@ -77,6 +93,44 @@ const UpdateListing = (props) => {
                 <ListingFormWrapper>
                 <ListingFormDiv>
                     <ListingForm>
+                        <ListingFormLabel>
+                            NEIGHBORHOOD GROUP:
+                            <br />
+                            <ListingFormSelect
+                                required
+                                name='selectedGroup' 
+                                onChange={handleNeighborhoodChange}
+                            >
+                                <option value="CHOOSE YOUR NEIGHBORHOOD GROUP..." disabled selected='selected'>
+                                    CHOOSE YOUR NEIGHBORHOOD GROUP...
+                                </option>
+                                {props.neighborhoodGroup.map(group => {
+                                    return (
+                                            <option
+                                                value={group.name} 
+                                                key={group.neighbourhood_group_id}
+                                            >
+                                                {group.name}
+                                            </option>
+                                    )
+                                })}
+                            </ListingFormSelect>
+                        </ListingFormLabel>
+                        <ListingFormLabel>
+                            NEIGHBORHOOD:
+                            <br />
+                            <ListingFormSelect
+                                required
+                                name='selectedHood'
+                            >
+                                <option value="" disabled selected>
+                                    CHOOSE YOUR NEIGHBORHOOD...
+                                </option>
+
+                                {!selectedHood ? null : selectedHood.map(each => <option key={each.name}>{each.name}</option>)}
+                                
+                            </ListingFormSelect>
+                        </ListingFormLabel>
                         <ListingFormLabel>
                             Address:
                             <br />
@@ -302,8 +356,7 @@ const UpdateListing = (props) => {
 
 const mapStateToProps = (state) => {
     return{
-        neighborhoods: state.neighborhoods,
-        neighborhoodGroups: state.neighborhoodGroups,
+        neighborhoodGroup: state.neighborhoodGroup,
         bedTypes: state.bedTypes,
         roomTypes: state.roomTypes,
         cancellationTypes: state.cancellationTypes
