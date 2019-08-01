@@ -15,10 +15,21 @@ class YourListingsModal extends React.Component {
 
     render() {
         const { open } = this.state
-        const { listing, DeleteListing } = this.props
+        const { listing, DeleteListing} = this.props
+
+        // function ListingToUpdate(event, data) {
+        //     setListingEdit(data)
+        //     event.target.close
+        // }
 
         return (
-            <Modal open={open} onOpen={this.open} onClose={this.close} trigger={<Button>VIEW DETAILS</Button>} closeIcon>
+            <Modal
+                open={open}
+                onOpen={this.open}
+                onClose={this.close}
+                trigger={<Button>VIEW DETAILS</Button>}
+                closeIcon
+            >
                 <Modal.Header>{listing.name}</Modal.Header>
                 <Modal.Content image scrolling>
                     <Image wrapped size='medium' src={house} />
@@ -48,7 +59,7 @@ class YourListingsModal extends React.Component {
                     </Modal.Description>
                 </Modal.Content>
                 <Modal.Actions>
-                    <StyledModalUpdateListingsLink as={ Link } to={{pathname:"/update-listing/"}} onClick={this.close} className='fluid'>UPDATE</StyledModalUpdateListingsLink>
+                    <StyledModalUpdateListingsLink as={ Link } to={{pathname:"/update-listing/", state: {listing}}} onClick={this.close} className='fluid'>UPDATE</StyledModalUpdateListingsLink>
                     <Button negative onClick={() => DeleteListing(listing)}>DELETE</Button>
                     <Button color='blue' onClick={this.close}>CLOSE</Button>
                 </Modal.Actions>
