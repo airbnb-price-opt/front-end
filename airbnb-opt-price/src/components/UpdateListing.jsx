@@ -87,266 +87,268 @@ const UpdateListing = (props) => {
     return (
         <AddListingDiv>
             <AddListingHeader>Update Listing</AddListingHeader>
-            <AddListingWrapper>
-                <ListingFormWrapper>
-                <ListingFormDiv>
-                    <ListingForm>
-                        <ListingFormLabel>
-                            NEIGHBORHOOD GROUP:
-                            <br />
-                            <ListingFormSelect
-                                required
-                                name='selectedGroup' 
-                                onChange={handleNeighborhoodChange}
-                            >
-                                <option value="CHOOSE YOUR NEIGHBORHOOD GROUP..." disabled selected='selected'>
-                                    CHOOSE YOUR NEIGHBORHOOD GROUP...
-                                </option>
-                                {props.neighborhoodGroup.map(group => {
-                                    return (
-                                            <option
-                                                value={group.name} 
-                                                key={group.neighbourhood_group_id}
-                                            >
-                                                {group.name}
+                <AddListingWrapper>
+                    <ListingFormWrapper>
+                        <ListingFormDiv>
+                            <ListingForm>
+                                <div>
+                                    <ListingFormLabel>
+                                        NEIGHBORHOOD GROUP:
+                                        <br />
+                                        <ListingFormSelect
+                                            required
+                                            name='selectedGroup' 
+                                            onChange={handleNeighborhoodChange}
+                                        >
+                                            <option value="CHOOSE YOUR NEIGHBORHOOD GROUP..." disabled selected='selected'>
+                                                CHOOSE YOUR NEIGHBORHOOD GROUP...
                                             </option>
-                                    )
-                                })}
-                            </ListingFormSelect>
-                        </ListingFormLabel>
-                        <ListingFormLabel>
-                            NEIGHBORHOOD:
-                            <br />
-                            <ListingFormSelect
-                                required
-                                name='selectedHood'
-                            >
-                                <option value="" disabled selected>
-                                    CHOOSE YOUR NEIGHBORHOOD...
-                                </option>
+                                            {props.neighborhoodGroup.map(group => {
+                                                return (
+                                                        <option
+                                                            value={group.name} 
+                                                            key={group.neighbourhood_group_id}
+                                                        >
+                                                            {group.name}
+                                                        </option>
+                                                )
+                                            })}
+                                        </ListingFormSelect>
+                                    </ListingFormLabel>
+                                    <ListingFormLabel>
+                                        NEIGHBORHOOD:
+                                        <br />
+                                        <ListingFormSelect
+                                            required
+                                            name='selectedHood'
+                                        >
+                                            <option value="" disabled selected>
+                                                CHOOSE YOUR NEIGHBORHOOD...
+                                            </option>
 
-                                {!selectedHood ? null : selectedHood.map(each => <option key={each.name}>{each.name}</option>)}
-                                
-                            </ListingFormSelect>
-                        </ListingFormLabel>
-                        <ListingFormLabel>
-                            Address:
-                            <br />
-                            <ListingFormInput
-                            name='address' 
-                            placeholder=''
-                            // value={props.address}
-                            onChange={handleChange}
-                            />
-                        </ListingFormLabel>
-                        <ListingFormLabel>
-                            Cleaning Fee:
-                            <br />
-                            <ListingFormInput
-                            name='cleaning_fee' 
-                            placeholder='$'
-                            type='number'
-                            onChange={handleChange}
-                            />
-                        </ListingFormLabel>
-                        <ListingFormLabel>
-                            Security Deposit:
-                            <br />
-                            <ListingFormInput
-                            name='security_deposit' 
-                            placeholder='$'
-                            type='number'
-                            onChange={handleChange}
-                            />
-                        </ListingFormLabel>
-                        <ListingFormLabel>
-                            Extra People:
-                            <br />
-                            <ListingFormInput
-                            name='extra_people' 
-                            placeholder='Fee Per Person'
-                            type='number'
-                            onChange={handleChange}
-                            />
-                        </ListingFormLabel>
-                        <ListingFormLabel>
-                            Accommodates:
-                            <br />
-                            <ListingFormInput
-                            name='accommodates'
-                            onChange={handleChange}
-                            min={1}
-                            max={20}
-                            >
-                                {/* {
-                                    accommodatesRange.map(number => {
-                                        return (
-                                            <StyledOption key={number} value={number}>{number}</StyledOption>
-                                        )
-                                    })
-                                } */}
-                            </ListingFormInput>
-                        </ListingFormLabel>
-                        <ListingFormLabel>
-                            Guests Included:
-                            <br />
-                            <ListingFormSelect
-                            name='guests_included'
-                            onChange={handleChange}
-                            defaultValue='1'
-                            >
-                                {
-                                    guestsRange.map(number => {
-                                        return (
-                                            <StyledOption key={number} value={number}>{number}</StyledOption>
-                                        )
-                                    })
-                                }
-                            </ListingFormSelect>
-                        </ListingFormLabel>
-                        <ListingFormLabel>
-                            Availability 365:
-                            <br />
-                            <ListingFormInput
-                            name='availability_365' 
-                            placeholder='Number of Days Available through year'
-                            type='number'
-                            onChange={handleChange}
-                            />
-                        </ListingFormLabel>
-                        <ListingFormLabel>
-                            Room Type:
-                            <br />
-                            <ListingFormSelect
-                            name='room_type'
-                            onChange={handleChange}
-                            defaultValue='Select Room Type'
-                            >
-                                <option disabled>Select Room Type</option>
-                                <option value='entire_home_apt'>Entire Home/Apt</option>
-                                <option value='private_room'>Private Room</option>
-                                <option value='shared_room'>Shared Room</option>
-                            </ListingFormSelect>
-                        </ListingFormLabel>
-                        <ListingFormLabel>
-                            # of Bedrooms:
-                            <br />
-                            <ListingFormSelect
-                            name='bedrooms'
-                            onChange={handleChange}
-                            defaultValue='1'
-                            >
-                                {
-                                    bedroomRange.map(number => {
-                                        return (
-                                            <StyledOption key={number} value={number}>{number}</StyledOption>
-                                        )
-                                    })
-                                }
-                            </ListingFormSelect>
-                        </ListingFormLabel>
-                        <ListingFormLabel>
-                            # of Beds:
-                            <br />
-                            <ListingFormSelect
-                            name='beds'
-                            onChange={handleChange}
-                            defaultValue='1'
-                            >
-                                {
-                                    bedRange.map(number => {
-                                        return (
-                                            <StyledOption key={number} value={number}>{number}</StyledOption>
-                                        )
-                                    })
-                                }
-                            </ListingFormSelect>
-                        </ListingFormLabel>
-                        <ListingFormLabel>
-                            Bed Types:
-                            <br />
-                            <ListingFormSelect
-                            name='bed_type'
-                            onChange={handleChange}
-                            defaultValue='Select Bed Type'
-                            >
-                                <option disabled>Select Bed Type</option>
-                                <option value='real_bed'>Real Bed</option>
-                                <option value='pull_out_sofa'>Pull-out Sofa</option>
-                                <option value='couch'>Couch</option>
-                                <option value='futon'>Futon</option>
-                                <option value='airbed'>Airbed</option>
-                            </ListingFormSelect>
-                        </ListingFormLabel>
-                        <ListingFormLabel>
-                            # of Bathrooms:
-                            <br />
-                            <ListingFormSelect
-                            name='bathrooms'
-                            onChange={handleChange}
-                            defaultValue='1'
-                            >
-                                {
-                                    bathroomRange.map(number => {
-                                        return (
-                                            <StyledOption key={number} value={number}>{number}</StyledOption>
-                                        )
-                                    })
-                                }
-                            </ListingFormSelect>
-                        </ListingFormLabel>
-                        <ListingFormLabel>
-                            Cancellation Policy:
-                            <br />
-                            <ListingFormSelect
-                            name='cancellation_policy'
-                            onChange={handleChange}
-                            defaultValue='Select Cancellation Policy'
-                            >
-                                <option disabled>Select Cancellation Policy</option>
-                                <option value='strict_14_with_grace_period'>Strict 14 w/ Grace Period</option>
-                                <option value='flexible'>Flexible</option>
-                                <option value='moderate'>Moderate</option>
-                                <option value='super_strict_30'>Super Strict 30</option>
-                                <option value='super_strict_60'>Super Strict 60</option>
-                            </ListingFormSelect>
-                        </ListingFormLabel>
-                        <ListingFormLabel>
-                            Current # of Listings:
-                            <br />
-                            <ListingFormInput
-                            name='calculated_host_listing_count' 
-                            placeholder=''
-                            type='number'
-                            onChange={handleChange}
-                            />
-                        </ListingFormLabel>
-                        <ListingFormLabel>
-                            Amenities:
-                            <br />
-                            <ListingFormTickDiv>
-                            {
-                                amenities.map((amenitiy, index) => {
-                                    return (
-                                        <ListingFormInputTickDiv key={index}>
-                                            <ListingFormInputTick type='checkbox' name={amenitiy} onChange={handleAmenitiesChange}/>
-                                            <ListingFormTickLabel>{amenitiy}</ListingFormTickLabel>
-                                        </ListingFormInputTickDiv>
-                                    )
-                                })
-                            }
-                            </ListingFormTickDiv>
-                        </ListingFormLabel>
-                        <ListingFormButton type='submit' onClick={handleSubmit}>UPDATE LISTING</ListingFormButton>
-                    </ListingForm>
-                </ListingFormDiv>
+                                            {!selectedHood ? null : selectedHood.map(each => <option key={each.name}>{each.name}</option>)}
+                                            
+                                        </ListingFormSelect>
+                                    </ListingFormLabel>
+                                    <ListingFormLabel>
+                                        Address:
+                                        <br />
+                                        <ListingFormInput
+                                        name='address' 
+                                        placeholder=''
+                                        // value={props.address}
+                                        onChange={handleChange}
+                                        />
+                                        </ListingFormLabel>
+                                        <ListingFormLabel>
+                                        Current # of Listings:
+                                        <br />
+                                        <ListingFormInput
+                                        name='calculated_host_listing_count' 
+                                        placeholder=''
+                                        type='number'
+                                        onChange={handleChange}
+                                        />
+                                    </ListingFormLabel>
+                                </div>
+                                <div>
+                                    <ListingFormLabel>
+                                    Cleaning Fee:
+                                    <br />
+                                    <ListingFormInput
+                                    name='cleaning_fee' 
+                                    placeholder='$'
+                                    type='number'
+                                    onChange={handleChange}
+                                    />
+                                    </ListingFormLabel>
+                                    <ListingFormLabel>
+                                        Security Deposit:
+                                        <br />
+                                        <ListingFormInput
+                                        name='security_deposit' 
+                                        placeholder='$'
+                                        type='number'
+                                        onChange={handleChange}
+                                        />
+                                    </ListingFormLabel>
+                                    <ListingFormLabel>
+                                        Extra People:
+                                        <br />
+                                        <ListingFormInput
+                                        name='extra_people' 
+                                        placeholder='Fee Per Person'
+                                        type='number'
+                                        onChange={handleChange}
+                                        />
+                                    </ListingFormLabel>
+                                    <ListingFormLabel>
+                                        Accommodates:
+                                        <br />
+                                        <ListingFormInput
+                                        name='accommodates'
+                                        onChange={handleChange}
+                                        min={1}
+                                        max={20}
+                                        >
+                                            {/* {
+                                                accommodatesRange.map(number => {
+                                                    return (
+                                                        <StyledOption key={number} value={number}>{number}</StyledOption>
+                                                    )
+                                                })
+                                            } */}
+                                        </ListingFormInput>
+                                    </ListingFormLabel>
+                                </div>
+                                <div>
+                                    <ListingFormLabel>
+                                        Guests Included:
+                                        <br />
+                                        <ListingFormSelect
+                                        name='guests_included'
+                                        onChange={handleChange}
+                                        defaultValue='1'
+                                        >
+                                            {
+                                                guestsRange.map(number => {
+                                                    return (
+                                                        <StyledOption key={number} value={number}>{number}</StyledOption>
+                                                    )
+                                                })
+                                            }
+                                        </ListingFormSelect>
+                                    </ListingFormLabel>
+                                    <ListingFormLabel>
+                                        Availability 365:
+                                        <br />
+                                        <ListingFormInput
+                                        name='availability_365' 
+                                        placeholder='Number of Days Available through year'
+                                        type='number'
+                                        onChange={handleChange}
+                                        />
+                                    </ListingFormLabel>
+                                    <ListingFormLabel>
+                                        Room Type:
+                                        <br />
+                                        <ListingFormSelect
+                                        name='room_type'
+                                        onChange={handleChange}
+                                        defaultValue='Select Room Type'
+                                        >
+                                            <option disabled>Select Room Type</option>
+                                            <option value='entire_home_apt'>Entire Home/Apt</option>
+                                            <option value='private_room'>Private Room</option>
+                                            <option value='shared_room'>Shared Room</option>
+                                        </ListingFormSelect>
+                                    </ListingFormLabel>
+                                    <ListingFormLabel>
+                                        # of Bedrooms:
+                                        <br />
+                                        <ListingFormSelect
+                                        name='bedrooms'
+                                        onChange={handleChange}
+                                        defaultValue='1'
+                                        >
+                                            {
+                                                bedroomRange.map(number => {
+                                                    return (
+                                                        <StyledOption key={number} value={number}>{number}</StyledOption>
+                                                    )
+                                                })
+                                            }
+                                        </ListingFormSelect>
+                                    </ListingFormLabel>
+                                </div>
+                                <div>
+                                    <ListingFormLabel>
+                                        # of Beds:
+                                        <br />
+                                        <ListingFormSelect
+                                        name='beds'
+                                        onChange={handleChange}
+                                        defaultValue='1'
+                                        >
+                                            {
+                                                bedRange.map(number => {
+                                                    return (
+                                                        <StyledOption key={number} value={number}>{number}</StyledOption>
+                                                    )
+                                                })
+                                            }
+                                        </ListingFormSelect>
+                                    </ListingFormLabel>
+                                    <ListingFormLabel>
+                                        Bed Types:
+                                        <br />
+                                        <ListingFormSelect
+                                        name='bed_type'
+                                        onChange={handleChange}
+                                        defaultValue='Select Bed Type'
+                                        >
+                                            <option disabled>Select Bed Type</option>
+                                            <option value='real_bed'>Real Bed</option>
+                                            <option value='pull_out_sofa'>Pull-out Sofa</option>
+                                            <option value='couch'>Couch</option>
+                                            <option value='futon'>Futon</option>
+                                            <option value='airbed'>Airbed</option>
+                                        </ListingFormSelect>
+                                    </ListingFormLabel>
+                                    <ListingFormLabel>
+                                        # of Bathrooms:
+                                        <br />
+                                        <ListingFormSelect
+                                        name='bathrooms'
+                                        onChange={handleChange}
+                                        defaultValue='1'
+                                        >
+                                            {
+                                                bathroomRange.map(number => {
+                                                    return (
+                                                        <StyledOption key={number} value={number}>{number}</StyledOption>
+                                                    )
+                                                })
+                                            }
+                                        </ListingFormSelect>
+                                    </ListingFormLabel>
+                                    <ListingFormLabel>
+                                        Cancellation Policy:
+                                        <br />
+                                        <ListingFormSelect
+                                        name='cancellation_policy'
+                                        onChange={handleChange}
+                                        defaultValue='Select Cancellation Policy'
+                                        >
+                                            <option disabled>Select Cancellation Policy</option>
+                                            <option value='strict_14_with_grace_period'>Strict 14 w/ Grace Period</option>
+                                            <option value='flexible'>Flexible</option>
+                                            <option value='moderate'>Moderate</option>
+                                            <option value='super_strict_30'>Super Strict 30</option>
+                                            <option value='super_strict_60'>Super Strict 60</option>
+                                        </ListingFormSelect>
+                                    </ListingFormLabel>
+                                </div>
+                                <ListingFormLabel>
+                                    Amenities:
+                                    <br />
+                                    <ListingFormTickDiv>
+                                    {
+                                        amenities.map((amenitiy, index) => {
+                                            return (
+                                                <ListingFormInputTickDiv key={index}>
+                                                    <ListingFormInputTick type='checkbox' name={amenitiy} onChange={handleAmenitiesChange}/>
+                                                    <ListingFormTickLabel>{amenitiy}</ListingFormTickLabel>
+                                                </ListingFormInputTickDiv>
+                                            )
+                                        })
+                                    }
+                                    </ListingFormTickDiv>
+                                </ListingFormLabel>
+                            <ListingFormButton type='submit' onClick={handleSubmit}>UPDATE LISTING</ListingFormButton>
+                        </ListingForm>
+                    </ListingFormDiv>
                 </ListingFormWrapper>
-                <UploadImageDiv>
-                    <UploadImageText>
-                        <p className='plus-sign'>+</p>
-                        <p>UPLOAD IMAGE</p>
-                    </UploadImageText>
-                </UploadImageDiv>
             </AddListingWrapper>
         </AddListingDiv>
     )
@@ -363,3 +365,11 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, { updateListing, getRoomTypes, getBedTypes, getNeighborhoods, getNeighborhoodGroups, getCancellationTypes })(UpdateListing)
 
 
+
+//@@@@@@@@@@@@ IMAGE UPLOAD DIV JSX @@@@@@@@@@@@@//
+{/* <UploadImageDiv>
+    <UploadImageText>
+        <p className='plus-sign'>+</p>
+        <p>UPLOAD IMAGE</p>
+    </UploadImageText>
+</UploadImageDiv> */}
