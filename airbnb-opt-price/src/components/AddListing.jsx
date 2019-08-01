@@ -28,32 +28,37 @@ import {
     ListingFormSelect, 
     ListingFormInputTick, 
     ListingFormInput, 
-    ListingFormButton 
+    ListingFormButton,
+    ListDivs,
+    ListFormNameDiv
 } from '../StyledComps';
-
-import { nullLiteral } from '@babel/types';
-
 
 const AddListing = (props) => {
 
     const [listing, setListing] = useState(
         {
-            address: '',
+            accommodates: 0,
+            bathrooms: 0,
+            bedType: {
+                bed_type_id: 0,
+            },
+            bedrooms: 0,
+            cancellationPolicy: {
+                cancellation_policy_id: 0,
+            },
             cleaning_fee: 0,
-            security_deposit: 0,
-            extra_people: 0, 
-            accommodates: 1, 
-            guests_included: 1,
-            availability_365: 0, 
-            room_type: '', 
-            bedrooms: 1, 
-            beds: 1, 
-            bed_type: '', 
-            bathrooms: 1,
-            cancellation_policy: '',
-            calculated_host_listing_count: 0, 
-            amenities: 0, 
-            neighbourhood: ''
+            extra_people: 0,
+            guests_included: 0,
+            latitude: 0,
+            longitude: 0,
+            name: '',
+            neighbourHood: {
+                neighbourhood_id: 0
+            },
+            roomType: {
+                room_type_id: 0
+            },
+            security_deposit: 0
         }
     )
 
@@ -73,7 +78,37 @@ const AddListing = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         props.addListing(listing)
-        console.log("Updated Listing", listing)
+        console.log(listing)
+        props.history.push('/your-listings')
+    }
+
+    const handleRoomTypeChange = event => {
+        setListing({...listing, roomType: {room_type_id: event.target.value}})
+    }
+
+    const handleBedTypeChange = event => {
+        setListing({...listing, bedType: {bed_type_id: event.target.value}})
+    }
+
+    const handlePropertyTypeChange = event => {
+        setListing({...listing, propertyType: {property_type_id: event.target.value}})
+    }
+
+    const handleCancellationChange = event => {
+        setListing({...listing, cancellationPolicy: {cancellation_policy_id: event.target.value}})
+    }
+
+    const handleNeighborhoodGroupChange = e => {
+        setSelectedGroup(e.target.value)
+        props.neighborhoodGroup.map(selected => {
+            if(selected.name === e.target.value){
+                setSelectedHood(selected.neighbourHood)
+            }
+        })
+    };
+
+    const handleNeighborhoodChange = e => {
+        setListing({ ...listing, neighbourHood: {neighbourhood_id: e.target.value}});
     }
 
     const handleChange = event => {
@@ -89,7 +124,6 @@ const AddListing = (props) => {
             }
         }
         setListing({ ...listing, [event.target.name]: event.target.value });
-        console.log(event.target.name, event.target.value)
     };
 
     const handleAmenitiesChange = event => {
@@ -113,26 +147,11 @@ const AddListing = (props) => {
         props.getRoomTypes();
         props.getCancellationTypes();
     },[])
-    
-
-    const handleNeighborhoodChange = e => {
-
-        // setListing({ ...listing, [event.target.name]: event.target.value });
-        setSelectedGroup(e.target.value)
-        
-        props.neighborhoodGroup.map(selected => {
-            if(selected.name === e.target.value){
-                setSelectedHood(selected.neighbourHood)
-                setListing({ ...listing, 'neighbourhood': e.target.value});
-            }
-        })
-
-    };
 
     const latLongHandleChange = e =>{
         getLatLong(e.target.value, setListing, listing)
     }
-
+    
     return (
         <AddListingDiv>
             <AddListingHeader>Add Listing</AddListingHeader>
@@ -140,13 +159,25 @@ const AddListing = (props) => {
                 <ListingFormWrapper>
                 <ListingFormDiv>
                     <ListingForm>
+                        <ListFormNameDiv>
+                        <ListingFormLabel>
+                            Name of Listing:
+                            <br />
+                            <ListingFormInput
+                            name='name' 
+                            onChange={handleChange}
+                            type='text'
+                            />
+                        </ListingFormLabel>
+                        </ListFormNameDiv>
+                        <ListDivs>
                         <ListingFormLabel>
                             NEIGHBORHOOD GROUP:
                             <br />
                             <ListingFormSelect
                                 required
                                 name='selectedGroup' 
-                                onChange={handleNeighborhoodChange}
+                                onChange={handleNeighborhoodGroupChange}
                             >
                                 <option value="CHOOSE YOUR NEIGHBORHOOD GROUP..." disabled selected='selected'>
                                     CHOOSE YOUR NEIGHBORHOOD GROUP...
@@ -169,12 +200,13 @@ const AddListing = (props) => {
                             <ListingFormSelect
                                 required
                                 name='selectedHood'
+                                onChange={handleNeighborhoodChange}
                             >
                                 <option value="" disabled selected>
                                     CHOOSE YOUR NEIGHBORHOOD...
                                 </option>
 
-                                {!selectedHood ? null : selectedHood.map(each => <option key={each.name}>{each.name}</option>)}
+                                {!selectedHood ? null : selectedHood.map(each => <option value={each.neighbourhood_id} key={each.name}>{each.name}</option>)}
                                 
                             </ListingFormSelect>
                         </ListingFormLabel>
@@ -182,12 +214,21 @@ const AddListing = (props) => {
                             Address:
                             <br />
                             <ListingFormInput
-                            name='address' 
-                            placeholder=''
-                            // value={props.address}
                             onChange={latLongHandleChange}
                             />
                         </ListingFormLabel>
+                        <ListingFormLabel>
+                            Current # of Listings:
+                            <br />
+                            <ListingFormInput
+                            name='calculated_host_listing_count' 
+                            defaultValue={0}
+                            type='number'
+                            min={0}
+                            />
+                        </ListingFormLabel>
+                        </ListDivs>
+                        <ListDivs>
                         <ListingFormLabel>
                             Cleaning Fee:
                             <br />
@@ -237,6 +278,8 @@ const AddListing = (props) => {
                             >
                             </ListingFormInput>
                         </ListingFormLabel>
+                        </ListDivs>
+                        <ListDivs>
                         <ListingFormLabel>
                             Guests Included (1-16):
                             <br />
@@ -255,7 +298,6 @@ const AddListing = (props) => {
                             <br />
                             <ListingFormInput
                             name='availability_365' 
-                            onChange={handleChange}
                             defaultValue={1}
                             type='number'
                             min={1}
@@ -267,7 +309,7 @@ const AddListing = (props) => {
                             <br />
                             <ListingFormSelect
                             name='room_type'
-                            onChange={handleChange}
+                            onChange={handleRoomTypeChange}
                             defaultValue='Select Room Type'
                             >
                                 <option disabled>Select Room Type</option>
@@ -293,6 +335,8 @@ const AddListing = (props) => {
                             >
                             </ListingFormInput>
                         </ListingFormLabel>
+                        </ListDivs>
+                        <ListDivs>
                         <ListingFormLabel>
                             # of Beds (1-30):
                             <br />
@@ -311,7 +355,7 @@ const AddListing = (props) => {
                             <br />
                             <ListingFormSelect
                             name='bed_type'
-                            onChange={handleChange}
+                            onChange={handleBedTypeChange}
                             defaultValue='Select Bed Type'
                             >
                                 <option disabled>Select Bed Type</option>
@@ -343,7 +387,7 @@ const AddListing = (props) => {
                             <br />
                             <ListingFormSelect
                             name='cancellation_policy'
-                            onChange={handleChange}
+                            onChange={handleCancellationChange}
                             defaultValue='Select Cancellation Policy'
                             >
                                 <option disabled>Select Cancellation Policy</option>
@@ -357,17 +401,7 @@ const AddListing = (props) => {
                                 }
                             </ListingFormSelect>
                         </ListingFormLabel>
-                        <ListingFormLabel>
-                            Current # of Listings:
-                            <br />
-                            <ListingFormInput
-                            name='calculated_host_listing_count' 
-                            onChange={handleChange}
-                            defaultValue={0}
-                            type='number'
-                            min={0}
-                            />
-                        </ListingFormLabel>
+                        </ListDivs>
                         <ListingFormLabel>
                             Amenities:
                             <br />
@@ -388,12 +422,12 @@ const AddListing = (props) => {
                     </ListingForm>
                 </ListingFormDiv>
                 </ListingFormWrapper>
-                <UploadImageDiv>
+                {/* <UploadImageDiv>
                     <UploadImageText>
                         <p className='plus-sign'>+</p>
                         <p>UPLOAD IMAGE</p>
                     </UploadImageText>
-                </UploadImageDiv>
+                </UploadImageDiv> */}
             </AddListingWrapper>
         </AddListingDiv>
     )
