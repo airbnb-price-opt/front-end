@@ -51,6 +51,7 @@ class YourListingsModal extends React.Component {
                         <p>Amenities: #</p>
                         <hr></hr>
                         <p>Cancellation Policy: {listing.cancellationPolicy.name.replace(/_/g, ' ')}</p>
+                        <p>{`OPTIMAL PRICE RANGE: $${Math.round(parseInt(listing.price || 50)*.95)}-${Math.round(parseInt(listing.price || 50)*1.05)}`}</p>
                     </Modal.Description>
                 </Modal.Content>
                 <Modal.Actions>

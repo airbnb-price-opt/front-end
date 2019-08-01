@@ -23,7 +23,7 @@ const YourListings = (props) => {
 
     useEffect(() => {
         props.getListings();
-    }, [])
+    }, [props.listings])
 
     const handleDelete = (e, listing, id) => {
         e.preventDefault();

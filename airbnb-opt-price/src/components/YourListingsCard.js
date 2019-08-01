@@ -27,7 +27,10 @@ const YourListingsCard = (props) => {
 
     return (
         <StyledListingGrid>
-            {data.map((listing,index) => (
+            {data.map((listing,index) => {
+                if(!listing.listing_id) return null;
+                return (
+                
                 <StyledListingsCard key={index}>
                     <img src={houseImg(listing)} alt='house img'></img>
                     <StyledListingsCardContent>
@@ -54,7 +57,7 @@ const YourListingsCard = (props) => {
                     </StyledLCBC>
                     <img className='trash-icon' src={trash} alt='delete icon' onClick={(e) => handleDelete(e, listing, listing.listing_id)}></img>
                 </StyledListingsCard>
-            ))}
+            )})}
             <StyledAddListingsLink to="/add-listing/">
                 <p className='plus-sign'>+</p>
                 <p>ADD LISTING</p>

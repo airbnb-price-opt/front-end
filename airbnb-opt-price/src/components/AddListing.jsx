@@ -38,6 +38,7 @@ const AddListing = (props) => {
 
     const [listing, setListing] = useState(
         {
+            amenities: 0,
             accommodates: 0,
             bathrooms: 0,
             bedType: {
@@ -58,6 +59,9 @@ const AddListing = (props) => {
             },
             roomType: {
                 room_type_id: 0
+            },
+            propertyType: {
+                property_type_id: 0
             },
             security_deposit: 0
         }
@@ -91,7 +95,7 @@ const AddListing = (props) => {
     }
 
     const handlePropertyTypeChange = event => {
-        setListing({...listing, propertyType: {property_type_id: event.target.value}})
+        setListing({...listing, propertyType: {property_type_id: parseInt(event.target.value)}})
     }
 
     const handleCancellationChange = event => {
@@ -129,7 +133,7 @@ const AddListing = (props) => {
                 setListing({ ...listing, [event.target.name]: event.target.value });
             }
             else if(event.target.name === 'bathrooms'){
-                setListing({ ...listing, [event.target.name]: parseFloat(event.target.value) });
+                setListing({ ...listing, [event.target.name]: parseInt(event.target.value) });
             }
             else {
                 setListing({ ...listing, [event.target.name]: parseInt(event.target.value) });
@@ -159,7 +163,7 @@ const AddListing = (props) => {
         props.getPropertyTypes();
     },[])
 
-    console.log(props.propertyTypes)
+    // console.log(props.propertyTypes)
 
     const latLongHandleChange = e =>{
         getLatLong(e.target.value, setListing, listing)
@@ -243,7 +247,9 @@ const AddListing = (props) => {
                             Address:
                             <br />
                             <ListingFormInput
+                            name='name' 
                             onChange={latLongHandleChange}
+                            type='text'
                             />
                         </ListingFormLabel>
                         <ListingFormLabel>
@@ -405,7 +411,6 @@ const AddListing = (props) => {
                             onChange={handleChange}
                             defaultValue={1}
                             type='number'
-                            step={0.5}
                             min={1}
                             max={10}
                             >
