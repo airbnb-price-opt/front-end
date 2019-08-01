@@ -273,8 +273,8 @@ export const reducer = (state = initialState, action ) => {
             return{
                 ...state,
                 putting: false,
-                listings: 
-            }
+                listings: [...state.listings]
+        }
         default:
             return state;
     }
