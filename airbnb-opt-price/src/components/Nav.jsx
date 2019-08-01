@@ -1,8 +1,6 @@
 import React, {useEffect} from "react"
 import { NavDiv, StyledNavLink } from "../StyledComps"
 
-
-
 const Nav = (props) =>
 {
     const {loggedIn, setLoggedIn} = props
@@ -40,15 +38,6 @@ const Nav = (props) =>
                 </NavDiv>
         )
     }
-
-    // return (
-    //     <NavDiv>
-    //         <StyledNavLink to="/your-listings/" activeClassName="active-nav">YOUR LISTINGS</StyledNavLink>
-    //         <StyledNavLink to="/register/" activeClassName="active-nav">REGISTER</StyledNavLink>
-    //         <StyledNavLink to="/" activeClassName="active-nav" isActive={checkActive}>LOGIN</StyledNavLink>
-    //         <StyledNavLink to="/logout/" activeClassName="active-nav">LOGOUT</StyledNavLink>
-    //     </NavDiv>
-    // )
 }
 
 export default Nav

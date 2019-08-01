@@ -9,17 +9,18 @@ import {
     updateListing, 
     getBedTypes, 
     getRoomTypes, 
-    getCancellationTypes 
+    getCancellationTypes,
+    getPropertyTypes 
 } from '../store/actions';
 
 import { 
     AddListingDiv, 
     AddListingWrapper, 
     AddListingHeader, 
-    UploadImageDiv, 
+    // UploadImageDiv, 
     ListingFormTickDiv, 
     ListingFormTickLabel, 
-    UploadImageText, 
+    // UploadImageText, 
     ListingFormWrapper, 
     ListingFormDiv, 
     ListingForm, 
@@ -117,8 +118,10 @@ const UpdateListing = (props) => {
         props.getBedTypes();
         props.getRoomTypes();
         props.getCancellationTypes();
+        props.getPropertyTypes();
     },[])
-    
+
+    console.log(props.propertyTypes)
 
     const handleNeighborhoodChange = e => {
 
@@ -130,6 +133,7 @@ const UpdateListing = (props) => {
                 setSelectedHood(selected.neighbourHood)
                 setListing({ ...listing, 'neighbourhood': e.target.value});
             }
+            return true
         })
 
     };
@@ -164,7 +168,7 @@ const UpdateListing = (props) => {
                             <br />
                             <ListingFormSelect
                                 required
-                                name='selectedGroup' 
+                                name={selectedGroup}
                                 onChange={handleNeighborhoodChange}
                             >
                                 <option value="CHOOSE YOUR NEIGHBORHOOD GROUP..." disabled selected='selected'>
@@ -424,17 +428,18 @@ const mapStateToProps = (state) => {
         neighborhoodGroup: state.neighborhoodGroup,
         bedTypes: state.bedTypes,
         roomTypes: state.roomTypes,
-        cancellationTypes: state.cancellationTypes
+        cancellationTypes: state.cancellationTypes,
+        propertyTypes: state.propertyTypes
     }
 }
-export default connect(mapStateToProps, { updateListing, getRoomTypes, getBedTypes, getNeighborhoods, getNeighborhoodGroups, getCancellationTypes })(UpdateListing)
+export default connect(mapStateToProps, { getPropertyTypes, updateListing, getRoomTypes, getBedTypes, getNeighborhoods, getNeighborhoodGroups, getCancellationTypes })(UpdateListing)
 
 
 
 //@@@@@@@@@@@@ IMAGE UPLOAD DIV JSX @@@@@@@@@@@@@//
-{/* <UploadImageDiv>
+/* <UploadImageDiv>
     <UploadImageText>
         <p className='plus-sign'>+</p>
         <p>UPLOAD IMAGE</p>
     </UploadImageText>
-</UploadImageDiv> */}
+</UploadImageDiv> */
