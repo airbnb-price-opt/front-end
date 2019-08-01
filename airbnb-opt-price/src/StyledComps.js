@@ -136,6 +136,10 @@ export const ListingFormSelect = styled.select`
     height: 31px;
     width: 100%;
     font-family: 'Montserrat', sans-serif;
+
+    option {
+        text-transform: capitalize
+    }
 `;
 
 export const ListingFormInput = styled.input`

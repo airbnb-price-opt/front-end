@@ -13,13 +13,6 @@ const Nav = (props) =>
         return pathname === "/"
     }
 
-<<<<<<< HEAD
-    if(localStorage.getItem('token') !== null && localStorage.getItem('token') !== '') {
-        return (
-            <NavDiv>
-                <StyledNavLink to="/your-listings/" activeClassName="active-nav">YOUR LISTINGS</StyledNavLink>
-                <StyledNavLink to="/" onClick={_=> localStorage.removeItem('token')} activeClassName="active-nav">LOGOUT</StyledNavLink>
-=======
     useEffect(_ =>
         {
             return   
@@ -36,7 +29,6 @@ const Nav = (props) =>
             <NavDiv>
                 <StyledNavLink to="/your-listings/" activeClassName="active-nav">YOUR LISTINGS</StyledNavLink>
                 <StyledNavLink to="/" onClick={logoutClick} activeClassName="active-nav">LOGOUT</StyledNavLink>
->>>>>>> 9442bbaa19bba9bb5f4572489247522105043f7e
             </NavDiv>
         )
     }
