@@ -83,9 +83,6 @@ const UpdateListing = (props) => {
         props.getRoomTypes();
         props.getCancellationTypes();
     }, [])
-    
-    console.log('USE TO POPULATE ROOMTYPE DROPDOWN', props.roomTypes)
-    console.log('USE TO POPULATE CANCELLATION DROPDOWN', props.cancellationTypes)
 
     return (
         <AddListingDiv>

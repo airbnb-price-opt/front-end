@@ -274,7 +274,7 @@ export const reducer = (state = initialState, action ) => {
                 ...state,
                 putting: false,
                 listings: [...state.listings]
-            }
+        }
         default:
             return state;
     }
