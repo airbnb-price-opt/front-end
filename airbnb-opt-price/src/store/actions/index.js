@@ -186,7 +186,7 @@ export const addListing = (newListingObj, history) => dispatch => {
             console.log('ADD_LISTING_SUCCESS', res.data)
             dispatch({ type: ADD_LISTING_SUCCESS, payload: res.data })
         })
-        .then(res =>{
+        .then(res => {
             history.push('/your-listings')
         })
         .catch(err => {

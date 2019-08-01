@@ -33,6 +33,7 @@ const YourListings = (props) => {
         props.deleteListing(listing, id, props.history)
     }
     
+    if(!userListing) return <p>Loading...</p>
     return (
         <StyledYourListings>
             <h1>YOUR LISTINGS</h1>

@@ -74,9 +74,9 @@ const UpdateListing = (props) => {
     'Coffee maker', 'Dryer', 'Dishwasher', 'Long term stays allowed', 'Pets allowed', 'Fire extinguisher',
     'Luggage dropoff allowed', 'Private entrance', 'Extra pillows and blankets']
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e, listing, id) => {
         e.preventDefault();
-        props.updateListing(listing)
+        props.updateListing(listing, id, props.history)
         props.history.push('/your-listings')
     }
 
