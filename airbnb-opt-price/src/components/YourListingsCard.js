@@ -25,6 +25,7 @@ const YourListingsCard = (props) => {
                         <p>ACTUAL PRICE: {listing.act_price}</p>
                         <p>OPTIMAL PRICE: {listing.opt_price}</p>
                         <p>REVIEWS: {listing.number_of_reviews}</p>
+                        <p>{`OPTIMAL PRICE RANGE: $${Math.round(parseInt(listing.price || 50)*.95)}-${Math.round(parseInt(listing.price || 50)*1.05)}`}</p>
                     </StyledListingsCardContent>
 
                     <StyledLCBC>
