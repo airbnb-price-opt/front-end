@@ -2,8 +2,9 @@ import React from "react"
 import MobileNav from './MobileNav'
 import { Copyright, FooterDiv, FooterLink2, FooterLink, FooterContainerDiv } from '../StyledComps'
 
-const Footer = () =>
+const Footer = (props) =>
 {
+    const {loggedIn, setLoggedIn} = props
     return (
         <FooterContainerDiv>
             <FooterDiv>
@@ -13,7 +14,7 @@ const Footer = () =>
                     <FooterLink2 to="/terms-and-conditions/" >TERMS AND CONDITIONS</FooterLink2>
                 </div>
             </FooterDiv>
-            <MobileNav/>
+            <MobileNav loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
         </FooterContainerDiv>
     )
 }
