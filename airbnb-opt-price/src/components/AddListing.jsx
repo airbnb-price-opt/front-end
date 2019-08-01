@@ -130,10 +130,7 @@ const AddListing = (props) => {
     };
 
     const latLongHandleChange = e =>{
-        if (e.target.name === "address"){
-            console.log("lat long:",getLatLong(e.target.value));
-        }
-        setListing({ ...listing, [e.target.name]: e.target.value });
+        getLatLong(e.target.value, setListing, listing)
     }
 
     return (
