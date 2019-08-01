@@ -26,7 +26,7 @@ const YourListingsCard = (props) => {
                         <p>OPTIMAL PRICE: {listing.opt_price}</p>
                     </StyledListingsCardContent>
                     <StyledLCBC>
-                        <YourListingsModal listing={listing} index={index} setListingEdit={setListingEdit}>VIEW DETAILS</YourListingsModal>
+                        <YourListingsModal listing={listing}>VIEW DETAILS</YourListingsModal>
                         <StyledUpdateListingsLink to={"/update-listing/"} onClick={setListingEdit(listing)}>UPDATE LISTING</StyledUpdateListingsLink>
                     </StyledLCBC>
                     <img className='trash-icon' src={trash} alt='delete icon' onClick={() => DeleteListing(listing)}></img>
