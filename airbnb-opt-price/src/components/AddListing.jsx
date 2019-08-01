@@ -60,6 +60,9 @@ const AddListing = (props) => {
             roomType: {
                 room_type_id: 0
             },
+            propertyType: {
+                property_type_id: 0
+            },
             security_deposit: 0
         }
     )
@@ -95,9 +98,7 @@ const AddListing = (props) => {
     }
 
     const handleCancellationChange = event => {
-
         setListing({...listing, cancellationPolicy: {cancellation_policy_id: parseInt(event.target.value)}})
-
     }
 
     const handleNeighborhoodGroupChange = e => {
@@ -201,17 +202,6 @@ const AddListing = (props) => {
                             </ListingFormSelect>
                         </ListingFormLabel>
                         </ListFormNameDiv>
-                        <ListFormNameDiv>
-                        <ListingFormLabel>
-                            Address:
-                            <br />
-                            <ListingFormInput
-                            name='name' 
-                            onChange={handleChange}
-                            type='text'
-                            />
-                        </ListingFormLabel>
-                        </ListFormNameDiv>
                         <ListDivs>
                         <ListingFormLabel>
                             NEIGHBORHOOD GROUP:
@@ -251,22 +241,13 @@ const AddListing = (props) => {
                             </ListingFormSelect>
                         </ListingFormLabel>
                         <ListingFormLabel>
-                            Property Type:
+                            Address:
                             <br />
-                            <ListingFormSelect
-                            name='property_type'
-                            onChange={handlePropertyTypeChange}
-                            defaultValue='Select Property Type'
-                            >
-                                <option disabled>Select Property Type</option>
-                                {
-                                    props.propertyTypes.map(propertyType => {
-                                        return (
-                                            <option value={propertyType.property_type_id} key={propertyType.property_type_id}>{propertyType.name}</option>
-                                        )
-                                    })
-                                }
-                            </ListingFormSelect>
+                            <ListingFormInput
+                            name='name' 
+                            onChange={latLongHandleChange}
+                            type='text'
+                            />
                         </ListingFormLabel>
                         <ListingFormLabel>
                             Current # of Listings:
