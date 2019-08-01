@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
 
 import { AddListingDiv, StyledOption, AddListingWrapper, AddListingHeader, UploadImageDiv, ListingFormTickDiv, ListingFormTickLabel, UploadImageText, ListingFormWrapper, ListingFormDiv, ListingForm, ListingFormLabel, ListingFormInputTickDiv, ListingFormSelect, ListingFormInputTick, ListingFormInput, ListingFormButton } from '../StyledComps'
-import { getNeighborhoods, getNeighborhoodGroups, getBedTypes, getPropertyTypes } from '../store/actions';
+import { getNeighborhoods, getNeighborhoodGroups, getBedTypes, getRoomTypes, getCancellationTypes } from '../store/actions';
 
 const UpdateListing = (props) => {
     const [listing, setListing] = useState(
@@ -25,6 +25,9 @@ const UpdateListing = (props) => {
     const bedroomRange = [1,2,3,4,5,6,7,8,9,10,11,12]
     const bedRange = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
     const bathroomRange = [1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10]
+
+    const [selectedGroup, setSelectedGroup] = useState('')
+    const [selectedHood, setSelectedHood] = useState('')
 
     const handleChange = event => {
         if(event.target.min && event.target.max){
@@ -53,6 +56,19 @@ const UpdateListing = (props) => {
         }
     };
 
+    const handleNeighborhoodChange = e => {
+
+        // setListing({ ...listing, [event.target.name]: event.target.value });
+        setSelectedGroup(e.target.value)
+        
+        props.neighborhoodGroup.map(selected => {
+            if(selected.name === e.target.value){
+                setSelectedHood(selected.neighbourHood)
+            }
+        })
+
+    };
+
     const handleSubmit = e => {
         e.preventDefault()
         console.log("Updated Listing", listing)
@@ -63,11 +79,12 @@ const UpdateListing = (props) => {
         props.getNeighborhoods();
         props.getNeighborhoodGroups();
         props.getBedTypes();
-        props.getPropertyTypes();
+        props.getRoomTypes();
+        props.getCancellationTypes();
     }, [])
     
-    console.log('PROPERTYTYPES:', props.propertyTypes)
-    console.log('BEDTYPES:', props.bedTypes)
+    console.log('USE TO POPULATE ROOMTYPE DROPDOWN', props.roomTypes)
+    console.log('USE TO POPULATE CANCELLATION DROPDOWN', props.cancellationTypes)
 
     return (
         <AddListingDiv>
@@ -76,6 +93,44 @@ const UpdateListing = (props) => {
                 <ListingFormWrapper>
                 <ListingFormDiv>
                     <ListingForm>
+                        <ListingFormLabel>
+                            NEIGHBORHOOD GROUP:
+                            <br />
+                            <ListingFormSelect
+                                required
+                                name='selectedGroup' 
+                                onChange={handleNeighborhoodChange}
+                            >
+                                <option value="CHOOSE YOUR NEIGHBORHOOD GROUP..." disabled selected='selected'>
+                                    CHOOSE YOUR NEIGHBORHOOD GROUP...
+                                </option>
+                                {props.neighborhoodGroup.map(group => {
+                                    return (
+                                            <option
+                                                value={group.name} 
+                                                key={group.neighbourhood_group_id}
+                                            >
+                                                {group.name}
+                                            </option>
+                                    )
+                                })}
+                            </ListingFormSelect>
+                        </ListingFormLabel>
+                        <ListingFormLabel>
+                            NEIGHBORHOOD:
+                            <br />
+                            <ListingFormSelect
+                                required
+                                name='selectedHood'
+                            >
+                                <option value="" disabled selected>
+                                    CHOOSE YOUR NEIGHBORHOOD...
+                                </option>
+
+                                {!selectedHood ? null : selectedHood.map(each => <option key={each.name}>{each.name}</option>)}
+                                
+                            </ListingFormSelect>
+                        </ListingFormLabel>
                         <ListingFormLabel>
                             Address:
                             <br />
@@ -301,12 +356,12 @@ const UpdateListing = (props) => {
 
 const mapStateToProps = (state) => {
     return{
-        neighborhoods: state.neighborhoods,
-        neighborhoodGroups: state.neighborhoodGroups,
+        neighborhoodGroup: state.neighborhoodGroup,
         bedTypes: state.bedTypes,
-        propertyTypes: state.propertyTypes
+        roomTypes: state.roomTypes,
+        cancellationTypes: state.cancellationTypes
     }
 }
-export default connect(mapStateToProps, { getBedTypes, getPropertyTypes, getNeighborhoods, getNeighborhoodGroups })(UpdateListing)
+export default connect(mapStateToProps, { getRoomTypes, getBedTypes, getNeighborhoods, getNeighborhoodGroups, getCancellationTypes })(UpdateListing)
 
 
