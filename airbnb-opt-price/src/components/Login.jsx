@@ -2,20 +2,21 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../store/actions';
 import {LoginContainerDiv, LoginForm, LoginFormContainer, LoginImage, LoginFormLabelInputDiv, UndrawImage} from '../StyledComps'
-import { history } from "../helpers/history";
+// import { history } from "../helpers/history";
 
 
 const Login = (props) => {
 
+    const {setLoggedIn} = props
     const [ currentUser, setCurrentUser ] = useState({ username: '', password:'' })
     
     const handleChanges = (e) => {
         setCurrentUser({ ...currentUser, [e.target.name]: e.target.value })
     }
-    console.log(history)
+    console.log(props.history)
     const verifyUser = (e) => {
         e.preventDefault();
-        props.loginUser(currentUser, history)
+        props.loginUser(currentUser, props.history, setLoggedIn)
     }
     console.log(currentUser)
     return(

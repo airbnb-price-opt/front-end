@@ -771,6 +771,10 @@ export const RegisterPageDiv = styled.div`
     color: white;
     margin: 10px 0 0px 0;
     align-items: flex-end;
+    @media (max-width: 950px) {
+        flex-flow: column nowrap;
+        align-items: center;
+    }
     @media (max-width: 600px) {
         margin: 0;
     }
@@ -826,6 +830,9 @@ export const RegisterFormButton = styled.button`
 export const RegisterImageDiv = styled.div`
     margin-bottom: -8px;
     width: 500px;
+    @media (max-width: 950px) {
+        margin-top: 20px;
+    }
     @media (max-width: 580px) {
         display: none;
     }

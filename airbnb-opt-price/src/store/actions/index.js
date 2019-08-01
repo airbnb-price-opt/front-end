@@ -16,10 +16,15 @@ export const GET_NEIGHBORHOOD_GROUP_FAIL = 'GET_NEIGHBORHOOD_GROUP_FAIL';
 export const GET_BED_TYPES_START = 'GET_BED_TYPES_START';
 export const GET_BED_TYPES_SUCCESS = 'GET_BED_TYPES_SUCCESS';
 export const GET_BED_TYPES_FAIL = 'GET_BED_TYPES_FAIL';
-export const GET_PROPERTY_TYPES_START ='GET_PROPERTY_TYPES_START';
-export const GET_PROPERTY_TYPES_SUCCESS = 'GET_PROPERTY_TYPES_SUCCESS';
-export const GET_PROPERTY_TYPES_FAIL = 'GET_PROPERTY_TYPES_FAIL';
-
+export const GET_ROOM_TYPES_START = 'GET_ROOM_TYPES_START';
+export const GET_ROOM_TYPES_SUCCESS = 'GET_ROOM_TYPES_SUCCESS';
+export const GET_ROOM_TYPES_FAIL = 'GET_ROOM_TYPES_FAIL';
+export const GET_CANCELLATION_TYPES_START = 'GET_CANCELLATION_TYPES_START';
+export const GET_CANCELLATION_TYPES_SUCCESS = 'GET_CANCELLATION_TYPES_SUCCESS';
+export const GET_CANCELLATION_TYPES_FAIL = 'GET_CANCELLATION_TYPES_FAIL';
+export const GET_LISTINGS_START = 'GET_LISTINGS_START';
+export const GET_LISTINGS_SUCCESS = 'GET_LISTINGS_SUCCESS';
+export const GET_LISTINGS_FAIL = 'GET_LISTINGS_FAIL';
 
 export const registerUser = (newUserObj) => dispatch => {
     dispatch({ type: REGISTER_USER_START })
@@ -35,7 +40,7 @@ export const registerUser = (newUserObj) => dispatch => {
         })
 } 
 
-export const loginUser = (existingUser, history) => dispatch => {
+export const loginUser = (existingUser, history, setLoggedIn) => dispatch => {
     dispatch({ type: LOGIN_USER_START })
     axios
         .post('https://airbnb-price-opt.herokuapp.com/oauth/token', `grant_type=password&username=${existingUser.username}&password=${existingUser.password}`, {
@@ -48,6 +53,9 @@ export const loginUser = (existingUser, history) => dispatch => {
             console.log('LOGIN_USER_SUCCESS', res)
             dispatch({ type: LOGIN_USER_SUCCESS, payload: res.data.access_token })
             localStorage.setItem('token', res.data.access_token)
+            setLoggedIn(true)
+        })
+        .then(res =>{
             history.push('/your-listings')
         })
         .catch(err =>{
@@ -99,16 +107,46 @@ export const getBedTypes = () => dispatch => {
         })
 }
 
-export const getPropertyTypes = () => dispatch => {
-    dispatch({ type: GET_PROPERTY_TYPES_START })
+export const getRoomTypes = () => dispatch => {
+    dispatch({ type: GET_ROOM_TYPES_START })
     axiosWithAuth()
-        .get('https://airbnb-price-opt.herokuapp.com/properties/all')
+        .get('https://airbnb-price-opt.herokuapp.com/rooms/all')
         .then(res => {
-            console.log('GET_PROPERTY_TYPES_SUCCESS', res.data)
-            dispatch({ type: GET_PROPERTY_TYPES_SUCCESS, payload: res.data })
+            console.log('GET_ROOM_TYPES_SUCCESS', res.data)
+            dispatch({ type: GET_ROOM_TYPES_SUCCESS, payload: res.data })
         })
         .catch(err => {
-            console.log('GET_PROPERTY_TYPES_FAIL', err)
-            dispatch({ type: GET_PROPERTY_TYPES_FAIL, payload: err })
+            console.log('GET_ROOM_TYPES_FAIL', err)
+            dispatch({ type: GET_ROOM_TYPES_FAIL, payload: err })
+        })
+}
+
+
+export const getCancellationTypes = () => dispatch => {
+    dispatch({ type: GET_CANCELLATION_TYPES_START })
+    axiosWithAuth()
+        .get('https://airbnb-price-opt.herokuapp.com/cancellations/all')
+        .then(res => {
+            console.log('GET_CANCELLATION_TYPES_SUCCESS', res.data)
+            dispatch({ type: GET_CANCELLATION_TYPES_SUCCESS, payload: res.data })
+        })
+        .catch(err => {
+            console.log('GET_CANCELLATION_TYPES_FAIL', err)
+            dispatch({ type: GET_CANCELLATION_TYPES_FAIL, payload: err })
+        })
+}
+
+
+export const getListings = () => dispatch => {
+    dispatch({ type: GET_LISTINGS_START })
+    axiosWithAuth()
+        .get('https://airbnb-price-opt.herokuapp.com/listings/all')
+        .then(res => {
+            console.log('GET_LISTINGS_SUCCESS', res.data)
+            dispatch({ type: GET_LISTINGS_SUCCESS, payload: res.data })
+        })
+        .catch(err => {
+            console.log('GET_LISTINGS_FAIL', err)
+            dispatch({ type: GET_LISTINGS_FAIL, payload: err })
         })
 }
