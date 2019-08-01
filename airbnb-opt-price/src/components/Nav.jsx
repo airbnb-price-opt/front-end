@@ -28,7 +28,7 @@ const Nav = (props) =>
         return (
             <NavDiv>
                 <StyledNavLink to="/your-listings/" activeClassName="active-nav">YOUR LISTINGS</StyledNavLink>
-                <StyledNavLink to="/" onClick={logoutClick} activeClassName="active-nav">LOGOUT</StyledNavLink>
+                <StyledNavLink to="/" exact onClick={logoutClick} activeClassName="active-nav">LOGOUT</StyledNavLink>
             </NavDiv>
         )
     }
@@ -36,7 +36,7 @@ const Nav = (props) =>
         return (
                 <NavDiv>
                     <StyledNavLink to="/register/" activeClassName="active-nav">REGISTER</StyledNavLink>
-                    <StyledNavLink to="/" activeClassName="active-nav" isActive={checkActive}>LOGIN</StyledNavLink>
+                    <StyledNavLink to="/" exact activeClassName="active-nav" isActive={checkActive}>LOGIN</StyledNavLink>
                 </NavDiv>
         )
     }

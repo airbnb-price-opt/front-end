@@ -29,9 +29,6 @@ function App() {
 
         <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
 
-          {/* <Register /> */}
-          {/* <Login /> */}
-        
           <Route render={({location}) => (
             <TransitionGroup>
               <CSSTransition
