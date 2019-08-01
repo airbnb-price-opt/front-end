@@ -9,7 +9,8 @@ import {
     updateListing, 
     getBedTypes, 
     getRoomTypes, 
-    getCancellationTypes 
+    getCancellationTypes,
+    getPropertyTypes 
 } from '../store/actions';
 
 import { 
@@ -115,8 +116,10 @@ const UpdateListing = (props) => {
         props.getBedTypes();
         props.getRoomTypes();
         props.getCancellationTypes();
+        props.getPropertyTypes();
     },[])
-    
+
+    console.log(props.propertyTypes)
 
     const handleNeighborhoodChange = e => {
 
@@ -421,10 +424,11 @@ const mapStateToProps = (state) => {
         neighborhoodGroup: state.neighborhoodGroup,
         bedTypes: state.bedTypes,
         roomTypes: state.roomTypes,
-        cancellationTypes: state.cancellationTypes
+        cancellationTypes: state.cancellationTypes,
+        propertyTypes: state.propertyTypes
     }
 }
-export default connect(mapStateToProps, { updateListing, getRoomTypes, getBedTypes, getNeighborhoods, getNeighborhoodGroups, getCancellationTypes })(UpdateListing)
+export default connect(mapStateToProps, { getPropertyTypes, updateListing, getRoomTypes, getBedTypes, getNeighborhoods, getNeighborhoodGroups, getCancellationTypes })(UpdateListing)
 
 
 

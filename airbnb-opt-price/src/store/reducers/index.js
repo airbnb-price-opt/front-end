@@ -28,7 +28,10 @@ import {
     ADD_LISTING_FAIL,
     UPDATE_LISTING_START,
     UPDATE_LISTING_SUCCESS,
-    UPDATE_LISTING_FAIL
+    UPDATE_LISTING_FAIL,
+    GET_PROPERTY_TYPES_START,
+    GET_PROPERTY_TYPES_SUCCESS,
+    GET_PROPERTY_TYPES_FAIL
 } from '../actions';
 
 const initialState = {
@@ -40,6 +43,7 @@ const initialState = {
     bedTypes: [],
     roomTypes: [],
     cancellationTypes: [],
+    propertyTypes: [],
     neighborhoodGroup: [
         {
             name: "Friedrichstein",
@@ -275,6 +279,23 @@ export const reducer = (state = initialState, action ) => {
                 putting: false,
                 listings: state.listings
         }
+        case GET_PROPERTY_TYPES_START:
+            return{
+                ...state,
+                getting: true
+            }
+        case GET_PROPERTY_TYPES_SUCCESS:
+            return{
+                ...state,
+                getting: false,
+                propertyTypes: action.payload
+            }
+        case GET_PROPERTY_TYPES_FAIL:
+            return{
+                ...state,
+                getting: false,
+                propertyTypes: state.propertyTypes
+            }
         default:
             return state;
     }

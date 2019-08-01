@@ -31,6 +31,9 @@ export const ADD_LISTING_FAIL = 'ADD_LISTING_FAIL';
 export const UPDATE_LISTING_START = 'UPDATE_LISTING_START';
 export const UPDATE_LISTING_SUCCESS = 'UPDATE_LISTING_SUCCESS';
 export const UPDATE_LISTING_FAIL = 'UPDATE_LISTING_FAIL';
+export const GET_PROPERTY_TYPES_START = 'GET_PROPERTY_TYPES_START';
+export const GET_PROPERTY_TYPES_SUCCESS = 'GET_PROPERTY_TYPES_SUCCESS';
+export const GET_PROPERTY_TYPES_FAIL = 'GET_PROPERTY_TYPES_FAIL';
 
 export const registerUser = (newUserObj) => dispatch => {
     dispatch({ type: REGISTER_USER_START })
@@ -127,6 +130,19 @@ export const getRoomTypes = () => dispatch => {
         })
 }
 
+export const getPropertyTypes = () => dispatch => {
+    dispatch({ type: GET_PROPERTY_TYPES_START })
+    axiosWithAuth()
+        .get('https://airbnb-price-opt.herokuapp.com/properties/all')
+        .then(res => {
+            console.log('GET_PROPERTY_TYPES_SUCCESS', res.data)
+            dispatch({ type: GET_PROPERTY_TYPES_SUCCESS, payload: res.data })
+        })
+        .catch(err => {
+            console.log('GET_PROPERTY_TYPES_FAIL', err)
+            dispatch({ type: GET_PROPERTY_TYPES_FAIL, payload: err })
+        })
+}
 
 export const getCancellationTypes = () => dispatch => {
     dispatch({ type: GET_CANCELLATION_TYPES_START })
