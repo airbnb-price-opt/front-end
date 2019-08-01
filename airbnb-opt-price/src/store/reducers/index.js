@@ -16,7 +16,10 @@ import {
     GET_BED_TYPES_FAIL,
     GET_ROOM_TYPES_START,
     GET_ROOM_TYPES_SUCCESS,
-    GET_ROOM_TYPES_FAIL
+    GET_ROOM_TYPES_FAIL,
+    GET_CANCELLATION_TYPES_START,
+    GET_CANCELLATION_TYPES_SUCCESS,
+    GET_CANCELLATION_TYPES_FAIL
     // ADD_NEIGHBORHOOD_GROUP_START,
     // ADD_NEIGHBORHOOD_GROUP_SUCCESS,
     // ADD_NEIGHBORHOOD_GROUP_FAIL
@@ -30,6 +33,7 @@ const initialState = {
     posting: false,
     bedTypes: [],
     roomTypes: [],
+    cancellationTypes: [],
     neighborhoodGroup: [
         {
             name: "Friedrichstein",
@@ -189,6 +193,24 @@ export const reducer = (state = initialState, action ) => {
                 ...state,
                 getting: false,
                 roomTypes: action.payload
+            }
+            case GET_CANCELLATION_TYPES_START:
+            return{
+                ...state,
+                getting: false
+            }
+        case GET_CANCELLATION_TYPES_SUCCESS:
+            console.log('GET_CANCELLATION_TYPES_REDUCER', action.payload)
+            return{
+                ...state,
+                getting: false,
+                cancellationTypes: action.payload
+            }
+        case GET_CANCELLATION_TYPES_FAIL:
+            return{
+                ...state,
+                getting: false,
+                cancellationTypes: action.payload
             }
         default:
             return state;

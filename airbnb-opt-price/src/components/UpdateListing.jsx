@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
 
 import { AddListingDiv, StyledOption, AddListingWrapper, AddListingHeader, UploadImageDiv, ListingFormTickDiv, ListingFormTickLabel, UploadImageText, ListingFormWrapper, ListingFormDiv, ListingForm, ListingFormLabel, ListingFormInputTickDiv, ListingFormSelect, ListingFormInputTick, ListingFormInput, ListingFormButton } from '../StyledComps'
-import { getNeighborhoods, getNeighborhoodGroups, getBedTypes, getRoomTypes } from '../store/actions';
+import { getNeighborhoods, getNeighborhoodGroups, getBedTypes, getRoomTypes, getCancellationTypes } from '../store/actions';
 
 const UpdateListing = (props) => {
     const [listing, setListing] = useState(
@@ -64,9 +64,11 @@ const UpdateListing = (props) => {
         props.getNeighborhoodGroups();
         props.getBedTypes();
         props.getRoomTypes();
+        props.getCancellationTypes();
     }, [])
     
-    console.log('ROOMTYPES:', props.roomTypes)
+    console.log('USE TO POPULATE ROOMTYPE DROPDOWN', props.roomTypes)
+    console.log('USE TO POPULATE CANCELLATION DROPDOWN', props.cancellationTypes)
 
     return (
         <AddListingDiv>
@@ -303,9 +305,10 @@ const mapStateToProps = (state) => {
         neighborhoods: state.neighborhoods,
         neighborhoodGroups: state.neighborhoodGroups,
         bedTypes: state.bedTypes,
-        roomTypes: state.roomTypes
+        roomTypes: state.roomTypes,
+        cancellationTypes: state.cancellationTypes
     }
 }
-export default connect(mapStateToProps, { getRoomTypes, getBedTypes, getNeighborhoods, getNeighborhoodGroups })(UpdateListing)
+export default connect(mapStateToProps, { getRoomTypes, getBedTypes, getNeighborhoods, getNeighborhoodGroups, getCancellationTypes })(UpdateListing)
 
 
