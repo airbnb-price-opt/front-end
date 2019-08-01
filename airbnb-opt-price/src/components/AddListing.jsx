@@ -32,9 +32,6 @@ import {
     ListDivs
 } from '../StyledComps';
 
-import { nullLiteral } from '@babel/types';
-
-
 const AddListing = (props) => {
 
     const [listing, setListing] = useState(
@@ -74,7 +71,6 @@ const AddListing = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         props.addListing(listing)
-        console.log("Added Listing", listing)
         props.history.push('/your-listings')
     }
 
@@ -91,7 +87,6 @@ const AddListing = (props) => {
             }
         }
         setListing({ ...listing, [event.target.name]: event.target.value });
-        console.log(event.target.name, event.target.value)
     };
 
     const handleAmenitiesChange = event => {
@@ -118,10 +113,7 @@ const AddListing = (props) => {
     
 
     const handleNeighborhoodChange = e => {
-
-        // setListing({ ...listing, [event.target.name]: event.target.value });
         setSelectedGroup(e.target.value)
-        
         props.neighborhoodGroup.map(selected => {
             if(selected.name === e.target.value){
                 setSelectedHood(selected.neighbourHood)
@@ -134,7 +126,7 @@ const AddListing = (props) => {
     const latLongHandleChange = e =>{
         getLatLong(e.target.value, setListing, listing)
     }
-
+    
     return (
         <AddListingDiv>
             <AddListingHeader>Add Listing</AddListingHeader>
