@@ -9,7 +9,8 @@ import {
     addListing, 
     getBedTypes, 
     getRoomTypes, 
-    getCancellationTypes 
+    getCancellationTypes,
+    getPropertyTypes 
 } from '../store/actions';
 
 import { 
@@ -156,7 +157,10 @@ const AddListing = (props) => {
         props.getBedTypes();
         props.getRoomTypes();
         props.getCancellationTypes();
+        props.getPropertyTypes();
     },[])
+
+    console.log(props.propertyTypes)
 
     const latLongHandleChange = e =>{
         getLatLong(e.target.value, setListing, listing)
@@ -446,7 +450,8 @@ const mapStateToProps = (state) => {
         neighborhoodGroup: state.neighborhoodGroup,
         bedTypes: state.bedTypes,
         roomTypes: state.roomTypes,
-        cancellationTypes: state.cancellationTypes
+        cancellationTypes: state.cancellationTypes,
+        propertyTypes: state.propertyTypes
     }
 }
 
@@ -457,7 +462,8 @@ export default connect(mapStateToProps,
         addListing, 
         getCancellationTypes, 
         getRoomTypes, 
-        getBedTypes 
+        getBedTypes,
+        getPropertyTypes 
     }
 )(AddListing);
 
