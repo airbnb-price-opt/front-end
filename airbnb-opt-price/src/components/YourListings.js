@@ -17,21 +17,24 @@ const YourListingsCard = React.lazy(() => {
 })
 
 const YourListings = (props) => {
-    const [userListing, setUserListing] = useState([])
+    const [userListing, setUserListing] = useState([''])
     const [listingEdit, setListingEdit] = useState(null)
     // const [houseImgs, setHouseImgs] = useState([])
     // const PIXABAY_API_KEY = '13198877-6bfc2f5aa8cd5bbd707982513'
 
     // useEffect(() => {
-    //     axios.get(`https://pixabay.com/api/?key=${PIXABAY_API_KEY}&q=house&image_type=photo&per_page=10`)
-    //     .then(res => {
-    //         console.log(res.data.hits)
-    //         setHouseImgs(res.data.hits)
-    //     })
-    //     .catch(err => {
-    //         console.log('API Error: ', err)
-    //     })
-    // },[])
+    //     if (userListing !== ['']) {
+    //         axios.get(`https://pixabay.com/api/?key=${PIXABAY_API_KEY}&q=house&image_type=photo&per_page=10`)
+    //         .then(res => {
+    //             console.log(res.data.hits)
+    //             setHouseImgs(res.data.hits)
+    //         })
+    //         .catch(err => {
+    //             console.log('API Error: ', err)
+    //         })
+    //     }
+    //     console.log('Checking', houseImgs)
+    // },[userListing])
 
     useEffect(() => {
         setUserListing(props.listings)
@@ -62,7 +65,7 @@ const YourListings = (props) => {
         })
     }
 
-    // function HouseImages() {
+    // function InsertHouse() {
     //     userListing.map((listing, index) => {
     //         let newUserListing = [...userListing]
     //         newUserListing[index] = {...listing, img_url:houseImgs.webformatURL}
