@@ -174,13 +174,14 @@ export const getListings = () => dispatch => {
 }
 
 
-export const addListing = (newListingObj) => dispatch => {
+export const addListing = (newListingObj, history) => dispatch => {
     dispatch({ type: ADD_LISTING_START })
     axiosWithAuth()
         .post('https://airbnb-price-opt.herokuapp.com/listings/new', newListingObj)
         .then(res => {
             console.log('ADD_LISTING_SUCCESS', res.data)
             dispatch({ type: ADD_LISTING_SUCCESS, payload: res.data })
+            history.push('/your-listings')
         })
         .catch(err => {
             console.log('ADD_LISTING_FAIL', err)

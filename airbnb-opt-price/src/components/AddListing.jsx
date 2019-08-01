@@ -80,7 +80,6 @@ const AddListing = (props) => {
         e.preventDefault();
         props.addListing(listing)
         console.log(listing)
-        props.history.push('/your-listings')
     }
 
     const handleRoomTypeChange = event => {
