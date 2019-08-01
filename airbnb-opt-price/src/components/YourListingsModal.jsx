@@ -21,9 +21,7 @@ class YourListingsModal extends React.Component {
             <Modal open={open} onOpen={this.open} onClose={this.close} trigger={<Button>VIEW DETAILS</Button>} closeIcon>
                 <Modal.Header>{listing.neighborhood}, {listing.neighborhood_group}</Modal.Header>
                 <Modal.Content image scrolling>
-                    {/* <StyledYLMContainer> */}
                         <Image wrapped size='medium' src={listing.img_url !== null ? listing.img_url : house} />
-                    {/* </StyledYLMContainer> */}
                     <Modal.Description>
                         <Header>ADDRESS HERE
                             <Header.Subheader>Host Listing Number: #</Header.Subheader>
@@ -47,9 +45,9 @@ class YourListingsModal extends React.Component {
                     </Modal.Description>
                 </Modal.Content>
                 <Modal.Actions>
-                    <StyledModalUpdateListingsLink as={ Link } to="/update-listing/" onClick={this.close} className='fluid'>UPDATE LISTING</StyledModalUpdateListingsLink>
-                    <Button negative onClick={this.close}>DELETE LISTING</Button>
-                    <Button color='blue' onClick={DeleteListing(listing)}>CLOSE</Button>
+                    <StyledModalUpdateListingsLink as={ Link } to="/update-listing/" onClick={this.close} className='fluid'>UPDATE</StyledModalUpdateListingsLink>
+                    <Button negative onClick={() => DeleteListing(listing)}>DELETE</Button>
+                    <Button color='blue' onClick={() => this.close}>CLOSE</Button>
                 </Modal.Actions>
             </Modal>
         )

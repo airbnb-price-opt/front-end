@@ -20,7 +20,7 @@ const YourListings = (props) => {
     const [userListing, setUserListing] = useState(DummyData)
     const [listingEdit, setListingEdit] = useState(null)
     // const [houseImgs, setHouseImgs] = useState([])
-    // const PIXABAY_API_KEY = '13190409-dd10f24601d4fdeb9bacceb58'
+    // const PIXABAY_API_KEY = ''
 
     // useEffect(() => {
     //     axios.get(`https://pixabay.com/api/?key=${PIXABAY_API_KEY}&q=house&image_type=photo&per_page=${userListing.length}`)
