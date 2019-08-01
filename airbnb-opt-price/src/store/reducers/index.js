@@ -22,15 +22,21 @@ import {
     GET_CANCELLATION_TYPES_FAIL,
     GET_LISTINGS_START,
     GET_LISTINGS_SUCCESS,
-    GET_LISTINGS_FAIL
+    GET_LISTINGS_FAIL,
+    ADD_LISTING_START,
+    ADD_LISTING_SUCCESS,
+    ADD_LISTING_FAIL,
+    UPDATE_LISTING_START,
+    UPDATE_LISTING_SUCCESS,
+    UPDATE_LISTING_FAIL
 } from '../actions';
 
 const initialState = {
-    listing: [],
-    addingUser: false,
-    loggingIn: false,
+    listings: [],
     getting: false,
     posting: false,
+    putting: false,
+    deleting: false,
     bedTypes: [],
     roomTypes: [],
     cancellationTypes: [],
@@ -98,33 +104,33 @@ export const reducer = (state = initialState, action ) => {
             console.log('REGISTER_USER_START')
             return{
                 ...state,
-                isAddingUser: true
+                posting: true
             }
         case REGISTER_USER_SUCCESS:
             console.log(action.payload)
             return{
                 ...state,
-                addingUser: false
+                posting: false
             }
         case REGISTER_USER_FAIL:
             return{
                 ...state,
-                addingUser: false
+                posting: false
             }
         case LOGIN_USER_START:
             return{
                 ...state,
-                loggingIn: true
+                posting: true
             }
         case LOGIN_USER_SUCCESS:
             return{
                 ...state,
-                loggingIn: false
+                posting: false
             }
         case LOGIN_USER_FAIL:
             return{
                 ...state,
-                loggingIn: false
+                posting: false
             }
         case GET_NEIGHBORHOOD_START:
             return{
@@ -179,10 +185,9 @@ export const reducer = (state = initialState, action ) => {
         case GET_ROOM_TYPES_START:
             return{
                 ...state,
-                getting: false
+                getting: true
             }
         case GET_ROOM_TYPES_SUCCESS:
-            console.log('GET_ROOM_TYPES_REDUCER', action.payload)
             return{
                 ...state,
                 getting: false,
@@ -197,10 +202,9 @@ export const reducer = (state = initialState, action ) => {
         case GET_CANCELLATION_TYPES_START:
             return{
                 ...state,
-                getting: false
+                getting: true
             }
         case GET_CANCELLATION_TYPES_SUCCESS:
-            console.log('GET_CANCELLATION_TYPES_REDUCER', action.payload)
             return{
                 ...state,
                 getting: false,
@@ -215,10 +219,9 @@ export const reducer = (state = initialState, action ) => {
         case GET_LISTINGS_START:
             return{
                 ...state,
-                getting: false
+                getting: true
             }
         case GET_LISTINGS_SUCCESS:
-            console.log('GET_LISTINGS_REDUCER', action.payload)
             return{
                 ...state,
                 getting: false,
@@ -230,6 +233,48 @@ export const reducer = (state = initialState, action ) => {
                 getting: false,
                 listings: action.payload
             }
+        case ADD_LISTING_START:
+            return{
+                ...state,
+                posting: true
+            }
+        case ADD_LISTING_SUCCESS:
+            console.log('ADD_LISTING_REDUCER', action.payload)
+            return{
+                ...state,
+                posting: false,
+                listings: [...state.listings, action.payload]
+            }
+        case ADD_LISTING_FAIL:
+            return{
+                ...state,
+                posting: false,
+                listings: [...state.listings, action.payload]
+            }
+        case UPDATE_LISTING_START:
+            return{
+                ...state,
+                putting: true
+            }
+        case UPDATE_LISTING_SUCCESS:
+            console.log('UPDATE_LISTING_REDUCER', action.payload)
+            return{
+                ...state,
+                putting: false,
+                listings: state.listings.map(home => {
+                    if(home.listing_id === action.payload.id) {
+                        return action.payload;
+                    }else{
+                        return home;
+                    }
+                })
+            }
+        case UPDATE_LISTING_FAIL:
+            return{
+                ...state,
+                putting: false,
+                listings: [...state.listings]
+        }
         default:
             return state;
     }

@@ -87,7 +87,7 @@ color: #EB5757;
 `;
 
 export const ListingFormDiv = styled.div`
-    width: 561px;
+    width: 90%;
     background: #EB5757;
     padding: 30px 50px;
     font-family: 'Montserrat', sans-serif;
@@ -103,8 +103,11 @@ export const ListingFormDiv = styled.div`
 export const ListingForm = styled.form`
     color: white;
     display: flex;
-    flex-direction: column;
-    width: 561px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
     font-family: 'Montserrat', sans-serif;
     @media (max-width: 600px) {
         width: 90%;
@@ -114,6 +117,7 @@ export const ListingForm = styled.form`
 
 export const ListingFormLabel = styled.label`
     margin-bottom: 30px;
+    margin-right: 5%;
     font-weight: bold;
     font-size: .7rem;
     line-height: 17px;
@@ -136,6 +140,10 @@ export const ListingFormSelect = styled.select`
     height: 31px;
     width: 100%;
     font-family: 'Montserrat', sans-serif;
+
+    option {
+        text-transform: capitalize
+    }
 `;
 
 export const ListingFormInput = styled.input`
@@ -155,36 +163,46 @@ export const ListingFormInput = styled.input`
 export const ListingFormInputTickDiv = styled.div`
     /* margin-top: 5px; */
     /* height: 31px; */
-    width: 29%;
+    width: 18%;
     /* border: 1px solid black; */
     display: flex;
     align-items: center;
     padding: 5px 10px 5px 10px;
+    font-family: 'Montserrat', sans-serif;
+    @media (max-width: 600px) {
+        width: 43%;
+    }
 
 `;
+
+export const ListDivs = styled.div`
+`
+
 
 export const ListingFormTickLabel = styled.label`
     /* margin-bottom: 30px; */
     width: 90%;
     font-style: normal;
-    font-size: 1rem;
+    font-size: 0.7rem;
     line-height: 17px;
     text-transform: uppercase;
     
     @media (max-width: 600px) {
+        font-size: .7rem;
         margin-bottom: 10px;
     }
 `;
 
 export const ListingFormInputTick = styled.input`
     margin-top: 5px;
-    height: 31px;
+    height: 15px;
     width: 10%;
     padding-left: 100px;
     border: none;
     @media (max-width: 600px) {
         &:focus {
             outline: none;
+            height: 31px;
         }
     }
 
