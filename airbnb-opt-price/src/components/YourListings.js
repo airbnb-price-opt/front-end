@@ -11,7 +11,7 @@ import { StyledYourListings } from '../StyledComps';
 const YourListingsCard = React.lazy(() => {
     return Promise.all([
         import('./YourListingsCard'),
-        new Promise(res => setTimeout(res, 2000))
+        new Promise(res => setTimeout(res, 1000))
     ])
     .then(([moduleExports]) => moduleExports)
 })
@@ -73,7 +73,7 @@ const YourListings = (props) => {
             <h1>YOUR LISTINGS</h1>
             <hr></hr>
             <Suspense fallback={<LoadingScreen/>}>
-                <YourListingsCard data={userListing} EditListing={EditListing} DeleteListing={DeleteListing} listingEdit={listingEdit} setListingEdit={setListingEdit}/>
+                <YourListingsCard data={props.listings} EditListing={EditListing} DeleteListing={DeleteListing} listingEdit={listingEdit} setListingEdit={setListingEdit}/>
             </Suspense>
         </StyledYourListings>
     )
