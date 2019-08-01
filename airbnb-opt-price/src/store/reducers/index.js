@@ -44,62 +44,8 @@ const initialState = {
     roomTypes: [],
     cancellationTypes: [],
     propertyTypes: [],
-    neighborhoodGroup: [
-        {
-            name: "Friedrichstein",
-            neighbourHood: [
-            {
-                name: "NeighborhoodFried",
-                neighbourhood_id: 0
-            },
-            {
-                name: "NeighborhoodRich",
-                neighbourhood_id: 1
-            },
-            {
-                name: "NeighborhoodStein",
-                neighbourhood_id: 2
-            }
-            ],
-            neighbourhood_group_id: 0
-        },
-        {
-            name: "Lichtenstiein",
-            neighbourHood: [
-            {
-                name: "NeighborhoodLicht",
-                neighbourhood_id: 0
-            },
-            {
-                name: "NeighborhoodTen",
-                neighbourhood_id: 1
-            },
-            {
-                name: "NeighborhoodSteiner",
-                neighbourhood_id: 2
-            }
-            ],
-            neighbourhood_group_id: 1
-        },
-        {
-            name: "BerlinHamburn",
-            neighbourHood: [
-            {
-                name: "NeighborhoodBer",
-                neighbourhood_id: 0
-            },
-            {
-                name: "NeighborhoodLinHam",
-                neighbourhood_id: 1
-            },
-            {
-                name: "NeighborhoodBurn",
-                neighbourhood_id: 2
-            }
-            ],
-            neighbourhood_group_id: 2
-        }
-    ],
+    neighborhoodGroup: [],
+
 }
 
 export const reducer = (state = initialState, action ) => {
@@ -161,13 +107,13 @@ export const reducer = (state = initialState, action ) => {
             return{
                 ...state,
                 getting: false,
-                neighborhoodGroups: action.payload
+                neighborhoodGroup: action.payload
             }
         case GET_NEIGHBORHOOD_GROUP_FAIL:
             return{
                 ...state,
                 getting: false,
-                neighborhoodGroups: action.payload
+                neighborhoodGroup: action.payload
             }
         case GET_BED_TYPES_START:
             return{

@@ -34,6 +34,10 @@ export const UPDATE_LISTING_FAIL = 'UPDATE_LISTING_FAIL';
 export const GET_PROPERTY_TYPES_START = 'GET_PROPERTY_TYPES_START';
 export const GET_PROPERTY_TYPES_SUCCESS = 'GET_PROPERTY_TYPES_SUCCESS';
 export const GET_PROPERTY_TYPES_FAIL = 'GET_PROPERTY_TYPES_FAIL';
+export const DELETE_LISTING_START = 'DELETE_LISTING_START';
+export const DELETE_LISTING_SUCCESS = 'DELETE_LISTING_SUCCESS';
+export const DELETE_LISTING_FAIL = 'DELETE_LISTING_FAIL';
+
 
 export const registerUser = (newUserObj) => dispatch => {
     dispatch({ type: REGISTER_USER_START })
@@ -200,5 +204,20 @@ export const updateListing = (updateListingObj, id, history) => dispatch => {
         .catch(err => {
             console.log('UPDATE_LISTING_FAIL', err)
             dispatch({ type: UPDATE_LISTING_FAIL, payload: err })
+        })
+}
+
+
+export const deleteListing = (listingToDelete, id) => dispatch => {
+    dispatch({ type: DELETE_LISTING_START })
+    axiosWithAuth()
+        .put(`https://airbnb-price-opt.herokuapp.com/listings/delete/${id}`, listingToDelete)
+        .then(res => {
+            console.log('DELETE_LISTING_SUCCESS', res.data)
+            dispatch({ type: DELETE_LISTING_SUCCESS, payload: res.data })
+        })
+        .catch(err => {
+            console.log('DELETE_LISTING_FAIL', err)
+            dispatch({ type: DELETE_LISTING_FAIL, payload: err })
         })
 }
