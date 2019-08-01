@@ -34,6 +34,10 @@ export const UPDATE_LISTING_FAIL = 'UPDATE_LISTING_FAIL';
 export const GET_PROPERTY_TYPES_START = 'GET_PROPERTY_TYPES_START';
 export const GET_PROPERTY_TYPES_SUCCESS = 'GET_PROPERTY_TYPES_SUCCESS';
 export const GET_PROPERTY_TYPES_FAIL = 'GET_PROPERTY_TYPES_FAIL';
+export const DELETE_LISTING_START = 'DELETE_LISTING_START';
+export const DELETE_LISTING_SUCCESS = 'DELETE_LISTING_SUCCESS';
+export const DELETE_LISTING_FAIL = 'DELETE_LISTING_FAIL';
+
 
 export const registerUser = (newUserObj) => dispatch => {
     dispatch({ type: REGISTER_USER_START })
@@ -174,13 +178,16 @@ export const getListings = () => dispatch => {
 }
 
 
-export const addListing = (newListingObj) => dispatch => {
+export const addListing = (newListingObj, history) => dispatch => {
     dispatch({ type: ADD_LISTING_START })
     axiosWithAuth()
         .post('https://airbnb-price-opt.herokuapp.com/listings/new', newListingObj)
         .then(res => {
             console.log('ADD_LISTING_SUCCESS', res.data)
             dispatch({ type: ADD_LISTING_SUCCESS, payload: res.data })
+        })
+        .then(res =>{
+            history.push('/your-listings')
         })
         .catch(err => {
             console.log('ADD_LISTING_FAIL', err)
@@ -200,5 +207,21 @@ export const updateListing = (updateListingObj, id, history) => dispatch => {
         .catch(err => {
             console.log('UPDATE_LISTING_FAIL', err)
             dispatch({ type: UPDATE_LISTING_FAIL, payload: err })
+        })
+}
+
+
+export const deleteListing = (listingToDelete, id, history) => dispatch => {
+    dispatch({ type: DELETE_LISTING_START })
+    axiosWithAuth()
+        .delete(`https://airbnb-price-opt.herokuapp.com/listings/delete/${id}`, listingToDelete)
+        .then(res => {
+            console.log('DELETE_LISTING_SUCCESS', res.data)
+            dispatch({ type: DELETE_LISTING_SUCCESS, payload: res.data })
+            history.push('/your-listings')
+        })
+        .catch(err => {
+            console.log('DELETE_LISTING_FAIL', err)
+            dispatch({ type: DELETE_LISTING_FAIL, payload: err })
         })
 }

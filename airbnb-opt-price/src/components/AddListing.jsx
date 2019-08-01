@@ -77,9 +77,8 @@ const AddListing = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.addListing(listing)
+        props.addListing(listing, props.history)
         console.log(listing)
-        props.history.push('/your-listings')
     }
 
     const handleRoomTypeChange = event => {
@@ -105,7 +104,7 @@ const AddListing = (props) => {
         setSelectedGroup(e.target.value)
         props.neighborhoodGroup.map(selected => {
             if(selected.name === e.target.value){
-                setSelectedHood(selected.neighbourHood)
+                setSelectedHood(selected.neighbourHoods)
             }
         })
     };
@@ -182,6 +181,24 @@ const AddListing = (props) => {
                             onChange={handleChange}
                             type='text'
                             />
+                        </ListingFormLabel>
+                        <ListingFormLabel>
+                            Property Type:
+                            <br />
+                            <ListingFormSelect
+                            name='property_type'
+                            onChange={handlePropertyTypeChange}
+                            defaultValue='Select Property Type'
+                            >
+                                <option disabled>Select Property Type</option>
+                                {
+                                    props.propertyTypes.map(propertyType => {
+                                        return (
+                                            <option value={propertyType.property_type_id} key={propertyType.property_type_id}>{propertyType.name}</option>
+                                        )
+                                    })
+                                }
+                            </ListingFormSelect>
                         </ListingFormLabel>
                         </ListFormNameDiv>
                         <ListDivs>
