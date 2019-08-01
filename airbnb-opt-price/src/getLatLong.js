@@ -1,7 +1,4 @@
 import axios from 'axios'
-// import {apiKey} from './App'
-const latLong = [];
-
 
 export const getLatLong = (address, cb, listing) =>
 {
@@ -14,7 +11,6 @@ export const getLatLong = (address, cb, listing) =>
         "longitude": response.data.results[0].locations[0].latLng.lng })
     })
     .catch( err => console.log(err))
-
 }
 
 export const getAddress = (location, cb, listing) =>

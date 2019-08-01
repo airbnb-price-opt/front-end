@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from "react"
+import React, {useEffect } from "react"
 import { MobileNavDiv, StyledMobileNavLink } from "../StyledComps"
 
 
@@ -6,7 +6,6 @@ import { MobileNavDiv, StyledMobileNavLink } from "../StyledComps"
 const MobileNav = (props) =>
 {
     const {loggedIn, setLoggedIn} = props
-    // const [loggedIn, setLoggedIn] = useState(false)
 
     useEffect((_ => 
         {
