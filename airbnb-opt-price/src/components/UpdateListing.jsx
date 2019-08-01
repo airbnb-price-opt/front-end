@@ -36,6 +36,34 @@ import {
 
 const UpdateListing = (props) => {
     const [listing, setListing] = useState(props.location.state.listing)
+    console.log(props.location.state.listing)
+    const [updatedListing, setUpdatedListing] = useState(
+        {    
+            accommodates: listing.accommodates,
+            bathrooms: listing.bathrooms,
+            bedType: {
+                bed_type_id: 0,
+            },
+            bedrooms: 0,
+            cancellationPolicy: {
+                cancellation_policy_id: 0,
+            },
+            cleaning_fee: listing.cleaning_fee,
+            extra_people: 0,
+            guests_included: 0,
+            latitude: 0,
+            longitude: 0,
+            name: '',
+            neighbourHood: {
+                neighbourhood_id: 0
+            },
+            roomType: {
+                room_type_id: 0
+            },
+            security_deposit: 0
+        }
+    )
+    console.log('THIS IS UPDATED LISTING', updatedListing)
     // const [listing, setListing] = useState(
     //     {
     //         accommodates: 0,
@@ -77,8 +105,11 @@ const UpdateListing = (props) => {
 
     const handleSubmit = (e, listing, id) => {
         e.preventDefault();
-        props.updateListing(listing, id, props.history)
+        props.updateListing(updatedListing, id, props.history)
         props.history.push('/your-listings')
+    }
+    const handlePropertyTypeChange = event => {
+        setListing({...listing, propertyType: {property_type_id: parseInt(event.target.value)}})
     }
 
     const handleChange = event => {
@@ -160,6 +191,24 @@ const UpdateListing = (props) => {
                             value={listing.name}
                             />
                         </ListingFormLabel>
+                        <ListingFormLabel>
+                            Property Type:
+                            <br />
+                            <ListingFormSelect
+                            name='property_type'
+                            onChange={handlePropertyTypeChange}
+                            defaultValue='Select Property Type'
+                            >
+                                <option disabled>Select Property Type</option>
+                                {
+                                    props.propertyTypes.map(propertyType => {
+                                        return (
+                                            <option value={propertyType.property_type_id} key={propertyType.property_type_id}>{propertyType.name}</option>
+                                        )
+                                    })
+                                }
+                            </ListingFormSelect>
+                        </ListingFormLabel>
                         </ListFormNameDiv>
                         <ListDivs>
                         <ListingFormLabel>
@@ -232,7 +281,7 @@ const UpdateListing = (props) => {
                             name='cleaning_fee' 
                             // placeholder='$'
                             onChange={handleChange}
-                            value={listing.cleaning_fee}
+                            // value={listing.cleaning_fee}
                             type='number'
                             min={0}
                             />

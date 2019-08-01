@@ -91,7 +91,7 @@ const AddListing = (props) => {
     }
 
     const handlePropertyTypeChange = event => {
-        setListing({...listing, propertyType: {property_type_id: event.target.value}})
+        setListing({...listing, propertyType: {property_type_id: parseInt(event.target.value)}})
     }
 
     const handleCancellationChange = event => {
