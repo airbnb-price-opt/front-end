@@ -17,8 +17,7 @@ const YourListingsCard = React.lazy(() => {
 })
 
 const YourListings = (props) => {
-    const [userListing, setUserListing] = useState([''])
-    const [listingEdit, setListingEdit] = useState(null)
+    const [userListing, setUserListing] = useState([])
     // const [houseImgs, setHouseImgs] = useState([])
     // const PIXABAY_API_KEY = '13198877-6bfc2f5aa8cd5bbd707982513'
 
@@ -70,7 +69,11 @@ const YourListings = (props) => {
             <h1>YOUR LISTINGS</h1>
             <hr></hr>
             <Suspense fallback={<LoadingScreen/>}>
-                <YourListingsCard data={userListing} DeleteListing={DeleteListing} listingEdit={listingEdit} setListingEdit={setListingEdit}/>
+                {(userListing !== [''] ?
+                    <YourListingsCard data={userListing} DeleteListing={DeleteListing}/>
+                    : <h1>Loading...</h1>
+                )}
+                
             </Suspense>
         </StyledYourListings>
     )

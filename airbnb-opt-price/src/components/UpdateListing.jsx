@@ -35,8 +35,7 @@ import {
 } from '../StyledComps';
 
 const UpdateListing = (props) => {
-    const { listingEdit } = props.location.state
-    const [listing, setListing] = useState(listingEdit)
+    const [listing, setListing] = useState(props.location.state.listing)
     // const [listing, setListing] = useState(
     //     {
     //         accommodates: 0,
@@ -386,7 +385,7 @@ const UpdateListing = (props) => {
                             <ListingFormSelect
                             name='cancellation_policy'
                             onChange={handleChange}
-                            value={listing.cancellationPolicy.name}
+                            defaultValue={listing.cancellationPolicy.name}
                             >
                                 <option disabled>Select Cancellation Policy</option>
                                 {
