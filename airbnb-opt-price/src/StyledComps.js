@@ -10,6 +10,10 @@ export const AddListingDiv = styled.div`
     }
 `;
 
+export const ListFormNameDiv  = styled.div`
+    width: 100%;
+`;
+
 export const StyledOption = styled.option`
     line-height: 2.2rem;
 `; 

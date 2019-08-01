@@ -6,7 +6,7 @@ import { getLatLong } from '../getLatLong';
 import { 
     getNeighborhoods, 
     getNeighborhoodGroups, 
-    addListing, 
+    updateListing, 
     getBedTypes, 
     getRoomTypes, 
     getCancellationTypes 
@@ -29,28 +29,35 @@ import {
     ListingFormInputTick, 
     ListingFormInput, 
     ListingFormButton,
-    ListDivs
+    ListDivs,
+    ListFormNameDiv
 } from '../StyledComps';
 
 const UpdateListing = (props) => {
     const [listing, setListing] = useState(
         {
-            address: '',
+            accommodates: 0,
+            bathrooms: 0,
+            bedType: {
+                bed_type_id: 0,
+            },
+            bedrooms: 0,
+            cancellationPolicy: {
+                cancellation_policy_id: 0,
+            },
             cleaning_fee: 0,
-            security_deposit: 0,
-            extra_people: 0, 
-            accommodates: 1, 
-            guests_included: 1,
-            availability_365: 0, 
-            room_type: '', 
-            bedrooms: 1, 
-            beds: 1, 
-            bed_type: '', 
-            bathrooms: 1,
-            cancellation_policy: '',
-            calculated_host_listing_count: 0, 
-            amenities: 0, 
-            neighbourhood: ''
+            extra_people: 0,
+            guests_included: 0,
+            latitude: 0,
+            longitude: 0,
+            name: '',
+            neighbourHood: {
+                neighbourhood_id: 0
+            },
+            roomType: {
+                room_type_id: 0
+            },
+            security_deposit: 0
         }
     )
 
@@ -68,8 +75,7 @@ const UpdateListing = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.addListing(listing)
-        console.log("Added Listing", listing)
+        props.updateListing(listing)
         props.history.push('/your-listings')
     }
 
@@ -127,10 +133,7 @@ const UpdateListing = (props) => {
     };
 
     const latLongHandleChange = e =>{
-        if (e.target.name === "address"){
-            console.log("lat long:",getLatLong(e.target.value));
-        }
-        setListing({ ...listing, [e.target.name]: e.target.value });
+        getLatLong(e.target.value, setListing, listing)
     }
 
     return (
@@ -140,6 +143,17 @@ const UpdateListing = (props) => {
                     <ListingFormWrapper>
                         <ListingFormDiv>
                         <ListingForm>
+                        <ListFormNameDiv>
+                        <ListingFormLabel>
+                            Name of Listing:
+                            <br />
+                            <ListingFormInput
+                            name='name' 
+                            onChange={handleChange}
+                            type='text'
+                            />
+                        </ListingFormLabel>
+                        </ListFormNameDiv>
                         <ListDivs>
                         <ListingFormLabel>
                             NEIGHBORHOOD GROUP:
@@ -392,7 +406,7 @@ const UpdateListing = (props) => {
                             }
                             </ListingFormTickDiv>
                         </ListingFormLabel>
-                        <ListingFormButton type='submit' onClick={handleSubmit}>ADD LISTING</ListingFormButton>
+                        <ListingFormButton type='submit' onClick={handleSubmit}>UPDATE LISTING</ListingFormButton>
                     </ListingForm>
                     </ListingFormDiv>
                 </ListingFormWrapper>
