@@ -1,7 +1,10 @@
 import React from 'react'
 
 import trash from '../assets/trash.svg'
-import house from '../assets/house.svg'
+import house from '../assets/property/house.jpg'
+import apart from '../assets/property/apart.jpg'
+import condo from '../assets/property/condo.jpg'
+import stock from '../assets/house.svg'
 
 import YourListingsModal from './YourListingsModal'
 import { StyledListingsCard, StyledAddListingsLink, StyledUpdateListingsLink, StyledListingsCardContent, StyledLCBC, StyledListingGrid } from '../StyledComps'
@@ -9,11 +12,24 @@ import { StyledListingsCard, StyledAddListingsLink, StyledUpdateListingsLink, St
 const YourListingsCard = (props) => {
     const { data, handleDelete } = props
 
+    function houseImg(object) {
+        switch (object.propertyType.name) {
+            case 'Guesthouse':
+                return house
+            case 'Apartment':
+                return apart
+            case 'Condominium':
+                return condo
+            default:
+                return stock
+        }
+    }
+
     return (
         <StyledListingGrid>
             {data.map((listing,index) => (
                 <StyledListingsCard key={index}>
-                    <img src={house} alt='house img'></img>
+                    <img src={houseImg(listing)} alt='house img'></img>
                     <StyledListingsCardContent>
                         <p>{listing.name}</p>
                         <p className='listing-info'>NEIGHBORHOOD GROUP:</p>
@@ -22,14 +38,14 @@ const YourListingsCard = (props) => {
                         <p>{listing.neighbourHood.name}</p>
                         <p>ACCOMMODATES: {listing.accommodates}</p>
                         <p>MINIMUM NIGHTS: {listing.minimum_nights}</p>
-                        <p>ACTUAL PRICE: {listing.act_price}</p>
-                        <p>OPTIMAL PRICE: {listing.opt_price}</p>
+                        {/* <p>ACTUAL PRICE: {listing.act_price}</p>
+                        <p>OPTIMAL PRICE: {listing.opt_price}</p> */}
                         <p>REVIEWS: {listing.number_of_reviews}</p>
                         <p>{`OPTIMAL PRICE RANGE: $${Math.round(parseInt(listing.price || 50)*.95)}-${Math.round(parseInt(listing.price || 50)*1.05)}`}</p>
                     </StyledListingsCardContent>
 
                     <StyledLCBC>
-                        <YourListingsModal listing={listing} handleDelete={handleDelete}>VIEW DETAILS</YourListingsModal>
+                        <YourListingsModal listing={listing} houseImg={houseImg} handleDelete={handleDelete}>VIEW DETAILS</YourListingsModal>
                         
                         <StyledUpdateListingsLink to={{
                             pathname: "/update-listing/",

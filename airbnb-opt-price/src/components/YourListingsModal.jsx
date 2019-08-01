@@ -15,7 +15,7 @@ class YourListingsModal extends React.Component {
 
     render() {
         const { open } = this.state
-        const { listing, handleDelete} = this.props
+        const { listing, houseImg, handleDelete} = this.props
 
         return (
             <Modal
@@ -27,7 +27,7 @@ class YourListingsModal extends React.Component {
             >
                 <Modal.Header>{listing.name}</Modal.Header>
                 <Modal.Content image scrolling>
-                    <Image wrapped size='medium' src={house} />
+                    <Image wrapped size='medium' src={houseImg(listing)} />
                         {/* <Image wrapped size='medium' src={listing.img_url !== null ? listing.img_url : house} /> */}
                     <Modal.Description>
                         <Header>ADDRESS HERE
