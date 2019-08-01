@@ -1,11 +1,11 @@
-import React from "react"
+import React, {useEffect} from "react"
 import { NavDiv, StyledNavLink } from "../StyledComps"
 
 
 
-const Nav = () =>
+const Nav = (props) =>
 {
-
+    const {loggedIn, setLoggedIn} = props
     const checkActive = (match, location) =>
     {
         if(!location) return false
@@ -13,31 +13,42 @@ const Nav = () =>
         return pathname === "/"
     }
 
-    // if(localStorage.getItem('token') !== null && localStorage.getItem('token') !== '') {
-    //     return (
-    //         <NavDiv>
-    //             <StyledMobileNavLink to="/your-listings/" activeClassName="active-nav">YOUR LISTINGS</StyledMobileNavLink>
-    //             <StyledMobileNavLink to="/logout/" activeClassName="active-nav">LOGOUT</StyledMobileNavLink>
-    //         </NavDiv>
-    //     )
-    // }
-    // else {
-    //     return (
-    //             <NavDiv>
-    //                 <StyledMobileNavLink to="/register/" activeClassName="active-nav">REGISTER</StyledMobileNavLink>
-    //                 <StyledMobileNavLink to="/" activeClassName="active-nav" isActive={checkActive}>LOGIN</StyledMobileNavLink>
-    //             </NavDiv>
-    //     )
-    // }
+    useEffect(_ =>
+        {
+            return   
+        }, [loggedIn])
 
-    return (
-        <NavDiv>
-            <StyledNavLink to="/your-listings/" activeClassName="active-nav">YOUR LISTINGS</StyledNavLink>
-            <StyledNavLink to="/register/" activeClassName="active-nav">REGISTER</StyledNavLink>
-            <StyledNavLink to="/" activeClassName="active-nav" isActive={checkActive}>LOGIN</StyledNavLink>
-            <StyledNavLink to="/logout/" activeClassName="active-nav">LOGOUT</StyledNavLink>
-        </NavDiv>
-    )
+    const logoutClick = _ =>
+    {
+        localStorage.removeItem('token')
+        setLoggedIn(false)
+    }
+
+    if(loggedIn) {
+        return (
+            <NavDiv>
+                <StyledNavLink to="/your-listings/" activeClassName="active-nav">YOUR LISTINGS</StyledNavLink>
+                <StyledNavLink to="/" onClick={logoutClick} activeClassName="active-nav">LOGOUT</StyledNavLink>
+            </NavDiv>
+        )
+    }
+    else {
+        return (
+                <NavDiv>
+                    <StyledNavLink to="/register/" activeClassName="active-nav">REGISTER</StyledNavLink>
+                    <StyledNavLink to="/" activeClassName="active-nav" isActive={checkActive}>LOGIN</StyledNavLink>
+                </NavDiv>
+        )
+    }
+
+    // return (
+    //     <NavDiv>
+    //         <StyledNavLink to="/your-listings/" activeClassName="active-nav">YOUR LISTINGS</StyledNavLink>
+    //         <StyledNavLink to="/register/" activeClassName="active-nav">REGISTER</StyledNavLink>
+    //         <StyledNavLink to="/" activeClassName="active-nav" isActive={checkActive}>LOGIN</StyledNavLink>
+    //         <StyledNavLink to="/logout/" activeClassName="active-nav">LOGOUT</StyledNavLink>
+    //     </NavDiv>
+    // )
 }
 
 export default Nav
