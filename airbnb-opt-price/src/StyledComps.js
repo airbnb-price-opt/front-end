@@ -408,6 +408,14 @@ export const StyledListingsCard = styled.div`
         max-width: 255px;
         height: 392px;
     }
+    h1 {
+        font-size: 1.2rem;
+        font-weight: bolder;
+        margin: 2px; 
+        @media(max-width: 800px) {
+            font-size: 1rem;
+        }
+    }
     p {
         margin: 0;
         font-family:'Montserrat', sans-serif;
@@ -465,8 +473,10 @@ export const StyledUpdateListingsLink = styled(Link)`
     font-weight: bold;
     font-size: .9rem;
     @media(max-width: 800px) {
-        font-size: 13px;
-        padding: 3px 0;
+        width: 50%;
+        font-size: .85rem;
+        padding: 7px 0;
+        margin-left: 5px;
     }
     &:hover {
         background-color: #e84141;
@@ -514,8 +524,14 @@ export const StyledListingsCardContent = styled.div`
     font-family: 'Montserrat', sans-serif;
     margin: 5px 0;
     font-size: .9rem;
-    @media(max-width: 800px) {
-        font-size: 12px;
+    @media (max-width: 800px) {
+        font-size: .85rem;
+    }
+    p:last-child {
+        font-size: .95rem;
+        @media (max-width: 800px) {
+            font-size: .90rem;
+        }
     }
 `
 
@@ -525,30 +541,23 @@ export const StyledLCBC = styled.div`
     justify-content: space-between;
     max-height: 62px;
     height: 100%;
+    @media(max-width: 800px) {
+        max-height: 35px;
+        flex-direction: row;
+    }
     .ui.button {
         font-family: 'Montserrat';
         margin: 0%;
         padding: 7.5px 0;
         @media(max-width: 800px) {
-            font-size: 13px;
-            padding: 6px 0;
+            width: 50%;
+            font-size: .85rem;
+            padding: 4.5px 0;
+            margin-right: 5px;
         }
     }
 `
 // @@@@@@@@@@ Start Modal Styles @@@@@@@@@@
-
-export const StyledYLMContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 28px 0 0;
-    @media(max-width: 767px) {
-        padding: 0;
-    }
-    img {
-        margin-bottom: 10px;
-    }
-`
 
 export const StyledModalUpdateListingsLink = styled(Button)`
     text-decoration: none;
