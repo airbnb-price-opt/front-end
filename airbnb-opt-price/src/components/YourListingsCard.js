@@ -32,18 +32,16 @@ const YourListingsCard = (props) => {
                 
                 <StyledListingsCard key={index}>
                     <img src={img_url} alt='house img'></img>
+                    <h1>{listing.name}</h1>
                     <StyledListingsCardContent>
-                        <p>{listing.name}</p>
                         <p className='listing-info'>NEIGHBORHOOD GROUP:</p>
                         <p>{listing.neighbourHood.neighbourHoodGroup.name}</p>
                         <p className='listing-info'>NEIGHBORHOOD:</p>
                         <p>{listing.neighbourHood.name}</p>
                         <p>ACCOMMODATES: {listing.accommodates}</p>
                         <p>MINIMUM NIGHTS: {listing.minimum_nights}</p>
-                        {/* <p>ACTUAL PRICE: {listing.act_price}</p>
-                        <p>OPTIMAL PRICE: {listing.opt_price}</p> */}
                         <p>REVIEWS: {listing.number_of_reviews}</p>
-                        <p>{`OPTIMAL PRICE RANGE: $${Math.round(parseInt(listing.price || 50)*.95)}-${Math.round(parseInt(listing.price || 50)*1.05)}`}</p>
+                        <p>OPTIMAL PRICE RANGE: ${Math.round(parseInt(listing.price || 50)*.95)}-${Math.round(parseInt(listing.price || 50)*1.05)}</p>
                     </StyledListingsCardContent>
 
                     <StyledLCBC>

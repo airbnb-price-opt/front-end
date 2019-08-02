@@ -29,27 +29,27 @@ class YourListingsModal extends React.Component {
                         {/* <Image wrapped size='medium' src={listing.img_url !== null ? listing.img_url : house} /> */}
                     <Modal.Description>
                         <Header>ADDRESS HERE
-                            <Header.Subheader>Host Listing Number: {listing.listing_id}</Header.Subheader>
+                            <Header.Subheader>HOST LISTING NUMBER: {listing.listing_id}</Header.Subheader>
                         </Header>
-                        <p>Cleaning Fee: ${listing.cleaning_fee}.00</p>
-                        <p>Security Deposit: ${listing.security_deposit}.00</p>
-                        <p>Extra People Fee: ${listing.extra_people}.00</p>
+                        <p><b>CLEANING FEE:</b> ${listing.cleaning_fee}.00</p>
+                        <p><b>SECURITY DEPOSIT:</b> ${listing.security_deposit}.00</p>
+                        <p><b>EXTRA PERSONS FEE:</b> ${listing.extra_people}.00</p>
                         <hr></hr>
-                        <p>Accommodates: {listing.accommodates}</p>
-                        <p>Guests Included: {listing.guests_included}</p>
+                        <p><b>ACCOMMODATES:</b> {listing.accommodates}</p>
+                        <p><b>GUESTS INCLUDED:</b> {listing.guests_included}</p>
                         <hr></hr>
-                        <p>Minumum Nights: {listing.minimum_nights}</p>
-                        <p>Maximum Nights: {listing.maximum_nights}</p>
+                        <p><b>MINUMUM NIGHTS:</b> {listing.minimum_nights}</p>
+                        <p><b>MAXIMUM NIGHTS:</b> {listing.maximum_nights}</p>
                         <hr></hr>
-                        <p>Property: {listing.propertyType.name}</p>
-                        <p>Room Type: {listing.roomType.name}</p>
-                        <p>Bedrooms: {listing.bedrooms}</p>
-                        <p>Bed Types: {listing.bedType.name}</p>
-                        <p>Bathrooms: {listing.bathrooms}</p>
-                        <p>Amenities: #</p>
+                        <p><b>PROPERTY:</b> {listing.propertyType.name.toUpperCase()}</p>
+                        <p><b>ROOM TYPE:</b> {listing.roomType.name.toUpperCase()}</p>
+                        <p><b>BEDROOMS:</b> {listing.bedrooms}</p>
+                        <p><b>BED TYPES:</b> {listing.bedType.name.toUpperCase()}</p>
+                        <p><b>BATHROOMS:</b> {listing.bathrooms}</p>
+                        <p><b>AMENITIES:</b> {listing.amenities}</p>
                         <hr></hr>
-                        <p>Cancellation Policy: {listing.cancellationPolicy.name.replace(/_/g, ' ')}</p>
-                        <p>{`OPTIMAL PRICE RANGE: $${Math.round(parseInt(listing.price || 50)*.95)}-${Math.round(parseInt(listing.price || 50)*1.05)}`}</p>
+                        <p><b>CANCELLATION POLICY:</b> {listing.cancellationPolicy.name.replace(/_/g, ' ').toUpperCase()}</p>
+                        <p><b>OPTIMAL PRICE RANGE:</b> ${Math.round(parseInt(listing.price || 50)*.95)}-${Math.round(parseInt(listing.price || 50)*1.05)}</p>
                     </Modal.Description>
                 </Modal.Content>
                 <Modal.Actions>
