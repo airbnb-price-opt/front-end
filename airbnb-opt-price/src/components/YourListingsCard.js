@@ -1,10 +1,8 @@
 import React from 'react'
 
 import trash from '../assets/trash.svg'
-import house from '../assets/property/house.jpg'
-import apart from '../assets/property/apart.jpg'
-import condo from '../assets/property/condo.jpg'
 import stock from '../assets/house.svg'
+import { Houses, Aparts, Condos } from '../ImageData'
 
 import YourListingsModal from './YourListingsModal'
 import { StyledListingsCard, StyledAddListingsLink, StyledUpdateListingsLink, StyledListingsCardContent, StyledLCBC, StyledListingGrid } from '../StyledComps'
@@ -15,11 +13,11 @@ const YourListingsCard = (props) => {
     function houseImg(object) {
         switch (object.propertyType.name) {
             case 'Guesthouse':
-                return house
+                return Houses[Math.floor(Math.random()*Houses.length)]
             case 'Apartment':
-                return apart
+                return Aparts[Math.floor(Math.random()*Aparts.length)]
             case 'Condominium':
-                return condo
+                return Condos[Math.floor(Math.random()*Condos.length)]
             default:
                 return stock
         }
@@ -27,12 +25,13 @@ const YourListingsCard = (props) => {
 
     return (
         <StyledListingGrid>
-            {data.map((listing,index) => {
+            {data.map((listing, index) => {
                 if(!listing.listing_id) return null;
+                let img_url = houseImg(listing)
                 return (
                 
                 <StyledListingsCard key={index}>
-                    <img src={houseImg(listing)} alt='house img'></img>
+                    <img src={img_url} alt='house img'></img>
                     <StyledListingsCardContent>
                         <p>{listing.name}</p>
                         <p className='listing-info'>NEIGHBORHOOD GROUP:</p>
@@ -48,7 +47,7 @@ const YourListingsCard = (props) => {
                     </StyledListingsCardContent>
 
                     <StyledLCBC>
-                        <YourListingsModal listing={listing} houseImg={houseImg} handleDelete={handleDelete}>VIEW DETAILS</YourListingsModal>
+                        <YourListingsModal listing={listing} img_url={img_url} handleDelete={handleDelete}>VIEW DETAILS</YourListingsModal>
                         
                         <StyledUpdateListingsLink to={{
                             pathname: "/update-listing/",
@@ -58,6 +57,7 @@ const YourListingsCard = (props) => {
                     <img className='trash-icon' src={trash} alt='delete icon' onClick={(e) => handleDelete(e, listing, listing.listing_id)}></img>
                 </StyledListingsCard>
             )})}
+
             <StyledAddListingsLink to="/add-listing/">
                 <p className='plus-sign'>+</p>
                 <p>ADD LISTING</p>
