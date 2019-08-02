@@ -1,4 +1,5 @@
-# ![Logo](https://i.imgur.com/UPlNBo1.png) Airlytics - An AirBnb Host Listing Price Optimizer <a href="https://airlytics.netlify.com">Live Site</a>
+# ![Logo](https://i.imgur.com/UPlNBo1.png) Airlytics - An AirBnb Host Listing Price Optimizer 
+## <a href="https://airlytics.netlify.com">Live Site</a>
 
 
 ## Installation
