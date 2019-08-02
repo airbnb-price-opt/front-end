@@ -16,13 +16,13 @@ const YourListingsCard = React.lazy(() => {
 
 const YourListings = (props) => {
     const [userListing, setUserListing] = useState([])
-
+    const {setLoggedIn} = props;
     useEffect(() => {
         setUserListing(props.listings)
     },[props.listings])
 
     useEffect(() => {
-        props.getListings();
+        props.getListings(setLoggedIn, props.history);
     }, [])
 
     const handleDelete = (e, listing, id) => {

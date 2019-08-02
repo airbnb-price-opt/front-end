@@ -40,7 +40,7 @@ function App() {
                   <Route path={`/your-listings`}
                   render={props =>
                     localStorage.getItem("token") ? (
-                      <YourListings {...props} />
+                      <YourListings {...props} setLoggedIn={setLoggedIn} />
                     ) : (
                       <Redirect to="/" />
                     )
