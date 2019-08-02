@@ -25,8 +25,8 @@ const YourListingsCard = (props) => {
 
     return (
         <StyledListingGrid>
-            {data.map((listing, index) => {
-                if(!listing.listing_id) return null;
+            {data.map((listing,index) => {
+                if(!listing.neighbourHood.neighbourHoodGroup) return null;
                 let img_url = houseImg(listing)
                 return (
                 
