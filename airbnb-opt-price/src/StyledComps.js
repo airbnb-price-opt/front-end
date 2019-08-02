@@ -345,6 +345,9 @@ export const HeaderIconH1Div = styled.div`
     display: flex;
     align-items: center;
 
+    h1 {
+        margin: 0;
+    }
     img
     {
         margin-right: 15px;
