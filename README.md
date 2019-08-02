@@ -3,7 +3,7 @@
 
 
 ## Installation
-Clone the repository and download the yarn package manager on your local machine.
+Clone the repository and download the yarn package manager on your local machine or visit the `Live Site` link provided above.
 
 ## Installation Command
 To install the package manager enter ```yarn install``` in the terminal
