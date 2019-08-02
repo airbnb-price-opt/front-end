@@ -42,25 +42,25 @@ const UpdateListing = (props) => {
             accommodates: listing.accommodates,
             bathrooms: listing.bathrooms,
             bedType: {
-                bed_type_id: 0,
+                bed_type_id: listing.bedType.bed_type_id,
             },
-            bedrooms: 0,
+            bedrooms: listing.bedrooms,
             cancellationPolicy: {
-                cancellation_policy_id: 0,
+                cancellation_policy_id: listing.cancellationPolicy.cancellation_policy_id,
             },
             cleaning_fee: listing.cleaning_fee,
-            extra_people: 0,
-            guests_included: 0,
+            extra_people: listing.extra_people,
+            guests_included: listing.guests_included,
             latitude: listing.latitude,
             longitude: listing.longitude,
             name: listing.name,
             neighbourHood: {
-                neighbourhood_id: 0
+                neighbourhood_id: listing.neighbourHood.neighbourhood_id
             },
             roomType: {
-                room_type_id: 0
+                room_type_id: listing.roomType.room_type_id
             },
-            security_deposit: 0
+            security_deposit: listing.security_deposit
         }
     )
     console.log('THIS IS UPDATED LISTING', updatedListing)
@@ -208,7 +208,7 @@ const UpdateListing = (props) => {
                             <ListingFormSelect
                             name='property_type'
                             onChange={handlePropertyTypeChange}
-                            defaultValue='Select Property Type'
+                            defaultValue={listing.propertyType.name}
                             >
                                 <option disabled>Select Property Type</option>
                                 {
@@ -265,7 +265,6 @@ const UpdateListing = (props) => {
                             <ListingFormInput
                             name='address' 
                             placeholder=''
-                            // value={listing.address}
                             onChange={latLongHandleChange}
                             />
                         </ListingFormLabel>
@@ -274,7 +273,7 @@ const UpdateListing = (props) => {
                             <br />
                             <ListingFormInput
                             name='calculated_host_listing_count' 
-                            defaultValue={0}
+                            defaultValue={listing.calculated_host_listing_count}
                             type='number'
                             min={0}
                             />
@@ -286,9 +285,8 @@ const UpdateListing = (props) => {
                             <br />
                             <ListingFormInput
                             name='cleaning_fee' 
-                            // placeholder='$'
                             onChange={handleChange}
-                            // value={listing.cleaning_fee}
+                            defaultValue={listing.cleaning_fee}
                             type='number'
                             min={0}
                             />
@@ -312,7 +310,7 @@ const UpdateListing = (props) => {
                             name='extra_people' 
                             placeholder='Fee Per Person'
                             onChange={handleChange}
-                            value={listing.extra_people}
+                            defaultValue={listing.extra_people}
                             type='number'
                             min={0}
                             />
@@ -323,7 +321,7 @@ const UpdateListing = (props) => {
                             <ListingFormInput
                             name='accommodates'
                             onChange={handleChange}
-                            value={listing.accommodates}
+                            defaultValue={listing.accommodates}
                             type='number'
                             min={1}
                             max={20}
@@ -338,7 +336,7 @@ const UpdateListing = (props) => {
                             <ListingFormInput
                             name='guests_included'
                             onChange={handleChange}
-                            value={listing.guests_included}
+                            defaultValue={listing.guests_included}
                             type='number'
                             min={1}
                             max={16}
@@ -381,7 +379,7 @@ const UpdateListing = (props) => {
                             <ListingFormInput
                             name='bedrooms'
                             onChange={handleChange}
-                            value={listing.bedrooms}
+                            defaultValue={listing.bedrooms}
                             type='number'
                             min={1}
                             max={12}
@@ -427,7 +425,7 @@ const UpdateListing = (props) => {
                             <ListingFormInput
                             name='bathrooms'
                             onChange={handleChange}
-                            value={listing.bathrooms}
+                            defaultValue={listing.bathrooms}
                             type='number'
                             min={1}
                             max={10}
