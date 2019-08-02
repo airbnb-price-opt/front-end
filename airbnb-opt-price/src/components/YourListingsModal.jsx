@@ -2,9 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Header, Button, Modal, Image } from 'semantic-ui-react'
 
-import house from '../assets/house.svg'
-
-import { StyledModalUpdateListingsLink, StyledYLMContainer } from '../StyledComps'
+import { StyledModalUpdateListingsLink } from '../StyledComps'
 import 'semantic-ui-css/semantic.min.css'
 
 class YourListingsModal extends React.Component {
@@ -15,12 +13,7 @@ class YourListingsModal extends React.Component {
 
     render() {
         const { open } = this.state
-        const { listing, DeleteListing} = this.props
-
-        // function ListingToUpdate(event, data) {
-        //     setListingEdit(data)
-        //     event.target.close
-        // }
+        const { listing, img_url, handleDelete} = this.props
 
         return (
             <Modal
@@ -32,7 +25,7 @@ class YourListingsModal extends React.Component {
             >
                 <Modal.Header>{listing.name}</Modal.Header>
                 <Modal.Content image scrolling>
-                    <Image wrapped size='medium' src={house} />
+                    <Image wrapped size='medium' src={img_url} />
                         {/* <Image wrapped size='medium' src={listing.img_url !== null ? listing.img_url : house} /> */}
                     <Modal.Description>
                         <Header>ADDRESS HERE
@@ -60,8 +53,14 @@ class YourListingsModal extends React.Component {
                     </Modal.Description>
                 </Modal.Content>
                 <Modal.Actions>
-                    <StyledModalUpdateListingsLink as={ Link } to={{pathname:"/update-listing/", state: {listing}}} onClick={this.close} className='fluid'>UPDATE</StyledModalUpdateListingsLink>
-                    <Button negative onClick={() => DeleteListing(listing)}>DELETE</Button>
+                    <StyledModalUpdateListingsLink
+                        as={ Link }
+                        to={{pathname:"/update-listing/", state: {listing}}}
+                        onClick={this.close}
+                        className='fluid'>
+                        UPDATE
+                    </StyledModalUpdateListingsLink>
+                    <Button negative onClick={(e) => handleDelete(e, listing, listing.listing_id)}>DELETE</Button>
                     <Button color='blue' onClick={this.close}>CLOSE</Button>
                 </Modal.Actions>
             </Modal>
