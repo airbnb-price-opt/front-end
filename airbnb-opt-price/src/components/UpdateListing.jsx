@@ -63,7 +63,7 @@ const UpdateListing = (props) => {
             security_deposit: listing.security_deposit
         }
     )
-    console.log('THIS IS UPDATED LISTING', updatedListing)
+    // console.log('THIS IS UPDATED LISTING', updatedListing)
     // const [listing, setListing] = useState(
     //     {
     //         accommodates: 0,
@@ -103,9 +103,9 @@ const UpdateListing = (props) => {
     'Coffee maker', 'Dryer', 'Dishwasher', 'Long term stays allowed', 'Pets allowed', 'Fire extinguisher',
     'Luggage dropoff allowed', 'Private entrance', 'Extra pillows and blankets']
 
-    const handleSubmit = (e, listing, id) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        props.updateListing(updatedListing, id, props.history)
+        props.updateListing(updatedListing, listing.listing_id, props.history)
         props.history.push('/your-listings')
     }
 
@@ -151,7 +151,7 @@ const UpdateListing = (props) => {
             }
         }
         setUpdatedListing({ ...updatedListing, [event.target.name]: event.target.value });
-        console.log(event.target.name, event.target.value, updatedListing)
+        // console.log(event.target.name, event.target.value, updatedListing)
     };
 
     const handleAmenitiesChange = event => {
@@ -177,7 +177,7 @@ const UpdateListing = (props) => {
         props.getPropertyTypes();
     },[])
 
-    console.log(props.propertyTypes)
+    // console.log(props.propertyTypes)
 
     const latLongHandleChange = e =>{
         getLatLong(e.target.value, setListing, listing)
@@ -199,7 +199,7 @@ const UpdateListing = (props) => {
                             name='name' 
                             onChange={handleChange}
                             type='text'
-                            value={listing.name}
+                            defaultValue={listing.name}
                             />
                         </ListingFormLabel>
                         <ListingFormLabel>
