@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Header, Button, Modal, Image } from 'semantic-ui-react'
 
+import RequestAddress from './RequestAddress'
+
 import { StyledModalUpdateListingsLink } from '../StyledComps'
 import 'semantic-ui-css/semantic.min.css'
 
@@ -13,7 +15,7 @@ class YourListingsModal extends React.Component {
 
     render() {
         const { open } = this.state
-        const { listing, img_url, handleDelete} = this.props
+        const { listing, img_url, handleDelete } = this.props
 
         return (
             <Modal
@@ -26,11 +28,8 @@ class YourListingsModal extends React.Component {
                 <Modal.Header>{listing.name}</Modal.Header>
                 <Modal.Content image scrolling>
                     <Image wrapped size='medium' src={img_url} />
-                        {/* <Image wrapped size='medium' src={listing.img_url !== null ? listing.img_url : house} /> */}
                     <Modal.Description>
-                        <Header>ADDRESS HERE
-                            <Header.Subheader>HOST LISTING NUMBER: {listing.listing_id}</Header.Subheader>
-                        </Header>
+                        <RequestAddress listing={listing}/>
                         <p><b>CLEANING FEE:</b> ${listing.cleaning_fee}.00</p>
                         <p><b>SECURITY DEPOSIT:</b> ${listing.security_deposit}.00</p>
                         <p><b>EXTRA PERSONS FEE:</b> ${listing.extra_people}.00</p>
