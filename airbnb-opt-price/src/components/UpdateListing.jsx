@@ -51,9 +51,9 @@ const UpdateListing = (props) => {
             cleaning_fee: listing.cleaning_fee,
             extra_people: 0,
             guests_included: 0,
-            latitude: 0,
-            longitude: 0,
-            name: '',
+            latitude: listing.latitude,
+            longitude: listing.longitude,
+            name: listing.name,
             neighbourHood: {
                 neighbourhood_id: 0
             },
@@ -108,30 +108,6 @@ const UpdateListing = (props) => {
         props.updateListing(updatedListing, id, props.history)
         props.history.push('/your-listings')
     }
-    const handleRoomTypeChange = event => {
-        setListing({...listing, roomType: {room_type_id: parseInt(event.target.value)}})
-    }
-
-    const handleBedTypeChange = event => {
-        setListing({...listing, bedType: {bed_type_id: parseInt(event.target.value)}})
-    }
-
-    const handlePropertyTypeChange = event => {
-        setListing({...listing, propertyType: {property_type_id: event.target.value}})
-    }
-
-    const handleCancellationChange = event => {
-        setListing({...listing, cancellationPolicy: {cancellation_policy_id: parseInt(event.target.value)}})
-    }
-
-    const handleNeighborhoodGroupChange = e => {
-        setSelectedGroup(e.target.value)
-        props.neighborhoodGroup.map(selected => {
-            if(selected.name === e.target.value){
-                setSelectedHood(selected.neighbourHoods)
-            }
-        })
-    };
 
     const handleNeighborhoodChange = e => {
         setListing({ ...listing, neighbourHood: {neighbourhood_id: parseInt(e.target.value)}});
@@ -162,10 +138,6 @@ const UpdateListing = (props) => {
         })
     };
 
-    const handleNeighborhoodChange = e => {
-        setListing({ ...listing, neighbourHood: {neighbourhood_id: parseInt(e.target.value)}});
-    }
-
     const handleChange = event => {
         if(event.target.min || event.target.max){
             if(event.target.value === '') {
@@ -178,8 +150,8 @@ const UpdateListing = (props) => {
                 event.target.value = event.target.max;
             }
         }
-        setListing({ ...listing, [event.target.name]: event.target.value });
-        console.log(event.target.name, event.target.value)
+        setUpdatedListing({ ...updatedListing, [event.target.name]: event.target.value });
+        console.log(event.target.name, event.target.value, updatedListing)
     };
 
     const handleAmenitiesChange = event => {
@@ -256,7 +228,7 @@ const UpdateListing = (props) => {
                             <ListingFormSelect
                                 required
                                 name={selectedGroup}
-                                onChange={handleNeighborhoodChange}
+                                onChange={handleNeighborhoodGroupChange}
                                 defaultValue={listing.neighbourHood.neighbourHoodGroup.name}
                             >
                                 <option disabled>CHOOSE YOUR NEIGHBORHOOD GROUP</option>
@@ -328,7 +300,7 @@ const UpdateListing = (props) => {
                             name='security_deposit' 
                             placeholder='$'
                             onChange={handleChange}
-                            value={listing.security_deposit}
+                            defaultValue={listing.security_deposit}
                             type='number'
                             min={0}
                             />
