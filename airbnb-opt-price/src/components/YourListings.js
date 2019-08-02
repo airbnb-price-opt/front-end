@@ -33,12 +33,13 @@ const YourListings = (props) => {
     }
     
     if(!userListing) return <p>Loading...</p>
+    
     return (
         <StyledYourListings>
             <h1>YOUR LISTINGS</h1>
             <hr></hr>
             <Suspense fallback={<LoadingScreen/>}>
-                <YourListingsCard handleDelete={handleDelete} data={userListing}/>
+                <YourListingsCard handleDelete={handleDelete} data={userListing.filter(listing => listing.listing_id)}/>
             </Suspense>
         </StyledYourListings>
     )
