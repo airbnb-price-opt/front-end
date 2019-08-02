@@ -409,7 +409,7 @@ export const StyledListingsCard = styled.div`
         height: 392px;
     }
     h1 {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         font-weight: bolder;
         margin: 2px; 
         @media(max-width: 800px) {
