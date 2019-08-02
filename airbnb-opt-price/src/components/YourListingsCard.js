@@ -12,7 +12,7 @@ const YourListingsCard = (props) => {
     return (
         <StyledListingGrid>
             {data.map((listing,index) => {
-                if(!listing.listing_id) return null;
+                if(!listing.neighbourHood.neighbourHoodGroup) return null;
                 return (
                 
                 <StyledListingsCard key={index}>
