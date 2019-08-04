@@ -163,7 +163,7 @@ export const getCancellationTypes = () => dispatch => {
 }
 
 
-export const getListings = () => dispatch => {
+export const getListings = (setLoggedIn, history) => dispatch => {
     dispatch({ type: GET_LISTINGS_START })
     axiosWithAuth()
         .get('https://airbnb-price-opt.herokuapp.com/listings/all')
@@ -173,8 +173,13 @@ export const getListings = () => dispatch => {
         })
         .catch(err => {
             console.log('GET_LISTINGS_FAIL', err)
+            setLoggedIn(false)
+            console.log('a')
+            localStorage.removeItem('token')
+            history.push('/')
             dispatch({ type: GET_LISTINGS_FAIL, payload: err })
         })
+        
 }
 
 
