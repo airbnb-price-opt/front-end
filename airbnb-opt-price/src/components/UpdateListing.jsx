@@ -36,7 +36,7 @@ import {
 
 const UpdateListing = (props) => {
     const [listing, setListing] = useState(props.location.state.listing)
-    console.log(props.location.state.listing)
+
     const [updatedListing, setUpdatedListing] = useState(
         {    
             accommodates: listing.accommodates,
@@ -63,33 +63,6 @@ const UpdateListing = (props) => {
             security_deposit: listing.security_deposit
         }
     )
-    // console.log('THIS IS UPDATED LISTING', updatedListing)
-    // const [listing, setListing] = useState(
-    //     {
-    //         accommodates: 0,
-    //         bathrooms: 0,
-    //         bedType: {
-    //             bed_type_id: 0,
-    //         },
-    //         bedrooms: 0,
-    //         cancellationPolicy: {
-    //             cancellation_policy_id: 0,
-    //         },
-    //         cleaning_fee: 0,
-    //         extra_people: 0,
-    //         guests_included: 0,
-    //         latitude: 0,
-    //         longitude: 0,
-    //         name: '',
-    //         neighbourHood: {
-    //             neighbourhood_id: 0
-    //         },
-    //         roomType: {
-    //             room_type_id: 0
-    //         },
-    //         security_deposit: 0
-    //     }
-    // )
 
     const [selectedGroup, setSelectedGroup] = useState('')
     const [selectedHood, setSelectedHood] = useState('')
@@ -151,7 +124,6 @@ const UpdateListing = (props) => {
             }
         }
         setUpdatedListing({ ...updatedListing, [event.target.name]: event.target.value });
-        // console.log(event.target.name, event.target.value, updatedListing)
     };
 
     const handleAmenitiesChange = event => {
@@ -177,7 +149,6 @@ const UpdateListing = (props) => {
         props.getPropertyTypes();
     },[])
 
-    // console.log(props.propertyTypes)
 
     const latLongHandleChange = e =>{
         getLatLong(e.target.value, setListing, listing)

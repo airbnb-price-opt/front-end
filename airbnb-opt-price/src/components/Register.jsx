@@ -34,7 +34,7 @@ const Register = (props) => {
         props.registerUser(newUser)
         props.history.push(`/`)
     }
-    console.log(newUser)
+
     return(
         <RegisterPageDiv className="page">
             <LeftColumnDiv>

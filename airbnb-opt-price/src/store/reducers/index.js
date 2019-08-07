@@ -54,13 +54,11 @@ const initialState = {
 export const reducer = (state = initialState, action ) => {
     switch(action.type){
         case REGISTER_USER_START:
-            console.log('REGISTER_USER_START')
             return{
                 ...state,
                 posting: true
             }
         case REGISTER_USER_SUCCESS:
-            console.log(action.payload)
             return{
                 ...state,
                 posting: false
@@ -192,7 +190,6 @@ export const reducer = (state = initialState, action ) => {
                 posting: true
             }
         case ADD_LISTING_SUCCESS:
-            console.log('ADD_LISTING_REDUCER', action.payload)
             return{
                 ...state,
                 posting: false,
@@ -210,7 +207,6 @@ export const reducer = (state = initialState, action ) => {
                 putting: true
             }
         case UPDATE_LISTING_SUCCESS:
-            console.log('UPDATE_LISTING_REDUCER', action.payload)
             return{
                 ...state,
                 putting: false,

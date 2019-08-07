@@ -13,12 +13,12 @@ const Login = (props) => {
     const handleChanges = (e) => {
         setCurrentUser({ ...currentUser, [e.target.name]: e.target.value })
     }
-    console.log(props.history)
+
     const verifyUser = (e) => {
         e.preventDefault();
         props.loginUser(currentUser, props.history, setLoggedIn)
     }
-    console.log(currentUser)
+
     return(
         <LoginContainerDiv className="page">
             <LoginFormContainer>
