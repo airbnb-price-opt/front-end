@@ -31,7 +31,6 @@ const Register = (props) => {
 
     const addUser = (e) => {
         e.preventDefault();
-        props.registerUser(newUser)
         props.history.push(`/`)
     }
 

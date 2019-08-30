@@ -9,14 +9,14 @@ const Login = (props) => {
 
     const {setLoggedIn} = props
     const [ currentUser, setCurrentUser ] = useState({ username: '', password:'' })
-    
     const handleChanges = (e) => {
         setCurrentUser({ ...currentUser, [e.target.name]: e.target.value })
     }
 
     const verifyUser = (e) => {
         e.preventDefault();
-        props.loginUser(currentUser, props.history, setLoggedIn)
+        const Bob = { username: 'Bob', password:'password' };
+        props.loginUser(Bob, props.history, setLoggedIn)
     }
 
     return(
