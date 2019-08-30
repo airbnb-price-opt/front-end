@@ -44,11 +44,9 @@ export const registerUser = (newUserObj) => dispatch => {
     axios
         .post('http://localhost:5000/api/auth/register', newUserObj)
         .then(res => {
-            console.log('REGISTER_USER_SUCCESS', res)
             dispatch({ type: REGISTER_USER_SUCCESS, payload: res.data })
         })
         .catch(err =>{
-            console.log('REGISTER_USER_FAIL', err)
             dispatch({ type: REGISTER_USER_FAIL, payload: err })
         })
 } 
@@ -63,7 +61,6 @@ export const loginUser = (existingUser, history, setLoggedIn) => dispatch => {
             }
         })
         .then(res => {
-            console.log('LOGIN_USER_SUCCESS', res)
             dispatch({ type: LOGIN_USER_SUCCESS, payload: res.data.access_token })
             localStorage.setItem('token', res.data.access_token)
             setLoggedIn(true)
@@ -72,7 +69,6 @@ export const loginUser = (existingUser, history, setLoggedIn) => dispatch => {
             history.push('/your-listings')
         })
         .catch(err =>{
-            console.log('LOGIN_USER_FAIL', err)
             dispatch({ type: LOGIN_USER_FAIL, payload: err })
             return false
         })
@@ -83,11 +79,9 @@ export const getNeighborhoods = () => dispatch => {
     axios
         .get('https://airbnb-price-opt.herokuapp.com/neighbourhood/all')
         .then(res => {
-            console.log('GET_NEIGHBORHOOD_SUCCESS', res.data)
             dispatch({ type: GET_NEIGHBORHOOD_SUCCESS, payload: res.data })
         })
         .catch(err => {
-            console.log('GET_NEIGHBORHOOD_FAIL', err)
             dispatch({ type: GET_NEIGHBORHOOD_FAIL, payload: err })
         })
 }
@@ -97,11 +91,9 @@ export const getNeighborhoodGroups = () => dispatch => {
     axios
         .get('https://airbnb-price-opt.herokuapp.com/groups/all')
         .then(res => {
-            console.log('GET_NEIGHBORHOOD_GROUPS_SUCCESS', res.data)
             dispatch({ type: GET_NEIGHBORHOOD_GROUP_SUCCESS, payload: res.data })
         })
         .catch(err => {
-            console.log('GET_NEIGHBORHOOD_GROUPS_FAIL', err)
             dispatch({ type: GET_NEIGHBORHOOD_GROUP_FAIL, payload: err })
         })
 }
@@ -111,11 +103,9 @@ export const getBedTypes = () => dispatch => {
     axiosWithAuth()
         .get('https://airbnb-price-opt.herokuapp.com/beds/all')
         .then(res => {
-            console.log('GET_BED_TYPES_SUCCESS', res.data)
             dispatch({ type: GET_BED_TYPES_SUCCESS, payload: res.data })
         })
         .catch(err => {
-            console.log('GET_BED_TYPES_FAIL', err)
             dispatch({ type: GET_BED_TYPES_FAIL, payload: err })
         })
 }
@@ -125,11 +115,9 @@ export const getRoomTypes = () => dispatch => {
     axiosWithAuth()
         .get('https://airbnb-price-opt.herokuapp.com/rooms/all')
         .then(res => {
-            console.log('GET_ROOM_TYPES_SUCCESS', res.data)
             dispatch({ type: GET_ROOM_TYPES_SUCCESS, payload: res.data })
         })
         .catch(err => {
-            console.log('GET_ROOM_TYPES_FAIL', err)
             dispatch({ type: GET_ROOM_TYPES_FAIL, payload: err })
         })
 }
@@ -139,11 +127,9 @@ export const getPropertyTypes = () => dispatch => {
     axiosWithAuth()
         .get('https://airbnb-price-opt.herokuapp.com/properties/all')
         .then(res => {
-            console.log('GET_PROPERTY_TYPES_SUCCESS', res.data)
             dispatch({ type: GET_PROPERTY_TYPES_SUCCESS, payload: res.data })
         })
         .catch(err => {
-            console.log('GET_PROPERTY_TYPES_FAIL', err)
             dispatch({ type: GET_PROPERTY_TYPES_FAIL, payload: err })
         })
 }
@@ -153,11 +139,9 @@ export const getCancellationTypes = () => dispatch => {
     axiosWithAuth()
         .get('https://airbnb-price-opt.herokuapp.com/cancellations/all')
         .then(res => {
-            console.log('GET_CANCELLATION_TYPES_SUCCESS', res.data)
             dispatch({ type: GET_CANCELLATION_TYPES_SUCCESS, payload: res.data })
         })
         .catch(err => {
-            console.log('GET_CANCELLATION_TYPES_FAIL', err)
             dispatch({ type: GET_CANCELLATION_TYPES_FAIL, payload: err })
         })
 }
@@ -168,11 +152,9 @@ export const getListings = () => dispatch => {
     axiosWithAuth()
         .get('https://airbnb-price-opt.herokuapp.com/listings/all')
         .then(res => {
-            console.log('GET_LISTINGS_SUCCESS', res.data)
             dispatch({ type: GET_LISTINGS_SUCCESS, payload: res.data })
         })
         .catch(err => {
-            console.log('GET_LISTINGS_FAIL', err)
             dispatch({ type: GET_LISTINGS_FAIL, payload: err })
         })
 }
@@ -183,15 +165,12 @@ export const addListing = (newListingObj, history) => dispatch => {
     axiosWithAuth()
         .post('https://airbnb-price-opt.herokuapp.com/listings/new', newListingObj)
         .then(res => {
-            console.log('ADD_LISTING_SUCCESS', res.data)
             dispatch({ type: ADD_LISTING_SUCCESS, payload: res.data })
-            // history.push('/your-listings')
         })
         .then(res => {
             history.push('/your-listings')
         })
         .catch(err => {
-            console.log('ADD_LISTING_FAIL', err)
             dispatch({ type: ADD_LISTING_FAIL, payload: err })
         })
 }
@@ -201,12 +180,10 @@ export const updateListing = (updateListingObj, id, history) => dispatch => {
     axiosWithAuth()
         .put(`https://airbnb-price-opt.herokuapp.com/listings/update/${id}`, updateListingObj)
         .then(res => {
-            console.log('UPDATE_LISTING_SUCCESS', res.data)
             dispatch({ type: UPDATE_LISTING_SUCCESS, payload: res.data })
             history.push('/your-listings')
         })
         .catch(err => {
-            console.log('UPDATE_LISTING_FAIL', err)
             dispatch({ type: UPDATE_LISTING_FAIL, payload: err })
         })
 }
@@ -217,12 +194,10 @@ export const deleteListing = (listingToDelete, id, history) => dispatch => {
     axiosWithAuth()
         .delete(`https://airbnb-price-opt.herokuapp.com/listings/delete/${id}`, listingToDelete)
         .then(res => {
-            console.log('DELETE_LISTING_SUCCESS', res.data)
             dispatch({ type: DELETE_LISTING_SUCCESS, payload: res.data })
             history.push('/your-listings')
         })
         .catch(err => {
-            console.log('DELETE_LISTING_FAIL', err)
             dispatch({ type: DELETE_LISTING_FAIL, payload: err })
         })
 }

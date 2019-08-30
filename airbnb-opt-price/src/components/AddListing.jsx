@@ -82,7 +82,6 @@ const AddListing = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         props.addListing(listing, props.history)
-        console.log(listing)
     }
 
     const handleRoomTypeChange = event => {
@@ -163,7 +162,6 @@ const AddListing = (props) => {
         props.getPropertyTypes();
     },[])
 
-    // console.log(props.propertyTypes)
 
     const latLongHandleChange = e =>{
         getLatLong(e.target.value, setListing, listing)
