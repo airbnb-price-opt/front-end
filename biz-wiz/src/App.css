@@ -1,0 +1,43 @@
+.active-nav
+{
+    -webkit-text-stroke: 1px white;
+}
+
+.App
+{
+    height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between
+}
+
+/* .page
+{
+    position: absolute;
+    top: 200px;
+    left: 0;
+    right: 0;
+} */
+
+.fade-appear,
+.fade-enter {
+    opacity: 0;
+    z-index: 1;
+}
+.fade-appear-active,
+.fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 500ms linear 150ms;
+    /* position: relative; */
+}
+
+.fade-exit {
+    /* opacity: 1; */
+    display: none;
+}
+
+.fade-exit.fade-exit-active {
+    /* opacity: 0; */
+    display: none;
+    /* transition: opacity 150ms linear; */
+}
